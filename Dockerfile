@@ -9,5 +9,7 @@ COPY . /usr/src/app
 
 EXPOSE 3001
 
-CMD [ "npm", "start" ]
+ADD start.sh /usr/src/start.sh
+
+CMD /usr/src/start.sh
 
