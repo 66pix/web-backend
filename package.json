@@ -13,7 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.1",
+    "pg": "^4.4.0",
+    "pg-hstore": "^2.3.2",
     "pm2": "^0.14.5",
-    "seneca": "^0.6.3"
+    "ramda": "^0.17.1",
+    "seneca": "^0.6.3",
+    "sequelize": "^3.5.1"
   }
 }
