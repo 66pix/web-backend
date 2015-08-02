@@ -69,5 +69,5 @@
 
     "disallowMultipleLineBreaks": true,
     "disallowNewlineBeforeBlockStatements": true,
-    "safeContextKeyword": ["self", "vm"] 
+    "safeContextKeyword": ["self", "vm", "seneca"] 
 }
