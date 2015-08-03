@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 src/index.js",
-    "development": "./node_modules/.bin/pm2 start pm2-dev.json --watch; ./node_modules/.bin/pm2 logs"
+    "start": "./node_modules/.bin/pm2 start pm2.json; ./node_modules/.bin/pm2 logs",
+    "development": "./node_modules/.bin/pm2 start pm2-dev.json; ./node_modules/.bin/pm2 logs"
   },
   "keywords": [],
   "author": "",

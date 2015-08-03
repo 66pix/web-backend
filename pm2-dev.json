@@ -1,6 +1,6 @@
 {
   "apps" : [{
-      "name"        : "api",
+      "name"        : "website",
       "script"      : "src/index.js",
       "watch": true,
       "watch_options": {
