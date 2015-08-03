@@ -1,5 +1,5 @@
 #!/bin/bash
-echo $NODE_ENV
+nginx
 if [ "$NODE_ENV" == "development" ]; then
     npm run development
 else
