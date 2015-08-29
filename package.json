@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "66pix-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -21,6 +21,7 @@
     "express-session": "^1.11.3",
     "pm2": "^0.14.5",
     "ramda": "^0.17.1",
-    "seneca": "^0.6.3"
+    "seneca": "^0.6.3",
+    "@faceleg/66pix-api": "*"
   }
 }
