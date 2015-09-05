@@ -1,6 +1,7 @@
 'use strict';
 
 var jwt = require('jsonwebtoken');
+var debug = require('debug')('authentication/login');
 
 module.exports = function(app) {
   require('66pix-models').then(function(models) {
@@ -9,8 +10,7 @@ module.exports = function(app) {
         return res.send(401, 'Invalid username or password');
       }
 
-      var User = models.User;
-      User.login(req.body.email, req.body.password)
+      models.User.login(req.body.email, req.body.password)
         .then(function(user) {
           var token = jwt.sign({
             email: user.email,
@@ -25,6 +25,10 @@ module.exports = function(app) {
         })
         .catch(User.InvalidLoginDetailsError, User.TooManyAttemptsError, function(error) {
           res.status(error.code).send(error.message);
+        })
+        .catch(function(error) {
+          debug(error);
+          res.status(500).send('Unknown server error, please try again');
         });
 
     });
