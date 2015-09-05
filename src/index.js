@@ -20,12 +20,8 @@ app.use('/api', expressJwt({
 }));
 
 require('./routes/authentication/login.js')(app);
-
-app.use(express.static('public'));
+require('66pix-api')(app);
 
 var server = http.createServer(app);
-
 server.listen(process.env.PORT);
-
-// require('66pix-api')(app);
 
