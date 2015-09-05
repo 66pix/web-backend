@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-require('routes/authenticate/login.js')(app);
+require('./routes/authenticate/login.js')(app);
 
 app.use(express.static('public'));
 
