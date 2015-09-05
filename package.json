@@ -11,8 +11,7 @@
     "precommit": "node_modules/.bin/gulp pre-commit"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Michael Robinson",
   "dependencies": {
     "@faceleg/66pix-api": "*",
     "bluebird": "^2.9.34",
