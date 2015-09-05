@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/login');
 
 module.exports = function(app) {
-  require('66pix-models').then(function(models) {
+  require('@faceleg/66pix-models').then(function(models) {
     app.post('/authentication/login', function(req, res) {
       if (!req.body.email || !req.body.password) {
         return res.send(401, 'Invalid username or password');

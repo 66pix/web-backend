@@ -10,12 +10,12 @@ var jscs = require('gulp-jscs');
 function lintFiles(files) {
   return gulp.src(files)
     .pipe(gulpFilter(['*.js']))
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failOnError())
     .pipe(jscs({
       configPath: '.jscsrc'
-    }));
+    }))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
 }
 
 gulp.task('lint', function() {
