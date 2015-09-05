@@ -6,6 +6,8 @@ process.on('uncaughtException', function(err) {
   process.exit(1);
 });
 
+require('./development/fixtures.js');
+
 var http = require('http');
 var express = require('express');
 var expressJwt = require('express-jwt');

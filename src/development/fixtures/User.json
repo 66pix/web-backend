@@ -1,0 +1,20 @@
+[
+    {
+        "model": "User",
+        "data": {
+            "name": "Michael Robinson",
+            "email": "mike@pagesofinterest.net",
+            "status": "Active",
+            "password": "123123"
+        }
+    },
+    {
+        "model": "User",
+        "data": {
+            "name": "Inactive User",
+            "email": "inactive@test.com",
+            "status": "Inactive",
+            "password": "123123"
+        }
+    }
+]
