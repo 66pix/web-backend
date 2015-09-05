@@ -9,7 +9,7 @@ module.exports = function(app) {
       if (!req.body.email || !req.body.password) {
         return res.send(401, 'Invalid username or password');
       }
-      
+
       var User = models.User;
       User.login(req.body.email, req.body.password)
         .then(function(user) {
