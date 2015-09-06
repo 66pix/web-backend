@@ -31,7 +31,6 @@
     "gulp-eslint": "^1.0.0",
     "gulp-filter": "^3.0.1",
     "gulp-jscs": "^2.0.0",
-    "husky": "^0.10.1",
-    "sequelize-fixtures": "^0.4.7"
+    "husky": "^0.10.1"
   }
 }
