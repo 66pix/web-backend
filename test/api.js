@@ -9,8 +9,7 @@ describe('API Users', function() {
     request(app)
       .get('/api/users/current')
       .expect(401)
-      .catch(function() {
-        console.log('here');
+      .then(function() {
         done();
       });
   });
