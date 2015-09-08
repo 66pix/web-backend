@@ -7,33 +7,6 @@ process.on('uncaughtException', function(err) {
 });
 
 var http = require('http');
-var express = require('express');
-var cookieparser = require('cookie-parser');
-var bodyparser = require('body-parser');
-var session = require('express-session');
-var csurf = require('csurf');
-
-var app = express();
-
-app.use(cookieparser());
-app.use(bodyparser.json());
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true
-}));
-app.use(csurf());
-app.use(function(req, res, next) {
-  res.cookie('XSRF-TOKEN', req.csrfToken());
-  next();
-});
-
-app.use(express.static('public'));
-
-var server = http.createServer(app);
-
+var server = http.createServer(require('./app.js'));
 server.listen(process.env.PORT);
-
-require('66pix-api')(app);
 

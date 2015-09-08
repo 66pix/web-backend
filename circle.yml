@@ -1,0 +1,15 @@
+machine:
+  node:
+    version: 0.12.0
+  services:
+    - docker
+
+dependencies:
+  override:
+    - ./npm-login.sh && npm install
+    - sudo pip install --upgrade docker-compose\<=1.3
+
+test:
+  override:
+    - npm run lint
+    - npm test && npm run coverage-average

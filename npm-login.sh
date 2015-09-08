@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -o nounset
 set -o errexit
 
@@ -8,10 +9,3 @@ $NPM_PASSWORD
 $NPM_EMAIL
 !
 npm install
-
-if [ "$NODE_ENV" == "development" ]; then
-    npm run development
-else
-    npm start
-fi
-
