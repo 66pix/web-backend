@@ -1,5 +1,5 @@
 test:
-    build: .
+    build: Dockerfile
     environment:
         PORT: 3000
         TOKEN_SECRET: "this is a secret"
@@ -19,4 +19,6 @@ postgres:
         - "5342:5342"
     environment:
         POSTGRES_USER: "docker"
+    command: psql --username=postgres -c 'CREATE DATABASE test;';
+
 
