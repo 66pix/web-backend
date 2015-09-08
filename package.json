@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "docker-compose run -e NPM_USERNAME=$NPM_USERNAME -e NPM_PASSWORD=$NPM_PASSWORD -e NPM_EMAIL=$NPM_EMAIL test",
+    "test": "docker-compose run -e NPM_USERNAME=$NPM_USERNAME -e NPM_PASSWORD=$NPM_PASSWORD -e NPM_EMAIL=$NPM_EMAIL test /srv/www/test.sh",
     "test-watch": "docker-compose run -e NPM_USERNAME=$NPM_USERNAME -e NPM_PASSWORD=$NPM_PASSWORD -e NPM_EMAIL=$NPM_EMAIL test /srv/www/test-watch.sh",
     "lint": "node_modules/.bin/gulp lint",
     "start": "node_modules/.bin/pm2 start pm2.json; ./node_modules/.bin/pm2 logs",
