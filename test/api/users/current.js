@@ -10,7 +10,7 @@ describe('API Users', function() {
 
   beforeEach(function(done) {
     this.timeout(10000);
-    require('../src/app.js').then(function(_app_) {
+    require('../../../src/app.js').then(function(_app_) {
       app = _app_;
       request(app)
         .post('/authentication/login')
