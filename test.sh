@@ -16,7 +16,7 @@ $NPM_EMAIL
 npm install
 
 # Ensure database exists
-psql --host=postgres --username=postgres -c 'CREATE DATABASE test;';
+# psql --host=postgres --username=postgres -c 'CREATE DATABASE test;';
 
 mkdir -p coverage
 /srv/www/node_modules/.bin/istanbul cover --include-all-sources -x gulpfile.js /srv/www/node_modules/.bin/_mocha -- --recursive --reporter spec
