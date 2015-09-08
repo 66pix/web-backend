@@ -13,7 +13,7 @@ app.use('/api', expressJwt({
 }));
 
 require('./routes/authentication/login.js')(app);
-require('66pix-api')(app);
+require('@faceleg/66pix-api')(app);
 
 module.exports = app;
 
