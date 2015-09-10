@@ -26,13 +26,9 @@ module.exports = function(app) {
           });
         })
         .catch(User.InvalidLoginDetailsError, User.TooManyAttemptsError, function(error) {
-          res.status(error.code).send(error.message);
-        })
-        .catch(function(error) {
-          debug(error);
-          res.status(500).send('Unknown server error, please try again');
+          res.status(error.code)
+            .send(error.message);
         });
-
     });
   });
 };

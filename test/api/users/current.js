@@ -39,13 +39,4 @@ describe('API Users', function() {
         done();
       });
   });
-
-  it('should protect all /api routes', function(done) {
-    request(app)
-      .get('/api/users/current')
-      .expect(401)
-      .then(function() {
-        done();
-      });
-  });
 });
