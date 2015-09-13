@@ -1,5 +1,11 @@
 FROM nodesource/trusty:0.12
 
+### TODO strip these portions out when building for release
+### DEVELOPMENT ###
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql
+### DEVELOPMENT ###
+
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 

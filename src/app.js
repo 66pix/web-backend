@@ -3,6 +3,7 @@
 var express = require('express');
 var expressJwt = require('express-jwt');
 var bodyparser = require('body-parser');
+var debug = require('debug')('backend');
 
 var app = express();
 
@@ -13,7 +14,21 @@ app.use('/api', expressJwt({
 }));
 
 require('./routes/authentication/login.js')(app);
-require('@faceleg/66pix-api')(app);
 
-module.exports = app;
+var api = require('@faceleg/66pix-api')(app);
+module.exports = api.then(function() {
+  app.use(unauthorisedErrorHandler);
+  return app;
+});
 
+function unauthorisedErrorHandler(error, req, res, next) {
+  if (error.name !== 'UnauthorizedError') {
+    return next(error);
+  }
+
+  debug(error);
+  res.status(401);
+  res.json({
+    message: error.message
+  });
+}

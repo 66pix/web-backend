@@ -1,12 +1,16 @@
 'use strict';
 
-process.on('uncaughtException', function(err) {
-  console.error('uncaughtException:', err.message);
-  console.error(err.stack);
+process.on('uncaughtException', function(error) {
+  console.error('uncaughtException:', error.message);
+  console.error(error.stack);
   process.exit(1);
 });
 
 var http = require('http');
-var server = http.createServer(require('./app.js'));
-server.listen(process.env.PORT);
+
+module.exports = require('./app.js')
+  .then(function(app) {
+    return http.createServer(app)
+      .listen(process.env.PORT);
+  });
 

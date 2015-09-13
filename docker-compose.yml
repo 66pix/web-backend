@@ -16,9 +16,8 @@ test:
 postgres:
     image: postgres
     ports:
-        - "5342:5342"
+        - "5342"
     environment:
         POSTGRES_USER: "docker"
-    command: psql --username=postgres -c 'CREATE DATABASE test;';
 
 
