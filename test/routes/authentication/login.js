@@ -1,6 +1,7 @@
 'use strict';
 
 var request = require('supertest-as-promised');
+var expect = require('chai').expect;
 var Plan = require('test-plan');
 var app;
 
@@ -19,7 +20,9 @@ describe('Routes authentication login', function() {
     request(app)
       .post('/authentication/login')
       .expect(401)
-      .then(function() {
+      .then(function(response) {
+        expect(response.body.code).to.be.equal(401);
+        expect(response.body.message).to.be.equal('Invalid email or password');
         plan.ok(true);
       });
 
@@ -30,7 +33,9 @@ describe('Routes authentication login', function() {
         password: 'invalid password'
       })
       .expect(401)
-      .then(function() {
+      .then(function(response) {
+        expect(response.body.code).to.be.equal(401);
+        expect(response.body.message).to.be.equal('Invalid email or password');
         plan.ok(true);
       });
   });
