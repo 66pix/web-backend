@@ -14,6 +14,7 @@ app.use('/api', expressJwt({
 }));
 
 require('./routes/authentication/login.js')(app);
+require('./routes/authentication/forgot-password.js')(app);
 
 var api = require('@faceleg/66pix-api')(app);
 module.exports = api.then(function() {
