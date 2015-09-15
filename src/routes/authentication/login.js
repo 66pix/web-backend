@@ -7,10 +7,11 @@ module.exports = function(app) {
   require('@faceleg/66pix-models').then(function(models) {
     app.post('/authentication/login', function(req, res) {
       if (!req.body.email || !req.body.password) {
-        return res.json(401, {
-          code: 401,
-          message: 'Invalid email or password'
-        });
+        return res.status(401)
+          .json({
+            code: 401,
+            message: 'Invalid email or password'
+          });
       }
 
       var User = models.User;
