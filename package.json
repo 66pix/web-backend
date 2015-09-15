@@ -26,7 +26,8 @@
     "jsonwebtoken": "^5.0.5",
     "pm2": "^0.14.5",
     "ramda": "^0.17.1",
-    "seneca": "^0.6.3"
+    "seneca": "^0.6.3",
+    "seneca-mail": "^0.2.1"
   },
   "devDependencies": {
     "chai": "^3.2.0",
@@ -42,7 +43,6 @@
     "require-clean": "^0.1.1",
     "sinon": "^1.16.1",
     "supertest": "^1.1.0",
-    "supertest-as-promised": "^2.0.2",
     "test-plan": "^0.1.1"
   }
 }
