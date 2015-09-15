@@ -1,7 +1,7 @@
 'use strict';
 
 var expect = require('chai').expect;
-var request = require('supertest-as-promised');
+var request = require('supertest');
 var app;
 
 var token;
@@ -18,11 +18,10 @@ describe('API Users', function() {
           email: 'active@66pix.com',
           password: '12345'
         })
-        .expect(200)
-        .then(function(response) {
+        .expect(function(response) {
           token = 'Bearer ' + response.body.token;
-          done();
-        });
+        })
+        .expect(200, done);
     });
   });
 
@@ -30,13 +29,12 @@ describe('API Users', function() {
     request(app)
       .get('/api/users/current')
       .set('authorization', token)
-      .expect(200)
-      .then(function(response) {
+      .expect(function(response) {
         var user = response.body;
         expect(user).to.have.property('email', 'active@66pix.com');
         expect(user).to.have.property('name', 'Active User');
         expect(user).to.have.property('id', 1);
-        done();
-      });
+      })
+      .expect(200, done);
   });
 });

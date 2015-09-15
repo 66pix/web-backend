@@ -1,6 +1,6 @@
 'use strict';
 
-var request = require('supertest-as-promised');
+var request = require('supertest');
 var app;
 
 describe('API', function() {
@@ -16,10 +16,7 @@ describe('API', function() {
   it('should protect all /api routes', function(done) {
     request(app)
       .get('/api/users/current')
-      .expect(401)
-      .then(function() {
-        done();
-      });
+      .expect(401, done);
   });
 });
 
