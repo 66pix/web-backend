@@ -15,7 +15,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@faceleg/66pix-api": "^1.0.10",
+    "@faceleg/66pix-api": "^1.0.11",
     "@faceleg/66pix-models": "0.0.3",
     "bluebird": "^2.10.0",
     "body-parser": "^1.13.3",
