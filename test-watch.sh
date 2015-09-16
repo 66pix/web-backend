@@ -41,6 +41,8 @@ do
      esac
 done
 
+export NODE_ENV="development"
+
 if [ -z $POSTGRES ]; then
     export POSTGRES="postgres://$DATABASE_USERNAME@$DATABASE_HOST/test"
 fi
@@ -79,4 +81,5 @@ echo "! psql --host=$DATABASE_HOST --username=$DATABASE_USERNAME -c 'CREATE DATA
 
 mkdir -p coverage
 node_modules/.bin/istanbul cover -x gulpfile.js --include-all-sources --report html ./node_modules/.bin/_mocha -- -w  --recursive --reporter spec
-
+node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt
+node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95
