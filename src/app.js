@@ -17,8 +17,9 @@ require('./routes/authentication/login.js')(app);
 require('./routes/authentication/forgot-password.js')(app);
 
 var api = require('@faceleg/66pix-api')(app);
-module.exports = api.then(function() {
+module.exports = api.then(function(seneca) {
   app.use(unauthorisedErrorHandler);
+  app.seneca = seneca;
   return app;
 });
 
@@ -33,3 +34,4 @@ function unauthorisedErrorHandler(error, req, res, next) {
     message: error.message
   });
 }
+

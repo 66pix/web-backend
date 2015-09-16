@@ -15,7 +15,6 @@ describe('API', function() {
   });
 
   it('should expose seneca on app', function() {
-    console.log(app.seneca);
     expect(app.seneca).to.be.an('object');
   });
 
