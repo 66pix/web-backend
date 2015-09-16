@@ -1,6 +1,8 @@
 'use strict';
 
 var request = require('supertest');
+var sinon = require('sinon');
+var expect = require('chai').expect;
 var app;
 
 describe('Routes authentication forgot-password', function() {
@@ -36,6 +38,7 @@ describe('Routes authentication forgot-password', function() {
   });
 
   it('should respond with 200 if the email exists and a forgot password email was send', function(done) {
+    sinon.stub(app.seneca, 'act', function() {});
     request(app)
       .post('/authentication/forgot-password')
       .send({
@@ -44,12 +47,32 @@ describe('Routes authentication forgot-password', function() {
       .expect(200)
       .expect({
         message: 'Please check your email'
-      }, done);
+      }, function() {
+        app.seneca.act.restore();
+        done();
+      });
   });
 
   it('should cause seneca to act with the correct arguments', function(done) {
+    this.timeout(5000);
+    sinon.stub(app.seneca, 'act', function(args) {
+      expect(args).to.have.property('role', 'mail');
+      expect(args).to.have.property('cmd', 'send');
+      expect(args).to.have.property('code', 'forgot-password');
+      expect(args).to.have.property('to', 'active@66pix.com');
+      expect(args).to.have.property('subject', '66pix Password Reset');
 
-    done();
+      app.seneca.act.restore();
+
+      done();
+    });
+
+    request(app)
+      .post('/authentication/forgot-password')
+      .send({
+        email: 'active@66pix.com'
+      })
+      .expect(200, function() {});
   });
 });
 

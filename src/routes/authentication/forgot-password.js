@@ -27,10 +27,20 @@ module.exports = function(app) {
       })
       .then(function(user) {
         if (user) {
-          // send email
+          debug('Emailing reset password link to %s', user.email);
+          app.seneca.act({
+            role: 'mail',
+            cmd: 'send',
+            code: 'forgot-password',
+            to: user.email,
+            subject: '66pix Password Reset',
+            content: {
+              user: user,
+              resetUrl: 'URL'
+            }
+          });
           return responseSuccess(res);
         }
-
         responseSuccess(res);
       });
     });
