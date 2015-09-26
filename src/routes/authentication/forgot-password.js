@@ -14,6 +14,7 @@ module.exports = function(app) {
   require('@faceleg/66pix-models').then(function(models) {
     app.post('/authentication/forgot-password', function(req, res) {
       if (!req.body.email) {
+        debug('Login attempt without an email address');
         return res.status(400)
           .json({
             code: 400,

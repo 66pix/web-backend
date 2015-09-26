@@ -3,6 +3,8 @@
 var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/login');
 
+var LOGIN_SESSION_EXPIRY = 60 * 5;
+
 module.exports = function(app) {
   require('@faceleg/66pix-models').then(function(models) {
     app.post('/authentication/login', function(req, res) {
@@ -22,7 +24,7 @@ module.exports = function(app) {
             email: user.email,
             name: user.name
           }, process.env.TOKEN_SECRET, {
-            expiresInMinutes: 60 * 5
+            expiresInMinutes: LOGIN_SESSION_EXPIRY
           });
 
           res.json({
