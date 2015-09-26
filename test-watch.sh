@@ -12,13 +12,15 @@ OPTIONS:
    -u      postgres database user (defaults to "postgres")
    -d      postgres host (defaults to "postgres")
    -s      token secret (defaults to TOKEN_SECRET environment variable)
+   -r      reset password token secret (defaults to RESET_PASSWORD_TOKEN_SECRET environment variable)
 EOF
 }
 
 DATABASE_USERNAME=
 DATABASE_HOST=
 TOKEN_SECRET=
-while getopts "hu:d:s:" OPTION
+RESET_PASSWORD_TOKEN_SECRET=
+while getopts "hu:d:s:r:" OPTION
 do
      case $OPTION in
          h)
@@ -33,6 +35,9 @@ do
              ;;
          s)
              TOKEN_SECRET=$OPTARG
+             ;;
+         r)
+             RESET_PASSWORD_TOKEN_SECRET=$OPTARG
              ;;
          ?)
              usage
@@ -57,6 +62,10 @@ fi
 
 if [ ! -z $TOKEN_SECRET ]; then
     export TOKEN_SECRET=$TOKEN_SECRET
+fi
+
+if [ ! -z $RESET_PASSWORD_TOKEN_SECRET ]; then
+    export RESET_PASSWORD_TOKEN_SECRET=$RESET_PASSWORD_TOKEN_SECRET
 fi
 
 # Required ENV for CI
