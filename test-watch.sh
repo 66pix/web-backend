@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export DEBUG="*"
+
 usage()
 {
 cat << EOF
@@ -85,7 +87,7 @@ fi
 
 npm install
 
-echo "! psql --host=$DATABASE_HOST --username=$DATABASE_USERNAME -c 'CREATE DATABASE test;';"
+! psql --host="$DATABASE_HOST" --username="$DATABASE_USERNAME" -c 'DROP DATABASE test;';
 ! psql --host="$DATABASE_HOST" --username="$DATABASE_USERNAME" -c 'CREATE DATABASE test;';
 
 mkdir -p coverage
