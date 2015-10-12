@@ -3,6 +3,8 @@ machine:
     version: 4
   services:
     - docker
+  pre: 
+    - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20
 
 general:
   branches:
