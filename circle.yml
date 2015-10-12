@@ -4,6 +4,11 @@ machine:
   services:
     - docker
 
+general:
+  branches:
+    ignore:
+      - feature/codeship
+
 dependencies:
   override:
     - ./npm-login.sh && npm install
