@@ -37,7 +37,7 @@ describe('Routes authentication forgot-password', function() {
       }, done);
   });
 
-  it('should respond with 200 if the email exists and a forgot password email was send', function(done) {
+  it('should respond with 200 if the email exists and a forgot password email was sent', function(done) {
     sinon.stub(app.seneca, 'act', function() {});
     request(app)
       .post('/authentication/forgot-password')

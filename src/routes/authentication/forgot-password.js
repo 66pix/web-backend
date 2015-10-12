@@ -1,6 +1,7 @@
 'use strict';
 
 var debug = require('debug')('authentication/forgot-password');
+var jwt = require('jsonwebtoken');
 
 module.exports = function(app) {
 
@@ -28,6 +29,11 @@ module.exports = function(app) {
       })
       .then(function(user) {
         if (user) {
+          var token = jwt.sign({
+            id: user.id
+          }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
+            expiresInMinutes: 60
+          });
           debug('Emailing reset password link to %s', user.email);
           app.seneca.act({
             role: 'mail',
@@ -37,6 +43,7 @@ module.exports = function(app) {
             subject: '66pix Password Reset',
             content: {
               user: user,
+              token: token,
               resetUrl: 'URL'
             }
           });

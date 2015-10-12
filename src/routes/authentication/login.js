@@ -17,6 +17,7 @@ module.exports = function(app) {
       }
 
       var User = models.User;
+      console.log(req.body);
       User.login(req.body.email, req.body.password)
         .then(function(user) {
           var token = jwt.sign({
