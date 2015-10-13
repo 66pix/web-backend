@@ -3,7 +3,7 @@
 var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/login');
 
-var LOGIN_SESSION_EXPIRY = 60 * 5;
+var LOGIN_SESSION_EXPIRY = 60 * 60 * 5;
 
 module.exports = function(app) {
   require('@faceleg/66pix-models').then(function(models) {
@@ -17,7 +17,6 @@ module.exports = function(app) {
       }
 
       var User = models.User;
-      console.log(req.body);
       User.login(req.body.email, req.body.password)
         .then(function(user) {
           var token = jwt.sign({
@@ -25,7 +24,7 @@ module.exports = function(app) {
             email: user.email,
             name: user.name
           }, process.env.TOKEN_SECRET, {
-            expiresInMinutes: LOGIN_SESSION_EXPIRY
+            expiresIn: LOGIN_SESSION_EXPIRY
           });
 
           res.json({
@@ -33,7 +32,7 @@ module.exports = function(app) {
           });
         })
         .catch(User.InvalidLoginDetailsError, User.TooManyAttemptsError, function(error) {
-          debug('%s, %s', error.name, error.message);
+          debug(error);
           res.status(error.code)
             .json({
               code: error.code,
