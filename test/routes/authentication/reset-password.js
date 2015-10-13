@@ -35,7 +35,7 @@ describe('Routes authentication reset-password', function() {
     var token = jwt.sign({
       id: 1
     }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
-      expiresInMinutes: 0
+      expiresIn: 0
     });
 
     request(app)
@@ -51,7 +51,7 @@ describe('Routes authentication reset-password', function() {
     var token = jwt.sign({
       id: 1
     }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
-      expiresInMinutes: 0
+      expiresIn: 0
     });
 
     request(app)
@@ -78,7 +78,7 @@ describe('Routes authentication reset-password', function() {
         var token = jwt.sign({
           id: user.id
         }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
-          expiresInMinutes: 60
+          expiresIn: 60 * 60
         });
 
         var password = 'authentication/reset-password/reset';
@@ -108,7 +108,7 @@ describe('Routes authentication reset-password', function() {
         var token = jwt.sign({
           id: user.id
         }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
-          expiresInMinutes: 60
+          expiresIn: 60 * 60
         });
 
         var password = 'authentication/reset-password/reset';
