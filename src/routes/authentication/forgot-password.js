@@ -32,7 +32,7 @@ module.exports = function(app) {
           var token = jwt.sign({
             id: user.id
           }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
-            expiresInMinutes: 60
+            expiresIn: 60 * 60
           });
           debug('Emailing reset password link to %s', user.email);
           app.seneca.act({
