@@ -2,15 +2,16 @@
 
 var expect = require('chai').expect;
 var request = require('supertest');
+var requireClean = require('require-clean');
 var app;
 
 var token;
 
-describe('API Users', function() {
+describe('Routes Users current', function() {
 
   beforeEach(function(done) {
     this.timeout(10000);
-    require('../../../src/app.js').then(function(_app_) {
+    requireClean('../../../src/app.js').then(function(_app_) {
       app = _app_;
       request(app)
         .post('/authentication/login')
