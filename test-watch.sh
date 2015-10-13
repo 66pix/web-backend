@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DEBUG="*"
+export DEBUG="*,-mocha:*"
 
 usage()
 {
