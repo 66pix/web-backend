@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DEBUG="*,-mocha:*"
+# export DEBUG="*"
 
 usage()
 {
@@ -87,7 +87,6 @@ fi
 
 npm install
 
-! psql --host="$DATABASE_HOST" --username="$DATABASE_USERNAME" -c 'DROP DATABASE test;';
 ! psql --host="$DATABASE_HOST" --username="$DATABASE_USERNAME" -c 'CREATE DATABASE test;';
 
 mkdir -p coverage
