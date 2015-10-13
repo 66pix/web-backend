@@ -1,8 +1,12 @@
 {
   "name": "@faceleg/backend",
+  "engines": {
+      "node": ">=4"
+  },
   "version": "1.0.2",
   "description": "The backend service providing authentication for the underlying API",
   "repository": "https://github.com/faceleg/backend",
+  "license": "UNLICENSED",
   "main": "index.js",
   "scripts": {
     "test": "docker-compose run -e NPM_USERNAME=$NPM_USERNAME -e NPM_PASSWORD=$NPM_PASSWORD -e NPM_EMAIL=$NPM_EMAIL test /srv/www/test.sh",
@@ -16,8 +20,8 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@faceleg/66pix-api": "^1.0.13",
-    "@faceleg/66pix-models": "0.0.10",
+    "@faceleg/66pix-api": "^1.0.15",
+    "@faceleg/66pix-models": "0.0.11",
     "bluebird": "^2.10.2",
     "body-parser": "^1.14.1",
     "debug": "^2.2.0",
