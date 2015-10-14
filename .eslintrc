@@ -7,7 +7,7 @@
     "builtin": true
   },
   "rules": {
-    "no-warning-comments": [0, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],
+    "no-warning-comments": [2, { "terms": ["todo", "fixme", "xxx"], "location": "anywhere" }],
     "radix": 2,
     "no-self-compare": 2,
     "no-return-assign": 2,
