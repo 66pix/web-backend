@@ -7,7 +7,6 @@ var app;
 describe('Routes authentication login', function() {
 
   beforeEach(function(done) {
-    this.timeout(10000);
     require('../../../src/app.js').then(function(_app_) {
       app = _app_;
       done();

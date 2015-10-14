@@ -2,7 +2,7 @@
 
 var expect = require('chai').expect;
 var request = require('supertest');
-var requireClean = require('require-clean');
+var requireClean = require('require-new');
 var app;
 
 var token;
@@ -10,7 +10,6 @@ var token;
 describe('Routes Users current', function() {
 
   beforeEach(function(done) {
-    this.timeout(10000);
     requireClean('../../../src/app.js').then(function(_app_) {
       app = _app_;
       request(app)
@@ -32,6 +31,7 @@ describe('Routes Users current', function() {
       .set('authorization', token)
       .expect(function(response) {
         var user = response.body;
+        console.log(user);
         expect(user).to.have.property('email', 'active@66pix.com');
         expect(user).to.have.property('name', 'Active User');
         expect(user).to.have.property('id', 1);

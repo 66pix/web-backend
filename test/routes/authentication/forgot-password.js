@@ -8,7 +8,6 @@ var app;
 describe('Routes authentication forgot-password', function() {
 
   beforeEach(function(done) {
-    this.timeout(10000);
     require('../../../src/app.js').then(function(_app_) {
       app = _app_;
       done();
@@ -54,7 +53,6 @@ describe('Routes authentication forgot-password', function() {
   });
 
   it('should cause seneca to act with the correct arguments', function(done) {
-    this.timeout(5000);
     sinon.stub(app.seneca, 'act', function(args) {
       expect(args).to.have.property('role', 'mail');
       expect(args).to.have.property('cmd', 'send');
