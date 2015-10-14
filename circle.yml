@@ -22,5 +22,4 @@ dependencies:
 test:
   override:
     - npm run lint
-    - npm test 
-    - npm run coverage-average
+    - npm test

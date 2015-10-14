@@ -31,3 +31,5 @@ mkdir -p coverage
 /srv/www/node_modules/.bin/istanbul report html
 /srv/www/node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt
 
+/srv/www/node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95
+
