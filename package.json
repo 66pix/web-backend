@@ -7,6 +7,7 @@
   "description": "The backend service providing authentication for the underlying API",
   "repository": "https://github.com/faceleg/backend",
   "license": "UNLICENSED",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "docker-compose run -e NPM_USERNAME=$NPM_USERNAME -e NPM_PASSWORD=$NPM_PASSWORD -e NPM_EMAIL=$NPM_EMAIL test /srv/www/test.sh",
