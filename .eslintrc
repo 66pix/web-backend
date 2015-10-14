@@ -7,7 +7,20 @@
     "builtin": true
   },
   "rules": {
+    "no-self-compare": 2,
+    "no-return-assign": 2,
+    "no-new-wrappers": 2,
+    "no-param-reassign": [2, { "props": true }],
+    "no-new": 2,
+    "no-multi-str": 2,
+    "no-multi-spaces": 2,
+    "no-div-regex": 2,
+    "no-else-return": 2,
+    "no-empty-label": 2,
+    "no-eq-null": 2,
     "no-use-before-define": 0,
+    "no-implied-eval": 2,
+    "no-lone-blocks": 2,
     "block-scoped-var": 0,
     "camelcase": 2,
     "comma-style": [
@@ -31,6 +44,10 @@
     "strict": [
       2,
       "global"
+    ],
+    "dot-location": [
+      2,
+      "property"
     ],
     "guard-for-in": 2,
     "new-cap": 2,
