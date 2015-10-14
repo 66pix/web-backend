@@ -7,6 +7,7 @@
     "builtin": true
   },
   "rules": {
+    "no-labels": 2,
     "no-undef-init": 2,
     "no-undefined": 2,
     "yoda": 2,
