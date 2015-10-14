@@ -7,6 +7,7 @@
     "builtin": true
   },
   "rules": {
+    "no-param-reassign": [2, { "props": true }],
     "no-new": 2,
     "no-multi-str": 2,
     "no-multi-spaces": 2,
