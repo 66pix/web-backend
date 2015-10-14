@@ -7,6 +7,7 @@
     "builtin": true
   },
   "rules": {
+    "no-delete-var": 2,
     "no-labels": 2,
     "no-undef-init": 2,
     "no-undefined": 2,
