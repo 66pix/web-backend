@@ -31,7 +31,6 @@ describe('Routes Users current', function() {
       .set('authorization', token)
       .expect(function(response) {
         var user = response.body;
-        console.log(user);
         expect(user).to.have.property('email', 'active@66pix.com');
         expect(user).to.have.property('name', 'Active User');
         expect(user).to.have.property('id', 1);
