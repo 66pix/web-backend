@@ -2,13 +2,13 @@
 
 var expect = require('chai').expect;
 var fs = require('fs');
+var path = reqruie('path');
 
 describe('Package.json', function() {
 
   var packageJson;
   beforeEach(function(done) {
-    fs.readFile('../package.json', 'utf8', function(error, file) {
-      console.log(file);
+    fs.readFile(path.join(__dirname, '../package.json'), 'utf8', function(error, file) {
       packageJson = JSON.parse(file);
       done();
     });
