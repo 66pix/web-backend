@@ -2,7 +2,7 @@
 
 var expect = require('chai').expect;
 var fs = require('fs');
-var path = reqruie('path');
+var path = require('path');
 
 describe('Package.json', function() {
 
