@@ -38,6 +38,10 @@
       2,
       "global"
     ],
+    "dot-location": [
+      2,
+      "property"
+    ],
     "guard-for-in": 2,
     "new-cap": 2,
     "no-bitwise": 2,
