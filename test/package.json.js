@@ -8,6 +8,7 @@ describe('Package.json', function() {
   var packageJson;
   beforeEach(function(done) {
     fs.readFile('../package.json', 'utf8', function(error, file) {
+      console.log(file);
       packageJson = JSON.parse(file);
       done();
     });
