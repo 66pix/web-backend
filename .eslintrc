@@ -9,7 +9,7 @@
   "rules": {
     "comma-dangle": [
       2,
-      "always"
+      "never"
     ],
     "no-console": 2,
     "no-constant-condition": 2,
@@ -66,16 +66,18 @@
       }
     ],
     "no-invalid-this": 2,
-    "no-native-reassign": 2,
+    "no-native-reassign": [
+        2,
+        {
+            "exceptions": ["Promise"]
+        }
+    ],
     "no-new-func": 2,
     "no-octal-escape": 2,
     "no-octal": 2,
     "no-process-env": 0,
     "no-redeclare": [
-      2,
-      {
-        "builtinGlobals": true
-      }
+      2
     ],
     "vars-on-top": 0,
     "init-declarations": 0,
@@ -124,7 +126,7 @@
       "self"
     ],
     "eol-last": 2,
-    "func-names": 2,
+    "func-names": 0,
     "func-style": [
       2,
       "declaration"
@@ -133,7 +135,6 @@
       2,
       {
         "min": 3,
-        "max": null,
         "exceptions": [
           "id"
         ]
@@ -176,8 +177,7 @@
     "no-inline-comments": 0,
     "no-lonely-if": 2,
     "no-mixed-spaces-and-tabs": [
-      2,
-      ""
+      2
     ],
     "no-multiple-empty-lines": [
       2,
@@ -368,8 +368,7 @@
     "new-cap": 2,
     "quotes": [
       2,
-      "single",
-      null
+      "single"
     ],
     "semi": [
       2,
