@@ -19,6 +19,3 @@ echo "\n"
 
 /srv/www/node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95
 
-echo "\n"
-
-npm run lint
