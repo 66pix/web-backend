@@ -1,8 +1,18 @@
 machine:
   node:
-    version: 0.12.0
+    version: 4
   services:
     - docker
+  pre: 
+    - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 10
+    - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 10
+    - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20
+    - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 20
+
+general:
+  branches:
+    ignore:
+      - feature/codeship
 
 dependencies:
   override:
@@ -12,4 +22,4 @@ dependencies:
 test:
   override:
     - npm run lint
-    - npm test && npm run coverage-average
+    - npm test

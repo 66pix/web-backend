@@ -3,11 +3,17 @@
 var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/login');
 
+var LOGIN_SESSION_EXPIRY = 60 * 60 * 5;
+
 module.exports = function(app) {
   require('@faceleg/66pix-models').then(function(models) {
     app.post('/authentication/login', function(req, res) {
       if (!req.body.email || !req.body.password) {
-        return res.send(401, 'Invalid username or password');
+        return res.status(401)
+          .json({
+            code: 401,
+            message: 'Invalid email or password'
+          });
       }
 
       var User = models.User;
@@ -18,7 +24,7 @@ module.exports = function(app) {
             email: user.email,
             name: user.name
           }, process.env.TOKEN_SECRET, {
-            expiresInMinutes: 60 * 5
+            expiresIn: LOGIN_SESSION_EXPIRY
           });
 
           res.json({
@@ -26,9 +32,12 @@ module.exports = function(app) {
           });
         })
         .catch(User.InvalidLoginDetailsError, User.TooManyAttemptsError, function(error) {
-          debug('%s, %s', error.name, error.message);
+          debug(error);
           res.status(error.code)
-            .send(error.message);
+            .json({
+              code: error.code,
+              message: error.message
+            });
         });
     });
   });

@@ -1,9 +1,9 @@
-FROM nodesource/trusty:0.12
+FROM nodesource/trusty:4
 
 ### TODO strip these portions out when building for release
 ### DEVELOPMENT ###
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql gcc-4.8
 ### DEVELOPMENT ###
 
 ENV TZ=Pacific/Auckland

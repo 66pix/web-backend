@@ -4,6 +4,7 @@ var express = require('express');
 var expressJwt = require('express-jwt');
 var bodyparser = require('body-parser');
 var debug = require('debug')('backend');
+var Promise = require('bluebird');
 
 var app = express();
 
@@ -14,11 +15,18 @@ app.use('/api', expressJwt({
 }));
 
 require('./routes/authentication/login.js')(app);
+require('./routes/authentication/forgot-password.js')(app);
+require('./routes/authentication/reset-password.js')(app);
 
-var api = require('@faceleg/66pix-api')(app);
-module.exports = api.then(function() {
-  app.use(unauthorisedErrorHandler);
-  return app;
+module.exports = new Promise(function(resolve) {
+  require('@faceleg/66pix-api')(app)
+    .then(function(seneca) {
+      app.use(unauthorisedErrorHandler);
+      app.seneca = seneca;
+      seneca.ready(function() {
+        resolve(app);
+      });
+    });
 });
 
 function unauthorisedErrorHandler(error, req, res, next) {
@@ -32,3 +40,4 @@ function unauthorisedErrorHandler(error, req, res, next) {
     message: error.message
   });
 }
+

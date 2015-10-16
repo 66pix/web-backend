@@ -1,25 +1,26 @@
 'use strict';
 
-var request = require('supertest-as-promised');
+var request = require('supertest');
+var expect = require('chai').expect;
 var app;
 
 describe('API', function() {
 
   beforeEach(function(done) {
-    this.timeout(10000);
     require('../src/app.js').then(function(_app_) {
       app = _app_;
       done();
     });
   });
 
+  it('should expose seneca on app', function() {
+    expect(app.seneca).to.be.an('object');
+  });
+
   it('should protect all /api routes', function(done) {
     request(app)
       .get('/api/users/current')
-      .expect(401)
-      .then(function() {
-        done();
-      });
+      .expect(401, done);
   });
 });
 

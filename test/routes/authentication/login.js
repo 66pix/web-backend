@@ -1,13 +1,12 @@
 'use strict';
 
-var request = require('supertest-as-promised');
+var request = require('supertest');
 var Plan = require('test-plan');
 var app;
 
 describe('Routes authentication login', function() {
 
   beforeEach(function(done) {
-    this.timeout(10000);
     require('../../../src/app.js').then(function(_app_) {
       app = _app_;
       done();
@@ -19,7 +18,10 @@ describe('Routes authentication login', function() {
     request(app)
       .post('/authentication/login')
       .expect(401)
-      .then(function() {
+      .expect({
+        code: 401,
+        message: 'Invalid email or password'
+      }, function() {
         plan.ok(true);
       });
 
@@ -30,7 +32,10 @@ describe('Routes authentication login', function() {
         password: 'invalid password'
       })
       .expect(401)
-      .then(function() {
+      .expect({
+        code: 401,
+        message: 'Invalid email or password'
+      }, function() {
         plan.ok(true);
       });
   });
