@@ -30,9 +30,7 @@ describe('Routes Users PUT', function() {
             })
             .expect(200, done);
         })
-        .expect(200,  function() {
-
-        });
+        .expect(200, function() { });
     });
   });
 

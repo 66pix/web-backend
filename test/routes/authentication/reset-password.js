@@ -67,7 +67,6 @@ describe('Routes authentication reset-password', function() {
   });
 
   it('should reject requests for users that are not active', function(done) {
-    this.timeout(4000);
     require('@faceleg/66pix-models').then(function(models) {
       models.User.findOne({
         where: {
@@ -97,7 +96,6 @@ describe('Routes authentication reset-password', function() {
   });
 
   it('should reset the correct user\'s password if all token is valid and password pairs match', function(done) {
-    this.timeout(4000);
     require('@faceleg/66pix-models').then(function(models) {
       models.User.findOne({
         where: {
