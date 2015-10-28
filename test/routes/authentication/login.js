@@ -40,4 +40,3 @@ describe('Routes authentication login', function() {
       });
   });
 });
-

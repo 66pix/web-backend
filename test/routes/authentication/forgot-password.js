@@ -73,4 +73,3 @@ describe('Routes authentication forgot-password', function() {
       .expect(200, function() {});
   });
 });
-

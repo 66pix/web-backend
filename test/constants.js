@@ -9,4 +9,3 @@ describe('constants', function() {
     expect(constants.FORGOT_PASSWORD_TOKEN_EXPIRY).to.not.be.undefined();
   });
 });
-

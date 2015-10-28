@@ -25,4 +25,3 @@ describe('Package.json', function() {
     expect(packageJson).to.have.property('license', 'UNLICENSED');
   });
 });
-

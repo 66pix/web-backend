@@ -23,4 +23,3 @@ describe('API', function() {
       .expect(401, done);
   });
 });
-
