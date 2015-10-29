@@ -17,6 +17,7 @@ app.use('/api', expressJwt({
 }));
 
 require('./routes/authentication/login.js')(app);
+require('./routes/authentication/logout.js')(app);
 require('./routes/authentication/forgot-password.js')(app);
 require('./routes/authentication/reset-password.js')(app);
 
