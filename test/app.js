@@ -1,7 +1,7 @@
 'use strict';
 
 var request = require('supertest');
-var expect = require('chai').expect;
+var expect = require('code').expect;
 var app;
 
 describe('API', function() {
@@ -14,7 +14,7 @@ describe('API', function() {
   });
 
   it('should expose seneca on app', function() {
-    expect(app.seneca).to.be.an('object');
+    expect(app.seneca).to.be.an.instanceof(Object);
   });
 
   it('should protect all /api routes', function(done) {

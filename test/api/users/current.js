@@ -1,6 +1,6 @@
 'use strict';
 
-var expect = require('chai').expect;
+var expect = require('code').expect;
 var request = require('supertest');
 var requireClean = require('require-new');
 var app;
@@ -31,9 +31,11 @@ describe('Routes Users current', function() {
       .set('authorization', token)
       .expect(function(response) {
         var user = response.body;
-        expect(user).to.have.property('email', 'active@66pix.com');
-        expect(user).to.have.property('name', 'Active User');
-        expect(user).to.have.property('id', 1);
+        expect(user).to.deep.contain({
+          email: 'active@66pix.com',
+          name: 'Active User',
+          id: 1
+        });
       })
       .expect(200, done);
   });

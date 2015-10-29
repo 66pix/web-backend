@@ -1,6 +1,6 @@
 'use strict';
 
-var expect = require('chai').expect;
+var expect = require('code').expect;
 var fs = require('fs');
 var path = require('path');
 
@@ -18,10 +18,10 @@ describe('Package.json', function() {
   });
 
   it('should specify private: true', function() {
-    expect(packageJson).to.have.property('private', true);
+    expect(packageJson.private).to.equal(true);
   });
 
   it('should specify license: UNLICENSED', function() {
-    expect(packageJson).to.have.property('license', 'UNLICENSED');
+    expect(packageJson.license).to.equal('UNLICENSED');
   });
 });

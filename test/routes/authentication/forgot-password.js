@@ -2,7 +2,7 @@
 
 var request = require('supertest');
 var sinon = require('sinon');
-var expect = require('chai').expect;
+var expect = require('code').expect;
 var app;
 
 describe('Routes authentication forgot-password', function() {
@@ -54,11 +54,13 @@ describe('Routes authentication forgot-password', function() {
 
   it('should cause seneca to act with the correct arguments', function(done) {
     sinon.stub(app.seneca, 'act', function(args) {
-      expect(args).to.have.property('role', 'mail');
-      expect(args).to.have.property('cmd', 'send');
-      expect(args).to.have.property('code', 'forgot-password');
-      expect(args).to.have.property('to', 'active@66pix.com');
-      expect(args).to.have.property('subject', '66pix Password Reset');
+      expect(args).to.deep.contain({
+        role: 'mail',
+        cmd: 'send',
+        code: 'forgot-password',
+        to: 'active@66pix.com',
+        subject: '66pix Password Reset'
+      });
 
       app.seneca.act.restore();
 
