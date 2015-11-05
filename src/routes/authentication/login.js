@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/login');
 
 module.exports = function(app) {
-  require('@faceleg/66pix-models').then(function(models) {
+  require('@66pix/models').then(function(models) {
     app.post('/authentication/login', function(req, res) {
 
       if (bodyIsValid(req.body)) {
