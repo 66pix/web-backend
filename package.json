@@ -5,7 +5,7 @@
   },
   "version": "1.0.2",
   "description": "The backend service providing authentication for the underlying API",
-  "repository": "https://github.com/faceleg/backend",
+  "repository": "https://github.com/66pix/backend",
   "license": "UNLICENSED",
   "private": true,
   "main": "index.js",
@@ -21,7 +21,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^1.0.17",
+    "@66pix/api": "^1.0.18",
     "@66pix/models": "0.0.15",
     "bluebird": "^2.10.2",
     "body-parser": "^1.14.1",
