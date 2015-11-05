@@ -1,6 +1,7 @@
 #!/bin/bash
+set -e
 
-./npm-install.sh
+./npm-login.sh
 
 npm install
 
