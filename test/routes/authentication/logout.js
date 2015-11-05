@@ -35,7 +35,7 @@ describe('Routes authentication logout', function() {
 
   it('should return 201 if the jwt token is not present in the database', function(done) {
     var tokenId = jwt.verify(jwtToken.replace('Bearer ', ''), process.env.TOKEN_SECRET).tokenId;
-    require('@faceleg/66pix-models').then(function(models) {
+    require('@66pix/models').then(function(models) {
       return models.Token.findById(tokenId);
     })
     .then(function(token) {

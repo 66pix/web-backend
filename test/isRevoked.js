@@ -30,7 +30,7 @@ describe('isRevoked', function() {
   });
 
   it('should call done with true if the matching token record isRevoked', function(done) {
-    require('@faceleg/66pix-models')
+    require('@66pix/models')
     .then(function(models) {
       return models.Token.build({
         userId: 1,

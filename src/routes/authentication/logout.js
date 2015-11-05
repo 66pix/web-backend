@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/logout');
 
 module.exports = function(app) {
-  require('@faceleg/66pix-models').then(function(models) {
+  require('@66pix/models').then(function(models) {
     app.get('/authentication/logout', function(req, res, next) {
       jwt.verify(req.headers.authorization.replace('Bearer ', ''), process.env.TOKEN_SECRET, function(error, jwtToken) {
         if (error) {

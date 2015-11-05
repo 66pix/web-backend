@@ -9,7 +9,7 @@ module.exports = function isRevoked(request, payload, done) {
     return done(null, true);
   }
 
-  require('@faceleg/66pix-models')
+  require('@66pix/models')
   .then(function(models) {
     return models.Token.findById(payload.tokenId);
   })
