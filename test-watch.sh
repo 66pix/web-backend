@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# export DEBUG="*"
-
 usage()
 {
 cat << EOF
@@ -10,11 +8,10 @@ usage: $0 options
 This script runs tests and watch for changes
 
 OPTIONS:
-   -h      Show this message
    -u      postgres database user (defaults to "postgres")
-   -d      postgres host (defaults to "postgres")
+   -h      postgres host (defaults to "postgres")
    -s      token secret (defaults to TOKEN_SECRET environment variable)
-   -r      reset password token secret (defaults to RESET_PASSWORD_TOKEN_SECRET environment variable)
+   -d      debug string (defaults to "") use "*" to output verbose debug information
 EOF
 }
 
@@ -22,24 +19,21 @@ DATABASE_USERNAME=
 DATABASE_HOST=
 TOKEN_SECRET="TOKEN_SECRET"
 RESET_PASSWORD_TOKEN_SECRET="RESET_PASSWORD_TOKEN_SECRET"
-while getopts "hu:d:s:r:" OPTION
+DEBUG=
+while getopts "u:h:d:s:" OPTION
 do
      case $OPTION in
          h)
-             usage
-             exit 1
+             DATABASE_HOST=$OPTARG
              ;;
          u)
              DATABASE_USERNAME=$OPTARG
              ;;
          d)
-             DATABASE_HOST=$OPTARG
+             DEBUG=$OPTARG
              ;;
          s)
              TOKEN_SECRET=$OPTARG
-             ;;
-         r)
-             RESET_PASSWORD_TOKEN_SECRET=$OPTARG
              ;;
          ?)
              usage
@@ -64,10 +58,11 @@ fi
 
 if [ ! -z $TOKEN_SECRET ]; then
     export TOKEN_SECRET=$TOKEN_SECRET
+    export RESET_PASSWORD_TOKEN_SECRET=$TOKEN_SECRET
 fi
 
-if [ ! -z $RESET_PASSWORD_TOKEN_SECRET ]; then
-    export RESET_PASSWORD_TOKEN_SECRET=$RESET_PASSWORD_TOKEN_SECRET
+if [ ! -z $DEBUG ]; then
+    export DEBUG=$DEBUG
 fi
 
 # Required ENV for CI
@@ -90,6 +85,8 @@ npm install
 ! psql --host="$DATABASE_HOST" --username="$DATABASE_USERNAME" -c 'CREATE DATABASE test;';
 
 mkdir -p coverage
-node_modules/.bin/istanbul cover -x gulpfile.js --include-all-sources --report html ./node_modules/.bin/_mocha -- -w  --recursive --timeout 10000 --reporter spec test/configure.js test/**/*.js
+# User -g 'some string' to cause mocha to run only those tests with a matching 'it'
+export NODE_ENV="development"
+node_modules/.bin/istanbul cover --include-all-sources --report html ./node_modules/.bin/_mocha -- -w --timeout 10000 --recursive --reporter spec test/configure.js test/
 node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt
 node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95
