@@ -6,7 +6,7 @@ var debug = require('debug')('authentication/login');
 var LOGIN_SESSION_EXPIRY = 60 * 60 * 5;
 
 module.exports = function(app) {
-  require('@faceleg/66pix-models').then(function(models) {
+  require('@66pix/models').then(function(models) {
     app.post('/authentication/login', function(req, res) {
       if (!req.body.email || !req.body.password) {
         return res.status(401)

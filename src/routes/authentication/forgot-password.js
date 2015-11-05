@@ -12,7 +12,7 @@ module.exports = function(app) {
       });
   }
 
-  require('@faceleg/66pix-models').then(function(models) {
+  require('@66pix/models').then(function(models) {
     app.post('/authentication/forgot-password', function(req, res) {
       if (!req.body.email) {
         debug('Login attempt without an email address');

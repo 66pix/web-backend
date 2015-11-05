@@ -67,7 +67,7 @@ describe('Routes authentication reset-password', function() {
   });
 
   it('should reject requests for users that are not active', function(done) {
-    require('@faceleg/66pix-models').then(function(models) {
+    require('@66pix/models').then(function(models) {
       models.User.findOne({
         where: {
           email: 'inactive@66pix.com'
@@ -96,7 +96,7 @@ describe('Routes authentication reset-password', function() {
   });
 
   it('should reset the correct user\'s password if all token is valid and password pairs match', function(done) {
-    require('@faceleg/66pix-models').then(function(models) {
+    require('@66pix/models').then(function(models) {
       models.User.findOne({
         where: {
           email: 'resetpassword@66pix.com'

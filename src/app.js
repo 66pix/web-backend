@@ -19,7 +19,7 @@ require('./routes/authentication/forgot-password.js')(app);
 require('./routes/authentication/reset-password.js')(app);
 
 module.exports = new Promise(function(resolve) {
-  require('@faceleg/66pix-api')(app)
+  require('@66pix/api')(app)
     .then(function(seneca) {
       app.use(unauthorisedErrorHandler);
       app.seneca = seneca;

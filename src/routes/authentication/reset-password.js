@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 
 module.exports = function(app) {
 
-  require('@faceleg/66pix-models').then(function(models) {
+  require('@66pix/models').then(function(models) {
     app.post('/authentication/reset-password/:token', function(req, res) {
 
       function sendError(message) {
