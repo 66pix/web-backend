@@ -12,7 +12,7 @@ export TOKEN_SECRET="TOKEN_SECRET"
 export RESET_PASSWORD_TOKEN_SECRET="RESET_PASSWORD_TOKEN_SECRET"
 
 mkdir -p coverage
-/srv/www/node_modules/.bin/istanbul cover --include-all-sources /srv/www/node_modules/.bin/_mocha -- --recursive --reporter spec
+/srv/www/node_modules/.bin/istanbul cover --include-all-sources /srv/www/node_modules/.bin/_mocha -- --recursive --timeout 10000 --reporter spec
 /srv/www/node_modules/.bin/istanbul report html
 /srv/www/node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt
 
