@@ -1,4 +1,4 @@
-FROM nodesource/trusty:4
+FROM nodesource/trusty:5
 
 ### TODO strip these portions out when building for release
 ### DEVELOPMENT ###
