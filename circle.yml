@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 4
+    version: 5
   pre:
     - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 10
     - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 10
@@ -13,7 +13,7 @@ machine:
 
 dependencies:
   override:
-    - echo $NPM_AUTH_TOKEN
+    - docker --version
     - ./npm-login.sh && npm install
     - sudo pip install --upgrade docker-compose\<=1.5
 
