@@ -15,15 +15,17 @@ module.exports = function(app) {
         });
       }
 
-      var User = models.User;
+      var UserAccount = models.UserAccount;
       var Token = models.Token;
-      User.login(req.body.email, req.body.password)
+      UserAccount.login(req.body.email, req.body.password)
       .then(function(user) {
         return [user, Token.build({
           userId: user.id,
           userAgent: req.headers['user-agent'],
           type: 'Login',
-          isRevoked: false
+          isRevoked: false,
+          payload: '',
+          updatedWithToken: -1
         }).save()];
       })
       .spread(function(user, token) {
@@ -39,6 +41,8 @@ module.exports = function(app) {
 
         var expiresOn = new Date();
         token.expiresOn = expiresOn.getTime() + EXPIRES_IN_HOURS * 60 * 60 * 1000;
+        token.updatedWithToken = token.id;
+        token.payload = jwtToken;
         return [jwtToken, token.save()];
       })
       .spread(function(jwtToken) {
@@ -46,7 +50,7 @@ module.exports = function(app) {
           token: jwtToken
         });
       })
-      .catch(User.InvalidLoginDetailsError, User.TooManyAttemptsError, function(error) {
+      .catch(UserAccount.InvalidLoginDetailsError, UserAccount.TooManyAttemptsError, function(error) {
         debug(error);
         res.status(error.code)
         .json({
