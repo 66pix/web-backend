@@ -29,12 +29,12 @@ deployment:
     branch: /(develop|feature\/.*)/
     commands:
       - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
-      - docker build -t "66pix/web-backend:staging-$CIRCLE_BUILD_NUM" .
+      - docker build --build-arg NPM_AUTH_TOKEN='$NPM_AUTH_TOKEN' -t "66pix/web-backend:staging-$CIRCLE_BUILD_NUM" .
       - docker push "66pix/web-backend:staging-$CIRCLE_BUILD_NUM"
 
   production:
     branch: master
     commands:
       - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
-      - docker build -t "66pix/web-backend:master-$CIRCLE_BUILD_NUM" .
+      - docker build --build-arg NPM_AUTH_TOKEN='$NPM_AUTH_TOKEN' -t "66pix/web-backend:master-$CIRCLE_BUILD_NUM" .
       - docker push "66pix/web-backend:master-$CIRCLE_BUILD_NUM"
