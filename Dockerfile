@@ -1,12 +1,6 @@
 FROM nodesource/trusty:5
 ARG NPM_AUTH_TOKEN
 
-### TODO strip these portions out when building for release
-### DEVELOPMENT ###
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql gcc-4.8
-### DEVELOPMENT ###
-
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 

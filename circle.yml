@@ -13,7 +13,6 @@ machine:
 
 dependencies:
   override:
-    - docker --version
     - ./npm-login.sh && npm install
     - sudo pip install --upgrade docker-compose\<=1.5
 
