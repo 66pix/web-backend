@@ -3,6 +3,7 @@ set -e
 
 ./npm-login.sh
 
+rm -rf node_modules
 npm install
 
 # Ensure database exists
