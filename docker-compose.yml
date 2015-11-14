@@ -1,5 +1,6 @@
 test:
     build: .
+    dockerfile: test/Dockerfile
     environment:
         PORT: 3000
         TOKEN_SECRET: "this is a secret"
