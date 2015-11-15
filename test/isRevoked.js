@@ -36,7 +36,9 @@ describe('isRevoked', function() {
         userId: 1,
         userAgent: 'user agent',
         type: 'Login',
-        isRevoked: true
+        isRevoked: true,
+        payload: '',
+        updatedWithToken: -1
       }).save();
     })
     .then(function(token) {

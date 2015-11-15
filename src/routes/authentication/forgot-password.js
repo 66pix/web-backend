@@ -22,7 +22,7 @@ module.exports = function(app) {
             message: 'Email is required'
           });
       }
-      models.User.findOne({
+      models.UserAccount.findOne({
         where: {
           email: req.body.email
         }

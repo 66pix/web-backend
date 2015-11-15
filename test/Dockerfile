@@ -1,5 +1,7 @@
 FROM nodesource/trusty:5
-ARG NPM_AUTH_TOKEN
+
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql gcc-4.8
 
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -9,14 +11,3 @@ WORKDIR /srv/www
 
 COPY package.json /srv/www/
 COPY . /srv/www/
-
-RUN rm -rf node_modules
-RUN npm config set loglevel warn
-RUN npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
-RUN npm install
-RUN rm ~/.npmrc
-
-EXPOSE 3000
-
-CMD /srv/www/start.sh
-
