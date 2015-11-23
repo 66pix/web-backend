@@ -1,4 +1,4 @@
-FROM nodesource/trusty:5
+FROM nodesource/jessie:4
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql gcc-4.8
