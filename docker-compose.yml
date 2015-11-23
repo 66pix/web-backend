@@ -4,6 +4,7 @@ test:
     environment:
         PORT: 3000
         TOKEN_SECRET: "this is a secret"
+        RESET_PASSWORD_TOKEN_SECRET: "this is a reset password secret",
         NODE_ENV: "development"
         RDS_PORT: "5432"
         RDS_USERNAME: "docker"
