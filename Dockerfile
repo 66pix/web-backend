@@ -13,7 +13,7 @@ COPY package.json /srv/www/
 COPY . /srv/www/
 
 RUN rm -rf node_modules
-RUN npm config set loglevel warn
+RUN npm config set loglevel silent
 RUN npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
 RUN npm install $NPM_INSTALL_FLAGS
 
