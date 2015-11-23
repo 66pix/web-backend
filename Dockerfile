@@ -1,4 +1,4 @@
-FROM nodesource/jessie:5
+FROM nodesource/jessie:4
 
 ARG NPM_AUTH_TOKEN
 ARG NPM_INSTALL_FLAGS
@@ -17,7 +17,7 @@ RUN npm config set loglevel silent
 RUN npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
 RUN npm install $NPM_INSTALL_FLAGS
 
-RUN apt-get autoremove -y --purge
+RUN apt-get -qq autoremove -y --purge
 RUN rm ~/.npmrc
 RUN rm -rf ~/.node-gyp
 RUN rm -rf ~/.npm
