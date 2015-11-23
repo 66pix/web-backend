@@ -32,7 +32,8 @@
     "node-constants": "0.0.2",
     "pm2": "^0.15.10",
     "ramda": "^0.18.0",
-    "resolve": "1.1.6"
+    "resolve": "1.1.6",
+    "cheerio": "*"
   },
   "devDependencies": {
     "@66pix/fixtures": "^1.0.4",
