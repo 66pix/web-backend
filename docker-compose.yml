@@ -5,7 +5,11 @@ test:
         PORT: 3000
         TOKEN_SECRET: "this is a secret"
         NODE_ENV: "development"
-        POSTGRES: "postgres://docker@postgres/test"
+        RDS_PORT: "5432"
+        RDS_USERNAME: "docker"
+        RDS_PASSWORD: ""
+        RDS_HOSTNAME: "postgres"
+        DATABASE: "test"
     links:
         - postgres
     volumes:
