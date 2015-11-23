@@ -37,7 +37,6 @@ describe('Routes authentication forgot-password', function() {
   });
 
   it('should respond with 200 if the email exists and a forgot password email was sent', function(done) {
-    sinon.stub(app.seneca, 'act', function() {});
     request(app)
       .post('/authentication/forgot-password')
       .send({
@@ -46,6 +45,37 @@ describe('Routes authentication forgot-password', function() {
       .expect(200)
       .expect({
         message: 'Please check your email'
+      }, function() {
+        done();
+      });
+  });
+
+  it('should respond with 200 if the email exists and a forgot password email was sent', function(done) {
+    request(app)
+      .post('/authentication/forgot-password')
+      .send({
+        email: 'active@66pix.com'
+      })
+      .expect(200)
+      .expect({
+        message: 'Please check your email'
+      }, function() {
+        done();
+      });
+  });
+
+  it('should respond with a 500 if something went wrong', function(done) {
+    sinon.stub(app.seneca, 'act', function(args, callback) {
+      callback(new Error('An error'));
+    });
+    request(app)
+      .post('/authentication/forgot-password')
+      .send({
+        email: 'active@66pix.com'
+      })
+      .expect(500)
+      .expect({
+        message: 'An error'
       }, function() {
         app.seneca.act.restore();
         done();
