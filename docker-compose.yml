@@ -10,7 +10,7 @@ test:
         RDS_USERNAME: "docker"
         RDS_PASSWORD: ""
         RDS_HOSTNAME: "postgres"
-        DATABASE: "test"
+        RDS_DB_NAME: "test"
     links:
         - postgres
     volumes:
