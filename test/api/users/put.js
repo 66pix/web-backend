@@ -2,7 +2,6 @@
 
 var expect = require('code').expect;
 var request = require('supertest');
-var requireNew = require('require-new');
 
 var app;
 var user;
@@ -12,7 +11,7 @@ var token;
 describe('Routes Users PUT', function() {
 
   beforeEach(function(done) {
-    requireNew('../../../src/app.js').then(function(_app_) {
+    require('../../../src/app.js').then(function(_app_) {
       app = _app_;
       request(app)
         .post('/authentication/login')
