@@ -1,7 +1,9 @@
 'use strict';
 
 var request = require('supertest');
+var expect = require('code').expect;
 var jwt = require('jsonwebtoken');
+var sinon = require('sinon');
 var app;
 var jwtToken;
 
@@ -28,9 +30,26 @@ describe('Routes authentication logout', function() {
 
   it('should return 201 if the jwt token is invalid', function(done) {
     request(app)
-    .get('/authentication/logout')
-    .set('authorization', '')
-    .expect(201, done);
+      .get('/authentication/logout')
+      .set('authorization', '')
+      .expect(201, done);
+  });
+
+  it('should send a non JsonWebTokenError down the middleware chain', function(done) {
+    sinon.stub(jwt, 'verify', function(token, secret, callback) {
+      callback(new Error('This is another error'));
+    });
+    request(app)
+      .get('/authentication/logout')
+      .set('authorization', '')
+      .expect(500, function(error, response) {
+        if (error) {
+          return done(error);
+        }
+        jwt.verify.restore();
+        expect(response.body.message).to.equal('This is another error');
+        done();
+      });
   });
 
   it('should return 201 if the jwt token is not present in the database', function(done) {
