@@ -28,7 +28,7 @@ aws s3 cp $DOCKERRUN_FILE s3://$EB_BUCKET/$DOCKERRUN_FILE \
   --region ap-southeast-2
 
 aws elasticbeanstalk create-application-version \
-  --application-name "${ENVIRONMENT}66pix-backend" \
+  --application-name "${ENVIRONMENT}66pix" \
   --version-label $TAG \
   --source-bundle S3Bucket=$EB_BUCKET,S3Key=$DOCKERRUN_FILE \
   --region ap-southeast-2
