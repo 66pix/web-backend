@@ -71,11 +71,6 @@ export DATABASE=$DATABASE
 export TOKEN_SECRET=$TOKEN_SECRET
 export RESET_PASSWORD_TOKEN_SECRET=$RESET_PASSWORD_TOKEN_SECRET
 
-# Required ENV for CI
-# NPM_USERNAME
-# NPM_PASSWORD
-# NPM_EMAIL
-
 if [ -v ${NPM_USERNAME+x} ]; then
     cp .npmrc /root/.npmrc
 else
