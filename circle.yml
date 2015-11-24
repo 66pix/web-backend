@@ -29,32 +29,10 @@ deployment:
     branch: /(develop|feature\/.*)/
     commands:
       - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
-      - docker build --build-arg NPM_AUTH_TOKEN="$NPM_AUTH_TOKEN" -t "66pix/web-backend:staging-$CIRCLE_BUILD_NUM-layered" .
-      - docker images
-      - docker save "66pix/web-backend:staging-$CIRCLE_BUILD_NUM-layered" > layered.tar
-      - sudo docker-squash -i layered.tar -o squashed.tar -t "66pix/web-backend:staging-$CIRCLE_BUILD_NUM"
-      - cat squashed.tar | docker load
-      - docker images
-      - docker push "66pix/web-backend:staging-$CIRCLE_BUILD_NUM"
-      - sed -i'' -e "s;%BUILD_NUM%;$CIRCLE_BUILD_NUM;g" ./.deploy/Dockerrun.aws.json
-      - sed -i'' -e "s;%ENVIRONMENT%;staging;g" ./.deploy/Dockerrun.aws.json
-      - sudo pip install --upgrade docker-py\<1.2 requests\<2.7 awsebcli
-      - cd .deploy && eb init -r ap-southeast-2 staging-66pix
-      - cd .deploy && eb deploy staging66pix-backend --profile default -l $CIRCLE_BUILD_NUM
+      - ./deploy.sh "staging"
 
   production:
     branch: master
     commands:
       - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
-      - docker build --build-arg NPM_AUTH_TOKEN="$NPM_AUTH_TOKEN" NPM_INSTALL_FLAGS="--production" -t "66pix/web-backend:production-$CIRCLE_BUILD_NUM-layered" .
-      - docker images
-      - docker save "66pix/web-backend:production-$CIRCLE_BUILD_NUM-layered" > layered.tar
-      - sudo docker-squash -i layered.tar -o squashed.tar -t "66pix/web-backend:production-$CIRCLE_BUILD_NUM"
-      - cat squashed.tar | docker load
-      - docker images
-      - docker push "66pix/web-backend:production-$CIRCLE_BUILD_NUM"
-      - sed -i'' -e "s;%BUILD_NUM%;$CIRCLE_BUILD_NUM;g" ./.deploy/Dockerrun.aws.json
-      - sed -i'' -e "s;%ENVIRONMENT%;staging;g" ./.deploy/Dockerrun.aws.json
-      - sudo pip install --upgrade docker-py\<1.2 requests\<2.7 awsebcli
-      - cd .deploy && eb init -r ap-southeast-2 production-66pix
-      - cd .deploy && eb deploy production66pix-backend --profile default -l $CIRCLE_BUILD_NUM
+      - ./deploy.sh "staging"

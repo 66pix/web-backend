@@ -1,0 +1,16 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "66pix/web-backend:<TAG>",
+    "Update": "true"
+  },
+  "Authentication": {
+    "Bucket": "66pix-credentials",
+    "Key": ".dockerconfig"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "3000"
+    }
+  ]
+}
