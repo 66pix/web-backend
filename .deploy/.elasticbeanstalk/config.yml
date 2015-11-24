@@ -1,0 +1,10 @@
+branch-defaults:
+  default:
+    environment: staging66pix-backend
+global:
+  application_name: staging-66pix
+  default_ec2_keyname: null
+  default_platform: 64bit Amazon Linux 2015.09 v2.0.4 running Docker 1.7.1
+  default_region: ap-southeast-2
+  profile: eb-cli
+  sc: null
