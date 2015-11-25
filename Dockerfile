@@ -17,9 +17,6 @@ RUN npm config set loglevel silent
 RUN npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
 RUN npm install $NPM_INSTALL_FLAGS
 
-RUN more node_modules/@66pix/models/index.js
-RUN more node_modules/@66pix/models/config/config.js
-
 RUN apt-get -qq autoremove -y --purge
 RUN rm ~/.npmrc
 RUN rm -rf ~/.node-gyp
