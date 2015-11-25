@@ -41,7 +41,7 @@
     "coverage-average": "^1.0.4",
     "eslint": "^1.10.1",
     "husky": "^0.10.2",
-    "istanbul": "^0.4.0",
+    "istanbul": "^0.4.1",
     "mocha": "^2.3.4",
     "sinon": "^1.17.2",
     "supertest": "^1.1.0",
