@@ -9,7 +9,7 @@ echo "Installing awscli"
 sudo pip install --upgrade docker-py\<1.2 requests\<2.7 awscli
 
 BRANCH=`echo ${CIRCLE_BRANCH//\//_}`
-TAG="$ENVIRONMENT-$BRANCH-$CIRCLE_BUILD_NUM"
+TAG="web-backend-$ENVIRONMENT-$BRANCH-$CIRCLE_BUILD_NUM"
 
 echo ""
 echo "Building initial image"
