@@ -1,5 +1,6 @@
 'use strict';
 
+var env = require('envalid');
 var request = require('supertest');
 var expect = require('code').expect;
 var jwt = require('jsonwebtoken');
@@ -10,29 +11,39 @@ var jwtToken;
 describe('Routes authentication logout', function() {
 
   beforeEach(function(done) {
-    require('../../../src/app.js').then(function(_app_) {
-      app = _app_;
-      request(app)
-      .post('/authentication/login')
-      .send({
-        email: 'active@66pix.com',
-        password: '12345'
-      })
-      .expect(200, function(error, response) {
-        if (error) {
-          throw error;
-        }
-        jwtToken = 'Bearer ' + response.body.token;
-        done();
+    require('../../loginHelper.js')()
+    .then(function(result) {
+      app = result.app;
+      jwtToken = result.token;
+      done();
+
+      return null;
+    });
+  });
+
+  afterEach(function(done) {
+    require('@66pix/models')
+    .then(function(models) {
+      return models.UserAccount.destroy({
+        force: true,
+        truncate: true,
+        cascade: true
       });
+    })
+    .then(function() {
+      done();
+      return null;
+    })
+    .catch(function(error) {
+      throw error;
     });
   });
 
   it('should return 201 if the jwt token is invalid', function(done) {
     request(app)
-      .get('/authentication/logout')
-      .set('authorization', '')
-      .expect(201, done);
+    .get('/authentication/logout')
+    .set('authorization', '')
+    .expect(201, done);
   });
 
   it('should send a non JsonWebTokenError down the middleware chain', function(done) {
@@ -40,20 +51,20 @@ describe('Routes authentication logout', function() {
       callback(new Error('This is another error'));
     });
     request(app)
-      .get('/authentication/logout')
-      .set('authorization', '')
-      .expect(500, function(error, response) {
-        if (error) {
-          return done(error);
-        }
-        jwt.verify.restore();
-        expect(response.body.message).to.equal('This is another error');
-        done();
-      });
+    .get('/authentication/logout')
+    .set('authorization', '')
+    .expect(500, function(error, response) {
+      if (error) {
+        return done(error);
+      }
+      jwt.verify.restore();
+      expect(response.body.message).to.equal('This is another error');
+      done();
+    });
   });
 
   it('should return 201 if the jwt token is not present in the database', function(done) {
-    var tokenId = jwt.verify(jwtToken.replace('Bearer ', ''), process.env.TOKEN_SECRET).tokenId;
+    var tokenId = jwt.verify(jwtToken.replace('Bearer ', ''), env.get('TOKEN_SECRET')).tokenId;
     require('@66pix/models').then(function(models) {
       return models.Token.findById(tokenId);
     })

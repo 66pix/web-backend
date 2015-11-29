@@ -8,9 +8,28 @@ var app;
 describe('Routes authentication login', function() {
 
   beforeEach(function(done) {
-    require('../../../src/app.js').then(function(_app_) {
-      app = _app_;
+    require('../../loginHelper.js')()
+    .then(function(result) {
+      app = result.app;
       done();
+    });
+  });
+
+  afterEach(function(done) {
+    require('@66pix/models')
+    .then(function(models) {
+      return models.UserAccount.destroy({
+        force: true,
+        truncate: true,
+        cascade: true
+      });
+    })
+    .then(function() {
+      done();
+      return null;
+    })
+    .catch(function(error) {
+      throw error;
     });
   });
 
