@@ -11,3 +11,5 @@ WORKDIR /srv/www
 
 COPY package.json /srv/www/
 COPY . /srv/www/
+
+RUN npm install
