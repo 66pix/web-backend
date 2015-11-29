@@ -19,9 +19,9 @@ EOF
 }
 
 RDS_USERNAME="postgres"
-RDS_HOST="localhost"
+RDS_HOSTNAME="localhost"
 RDS_PORT="5432"
-DATABASE="test"
+RDS_DB_NAME="test"
 RDS_PASSWORD=""
 TOKEN_SECRET="TOKEN_SECRET"
 RESET_PASSWORD_TOKEN_SECRET="RESET_PASSWORD_TOKEN_SECRET"
@@ -30,7 +30,7 @@ while getopts "u:h:d:s:p:P:D:r:" OPTION
 do
      case $OPTION in
          h)
-             RDS_HOST=$OPTARG
+             RDS_HOSTNAME=$OPTARG
              ;;
          u)
              RDS_USERNAME=$OPTARG
@@ -45,7 +45,7 @@ do
              DEBUG=$OPTARG
              ;;
          D)
-             DATABASE=$OPTARG
+             RDS_DB_NAME=$OPTARG
              ;;
          s)
              TOKEN_SECRET=$OPTARG
@@ -62,14 +62,20 @@ done
 
 export NODE_ENV="development"
 export RDS_USERNAME=$RDS_USERNAME
-export RDS_HOST=$RDS_HOST
+export RDS_HOSTNAME=$RDS_HOSTNAME
 export RDS_PASSWORD=$RDS_PASSWORD
 export RDS_PORT=$RDS_PORT
 export TOKEN_SECRET=$TOKEN_SECRET
 export DEBUG=$DEBUG
-export DATABASE=$DATABASE
+export RDS_DB_NAME=$RDS_DB_NAME
 export TOKEN_SECRET=$TOKEN_SECRET
 export RESET_PASSWORD_TOKEN_SECRET=$RESET_PASSWORD_TOKEN_SECRET
+export EMAIL_HOST="localhost"
+export EMAIL_PASSWORD=""
+export EMAIL_USERNAME=""
+export EMAIL_PORT=1231
+export EMAIL_FROM="testing@66pix.com"
+export PORT=3000
 
 if [ -v ${NPM_USERNAME+x} ]; then
     cp .npmrc /root/.npmrc
@@ -83,14 +89,14 @@ fi
 
 npm install
 
-echo "! psql --host=$RDS_HOST --username=$RDS_USERNAME -c 'DROP DATABASE $DATABASE;';"
-! psql --host="$RDS_HOST" --username="$RDS_USERNAME" -c 'DROP DATABASE '"$DATABASE"';';
-echo "! psql --host=$RDS_HOST --username=$RDS_USERNAME -c 'CREATE DATABASE $DATABASE;';"
-! psql --host="$RDS_HOST" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$DATABASE"';';
+echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE $RDS_DB_NAME;';"
+! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE '"$RDS_DB_NAME"';';
+echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
+! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
 
 mkdir -p coverage
 
 # User -g 'some string' to cause mocha to run only those tests with a matching 'it'
-node_modules/.bin/istanbul cover --include-all-sources --report html ./node_modules/.bin/_mocha -- -w --timeout 10000 --recursive --reporter spec test/configure.js test/
+node_modules/.bin/istanbul cover --include-all-sources --report html node_modules/.bin/_mocha -- -w --timeout 10000 --recursive --reporter spec test/configure.js test/
 node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt
 node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95
