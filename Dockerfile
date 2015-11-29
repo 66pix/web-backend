@@ -16,6 +16,7 @@ RUN rm -rf node_modules
 RUN npm config set loglevel silent
 RUN npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
 RUN npm install $NPM_INSTALL_FLAGS
+RUN npm install -g pm2
 
 RUN apt-get -qq autoremove -y --purge
 RUN rm ~/.npmrc
