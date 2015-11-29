@@ -1,5 +1,7 @@
 'use strict';
 
+var env = require('envalid');
+
 process.on('uncaughtException', function(error) {
   /* eslint-disable no-console, no-process-exit, lines-around-comment */
   console.error('uncaughtException:', error.message);
@@ -13,5 +15,5 @@ var http = require('http');
 module.exports = require('./app.js')
   .then(function(app) {
     return http.createServer(app)
-      .listen(process.env.PORT);
+      .listen(env.get('PORT'));
   });
