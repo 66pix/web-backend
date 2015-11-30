@@ -2,26 +2,38 @@
 
 var expect = require('code').expect;
 var request = require('supertest');
-var requireClean = require('require-new');
-var app;
-
-var token;
 
 describe('Routes Users current', function() {
+  var app;
+  var token;
+  var user;
 
   beforeEach(function(done) {
-    requireClean('../../../src/app.js').then(function(_app_) {
-      app = _app_;
-      request(app)
-        .post('/authentication/login')
-        .send({
-          email: 'active@66pix.com',
-          password: '12345'
-        })
-        .expect(function(response) {
-          token = 'Bearer ' + response.body.token;
-        })
-        .expect(200, done);
+    require('../../loginHelper.js')()
+    .then(function(result) {
+      user = result.user;
+      app = result.app;
+      token = result.token;
+
+      done();
+    });
+  });
+
+  afterEach(function(done) {
+    require('@66pix/models')
+    .then(function(models) {
+      return models.UserAccount.destroy({
+        force: true,
+        truncate: true,
+        cascade: true
+      });
+    })
+    .then(function() {
+      done();
+      return null;
+    })
+    .catch(function(error) {
+      throw error;
     });
   });
 
@@ -30,11 +42,10 @@ describe('Routes Users current', function() {
       .get('/api/users/current')
       .set('authorization', token)
       .expect(function(response) {
-        var user = response.body;
-        expect(user).to.deep.contain({
+        expect(response.body).to.deep.contain({
           email: 'active@66pix.com',
-          name: 'Active User',
-          id: 1
+          name: 'this is a name',
+          id: user.id
         });
       })
       .expect(200, done);

@@ -1,5 +1,6 @@
 'use strict';
 
+var config = require('../../../src/config.js');
 var request = require('supertest');
 var jwt = require('jsonwebtoken');
 
@@ -35,7 +36,7 @@ describe('Routes authentication reset-password', function() {
   it('should reject requests with a valid token but missing password pair', function(done) {
     var token = jwt.sign({
       id: 1
-    }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
+    }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
       expiresIn: 0
     });
 
@@ -51,7 +52,7 @@ describe('Routes authentication reset-password', function() {
   it('should reject requests with a password pair that does not match', function(done) {
     var token = jwt.sign({
       id: 1
-    }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
+    }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
       expiresIn: 0
     });
 
@@ -69,7 +70,19 @@ describe('Routes authentication reset-password', function() {
   });
 
   it('should reject requests for users that are not active', function(done) {
-    require('@66pix/models').then(function(models) {
+    var models;
+    require('@66pix/models')
+    .then(function(_models_) {
+      models = _models_;
+      return models.UserAccount.build({
+        email: 'inactive@66pix.com',
+        status: 'Inactive',
+        updatedWithToken: -1,
+        name: 'not active'
+      })
+      .save();
+    })
+    .then(function() {
       models.UserAccount.findOne({
         where: {
           email: 'inactive@66pix.com'
@@ -77,7 +90,7 @@ describe('Routes authentication reset-password', function() {
       }).then(function(user) {
         var token = jwt.sign({
           id: user.id
-        }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
+        }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
           expiresIn: 60 * 60
         });
 
@@ -92,13 +105,34 @@ describe('Routes authentication reset-password', function() {
         .expect(400, {
           code: 400,
           message: 'User does not exist or has been deactivated'
-        }, done);
+        }, function() {
+          models.UserAccount.destroy({
+            force: true,
+            truncate: true,
+            cascade: true
+          })
+          .then(function() {
+            done();
+            return null;
+          });
+        });
       });
     });
   });
 
   it('should reset the correct user\'s password if all token is valid and password pairs match', function(done) {
-    require('@66pix/models').then(function(models) {
+    var models;
+    require('@66pix/models').then(function(_models_) {
+      models = _models_;
+      return models.UserAccount.build({
+        email: 'resetpassword@66pix.com',
+        status: 'Active',
+        updatedWithToken: -1,
+        name: 'not active'
+      })
+      .save();
+    })
+    .then(function() {
       models.UserAccount.findOne({
         where: {
           email: 'resetpassword@66pix.com'
@@ -106,7 +140,7 @@ describe('Routes authentication reset-password', function() {
       }).then(function(user) {
         var token = jwt.sign({
           id: user.id
-        }, process.env.RESET_PASSWORD_TOKEN_SECRET, {
+        }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
           expiresIn: 60 * 60
         });
 
@@ -119,10 +153,20 @@ describe('Routes authentication reset-password', function() {
           newPasswordRepeat: password
         })
         .expect(201, function() {
-          models.UserAccount.login('resetpassword@66pix.com', password).then(function() {
+          models.UserAccount.login('resetpassword@66pix.com', password)
+          .then(function() {
+            return models.UserAccount.destroy({
+              force: true,
+              truncate: true,
+              cascade: true
+            });
+          })
+          .then(function() {
             done();
-          }).catch(function(error) {
-            done(error);
+            return null;
+          })
+          .catch(function(error) {
+            throw error;
           });
         });
       });

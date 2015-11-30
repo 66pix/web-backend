@@ -4,8 +4,18 @@ test:
     environment:
         PORT: 3000
         TOKEN_SECRET: "this is a secret"
+        RESET_PASSWORD_TOKEN_SECRET: "this is a reset password secret"
         NODE_ENV: "development"
-        POSTGRES: "postgres://docker@postgres/test"
+        RDS_PORT: "5432"
+        RDS_USERNAME: "docker"
+        RDS_PASSWORD: ""
+        RDS_HOSTNAME: "postgres"
+        RDS_DB_NAME: "test"
+        EMAIL_HOST: "localhost"
+        EMAIL_PASSWORD: ""
+        EMAIL_USERNAME: ""
+        EMAIL_PORT: 1231
+        EMAIL_FROM: "testing@66pix.com"
     links:
         - postgres
     volumes:

@@ -2,6 +2,7 @@
 
 var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/login');
+var config = require('../../../src/config.js');
 
 module.exports = function(app) {
   require('@66pix/models').then(function(models) {
@@ -33,7 +34,7 @@ module.exports = function(app) {
         var jwtToken = jwt.sign({
           id: user.id,
           tokenId: token.id
-        }, process.env.TOKEN_SECRET, {
+        }, config.get('TOKEN_SECRET'), {
           expiresIn: EXPIRES_IN_HOURS + 'h',
           issuer: '66pix Website',
           audience: '66pix Website User'
