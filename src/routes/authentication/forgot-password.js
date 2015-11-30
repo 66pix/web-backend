@@ -1,6 +1,6 @@
 'use strict';
 
-var env = require('envalid');
+var config = require('../../../src/config.js');
 var debug = require('debug')('authentication/forgot-password');
 var jwt = require('jsonwebtoken');
 
@@ -45,7 +45,7 @@ module.exports = function(app) {
         var jwtToken = jwt.sign({
           id: user.id,
           tokenId: token.id
-        }, env.get('RESET_PASSWORD_TOKEN_SECRET'), {
+        }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
           expiresIn: '1h',
           issuer: '66pix Website',
           audience: '66pix Website User'

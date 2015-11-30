@@ -1,6 +1,6 @@
 'use strict';
 
-var env = require('envalid');
+var config = require('../../config.js');
 var debug = require('debug')('authentication/reset-password');
 var jwt = require('jsonwebtoken');
 
@@ -17,7 +17,7 @@ module.exports = function(app) {
           });
       }
 
-      jwt.verify(req.params.token, env.get('RESET_PASSWORD_TOKEN_SECRET'), function(error, token) {
+      jwt.verify(req.params.token, config.get('RESET_PASSWORD_TOKEN_SECRET'), function(error, token) {
         if (error) {
           debug(error);
           return sendError(

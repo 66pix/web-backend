@@ -1,6 +1,6 @@
 'use strict';
 
-var env = require('envalid');
+var config = require('../../../src/config.js');
 var request = require('supertest');
 var expect = require('code').expect;
 var jwt = require('jsonwebtoken');
@@ -64,7 +64,7 @@ describe('Routes authentication logout', function() {
   });
 
   it('should return 201 if the jwt token is not present in the database', function(done) {
-    var tokenId = jwt.verify(jwtToken.replace('Bearer ', ''), env.get('TOKEN_SECRET')).tokenId;
+    var tokenId = jwt.verify(jwtToken.replace('Bearer ', ''), config.get('TOKEN_SECRET')).tokenId;
     require('@66pix/models').then(function(models) {
       return models.Token.findById(tokenId);
     })

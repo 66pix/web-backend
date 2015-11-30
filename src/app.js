@@ -1,8 +1,6 @@
 'use strict';
 
-require('./validate-environment.js');
-
-var env = require('envalid');
+var config = require('./config.js');
 var express = require('express');
 var expressJwt = require('express-jwt');
 var bodyparser = require('body-parser');
@@ -15,7 +13,7 @@ var app = express();
 app.use(bodyparser.json());
 
 app.use('/api', expressJwt({
-  secret: env.get('TOKEN_SECRET'),
+  secret: config.get('TOKEN_SECRET'),
   isRevoked: isRevoked
 }));
 

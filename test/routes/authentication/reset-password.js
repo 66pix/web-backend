@@ -1,6 +1,6 @@
 'use strict';
 
-var env = require('envalid');
+var config = require('../../../src/config.js');
 var request = require('supertest');
 var jwt = require('jsonwebtoken');
 
@@ -36,7 +36,7 @@ describe('Routes authentication reset-password', function() {
   it('should reject requests with a valid token but missing password pair', function(done) {
     var token = jwt.sign({
       id: 1
-    }, env.get('RESET_PASSWORD_TOKEN_SECRET'), {
+    }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
       expiresIn: 0
     });
 
@@ -52,7 +52,7 @@ describe('Routes authentication reset-password', function() {
   it('should reject requests with a password pair that does not match', function(done) {
     var token = jwt.sign({
       id: 1
-    }, env.get('RESET_PASSWORD_TOKEN_SECRET'), {
+    }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
       expiresIn: 0
     });
 
@@ -90,7 +90,7 @@ describe('Routes authentication reset-password', function() {
       }).then(function(user) {
         var token = jwt.sign({
           id: user.id
-        }, env.get('RESET_PASSWORD_TOKEN_SECRET'), {
+        }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
           expiresIn: 60 * 60
         });
 
@@ -140,7 +140,7 @@ describe('Routes authentication reset-password', function() {
       }).then(function(user) {
         var token = jwt.sign({
           id: user.id
-        }, env.get('RESET_PASSWORD_TOKEN_SECRET'), {
+        }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
           expiresIn: 60 * 60
         });
 
