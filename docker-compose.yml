@@ -12,8 +12,8 @@ test:
         RDS_HOSTNAME: "postgres"
         RDS_DB_NAME: "test"
         EMAIL_HOST: "localhost"
-        EMAIL_PASSWORD: ""
-        EMAIL_USERNAME: ""
+        EMAIL_PASSWORD: "email password"
+        EMAIL_USERNAME: "email username"
         EMAIL_PORT: 1231
         EMAIL_FROM: "testing@66pix.com"
     links:
