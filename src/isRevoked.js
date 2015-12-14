@@ -1,6 +1,10 @@
 'use strict';
 
 module.exports = function isRevoked(request, payload, done) {
+  if (!payload) {
+    return done(null, true);
+  }
+
   if (payload.iss !== '66pix Website') {
     return done(null, true);
   }

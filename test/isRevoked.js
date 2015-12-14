@@ -12,6 +12,12 @@ describe('isRevoked', function() {
     done();
   });
 
+  it('should call done with true if the argument is null', function(done) {
+    isRevoked(null, null, spy);
+    expect(spy.calledWith(null, true)).to.equal(true);
+    done();
+  });
+
   it('should call done with true if the iss is not correct', function(done) {
     isRevoked(null, {
       iss: 'not correct'
