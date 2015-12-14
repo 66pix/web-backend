@@ -22,7 +22,7 @@
   "author": "Michael Robinson",
   "dependencies": {
     "@66pix/api": "^1.0.31",
-    "@66pix/models": "^0.0.31",
+    "@66pix/models": "^0.0.32",
     "bluebird": "^3.0.6",
     "body-parser": "^1.14.1",
     "cheerio": "https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz",
