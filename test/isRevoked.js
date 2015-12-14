@@ -35,6 +35,44 @@ describe('isRevoked', function() {
     done();
   });
 
+  it('should call done with true if the token is not present in the database', function(done) {
+    var tokenId;
+    var models;
+    require('@66pix/models')
+    .then(function(_models_) {
+      models = _models_;
+      return models.Token.build({
+        userId: 1,
+        userAgent: 'user agent',
+        type: 'Login',
+        isRevoked: true,
+        payload: '',
+        updatedWithToken: -1
+      }).save();
+    })
+    .then(function(token) {
+      tokenId = token.id;
+      return models.Token.destroy({
+        force: true,
+        truncate: true
+      });
+    })
+    .then(function() {
+      isRevoked(null, {
+        iss: '66pix Website',
+        aud: '66pix Website User',
+        tokenId: tokenId
+      }, function(error, revoked) {
+        if (error) {
+          throw error;
+        }
+        expect(revoked).to.equal(true);
+        done();
+      });
+      return null;
+    });
+  });
+
   it('should call done with true if the matching token record isRevoked', function(done) {
     require('@66pix/models')
     .then(function(models) {
@@ -57,6 +95,34 @@ describe('isRevoked', function() {
           throw error;
         }
         expect(revoked).to.equal(true);
+        done();
+      });
+      return null;
+    });
+  });
+
+  it('should call done with false if the matching token record is not revoked', function(done) {
+    require('@66pix/models')
+    .then(function(models) {
+      return models.Token.build({
+        userId: 1,
+        userAgent: 'user agent',
+        type: 'Login',
+        isRevoked: false,
+        payload: '',
+        updatedWithToken: -1
+      }).save();
+    })
+    .then(function(token) {
+      isRevoked(null, {
+        iss: '66pix Website',
+        aud: '66pix Website User',
+        tokenId: token.id
+      }, function(error, revoked) {
+        if (error) {
+          throw error;
+        }
+        expect(revoked).to.equal(false);
         done();
       });
       return null;

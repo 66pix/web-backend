@@ -18,6 +18,9 @@ module.exports = function isRevoked(request, payload, done) {
     return models.Token.findById(payload.tokenId);
   })
   .then(function(token) {
+    if (!token) {
+      return done(null, true);
+    }
     done(null, token.isRevoked);
   });
 };
