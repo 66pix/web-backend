@@ -72,8 +72,7 @@ describe('Routes Companies current', function() {
           createdAt: company.createdAt
         });
         expect(company.users).to.deep.contain({
-          name: user.name,
-          role: 'Owner'
+          name: user.name
         });
       })
       .expect(200, done);
