@@ -56,7 +56,7 @@ describe('Routes Companies current', function() {
     .save()
     .then(function(company) {
       return user.addCompany(company, {
-        role: 'Owner',
+        responsibility: 'Owner',
         updatedWithToken: -1,
         isSelected: true
       });
