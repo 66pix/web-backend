@@ -41,7 +41,7 @@ describe('Routes authentication logout', function() {
 
   it('should return 201 if the jwt token is invalid', function(done) {
     request(app)
-    .get('/authentication/logout')
+    .post('/authentication/logout')
     .set('authorization', '')
     .expect(201, done);
   });
@@ -51,7 +51,7 @@ describe('Routes authentication logout', function() {
       callback(new Error('This is another error'));
     });
     request(app)
-    .get('/authentication/logout')
+    .post('/authentication/logout')
     .set('authorization', '')
     .expect(500, function(error, response) {
       if (error) {
@@ -75,7 +75,7 @@ describe('Routes authentication logout', function() {
     })
     .then(function() {
       request(app)
-      .get('/authentication/logout')
+      .post('/authentication/logout')
       .set('authorization', jwtToken)
       .expect(201, done);
     });
@@ -83,7 +83,7 @@ describe('Routes authentication logout', function() {
 
   it('should invalidate the jwt token', function(done) {
     request(app)
-    .get('/authentication/logout')
+    .post('/authentication/logout')
     .set('authorization', jwtToken)
     .expect(201, function(error) {
       if (error) {
