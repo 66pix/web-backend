@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "1.0.40",
-      "from": "@66pix/api@1.0.40",
+      "version": "1.0.41",
+      "from": "@66pix/api@1.0.41",
       "dependencies": {
         "nunjucks": {
           "version": "2.2.0",
@@ -3640,6 +3640,7 @@
     "@66pix/models": {
       "version": "0.0.33",
       "from": "@66pix/models@0.0.33",
+      "resolved": "https://registry.npmjs.org/@66pix/models/-/models-0.0.33.tgz",
       "dependencies": {
         "bcrypt": {
           "version": "0.8.5",
@@ -4103,7 +4104,7 @@
           "dependencies": {
             "lodash": {
               "version": "3.10.1",
-              "from": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+              "from": "lodash@>=3.2.0 <4.0.0",
               "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz"
             },
             "moment": {
@@ -4344,7 +4345,7 @@
         },
         "lodash": {
           "version": "3.10.1",
-          "from": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+          "from": "lodash@>=3.2.0 <4.0.0",
           "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz"
         }
       }
@@ -4536,7 +4537,7 @@
         },
         "methods": {
           "version": "1.1.1",
-          "from": "https://registry.npmjs.org/methods/-/methods-1.1.1.tgz",
+          "from": "methods@>=1.0.0 <2.0.0",
           "resolved": "https://registry.npmjs.org/methods/-/methods-1.1.1.tgz"
         },
         "on-finished": {
@@ -4685,7 +4686,7 @@
         },
         "lodash": {
           "version": "3.10.1",
-          "from": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+          "from": "lodash@>=3.2.0 <4.0.0",
           "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz"
         }
       }
@@ -5288,7 +5289,7 @@
                     },
                     "process-nextick-args": {
                       "version": "1.0.6",
-                      "from": "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-1.0.6.tgz",
+                      "from": "process-nextick-args@>=1.0.0 <1.1.0",
                       "resolved": "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-1.0.6.tgz"
                     },
                     "string_decoder": {
@@ -5298,7 +5299,7 @@
                     },
                     "util-deprecate": {
                       "version": "1.0.2",
-                      "from": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz",
+                      "from": "util-deprecate@>=1.0.1 <1.1.0",
                       "resolved": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
                     }
                   }
