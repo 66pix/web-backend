@@ -75,7 +75,7 @@ export EMAIL_PASSWORD="email password"
 export EMAIL_USERNAME="email username"
 export EMAIL_PORT=1231
 export EMAIL_FROM="testing@66pix.com"
-export PORT=3000
+export PORT=3021
 
 if [ -v ${NPM_USERNAME+x} ]; then
     cp .npmrc /root/.npmrc
