@@ -6,13 +6,11 @@ var request = require('supertest');
 describe('Routes Users GET', function() {
   var app;
   var token;
-  var user;
 
   beforeEach(function(done) {
     require('../../loginHelper.js')()
     .then(function(result) {
 
-      user = result.user;
       app = result.app;
       token = result.token;
 
@@ -43,11 +41,7 @@ describe('Routes Users GET', function() {
       .get('/api/users')
       .set('authorization', token)
       .expect(function(response) {
-        expect(response.body).to.deep.contain([{
-          email: 'active@66pix.com',
-          name: 'this is a name',
-          id: user.id
-        }]);
+        expect(response.body).to.equal([]);
       })
       .expect(200, done);
   });
