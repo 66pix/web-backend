@@ -19,6 +19,7 @@ describe('Routes Companies current', function() {
       token = result.token;
 
       done();
+      return null;
     });
   });
 

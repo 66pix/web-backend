@@ -30,6 +30,7 @@ describe('Routes User Companies put', function() {
     .then(function(_secondUser_) {
       secondUser = _secondUser_;
       done();
+      return null;
     });
   });
 

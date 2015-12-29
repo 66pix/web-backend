@@ -6,22 +6,23 @@ var jwt = require('jsonwebtoken');
 
 module.exports = function(app) {
 
-  require('@66pix/models').then(function(models) {
+  require('@66pix/models')
+  .then(function(models) {
     app.post('/authentication/reset-password/:token', function(req, res) {
 
       function sendError(message) {
         return res.status(400)
-          .json({
-            code: 400,
-            message: message
-          });
+        .json({
+          code: 400,
+          message: message
+        });
       }
 
       jwt.verify(req.params.token, config.get('RESET_PASSWORD_TOKEN_SECRET'), function(error, token) {
         if (error) {
           debug(error);
           return sendError(
-              'Password reset token is invalid or expired, ' +
+            'Password reset token is invalid or expired, ' +
               'please perform the "forgot password" process again');
         }
 
@@ -34,17 +35,20 @@ module.exports = function(app) {
           return sendError('You must verify your new password by typing it twice');
         }
 
-        models.UserAccount.findById(token.id).then(function(user) {
+        models.UserAccount.findById(token.id)
+        .then(function(user) {
           if (user.status !== 'Active') {
             return sendError('User does not exist or has been deactivated');
           }
           user.password = req.body.newPassword;
           user.save().then(function() {
             res.status(201)
-              .send();
+            .send();
           });
+          return null;
         });
       });
     });
+    return null;
   });
 };

@@ -5,7 +5,8 @@ var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/logout');
 
 module.exports = function(app) {
-  require('@66pix/models').then(function(models) {
+  require('@66pix/models')
+  .then(function(models) {
     app.post('/authentication/logout', function(req, res, next) {
       jwt.verify(req.headers.authorization.replace('Bearer ', ''), config.get('TOKEN_SECRET'), function(error, jwtToken) {
         if (error) {
@@ -19,12 +20,16 @@ module.exports = function(app) {
             return res.sendStatus(201);
           }
           token.isRevoked = true;
-          token.save().then(function() {
+          token.save()
+          .then(function() {
             res.sendStatus(201);
+            return null;
           });
+          return null;
         });
       });
     });
+    return null;
   });
 };
 

@@ -40,8 +40,9 @@ describe('Routes Users GET', function() {
     request(app)
       .get('/api/users')
       .set('authorization', token)
+      .set('content-type', 'application/json')
       .expect(function(response) {
-        expect(response.body).to.equal([]);
+        expect(response.body).to.be.instanceof(Array);
       })
       .expect(200, done);
   });

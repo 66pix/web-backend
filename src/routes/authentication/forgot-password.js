@@ -3,6 +3,7 @@
 var config = require('../../../src/config.js');
 var debug = require('debug')('authentication/forgot-password');
 var jwt = require('jsonwebtoken');
+var Promise = require('bluebird');
 
 module.exports = function(app) {
 
@@ -30,16 +31,21 @@ module.exports = function(app) {
       })
       .then(function(user) {
         if (!user) {
-          return responseSuccess(res);
+          responseSuccess(res);
+          return Promise.reject(new Error('User not found'));
         }
-        return [user, models.Token.build({
-          userId: user.id,
-          userAgent: req.headers['user-agent'],
-          type: 'Reset Password',
-          isRevoked: false,
-          payload: '',
-          updatedWithToken: -1
-        }).save()];
+        return [
+          user,
+          models.Token.build({
+            userId: user.id,
+            userAgent: req.headers['user-agent'],
+            type: 'Reset Password',
+            isRevoked: false,
+            payload: '',
+            updatedWithToken: -1
+          })
+          .save()
+        ];
       })
       .spread(function(user, token) {
         var jwtToken = jwt.sign({
@@ -55,7 +61,11 @@ module.exports = function(app) {
         token.expiresOn = expiresOn.getTime() + 1 * 60 * 60 * 1000;
         token.updatedWithToken = token.id;
         token.payload = jwtToken;
-        return [user, jwtToken, token.save()];
+        return [
+          user,
+          jwtToken,
+          token.save()
+        ];
       })
       .spread(function(user, jwtToken) {
         debug('Emailing reset password link to %s', user.email);
@@ -80,8 +90,15 @@ module.exports = function(app) {
               message: error.message
             });
           }
-          return responseSuccess(res);
+          responseSuccess(res);
+          return null;
         });
+      })
+      .catch(function(error) {
+        if (error.message === 'User not found') {
+          return debug('User not found with email: ' + req.body.email);
+        }
+        throw error;
       });
     });
   });

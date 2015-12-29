@@ -117,6 +117,7 @@ describe('Routes authentication reset-password', function() {
           });
         });
       });
+      return null;
     });
   });
 
@@ -170,6 +171,7 @@ describe('Routes authentication reset-password', function() {
           });
         });
       });
+      return null;
     });
   });
 });
