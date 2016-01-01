@@ -21,6 +21,7 @@ require('./routes/authentication/login.js')(app);
 require('./routes/authentication/logout.js')(app);
 require('./routes/authentication/forgot-password.js')(app);
 require('./routes/authentication/reset-password.js')(app);
+require('./routes/upload/signing.js')(app);
 
 module.exports = new Promise(function(resolve) {
   require('@66pix/api')(app)
