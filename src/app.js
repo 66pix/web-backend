@@ -12,12 +12,7 @@ var app = express();
 
 app.use(bodyparser.json());
 
-app.use('/api', expressJwt({
-  secret: config.get('TOKEN_SECRET'),
-  isRevoked: isRevoked
-}));
-
-app.use('/upload', expressJwt({
+app.use(['/api', '/upload'], expressJwt({
   secret: config.get('TOKEN_SECRET'),
   isRevoked: isRevoked
 }));
