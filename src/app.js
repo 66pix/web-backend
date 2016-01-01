@@ -17,6 +17,11 @@ app.use('/api', expressJwt({
   isRevoked: isRevoked
 }));
 
+app.use('/upload', expressJwt({
+  secret: config.get('TOKEN_SECRET'),
+  isRevoked: isRevoked
+}));
+
 require('./routes/authentication/login.js')(app);
 require('./routes/authentication/logout.js')(app);
 require('./routes/authentication/forgot-password.js')(app);

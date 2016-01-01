@@ -38,6 +38,12 @@ describe('Routes upload signing', function() {
     });
   });
 
+  it('should 401 if the user is not logged in', function(done) {
+    request(app)
+    .post('/upload/signing')
+    .expect(401, done);
+  });
+
   it('should respond with 400 if no filename or directory were provided', function(done) {
     request(app)
     .post('/upload/signing')
