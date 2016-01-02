@@ -84,6 +84,8 @@ export AWS_S3_REGION="ap-southeast-2"
 export AWS_S3_SECRET="AWS_S3_SECRET"
 export AWS_S3_KEY="AWS_S3_KEY"
 
+export CDN_URL="//cdn.images.staging.66pix.com/"
+
 if [ -v ${NPM_USERNAME+x} ]; then
     cp .npmrc /root/.npmrc
 else
