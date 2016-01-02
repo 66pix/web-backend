@@ -15,7 +15,7 @@ module.exports = function(app) {
     }
 
     var fileName = req.body.filename;
-    var directory = req.body.directory;
+    var directory = req.body.directory.replace(/^\//, '');
     var filePath = path.join(directory, fileName);
 
     var readType = 'private';

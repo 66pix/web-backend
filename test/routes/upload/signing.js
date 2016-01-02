@@ -51,6 +51,24 @@ describe('Routes upload signing', function() {
     .expect(400, done);
   });
 
+  it('should strip leading / from the directory', function(done) {
+    request(app)
+    .post('/upload/signing')
+    .set('authorization', jwtToken)
+    .send({
+      filename: 'filename',
+      directory: '/directory'
+    })
+    .expect(200, function(error, response) {
+      if (error) {
+        throw error;
+      }
+
+      expect(response.body.fields.key).to.equal('directory/filename');
+      done();
+    });
+  });
+
   it('should respond with a valid policy', function(done) {
     request(app)
     .post('/upload/signing')
