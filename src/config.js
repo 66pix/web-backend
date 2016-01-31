@@ -54,6 +54,12 @@ var config = convict({
     format: String,
     default: null,
     env: 'AWS_S3_REGION'
+  },
+  CDN_URL: {
+    doc: 'The URL for the site CDN',
+    format: String,
+    default: null,
+    env: 'CDN_URL'
   }
 });
 
