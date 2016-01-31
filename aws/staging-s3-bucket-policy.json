@@ -1,0 +1,34 @@
+{
+  "Version": "2008-10-17",
+  "Id": "PolicyForCloudFrontPrivateContent",
+  "Statement": [
+    {
+      "Sid": "1",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E2SV8DUIGC80EE"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::originals-staging-66pix-com/*"
+    },
+    {
+      "Sid": "UploadFile",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::482348613934:user/66pix-staging-s3"
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::originals-staging-66pix-com/*"
+    },
+    {
+      "Sid": "crossdomainAccess",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::originals-staging-66pix-com/crossdomain.xml"
+    }
+  ]
+}
