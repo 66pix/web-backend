@@ -5,8 +5,6 @@ var path = require('path');
 
 var config = require('../../config.js');
 
-var s3Url = 'https://' + config.get('AWS_S3_BUCKET') + '.s3-' + config.get('AWS_S3_REGION') + '.amazonaws.com';
-
 module.exports = function(app) {
   app.post('/upload/signing', function(req, res) {
 
@@ -59,6 +57,13 @@ module.exports = function(app) {
     .createHmac('sha1', config.get('AWS_S3_SECRET'))
     .update(new Buffer(base64Policy, 'utf-8'))
     .digest('base64');
+
+    var region = config.get('AWS_S3_REGION');
+    var regionPortion = '.s3-' + region;
+    if (region === 'us-east-1') {
+      regionPortion = '.s3';
+    }
+    var s3Url = 'https://' + config.get('AWS_S3_BUCKET') + regionPortion + '.amazonaws.com';
 
     var credentials = {
       url: s3Url,
