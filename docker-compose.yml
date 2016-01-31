@@ -19,7 +19,7 @@ test:
         AWS_S3_KEY: "fake-key"
         AWS_S3_SECRET: "fake-secret"
         AWS_S3_BUCKET: "fake-bucket"
-        AWS_S3_REGION: "ap-southeast-2"
+        AWS_S3_REGION: "us-east-1"
         CDN_URL: "//cdn.images.staging.66pix.com"
     links:
         - postgres
