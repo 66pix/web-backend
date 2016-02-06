@@ -2,6 +2,7 @@
 
 var request = require('supertest');
 var sinon = require('sinon');
+var api = require('@66pix/api');
 var expect = require('code').expect;
 
 describe('Routes authentication forgot-password', function() {
@@ -70,37 +71,10 @@ describe('Routes authentication forgot-password', function() {
     });
   });
 
-  it('should respond with a 500 if something went wrong', function(done) {
-    sinon.stub(app.seneca, 'act', function(args, callback) {
-      callback(new Error('An error'));
-    });
-    request(app)
-    .post('/authentication/forgot-password')
-    .send({
-      email: 'active@66pix.com'
-    })
-    .expect(500)
-    .expect({
-      message: 'An error'
-    }, function() {
-      app.seneca.act.restore();
-      done();
-    });
-  });
-
-  it('should cause seneca to act with the correct arguments', function(done) {
-    sinon.stub(app.seneca, 'act', function(args) {
-      expect(args).to.deep.contain({
-        role: 'mail',
-        cmd: 'send',
-        code: 'forgot-password',
-        to: 'active@66pix.com',
-        subject: '66pix Password Reset'
-      });
-
-      app.seneca.act.restore();
-
-      done();
+  it('should respond with a 500 if something goes wrong with the mailing process', function(done) {
+    var Promise = require('bluebird');
+    sinon.stub(api, 'mailer', function() {
+      return Promise.reject(new Error('this is an error'));
     });
 
     request(app)
@@ -108,6 +82,13 @@ describe('Routes authentication forgot-password', function() {
     .send({
       email: 'active@66pix.com'
     })
-    .expect(200, function() {});
+    .expect(500, function(error, response) {
+      api.mailer.reset();
+      if (error) {
+        return done(error);
+      }
+      expect(response.body.message).to.equal('this is an error');
+      done();
+    });
   });
 });

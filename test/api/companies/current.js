@@ -52,6 +52,7 @@ describe('Routes Companies current', function() {
     Company.build({
       name: 'company name',
       updatedWithToken: -1,
+      type: 'Retail',
       status: 'Active'
     })
     .save()

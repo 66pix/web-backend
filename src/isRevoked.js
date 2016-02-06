@@ -22,5 +22,6 @@ module.exports = function isRevoked(request, payload, done) {
       return done(null, true);
     }
     done(null, token.isRevoked);
+    return null;
   });
 };

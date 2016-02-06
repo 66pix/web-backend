@@ -37,7 +37,7 @@ describe('Routes authentication reset-password', function() {
     var token = jwt.sign({
       id: 1
     }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
-      expiresIn: 0
+      expiresIn: '1h'
     });
 
     request(app)
@@ -53,7 +53,7 @@ describe('Routes authentication reset-password', function() {
     var token = jwt.sign({
       id: 1
     }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
-      expiresIn: 0
+      expiresIn: '1h'
     });
 
     request(app)

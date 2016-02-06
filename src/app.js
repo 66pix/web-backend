@@ -25,13 +25,10 @@ require('./routes/upload/signing.js')(app);
 
 module.exports = new Promise(function(resolve) {
   require('@66pix/api')(app)
-  .then(function(seneca) {
+  .then(function() {
     app.use(unauthorisedErrorHandler);
     app.use(catchAllErrorHandler);
-    app.seneca = seneca;
-    seneca.ready(function() {
-      resolve(app);
-    });
+    resolve(app);
   });
 });
 

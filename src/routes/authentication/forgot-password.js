@@ -69,10 +69,8 @@ module.exports = function(app) {
       })
       .spread(function(user, jwtToken) {
         debug('Emailing reset password link to %s', user.email);
-        app.seneca.act({
-          role: 'mail',
-          cmd: 'send',
-          code: 'forgot-password',
+        var mailer = require('@66pix/api').mailer;
+        mailer('forgot-password', {
           to: user.get('email'),
           subject: '66pix Password Reset',
           content: {
@@ -82,7 +80,12 @@ module.exports = function(app) {
             },
             token: jwtToken
           }
-        }, function(error) {
+        })
+        .then(function() {
+          responseSuccess(res);
+          return null;
+        })
+        .catch(function(error) {
           if (error) {
             debug(error);
             return res.status(500)
@@ -90,8 +93,6 @@ module.exports = function(app) {
               message: error.message
             });
           }
-          responseSuccess(res);
-          return null;
         });
       })
       .catch(function(error) {
