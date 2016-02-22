@@ -39,7 +39,7 @@ function unauthorisedErrorHandler(error, req, res, next) {
 
   debug(error);
   res.status(401);
-  res.json({
+  return res.json({
     message: error.message
   });
 }

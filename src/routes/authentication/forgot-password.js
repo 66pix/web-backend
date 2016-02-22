@@ -24,7 +24,7 @@ module.exports = function(app) {
           message: 'Email is required'
         });
       }
-      models.UserAccount.findOne({
+      return models.UserAccount.findOne({
         where: {
           email: req.body.email
         }
@@ -86,13 +86,11 @@ module.exports = function(app) {
           return null;
         })
         .catch(function(error) {
-          if (error) {
-            debug(error);
-            return res.status(500)
-            .json({
-              message: error.message
-            });
-          }
+          debug(error);
+          res.status(500)
+          .json({
+            message: error.message
+          });
         });
       })
       .catch(function(error) {

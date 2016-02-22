@@ -77,6 +77,6 @@ module.exports = function(app) {
         success_action_status: 201 // eslint-disable-line camelcase
       }
     };
-    res.jsonp(credentials);
+    return res.jsonp(credentials);
   });
 };

@@ -3,6 +3,7 @@
 var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/login');
 var config = require('../../../src/config.js');
+var Promise = require('bluebird');
 
 module.exports = function(app) {
   require('@66pix/models').then(function(models) {
@@ -18,7 +19,7 @@ module.exports = function(app) {
 
       var UserAccount = models.UserAccount;
       var Token = models.Token;
-      UserAccount.login(req.body.email, req.body.password)
+      return UserAccount.login(req.body.email, req.body.password)
       .then(function(user) {
         return [user, Token.build({
           userId: user.id,
@@ -44,11 +45,14 @@ module.exports = function(app) {
         token.expiresOn = expiresOn.getTime() + EXPIRES_IN_HOURS * 60 * 60 * 1000;
         token.updatedWithToken = token.id;
         token.payload = jwtToken;
-        return [jwtToken, token.save()];
+        return Promise.props({
+          jwtToken: jwtToken,
+          tokenSave: token.save()
+        });
       })
-      .spread(function(jwtToken) {
+      .then(function(result) {
         res.json({
-          token: jwtToken
+          token: result.jwtToken
         });
       })
       .catch(UserAccount.InvalidLoginDetailsError, UserAccount.TooManyAttemptsError, function(error) {

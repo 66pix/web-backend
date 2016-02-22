@@ -59,7 +59,7 @@ describe('Routes authentication logout', function() {
       }
       jwt.verify.restore();
       expect(response.body.message).to.equal('This is another error');
-      done();
+      return done();
     });
   });
 

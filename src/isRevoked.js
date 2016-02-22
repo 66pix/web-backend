@@ -13,7 +13,7 @@ module.exports = function isRevoked(request, payload, done) {
     return done(null, true);
   }
 
-  require('@66pix/models')
+  return require('@66pix/models')
   .then(function(models) {
     return models.Token.findById(payload.tokenId);
   })

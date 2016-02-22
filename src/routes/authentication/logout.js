@@ -13,7 +13,7 @@ module.exports = function(app) {
           return handleError(error, res, next);
         }
 
-        models.Token.findById(jwtToken.tokenId)
+        return models.Token.findById(jwtToken.tokenId)
         .then(function(token) {
           if (!token) {
             debug('Logout called with a token not represented in DB');
@@ -38,5 +38,5 @@ function handleError(error, res, next) {
     debug('Logout called with an invalid JWT token');
     return res.sendStatus(201);
   }
-  next(error);
+  return next(error);
 }

@@ -35,7 +35,7 @@ module.exports = function(app) {
           return sendError('You must verify your new password by typing it twice');
         }
 
-        models.UserAccount.findById(token.id)
+        return models.UserAccount.findById(token.id)
         .then(function(user) {
           if (user.status !== 'Active') {
             return sendError('User does not exist or has been deactivated');

@@ -88,7 +88,7 @@ describe('Routes authentication forgot-password', function() {
         return done(error);
       }
       expect(response.body.message).to.equal('this is an error');
-      done();
+      return done();
     });
   });
 });

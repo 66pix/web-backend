@@ -13,7 +13,7 @@ describe('Package.json', function() {
         return done(error);
       }
       packageJson = JSON.parse(file);
-      done();
+      return done();
     });
   });
 
