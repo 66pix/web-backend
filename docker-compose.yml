@@ -21,6 +21,7 @@ test:
         AWS_S3_BUCKET: "fake-bucket"
         AWS_S3_REGION: "us-east-1"
         CDN_URL: "//cdn.images.staging.66pix.com"
+        PRODUCT_CODE_SALT: "PRODUCT_CODE_SALT"
     links:
         - postgres
     volumes:
