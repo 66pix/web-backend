@@ -21,8 +21,8 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^1.0.80",
-    "@66pix/models": "^0.0.57",
+    "@66pix/api": "^1.0.82",
+    "@66pix/models": "^0.1.0",
     "bluebird": "^3.3.1",
     "body-parser": "^1.15.0",
     "cheerio": "https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz",
