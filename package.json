@@ -21,7 +21,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^1.1.2",
+    "@66pix/api": "^1.1.3",
     "@66pix/models": "^0.1.4",
     "bluebird": "^3.3.3",
     "body-parser": "^1.15.0",
@@ -42,7 +42,7 @@
     "code": "^2.1.0",
     "coverage-average": "^1.0.4",
     "eslint": "^2.2.0",
-    "husky": "^0.11.2",
+    "husky": "^0.11.3",
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
     "sinon": "^1.17.3",
