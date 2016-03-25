@@ -16,7 +16,8 @@
     "start": "pm2 start pm2.json; pm2 logs",
     "development": "pm2 start pm2-dev.json; pm2 logs",
     "coverage-average": "coverage-average coverage/text-summary.txt  --limit 95",
-    "precommit": "npm run lint && npm run coverage-average"
+    "precommit": "npm run lint && npm run coverage-average",
+    "update-git-lock": "npm-git-lock --repo git@github.com:66pix/web-backend-node_modules.git --cross-platform --verbose "
   },
   "keywords": [],
   "author": "Michael Robinson",
