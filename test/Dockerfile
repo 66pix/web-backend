@@ -1,4 +1,4 @@
-FROM nodesource/jessie:4
+FROM nodesource/jessie:5
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql gcc-4.8
@@ -12,4 +12,5 @@ WORKDIR /srv/www
 COPY package.json /srv/www/
 COPY . /srv/www/
 
-RUN npm install
+# Rebuild/install node dependencies
+RUN npm rebuild
