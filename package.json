@@ -10,12 +10,12 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "docker-compose run -e NPM_USERNAME=$NPM_USERNAME -e NPM_PASSWORD=$NPM_PASSWORD -e NPM_EMAIL=$NPM_EMAIL test /srv/www/test.sh",
+    "test": "docker-compose run test /srv/www/test.sh",
     "test-watch": "docker-compose run test /srv/www/test-watch.sh",
-    "lint": "node_modules/.bin/eslint --quiet --ignore-path .gitignore .",
+    "lint": "eslint --quiet --ignore-path .gitignore .",
     "start": "pm2 start pm2.json; pm2 logs",
     "development": "pm2 start pm2-dev.json; pm2 logs",
-    "coverage-average": "./node_modules/.bin/coverage-average coverage/text-summary.txt  --limit 95",
+    "coverage-average": "coverage-average coverage/text-summary.txt  --limit 95",
     "precommit": "npm run lint && npm run coverage-average"
   },
   "keywords": [],
