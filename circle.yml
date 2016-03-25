@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 4
+    version: 5
   services:
     - docker
   pre:
@@ -12,13 +12,13 @@ machine:
     - sudo chmod 0755 /usr/bin/docker
     - sudo wget https://github.com/jwilder/docker-squash/releases/download/v0.2.0/docker-squash-linux-amd64-v0.2.0.tar.gz
     - sudo tar -C /usr/local/bin -xzvf docker-squash-linux-amd64-v0.2.0.tar.gz
-    - sudo npm install -g npm-git-lock
 
 dependencies:
   override:
     - ./npm-login.sh && npm-git-lock --repo git@github.com:66pix/web-backend-node_modules.git
     - sudo pip install --upgrade docker-compose\<=1.5
     - sudo apt-get update; sudo apt-get install tar
+    - npm install -g npm-git-lock
 
 test:
   override:
