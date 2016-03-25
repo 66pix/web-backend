@@ -84,7 +84,12 @@ export AWS_S3_REGION="ap-southeast-2"
 export AWS_S3_SECRET="AWS_S3_SECRET"
 export AWS_S3_KEY="AWS_S3_KEY"
 
-export CDN_URL="//cdn.images.staging.66pix.com"
+export CDN_URL="//images.cdn.staging.66pix.com"
+
+export AWS_SQS_DOWNLOAD_ID="123"
+export AWS_SQS_DOWNLOAD_SECRET="123"
+export AWS_SQS_DOWNLOAD_REGION="us-east-2"
+export AWS_SQS_DOWNLOAD_URL="123"
 
 if [ -v ${NPM_USERNAME+x} ]; then
     cp .npmrc /root/.npmrc
