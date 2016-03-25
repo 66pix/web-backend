@@ -91,18 +91,6 @@ export AWS_SQS_DOWNLOAD_SECRET="123"
 export AWS_SQS_DOWNLOAD_REGION="us-east-2"
 export AWS_SQS_DOWNLOAD_URL="123"
 
-if [ -v ${NPM_USERNAME+x} ]; then
-    cp .npmrc /root/.npmrc
-else
-npm login <<!
-$NPM_USERNAME
-$NPM_PASSWORD
-$NPM_EMAIL
-!
-fi
-
-npm install
-
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE '"$RDS_DB_NAME"';';
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"

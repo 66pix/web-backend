@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e
 
-./npm-login.sh
-
-rm -rf node_modules
-npm install --quiet
-
 # Ensure database exists
 ! psql --host=postgres --username=postgres -c 'CREATE DATABASE test;';
 
