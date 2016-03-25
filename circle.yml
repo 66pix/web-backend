@@ -16,9 +16,9 @@ machine:
 dependencies:
   override:
     - npm install -g npm-git-lock
-    - npm-git-lock --repo git@github.com:66pix/web-backend-node_modules.git
+    - ./npm-login.sh && npm-git-lock --repo git@github.com:66pix/web-backend-node_modules.git
     - sudo pip install --upgrade docker-compose\<=1.5
-    - sudo apt-get update; sudo apt-get install tar
+    - sudo apt-get update && sudo apt-get install tar
 
 test:
   override:
