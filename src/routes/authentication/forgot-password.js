@@ -60,6 +60,7 @@ module.exports = function(app) {
         var expiresOn = new Date();
         token.expiresOn = expiresOn.getTime() + 1 * 60 * 60 * 1000;
         token.updatedWithToken = token.id;
+
         token.payload = jwtToken;
         return [
           user,
@@ -92,6 +93,7 @@ module.exports = function(app) {
             message: error.message
           });
         });
+        return null;
       })
       .catch(function(error) {
         if (error.message === 'User not found') {
