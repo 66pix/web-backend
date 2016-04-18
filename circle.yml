@@ -15,7 +15,7 @@ machine:
 
 dependencies:
   override:
-    - git config --global user.email "michael.robinson@66pix.com"
+    - git config --global user.email "mike@pagesofinterest.net"
     - git config --global user.name "Michael Robinson"
     - npm install -g npm-git-lock
     - ./npm-login.sh && npm-git-lock --repo git@github.com:66pix/web-backend-node_modules.git --verbose
