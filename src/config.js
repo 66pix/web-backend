@@ -60,6 +60,12 @@ var config = convict({
     format: String,
     default: null,
     env: 'CDN_URL'
+  },
+  BASE_URL: {
+    doc: 'The site URL for the environment\'s website',
+    format: String,
+    default: null,
+    env: 'BASE_URL'
   }
 });
 
