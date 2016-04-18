@@ -2,13 +2,15 @@
 
 var request = require('supertest');
 var sinon = require('sinon');
-var api = require('@66pix/api');
 var expect = require('code').expect;
+var requireClean = require('require-clean');
 
 describe('Routes authentication forgot-password', function() {
   var app;
+  var mailer;
 
   beforeEach(function(done) {
+    mailer = requireClean('@66pix/email');
     require('../../loginHelper.js')()
     .then(function(result) {
       app = result.app;
@@ -29,9 +31,6 @@ describe('Routes authentication forgot-password', function() {
     .then(function() {
       done();
       return null;
-    })
-    .catch(function(error) {
-      throw error;
     });
   });
 
@@ -73,7 +72,7 @@ describe('Routes authentication forgot-password', function() {
 
   it('should respond with a 500 if something goes wrong with the mailing process', function(done) {
     var Promise = require('bluebird');
-    sinon.stub(api, 'mailer', function() {
+    sinon.stub(mailer, 'default', function() {
       return Promise.reject(new Error('this is an error'));
     });
 
@@ -83,7 +82,7 @@ describe('Routes authentication forgot-password', function() {
       email: 'active@66pix.com'
     })
     .expect(500, function(error, response) {
-      api.mailer.reset();
+      mailer.default.reset();
       if (error) {
         return done(error);
       }

@@ -4,6 +4,8 @@ var config = require('../../../src/config.js');
 var debug = require('debug')('authentication/forgot-password');
 var jwt = require('jsonwebtoken');
 var Promise = require('bluebird');
+var path = require('path');
+var nunjucks = require('nunjucks');
 
 module.exports = function(app) {
 
@@ -70,16 +72,23 @@ module.exports = function(app) {
       })
       .spread(function(user, jwtToken) {
         debug('Emailing reset password link to %s', user.email);
-        var mailer = require('@66pix/api').mailer;
-        mailer('forgot-password', {
+        var subject = '66pix Password Reset';
+        var nunjucksContent = {
+          subject: subject,
+          token: jwtToken,
+          baseUrl: config.get('BASE_URL')
+        };
+
+        require('@66pix/email').default({
           to: user.get('email'),
-          subject: '66pix Password Reset',
+          subject: subject,
           content: {
+            html: nunjucks.render(path.join(__dirname, '../../../email/forgot-password/html.nunjucks'), nunjucksContent),
+            text: nunjucks.render(path.join(__dirname, '../../../email/forgot-password/text.nunjucks'), nunjucksContent),
             user: {
               email: user.get('email'),
               name: user.get('name')
-            },
-            token: jwtToken
+            }
           }
         })
         .then(function() {
