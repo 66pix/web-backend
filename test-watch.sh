@@ -102,4 +102,4 @@ mkdir -p coverage
 
 # User -g 'some string' to cause mocha to run only those tests with a matching 'it'
 nodemon -e ts \
-  -x 'npm run build && node_modules/.bin/istanbul cover --include-all-sources --report html node_modules/.bin/_mocha -- --timeout 5000 --recursive --reporter spec javascript/test/configure.js javascript/test/ && node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt && node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95'
+  -x 'npm run build && node_modules/.bin/istanbul cover --report html node_modules/.bin/_mocha -- --timeout 5000 --recursive --reporter spec javascript/test/configure.js javascript/test/ && node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt && node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95'
