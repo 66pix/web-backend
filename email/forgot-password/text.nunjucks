@@ -1,0 +1,3 @@
+Please visit {{ baseUrl }}reset-password/{{ token }} to reset your password.
+
+If you didn't initiate this password reset, you may safely ignore this email.

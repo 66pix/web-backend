@@ -12,8 +12,12 @@ BRANCH=`echo ${CIRCLE_BRANCH//\//_}`
 TAG="web-backend-$ENVIRONMENT-$BRANCH-$CIRCLE_BUILD_NUM"
 
 echo ""
+echo "Installing npm dependencies"
+npm-git-lock --repo git@github.com:66pix/web-backend-node_modules.git
+
+echo ""
 echo "Building initial image"
-docker build --build-arg NPM_AUTH_TOKEN="$NPM_AUTH_TOKEN" -t "66pix/web-backend:$TAG-layered" .
+docker build -t "66pix/web-backend:$TAG-layered" .
 
 echo ""
 echo "Saving initial image to disk"

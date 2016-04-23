@@ -60,34 +60,38 @@ do
      esac
 done
 
+export PORT=3021
 export NODE_ENV="development"
+
 export RDS_USERNAME=$RDS_USERNAME
 export RDS_HOSTNAME=$RDS_HOSTNAME
 export RDS_PASSWORD=$RDS_PASSWORD
 export RDS_PORT=$RDS_PORT
-export TOKEN_SECRET=$TOKEN_SECRET
-export DEBUG=$DEBUG
 export RDS_DB_NAME=$RDS_DB_NAME
+
 export TOKEN_SECRET=$TOKEN_SECRET
 export RESET_PASSWORD_TOKEN_SECRET=$RESET_PASSWORD_TOKEN_SECRET
+export PRODUCT_CODE_SALT="PRODUCT_CODE_SALT"
+export BASE_URL="BASE_URL"
+export DEBUG=$DEBUG
+
 export EMAIL_HOST="localhost"
-export EMAIL_PASSWORD=""
-export EMAIL_USERNAME=""
+export EMAIL_PASSWORD="email password"
+export EMAIL_USERNAME="email username"
 export EMAIL_PORT=1231
 export EMAIL_FROM="testing@66pix.com"
-export PORT=3000
 
-if [ -v ${NPM_USERNAME+x} ]; then
-    cp .npmrc /root/.npmrc
-else
-npm login <<!
-$NPM_USERNAME
-$NPM_PASSWORD
-$NPM_EMAIL
-!
-fi
+export AWS_S3_BUCKET="AWS_S3_BUCKET"
+export AWS_S3_REGION="ap-southeast-2"
+export AWS_S3_SECRET="AWS_S3_SECRET"
+export AWS_S3_KEY="AWS_S3_KEY"
 
-npm install
+export CDN_URL="//images.cdn.staging.66pix.com"
+
+export AWS_SQS_DOWNLOAD_ID="123"
+export AWS_SQS_DOWNLOAD_SECRET="123"
+export AWS_SQS_DOWNLOAD_REGION="us-east-2"
+export AWS_SQS_DOWNLOAD_URL="123"
 
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE '"$RDS_DB_NAME"';';
@@ -97,6 +101,5 @@ echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $
 mkdir -p coverage
 
 # User -g 'some string' to cause mocha to run only those tests with a matching 'it'
-node_modules/.bin/istanbul cover --include-all-sources --report html node_modules/.bin/_mocha -- -w --timeout 10000 --recursive --reporter spec test/configure.js test/
-node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt
-node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95
+nodemon -e ts \
+  -x 'npm run build && node_modules/.bin/istanbul cover --report html node_modules/.bin/_mocha -- --timeout 5000 --recursive --reporter spec javascript/test/configure.js javascript/test/ && node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt && node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95'

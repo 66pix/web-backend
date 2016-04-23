@@ -1,0 +1,48 @@
+{
+    "files": [
+        "typescript/index.ts",
+        "typescript/app.js",
+        "typescript/config.js",
+        "typescript/constants.js",
+        "typescript/isRevoked.js",
+        "typescript/routes/authentication/forgot-password.js",
+        "typescript/routes/authentication/login.js",
+        "typescript/routes/authentication/logout.js",
+        "typescript/routes/authentication/reset-password.js",
+        "typescript/routes/upload/signing.js",
+        "typescript/test/api/companies/current.js",
+        "typescript/test/api/user-companies/put.js",
+        "typescript/test/api/users/current.js",
+        "typescript/test/api/users/list.js",
+        "typescript/test/api/users/put.js",
+        "typescript/test/app.js",
+        "typescript/test/configure.js",
+        "typescript/test/constants.js",
+        "typescript/test/index.js",
+        "typescript/test/isRevoked.js",
+        "typescript/test/loginHelper.js",
+        "typescript/test/package.json.js",
+        "typescript/test/routes/authentication/forgot-password.js",
+        "typescript/test/routes/authentication/login.js",
+        "typescript/test/routes/authentication/logout.js",
+        "typescript/test/routes/authentication/reset-password.js",
+        "typescript/test/routes/upload/signing.js"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "target": "es5",
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "javascript",
+        "allowJs": true
+    },
+    "filesGlob": [
+        "typescript/**/*.ts",
+        "typescript/**/*.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "typings",
+        "typings-custom"
+    ]
+}

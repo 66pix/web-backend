@@ -1,7 +1,4 @@
-FROM nodesource/jessie:4
-
-ARG NPM_AUTH_TOKEN
-ARG NPM_INSTALL_FLAGS
+FROM nodesource/jessie:5
 
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -9,17 +6,17 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN mkdir -p /srv/www
 WORKDIR /srv/www
 
+# Copy application files and dependencies
+# It is assumed that node_modules has been setup previously
 COPY package.json /srv/www/
 COPY . /srv/www/
 
-RUN rm -rf node_modules
-RUN npm config set loglevel silent
-RUN npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
-RUN npm install $NPM_INSTALL_FLAGS
-RUN npm install -g pm2
+# Rebuild/install node dependencies
+RUN npm rebuild
 
+# Clean up
+RUN rm -rf /srv/www/node_modules/.git
 RUN apt-get -qq autoremove -y --purge
-RUN rm ~/.npmrc
 RUN rm -rf ~/.node-gyp
 RUN rm -rf ~/.npm
 

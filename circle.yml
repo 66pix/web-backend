@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 4
+    version: 5
   services:
     - docker
   pre:
@@ -15,14 +15,18 @@ machine:
 
 dependencies:
   override:
-    - ./npm-login.sh && npm install
     - sudo pip install --upgrade docker-compose\<=1.5
-    - sudo apt-get update; sudo apt-get install tar
+    - sudo apt-get update && sudo apt-get install tar
+    - git config --global user.email "mike@pagesofinterest.net"
+    - git config --global user.name "Michael Robinson"
+    - npm install -g npm-git-lock
+    - ./npm-login.sh && npm-git-lock --repo git@github.com:66pix/web-backend-node_modules.git --cross-platform
+    - npm run typings-install
 
 test:
   override:
     - npm run lint
-    - npm test && npm run coverage-average
+    - npm test
 
 deployment:
   staging:
@@ -35,4 +39,4 @@ deployment:
     branch: master
     commands:
       - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
-      - ./deploy.sh "staging"
+      - ./deploy.sh "production"

@@ -8,4 +8,3 @@ $NPM_USERNAME
 $NPM_PASSWORD
 $NPM_EMAIL
 !
-npm install
