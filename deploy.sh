@@ -13,7 +13,7 @@ TAG="web-backend-$ENVIRONMENT-$BRANCH-$CIRCLE_BUILD_NUM"
 
 echo ""
 echo "Installing npm dependencies"
-npm-git-lock --repo git@github.com:66pix/web-backend-node_modules.git
+./npm-login.sh && npm install
 
 echo ""
 echo "Building initial image"
