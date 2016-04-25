@@ -1,5 +1,7 @@
+/// <reference path="../index.d.ts" />
+
 let config = require('./config.js');
-let express = require('express');
+import express = require('express');
 let expressJwt = require('express-jwt');
 let bodyparser = require('body-parser');
 let debug = require('debug')('backend');

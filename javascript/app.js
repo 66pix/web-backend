@@ -1,4 +1,5 @@
-'use strict';
+/// <reference path="../index.d.ts" />
+"use strict";
 var config = require('./config.js');
 var express = require('express');
 var expressJwt = require('express-jwt');

@@ -1,7 +1,7 @@
 {
     "files": [
+        "typescript/app.ts",
         "typescript/index.ts",
-        "typescript/app.js",
         "typescript/config.js",
         "typescript/constants.js",
         "typescript/isRevoked.js",
