@@ -1,14 +1,12 @@
-'use strict';
+let config = require('./config.js');
+let express = require('express');
+let expressJwt = require('express-jwt');
+let bodyparser = require('body-parser');
+let debug = require('debug')('backend');
+let Promise = require('bluebird');
+let isRevoked = require('./isRevoked.js');
 
-var config = require('./config.js');
-var express = require('express');
-var expressJwt = require('express-jwt');
-var bodyparser = require('body-parser');
-var debug = require('debug')('backend');
-var Promise = require('bluebird');
-var isRevoked = require('./isRevoked.js');
-
-var app = express();
+let app = express();
 
 app.use(bodyparser.json());
 
@@ -45,7 +43,7 @@ function unauthorisedErrorHandler(error, req, res, next) {
 }
 
 function catchAllErrorHandler(error, req, res, next) { // eslint-disable-line no-unused-vars
-  var code = 500;
+  let code = 500;
   if (error.code) {
     code = error.code;
   }
