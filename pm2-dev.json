@@ -1,10 +1,21 @@
 {
-  "apps" : [{
-      "name"        : "website",
-      "script"      : "javascript/index.js",
+  "apps" : [
+    {
+      "name": "website",
+      "script": "javascript/index.js",
       "watch": true,
+      "watch": [
+        "javascript"
+      ],
+      "ignore_watch" : [
+        "node_modules",
+        "typescript",
+        "typings",
+        "coverage",
+        "aws"
+      ],
       "watch_options": {
-          "usePolling": true
+        "usePolling": true
       }
     }
   ]
