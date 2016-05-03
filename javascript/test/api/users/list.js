@@ -16,7 +16,6 @@ describe('Routes Users GET', function () {
         require('@66pix/models')
             .then(function (models) {
             return models.UserAccount.destroy({
-                force: true,
                 truncate: true,
                 cascade: true
             });
@@ -24,9 +23,6 @@ describe('Routes Users GET', function () {
             .then(function () {
             done();
             return null;
-        })
-            .catch(function (error) {
-            throw error;
         });
     });
     it('should respond with an array', function (done) {

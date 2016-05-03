@@ -1,12 +1,14 @@
 'use strict';
 var expect = require('code').expect;
 var request = require('supertest');
+var Promise = require('bluebird');
 describe('Routes User Companies put', function () {
     var app;
     var token;
     var user;
     var secondUser;
     var Company;
+    var UserAccount;
     beforeEach(function (done) {
         require('../../loginHelper')()
             .then(function (result) {
@@ -14,7 +16,8 @@ describe('Routes User Companies put', function () {
             user = result.user;
             app = result.app;
             token = result.token;
-            return result.models.UserAccount.build({
+            UserAccount = result.models.UserAccount;
+            return UserAccount.build({
                 name: 'second user',
                 email: 'second_user@66pix.com',
                 updatedWithToken: -1,
@@ -29,27 +32,18 @@ describe('Routes User Companies put', function () {
         });
     });
     afterEach(function (done) {
-        require('@66pix/models')
-            .then(function (models) {
-            return models.UserAccount.destroy({
-                force: true,
+        Promise.all([
+            UserAccount,
+            Company
+        ].map(function (model) {
+            return model.destroy({
                 truncate: true,
                 cascade: true
             });
-        })
-            .then(function () {
-            return Company.destroy({
-                force: true,
-                truncate: true,
-                cascade: true
-            });
-        })
+        }))
             .then(function () {
             done();
             return null;
-        })
-            .catch(function (error) {
-            throw error;
         });
     });
     it('should allow updating the responsibility of a userCompany', function (done) {

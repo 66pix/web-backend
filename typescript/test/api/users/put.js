@@ -2,6 +2,7 @@
 
 var expect = require('code').expect;
 var request = require('supertest');
+var Promise = require('bluebird');
 
 describe('Routes Users PUT', function() {
 
@@ -24,20 +25,17 @@ describe('Routes Users PUT', function() {
   });
 
   afterEach(function(done) {
-    require('@66pix/models')
-    .then(function(models) {
-      return models.UserAccount.destroy({
-        force: true,
+    Promise.all([
+      UserAccount
+    ].map(function(model) {
+      return model.destroy({
         truncate: true,
         cascade: true
       });
-    })
+    }))
     .then(function() {
       done();
       return null;
-    })
-    .catch(function(error) {
-      throw error;
     });
   });
 
