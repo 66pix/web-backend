@@ -13,7 +13,7 @@ TAG="web-backend-$ENVIRONMENT-$BRANCH-$CIRCLE_BUILD_NUM"
 
 echo ""
 echo "Installing npm dependencies"
-./npm-login.sh && npm install
+./npm-login.sh && npm install --silent
 
 echo ""
 echo "Building initial image"
