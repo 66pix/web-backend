@@ -1,4 +1,4 @@
-'use strict';
+/// <reference path="../../../index.d.ts" />
 var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/login');
 var config = require('../../config.js');
@@ -15,34 +15,55 @@ module.exports = function (app) {
             }
             var UserAccount = models.UserAccount;
             var Token = models.Token;
-            return UserAccount.login(req.body.email, req.body.password)
+            // Query for pending user, if found set password and continue
+            UserAccount.findOne({
+                where: {
+                    email: req.body.email,
+                    status: 'Pending'
+                }
+            })
+                .then(function (pendingUser) {
+                if (pendingUser) {
+                    pendingUser.password = req.body.password;
+                    pendingUser.status = 'Active';
+                    return pendingUser.save();
+                }
+                return null;
+            })
+                .then(function () {
+                return UserAccount.login(req.body.email, req.body.password);
+            })
                 .then(function (user) {
-                return [user, Token.build({
+                return Promise.props({
+                    user: user,
+                    token: Token.build({
                         userId: user.id,
                         userAgent: req.headers['user-agent'],
                         type: 'Login',
                         isRevoked: false,
                         payload: '',
                         updatedWithToken: -1
-                    }).save()];
+                    })
+                        .save()
+                });
             })
-                .spread(function (user, token) {
+                .then(function (result) {
                 var EXPIRES_IN_HOURS = 5;
                 var jwtToken = jwt.sign({
-                    id: user.id,
-                    tokenId: token.id
+                    id: result.user.id,
+                    tokenId: result.token.id
                 }, config.get('TOKEN_SECRET'), {
                     expiresIn: EXPIRES_IN_HOURS + 'h',
                     issuer: '66pix Website',
                     audience: '66pix Website User'
                 });
                 var expiresOn = new Date();
-                token.expiresOn = expiresOn.getTime() + EXPIRES_IN_HOURS * 60 * 60 * 1000;
-                token.updatedWithToken = token.id;
-                token.payload = jwtToken;
+                result.token.expiresOn = expiresOn.getTime() + EXPIRES_IN_HOURS * 60 * 60 * 1000;
+                result.token.updatedWithToken = result.token.id;
+                result.token.payload = jwtToken;
                 return Promise.props({
                     jwtToken: jwtToken,
-                    tokenSave: token.save()
+                    tokenSave: result.token.save()
                 });
             })
                 .then(function (result) {
@@ -50,7 +71,7 @@ module.exports = function (app) {
                     token: result.jwtToken
                 });
             })
-                .catch(UserAccount.InvalidLoginDetailsError, UserAccount.TooManyAttemptsError, function (error) {
+                .catch(function (error) {
                 debug(error);
                 res.status(error.code)
                     .json({
