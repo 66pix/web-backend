@@ -2,11 +2,12 @@
     "files": [
         "typescript/app.ts",
         "typescript/index.ts",
+        "typescript/routes/authentication/login.ts",
+        "typescript/test/routes/authentication/login.ts",
         "typescript/config.js",
         "typescript/constants.js",
         "typescript/isRevoked.js",
         "typescript/routes/authentication/forgot-password.js",
-        "typescript/routes/authentication/login.js",
         "typescript/routes/authentication/logout.js",
         "typescript/routes/authentication/reset-password.js",
         "typescript/routes/upload/signing.js",
@@ -23,7 +24,6 @@
         "typescript/test/loginHelper.js",
         "typescript/test/package.json.js",
         "typescript/test/routes/authentication/forgot-password.js",
-        "typescript/test/routes/authentication/login.js",
         "typescript/test/routes/authentication/logout.js",
         "typescript/test/routes/authentication/reset-password.js",
         "typescript/test/routes/upload/signing.js"
