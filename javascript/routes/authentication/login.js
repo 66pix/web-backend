@@ -16,6 +16,7 @@ module.exports = function (app) {
             var UserAccount = models.UserAccount;
             var Token = models.Token;
             // Query for pending user, if found set password and continue
+            // If not found, continue with normal login attempt
             UserAccount.findOne({
                 where: {
                     email: req.body.email,
