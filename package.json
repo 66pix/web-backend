@@ -24,8 +24,8 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^1.3.13",
-    "@66pix/email": "1.0.3",
+    "@66pix/api": "^1.3.24",
+    "@66pix/email": "1.0.4",
     "@66pix/models": "^1.0.3",
     "bluebird": "^3.3.5",
     "body-parser": "^1.15.1",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "code": "^2.3.0",
     "coverage-average": "^1.0.4",
-    "eslint": "^2.9.0",
+    "eslint": "^2.10.1",
     "husky": "^0.11.4",
     "istanbul": "^0.4.3",
     "mocha": "^2.4.5",
@@ -56,7 +56,7 @@
     "supertest": "^1.2.0",
     "test-plan": "^0.1.1",
     "tsd": "^0.6.5",
-    "tslint": "^3.9.0",
+    "tslint": "^3.10.2",
     "typescript": "^1.8.10",
     "typings": "^0.8.1"
   }
