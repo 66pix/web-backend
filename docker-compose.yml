@@ -27,6 +27,9 @@ test:
         CDN_URL: "//images.cdn.staging.66pix.com"
         PRODUCT_CODE_SALT: "PRODUCT_CODE_SALT"
         BASE_URL: "https://staging.66pix.com"
+        BRAINTREE_MERCHANT_ID: "v3727swzz6d3zbkq"
+        BRAINTREE_PRIVATE_KEY: "4cb9faff1c31f70519b5400699e8423a"
+        BRAINTREE_PUBLIC_KEY: "jwg9gs4hjwb4kfnw"
     links:
         - postgres
     volumes:
