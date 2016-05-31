@@ -42,7 +42,7 @@ describe('Routes Users current', function() {
       .get('/api/users/current')
       .set('authorization', token)
       .expect(function(response) {
-        expect(response.body).to.deep.contain({
+        expect(response.body).to.contain({
           email: 'active@66pix.com',
           name: 'this is a name',
           id: user.id

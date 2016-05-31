@@ -56,11 +56,11 @@ describe('Routes Companies current', function () {
                 .set('authorization', token)
                 .expect(function (response) {
                 var company = response.body;
-                expect(company).to.deep.contain({
+                expect(company).to.contain({
                     name: company.name,
                     createdAt: company.createdAt
                 });
-                expect(company.users).to.deep.contain({
+                expect(company.users).to.contain({
                     name: user.name
                 });
             })
