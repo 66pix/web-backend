@@ -93,6 +93,10 @@ export AWS_SQS_DOWNLOAD_SECRET="123"
 export AWS_SQS_DOWNLOAD_REGION="us-east-2"
 export AWS_SQS_DOWNLOAD_URL="123"
 
+export BRAINTREE_MERCHANT_ID="123"
+export BRAINTREE_PRIVATE_KEY="456"
+export BRAINTREE_PUBLIC_KEY="456"
+
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE '"$RDS_DB_NAME"';';
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
