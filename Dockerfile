@@ -12,7 +12,7 @@ COPY package.json /srv/www/
 COPY . /srv/www/
 
 # Rebuild/install node dependencies
-RUN npm rebuild
+RUN npm rebuild --silent
 
 # Clean up
 RUN rm -rf /srv/www/node_modules/.git
