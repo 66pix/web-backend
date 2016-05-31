@@ -52,7 +52,7 @@ describe('Routes Users PUT', function() {
     .set('authorization', token)
     .expect(function(response) {
       var _user_ = response.body;
-      expect(_user_).to.deep.contain({
+      expect(_user_).to.contain({
         email: 'active@66pix.com',
         name: 'Updated Name',
         id: user.id
