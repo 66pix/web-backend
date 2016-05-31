@@ -33,3 +33,4 @@ build/Release
 node_modules
 typings/
 *.map
+.tern-port
