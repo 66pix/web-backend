@@ -31,30 +31,6 @@ var config = convict({
     default: null,
     env: 'RESET_PASSWORD_TOKEN_SECRET'
   },
-  AWS_S3_BUCKET: {
-    doc: 'The S3 image upload bucket',
-    format: String,
-    default: null,
-    env: 'AWS_S3_BUCKET'
-  },
-  AWS_S3_KEY: {
-    doc: 'The S3 image upload IAM key',
-    format: String,
-    default: null,
-    env: 'AWS_S3_KEY'
-  },
-  AWS_S3_SECRET: {
-    doc: 'The S3 image upload IAM secret',
-    format: String,
-    default: null,
-    env: 'AWS_S3_SECRET'
-  },
-  AWS_S3_REGION: {
-    doc: 'The S3 image upload region',
-    format: String,
-    default: null,
-    env: 'AWS_S3_REGION'
-  },
   CDN_URL: {
     doc: 'The URL for the site CDN',
     format: String,
