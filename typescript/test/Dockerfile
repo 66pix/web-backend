@@ -1,7 +1,7 @@
 FROM nodesource/jessie:5
 
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql gcc-4.8
+RUN DEBIAN_FRONTEND=noninteractive apt-get -qq -y install postgresql gcc-4.8
 
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -13,4 +13,4 @@ COPY package.json /srv/www/
 COPY . /srv/www/
 
 # Rebuild/install node dependencies
-RUN npm rebuild
+RUN npm rebuild --silent
