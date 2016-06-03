@@ -4208,11 +4208,6 @@
       "from": "cryptiles@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/cryptiles/-/cryptiles-2.0.5.tgz"
     },
-    "crypto": {
-      "version": "0.0.3",
-      "from": "crypto@0.0.3",
-      "resolved": "https://registry.npmjs.org/crypto/-/crypto-0.0.3.tgz"
-    },
     "css-parse": {
       "version": "1.7.0",
       "from": "css-parse@>=1.7.0 <1.8.0",
