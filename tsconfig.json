@@ -10,7 +10,6 @@
         "typescript/routes/authentication/forgot-password.js",
         "typescript/routes/authentication/logout.js",
         "typescript/routes/authentication/reset-password.js",
-        "typescript/routes/upload/signing.js",
         "typescript/test/api/companies/current.js",
         "typescript/test/api/user-companies/put.js",
         "typescript/test/api/users/current.js",
@@ -25,8 +24,7 @@
         "typescript/test/package.json.js",
         "typescript/test/routes/authentication/forgot-password.js",
         "typescript/test/routes/authentication/logout.js",
-        "typescript/test/routes/authentication/reset-password.js",
-        "typescript/test/routes/upload/signing.js"
+        "typescript/test/routes/authentication/reset-password.js"
     ],
     "compilerOptions": {
         "noImplicitAny": false,

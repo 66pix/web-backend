@@ -81,11 +81,6 @@ export EMAIL_USERNAME="email username"
 export EMAIL_PORT=1231
 export EMAIL_FROM="testing@66pix.com"
 
-export AWS_S3_BUCKET="AWS_S3_BUCKET"
-export AWS_S3_REGION="ap-southeast-2"
-export AWS_S3_SECRET="AWS_S3_SECRET"
-export AWS_S3_KEY="AWS_S3_KEY"
-
 export CDN_URL="//images.cdn.staging.66pix.com"
 
 export AWS_SQS_DOWNLOAD_ID="123"

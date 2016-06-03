@@ -16,10 +16,6 @@ test:
         EMAIL_USERNAME: "email username"
         EMAIL_PORT: 1231
         EMAIL_FROM: "testing@66pix.com"
-        AWS_S3_KEY: "fake-key"
-        AWS_S3_SECRET: "fake-secret"
-        AWS_S3_BUCKET: "fake-bucket"
-        AWS_S3_REGION: "us-east-1"
         AWS_SQS_DOWNLOAD_ID: "123"
         AWS_SQS_DOWNLOAD_SECRET: "123"
         AWS_SQS_DOWNLOAD_REGION: "us-east-2"
