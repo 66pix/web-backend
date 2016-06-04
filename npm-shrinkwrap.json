@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "1.4.3",
-      "from": "@66pix/api@1.4.3",
+      "version": "1.4.4",
+      "from": "@66pix/api@1.4.4",
       "dependencies": {
         "@66pix/email": {
           "version": "1.0.4",
