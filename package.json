@@ -24,7 +24,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^1.4.5",
+    "@66pix/api": "^1.4.6",
     "@66pix/email": "1.0.4",
     "@66pix/models": "^1.0.13",
     "bluebird": "^3.4.0",
