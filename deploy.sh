@@ -40,10 +40,15 @@ echo "Creating deployment Dockerrun.aws.json file"
 DOCKERRUN_FILE="$TAG-Dockerrun.aws.json"
 sed "s/<TAG>/$TAG/" < Dockerrun.aws.json.template > $DOCKERRUN_FILE
 
+DEPLOYMENT_ARTIFACT="$TAG-bundle.zip"
+echo ""
+echo "Creating deployment artifact"
+zip -r $DEPLOYMENT_ARTIFACT .ebextensions $DOCKERRUN_FILE
+
 echo ""
 echo "Uploading deployement Dockerrun.aws.json to S3"
 EB_BUCKET=elasticbeanstalk-ap-southeast-2-482348613934
-aws s3 cp $DOCKERRUN_FILE s3://$EB_BUCKET/$DOCKERRUN_FILE \
+aws s3 cp $DEPLOYMENT_ARTIFACT s3://$EB_BUCKET/$DOCKERRUN_FILE \
   --region ap-southeast-2
 
 echo ""
@@ -51,7 +56,7 @@ echo "Creating application version"
 aws elasticbeanstalk create-application-version \
   --application-name "${ENVIRONMENT}-66pix" \
   --version-label $TAG \
-  --source-bundle S3Bucket=$EB_BUCKET,S3Key=$DOCKERRUN_FILE \
+  --source-bundle S3Bucket=$EB_BUCKET,S3Key=$DEPLOYMENT_ARTIFACT \
   --region ap-southeast-2
 
 echo ""
