@@ -37,7 +37,7 @@ docker push "66pix/web-backend:$TAG"
 
 echo ""
 echo "Creating deployment Dockerrun.aws.json file"
-DOCKERRUN_FILE="$TAG-Dockerrun.aws.json"
+DOCKERRUN_FILE="Dockerrun.aws.json"
 sed "s/<TAG>/$TAG/" < Dockerrun.aws.json.template > $DOCKERRUN_FILE
 
 DEPLOYMENT_ARTIFACT="$TAG-bundle.zip"
