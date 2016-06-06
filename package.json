@@ -13,7 +13,7 @@
     "test": "docker-compose run test /srv/www/test.sh",
     "test-watch": "docker-compose run test /srv/www/test-watch.sh",
     "lint": " tslint -c tslint.json --exclude 'typings/**/*' --exclude 'node_modules/**/*' '**/*.ts'",
-    "typings-install": "typings install && tsd install",
+    "typings-install": "typings install",
     "prebuild": "tsconfig .",
     "build": "tsc",
     "start": "pm2 start pm2.json; pm2 logs",
@@ -53,7 +53,6 @@
     "sinon": "^1.17.4",
     "supertest": "^1.2.0",
     "test-plan": "^0.1.1",
-    "tsd": "^0.6.5",
     "tslint": "^3.10.2",
     "typescript": "^1.8.10",
     "typings": "^1.0.4"
