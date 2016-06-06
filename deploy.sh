@@ -46,9 +46,9 @@ echo "Creating deployment artifact"
 zip -r $DEPLOYMENT_ARTIFACT .ebextensions $DOCKERRUN_FILE
 
 echo ""
-echo "Uploading deployement Dockerrun.aws.json to S3"
+echo "Uploading deployement $DEPLOYMENT_ARTIFACT to S3"
 EB_BUCKET=elasticbeanstalk-ap-southeast-2-482348613934
-aws s3 cp $DEPLOYMENT_ARTIFACT s3://$EB_BUCKET/$DOCKERRUN_FILE \
+aws s3 cp $DEPLOYMENT_ARTIFACT s3://$EB_BUCKET/$DEPLOYMENT_ARTIFACT \
   --region ap-southeast-2
 
 echo ""
