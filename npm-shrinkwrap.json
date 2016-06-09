@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "1.4.13",
-      "from": "@66pix/api@1.4.13",
+      "version": "1.4.14",
+      "from": "@66pix/api@1.4.14",
       "dependencies": {
         "@66pix/email": {
           "version": "1.0.4",
@@ -12,8 +12,8 @@
           "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.4.tgz"
         },
         "@66pix/models": {
-          "version": "1.0.15",
-          "from": "@66pix/models@1.0.15",
+          "version": "1.0.16",
+          "from": "@66pix/models@1.0.16",
           "dependencies": {
             "ap": {
               "version": "0.2.0",
@@ -507,9 +507,9 @@
           "resolved": "https://registry.npmjs.org/async-each/-/async-each-1.0.0.tgz"
         },
         "aws-sdk": {
-          "version": "2.3.17",
-          "from": "aws-sdk@2.3.17",
-          "resolved": "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.3.17.tgz",
+          "version": "2.3.18",
+          "from": "aws-sdk@2.3.18",
+          "resolved": "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.3.18.tgz",
           "dependencies": {
             "sax": {
               "version": "1.1.5",
@@ -2327,9 +2327,9 @@
           }
         },
         "inflight": {
-          "version": "1.0.4",
-          "from": "inflight@>=1.0.4 <2.0.0",
-          "resolved": "https://registry.npmjs.org/inflight/-/inflight-1.0.4.tgz"
+          "version": "1.0.5",
+          "from": "inflight@1.0.5",
+          "resolved": "https://registry.npmjs.org/inflight/-/inflight-1.0.5.tgz"
         },
         "inherits": {
           "version": "2.0.1",
@@ -3217,8 +3217,8 @@
       }
     },
     "@66pix/models": {
-      "version": "1.0.15",
-      "from": "@66pix/models@1.0.15",
+      "version": "1.0.16",
+      "from": "@66pix/models@1.0.16",
       "dependencies": {
         "ap": {
           "version": "0.2.0",
