@@ -6,6 +6,7 @@ var config = convict({
         format: [
             'production',
             'development',
+            'staging',
             'test'
         ],
         default: 'development',
