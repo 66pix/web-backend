@@ -1,4 +1,4 @@
-/// <reference path="../index.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 "use strict";
 var config = require('./config.js');
 var express = require('express');
@@ -7,6 +7,9 @@ var bodyparser = require('body-parser');
 var debug = require('debug')('backend');
 var Promise = require('bluebird');
 var isRevoked = require('./isRevoked.js');
+var raygun_1 = require('./raygun');
+var raygun = require('raygun');
+var raygunClient = raygun_1.raygunClientFactory(raygun);
 var app = express();
 app.use(bodyparser.json());
 app.use(['/api'], expressJwt({
@@ -17,6 +20,7 @@ require('./routes/authentication/login.js')(app);
 require('./routes/authentication/logout.js')(app);
 require('./routes/authentication/forgot-password.js')(app);
 require('./routes/authentication/reset-password.js')(app);
+app.use(raygunClient.expressHandler);
 module.exports = new Promise(function (resolve) {
     require('@66pix/api')(app)
         .then(function () {

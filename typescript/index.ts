@@ -1,16 +1,25 @@
-/// <reference path="../index.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 
-import config = require('./config.js');
 import http = require('http');
+import debugModule = require('debug');
+let debug = debugModule('66pix-backend:index');
+let config = require('./config');
 
-process.on('uncaughtException', function(error) {
-  console.error('uncaughtException:', error.message);
-  console.error(error.stack);
-  process.exit(1);
+import {raygunClientFactory} from './raygun';
+let raygun = require('raygun');
+const raygunClient = raygunClientFactory(raygun);
+
+let d = require('domain').create();
+d.on('error', (error) => {
+  debug(error.message);
+  debug(error.stack);
+  raygunClient.send(error, {}, () => {
+    process.exit();
+  });
 });
 
-module.exports = require('./app.js')
-.then(function(app) {
+module.exports = require('./app')
+.then((app) => {
   return http.createServer(app)
     .listen(config.get('PORT'));
 });

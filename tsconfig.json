@@ -2,7 +2,9 @@
     "files": [
         "typescript/app.ts",
         "typescript/index.ts",
+        "typescript/raygun.ts",
         "typescript/routes/authentication/login.ts",
+        "typescript/test/raygun.ts",
         "typescript/test/routes/authentication/login.ts",
         "typescript/config.js",
         "typescript/constants.js",

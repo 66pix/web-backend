@@ -1,4 +1,4 @@
-/// <reference path="../index.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 
 let config = require('./config.js');
 import express = require('express');
@@ -7,6 +7,10 @@ let bodyparser = require('body-parser');
 let debug = require('debug')('backend');
 let Promise = require('bluebird');
 let isRevoked = require('./isRevoked.js');
+
+import {raygunClientFactory} from './raygun';
+let raygun = require('raygun');
+const raygunClient = raygunClientFactory(raygun);
 
 let app = express();
 
@@ -21,6 +25,8 @@ require('./routes/authentication/login.js')(app);
 require('./routes/authentication/logout.js')(app);
 require('./routes/authentication/forgot-password.js')(app);
 require('./routes/authentication/reset-password.js')(app);
+
+app.use(raygunClient.expressHandler);
 
 module.exports = new Promise(function(resolve) {
   require('@66pix/api')(app)
