@@ -44,7 +44,7 @@
     "tsconfig-glob": "^0.4.3"
   },
   "devDependencies": {
-    "code": "^3.0.0",
+    "code": "^3.0.1",
     "coverage-average": "^1.0.4",
     "eslint": "^2.11.1",
     "istanbul": "^0.4.3",
@@ -54,7 +54,7 @@
     "sinon": "^1.17.4",
     "supertest": "^1.2.0",
     "test-plan": "^0.1.1",
-    "tslint": "^3.10.2",
+    "tslint": "^3.11.0",
     "typescript": "^1.8.10",
     "typings": "^1.0.4"
   }
