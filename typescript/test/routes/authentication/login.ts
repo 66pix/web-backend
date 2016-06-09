@@ -1,4 +1,4 @@
-/// <reference path="../../../../index.d.ts" />
+/// <reference path="../../../../typings/index.d.ts" />
 
 import request = require('supertest');
 let expect = require('code').expect;

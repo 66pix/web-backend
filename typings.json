@@ -1,8 +1,19 @@
 {
   "dependencies": {
-    "bluebird": "registry:npm/bluebird#3.3.4+20160411163813"
+    "bluebird": "registry:npm/bluebird#3.3.4+20160531224558",
+    "debug": "registry:npm/debug#2.0.0+20160511151334",
+    "mime": "registry:npm/mime#1.3.0+20160423043021"
   },
   "ambientDependencies": {
     "node": "registry:dt/node#4.0.0+20160412142033"
+  },
+  "globalDependencies": {
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160602151406",
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654",
+    "node": "registry:env/node#4.0.0+20160507210304",
+    "serve-static": "registry:dt/serve-static#0.0.0+20160606155157",
+    "superagent": "registry:dt/superagent#1.4.0+20160317120654",
+    "supertest": "registry:dt/supertest#1.1.0+20160317120654"
   }
 }
