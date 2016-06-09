@@ -34,3 +34,4 @@ node_modules
 typings/
 *.map
 .tern-port
+/javascript/raygunCache
