@@ -1,4 +1,4 @@
-/// <reference path="../../../index.d.ts" />
+/// <reference path="../../../typings/index.d.ts" />
 var jwt = require('jsonwebtoken');
 var debug = require('debug')('authentication/login');
 var config = require('../../config.js');
