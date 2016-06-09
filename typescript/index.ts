@@ -10,6 +10,7 @@ let raygun = require('raygun');
 const raygunClient = raygunClientFactory(raygun);
 
 let d = require('domain').create();
+/* istanbul ignore next */
 d.on('error', (error) => {
   debug(error.message);
   debug(error.stack);

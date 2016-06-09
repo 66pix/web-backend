@@ -8,6 +8,7 @@ var raygun_1 = require('./raygun');
 var raygun = require('raygun');
 var raygunClient = raygun_1.raygunClientFactory(raygun);
 var d = require('domain').create();
+/* istanbul ignore next */
 d.on('error', function (error) {
     debug(error.message);
     debug(error.stack);
