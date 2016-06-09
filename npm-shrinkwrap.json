@@ -3,14 +3,14 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "1.4.16",
-      "from": "@66pix/api@1.4.16",
-      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-1.4.16.tgz",
+      "version": "1.4.17",
+      "from": "@66pix/api@1.4.17",
+      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-1.4.17.tgz",
       "dependencies": {
         "@66pix/email": {
-          "version": "1.0.5",
-          "from": "@66pix/email@1.0.5",
-          "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.5.tgz"
+          "version": "1.0.6",
+          "from": "@66pix/email@1.0.6",
+          "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.6.tgz"
         },
         "@66pix/models": {
           "version": "1.0.17",
@@ -3197,9 +3197,9 @@
       }
     },
     "@66pix/email": {
-      "version": "1.0.5",
-      "from": "@66pix/email@1.0.5",
-      "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.5.tgz",
+      "version": "1.0.6",
+      "from": "@66pix/email@1.0.6",
+      "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.6.tgz",
       "dependencies": {
         "cheerio": {
           "version": "0.20.0",
