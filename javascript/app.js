@@ -39,7 +39,7 @@ function unauthorisedErrorHandler(error, req, res, next) {
         message: error.message
     });
 }
-function catchAllErrorHandler(error, req, res) {
+function catchAllErrorHandler(error, req, res, next) {
     var code = 500;
     if (error.code) {
         code = error.code;

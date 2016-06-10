@@ -1,17 +1,33 @@
-'use strict';
+/// <reference path="../../../../typings/index.d.ts" />
 
-var config = require('../../../config');
-var request = require('supertest');
-var jwt = require('jsonwebtoken');
+let config = require('../../../config');
+let expect = require('code').expect;
+import request = require('supertest');
+import jwt = require('jsonwebtoken');
 
-var app;
 
 describe('Routes authentication reset-password', function() {
+  let app;
 
   beforeEach(function(done) {
     require('../../../app')
     .then(function(_app_) {
       app = _app_;
+      done();
+      return null;
+    });
+  });
+
+  afterEach(function(done) {
+    require('@66pix/models')
+    .then(function(models) {
+      return models.UserAccount.destroy({
+        force: true,
+        truncate: true,
+        cascade: true
+      });
+    })
+    .then(function() {
       done();
       return null;
     });
@@ -34,7 +50,7 @@ describe('Routes authentication reset-password', function() {
   });
 
   it('should reject requests with a valid token but missing password pair', function(done) {
-    var token = jwt.sign({
+    let token = jwt.sign({
       id: 1
     }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
       expiresIn: '1h'
@@ -50,7 +66,7 @@ describe('Routes authentication reset-password', function() {
   });
 
   it('should reject requests with a password pair that does not match', function(done) {
-    var token = jwt.sign({
+    let token = jwt.sign({
       id: 1
     }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
       expiresIn: '1h'
@@ -70,7 +86,7 @@ describe('Routes authentication reset-password', function() {
   });
 
   it('should reject requests for users that are not active', function(done) {
-    var models;
+    let models;
     require('@66pix/models')
     .then(function(_models_) {
       models = _models_;
@@ -88,13 +104,13 @@ describe('Routes authentication reset-password', function() {
           email: 'inactive@66pix.com'
         }
       }).then(function(user) {
-        var token = jwt.sign({
+        let token = jwt.sign({
           id: user.id
         }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
           expiresIn: 60 * 60
         });
 
-        var password = 'authentication/reset-password/reset';
+        let password = 'authentication/reset-password/reset';
 
         request(app)
         .post('/authentication/reset-password/' + token)
@@ -102,19 +118,12 @@ describe('Routes authentication reset-password', function() {
           newPassword: password,
           newPasswordRepeat: password
         })
-        .expect(400, {
-          code: 400,
-          message: 'User does not exist or has been deactivated'
-        }, function() {
-          models.UserAccount.destroy({
-            force: true,
-            truncate: true,
-            cascade: true
-          })
-          .then(function() {
-            done();
-            return null;
+        .expect(400, function(error, response) {
+          expect(response.body).to.equal({
+            code: 400,
+            message: 'User does not exist or has been deactivated'
           });
+          done();
         });
       });
       return null;
@@ -122,7 +131,7 @@ describe('Routes authentication reset-password', function() {
   });
 
   it('should reset the correct user\'s password if all token is valid and password pairs match', function(done) {
-    var models;
+    let models;
     require('@66pix/models').then(function(_models_) {
       models = _models_;
       return models.UserAccount.build({
@@ -139,13 +148,13 @@ describe('Routes authentication reset-password', function() {
           email: 'resetpassword@66pix.com'
         }
       }).then(function(user) {
-        var token = jwt.sign({
+        let token = jwt.sign({
           id: user.id
         }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
           expiresIn: 60 * 60
         });
 
-        var password = 'authentication/reset-password/reset';
+        let password = 'authentication/reset-password/reset';
 
         request(app)
         .post('/authentication/reset-password/' + token)
@@ -155,13 +164,6 @@ describe('Routes authentication reset-password', function() {
         })
         .expect(201, function() {
           models.UserAccount.login('resetpassword@66pix.com', password)
-          .then(function() {
-            return models.UserAccount.destroy({
-              force: true,
-              truncate: true,
-              cascade: true
-            });
-          })
           .then(function() {
             done();
             return null;

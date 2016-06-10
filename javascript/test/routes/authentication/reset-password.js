@@ -1,13 +1,29 @@
-'use strict';
+/// <reference path="../../../../typings/index.d.ts" />
+"use strict";
 var config = require('../../../config');
+var expect = require('code').expect;
 var request = require('supertest');
 var jwt = require('jsonwebtoken');
-var app;
 describe('Routes authentication reset-password', function () {
+    var app;
     beforeEach(function (done) {
         require('../../../app')
             .then(function (_app_) {
             app = _app_;
+            done();
+            return null;
+        });
+    });
+    afterEach(function (done) {
+        require('@66pix/models')
+            .then(function (models) {
+            return models.UserAccount.destroy({
+                force: true,
+                truncate: true,
+                cascade: true
+            });
+        })
+            .then(function () {
             done();
             return null;
         });
@@ -89,19 +105,12 @@ describe('Routes authentication reset-password', function () {
                     newPassword: password,
                     newPasswordRepeat: password
                 })
-                    .expect(400, {
-                    code: 400,
-                    message: 'User does not exist or has been deactivated'
-                }, function () {
-                    models.UserAccount.destroy({
-                        force: true,
-                        truncate: true,
-                        cascade: true
-                    })
-                        .then(function () {
-                        done();
-                        return null;
+                    .expect(400, function (error, response) {
+                    expect(response.body).to.equal({
+                        code: 400,
+                        message: 'User does not exist or has been deactivated'
                     });
+                    done();
                 });
             });
             return null;
@@ -139,13 +148,6 @@ describe('Routes authentication reset-password', function () {
                 })
                     .expect(201, function () {
                     models.UserAccount.login('resetpassword@66pix.com', password)
-                        .then(function () {
-                        return models.UserAccount.destroy({
-                            force: true,
-                            truncate: true,
-                            cascade: true
-                        });
-                    })
                         .then(function () {
                         done();
                         return null;

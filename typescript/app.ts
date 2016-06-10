@@ -49,7 +49,7 @@ function unauthorisedErrorHandler(error, req, res, next) {
   });
 }
 
-function catchAllErrorHandler(error, req, res) {
+function catchAllErrorHandler(error, req, res, next) {
   let code = 500;
   if (error.code) {
     code = error.code;

@@ -1,10 +1,10 @@
-'use strict';
+/// <reference path="../../typings/index.d.ts" />
 
-var request = require('supertest');
+import request = require('supertest');
 
 describe('API', function() {
 
-  var app;
+  let app;
   beforeEach(function(done) {
     require('../app').then(function(_app_) {
       app = _app_;

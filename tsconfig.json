@@ -4,8 +4,10 @@
         "typescript/index.ts",
         "typescript/raygun.ts",
         "typescript/routes/authentication/login.ts",
+        "typescript/test/app.ts",
         "typescript/test/raygun.ts",
         "typescript/test/routes/authentication/login.ts",
+        "typescript/test/routes/authentication/reset-password.ts",
         "typescript/config.js",
         "typescript/constants.js",
         "typescript/isRevoked.js",
@@ -17,7 +19,6 @@
         "typescript/test/api/users/current.js",
         "typescript/test/api/users/list.js",
         "typescript/test/api/users/put.js",
-        "typescript/test/app.js",
         "typescript/test/configure.js",
         "typescript/test/constants.js",
         "typescript/test/index.js",
@@ -25,8 +26,7 @@
         "typescript/test/loginHelper.js",
         "typescript/test/package.json.js",
         "typescript/test/routes/authentication/forgot-password.js",
-        "typescript/test/routes/authentication/logout.js",
-        "typescript/test/routes/authentication/reset-password.js"
+        "typescript/test/routes/authentication/logout.js"
     ],
     "compilerOptions": {
         "noImplicitAny": false,

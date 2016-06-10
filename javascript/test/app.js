@@ -1,4 +1,5 @@
-'use strict';
+/// <reference path="../../typings/index.d.ts" />
+"use strict";
 var request = require('supertest');
 describe('API', function () {
     var app;
