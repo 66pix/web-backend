@@ -61,3 +61,7 @@ function catchAllErrorHandler(error, req, res, next) {
     message: error.message
   });
 }
+
+process.on('unhandledRejection', function(error) {
+  raygunClient.send(error);
+});
