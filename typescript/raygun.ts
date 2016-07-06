@@ -16,7 +16,7 @@ function raygunClientFactory(raygun): any {
   ]);
 
   raygunClient.user = (req) => {
-    if (!req.user) {
+    if (!req || !req.user) {
       return null;
     }
 

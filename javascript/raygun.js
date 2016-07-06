@@ -13,7 +13,7 @@ function raygunClientFactory(raygun) {
         process.env.NODE_ENV
     ]);
     raygunClient.user = function (req) {
-        if (!req.user) {
+        if (!req || !req.user) {
             return null;
         }
         return req.user.id;
