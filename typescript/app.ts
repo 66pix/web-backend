@@ -21,6 +21,14 @@ app.use(['/api'], expressJwt({
   isRevoked: isRevoked
 }));
 
+const connectDatadog = require('connect-datadog')({
+  'response_code': true,
+  'tags': [
+    `app:${process.env}`
+  ]
+});
+app.use(connectDatadog);
+
 require('./routes/authentication/login.js')(app);
 require('./routes/authentication/logout.js')(app);
 require('./routes/authentication/forgot-password.js')(app);
