@@ -1,8 +1,6 @@
-/// <reference path="../../../../typings/index.d.ts" />
-
 import request = require('supertest');
-let expect = require('code').expect;
-let Plan = require('test-plan');
+const expect = require('code').expect;
+const Plan = require('test-plan');
 let app;
 let UserAccount;
 

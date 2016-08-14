@@ -1,10 +1,11 @@
 import {config} from '../../config';
 const debug = require('debug')('authentication/reset-password');
 import jwt = require('jsonwebtoken');
+import {initialiseModels} from '@66pix/models';
 
-module.exports = function(app) {
+export function resetPassword(app) {
 
-  require('@66pix/models')
+  initialiseModels
   .then(function(models) {
     app.post('/authentication/reset-password/:token', function(req, res) {
 

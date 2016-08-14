@@ -1,28 +1,31 @@
-/// <reference path="../typings/index.d.ts" />
 "use strict";
-let config = require('./config.js');
+const config_js_1 = require('./config.js');
 const express = require('express');
 let expressJwt = require('express-jwt');
-let bodyparser = require('body-parser');
-let debug = require('debug')('backend');
-let Promise = require('bluebird');
-let isRevoked = require('./isRevoked.js');
+const bodyparser = require('body-parser');
+const debug = require('debug')('backend');
+const Bluebird = require('bluebird');
+const isRevoked_1 = require('./isRevoked');
+const login_1 = require('./routes/authentication/login');
+const logout_1 = require('./routes/authentication/logout');
+const forgot_password_1 = require('./routes/authentication/forgot-password');
+const reset_password_1 = require('./routes/authentication/reset-password');
 const raygun_1 = require('./raygun');
 let raygun = require('raygun');
 const raygunClient = raygun_1.raygunClientFactory(raygun);
 let app = express();
 app.use(bodyparser.json());
 app.use(['/api'], expressJwt({
-    secret: config.get('TOKEN_SECRET'),
-    isRevoked: isRevoked
+    secret: config_js_1.config.get('TOKEN_SECRET'),
+    isRevoked: isRevoked_1.isRevoked
 }));
-require('./routes/authentication/login.js')(app);
-require('./routes/authentication/logout.js')(app);
-require('./routes/authentication/forgot-password.js')(app);
-require('./routes/authentication/reset-password.js')(app);
-module.exports = new Promise(function (resolve) {
+login_1.login(app);
+logout_1.logout(app);
+forgot_password_1.forgotPassword(app);
+reset_password_1.resetPassword(app);
+module.exports = new Bluebird((resolve) => {
     require('@66pix/api')(app)
-        .then(function () {
+        .then(() => {
         app.use(unauthorisedErrorHandler);
         app.use(raygunClient.expressHandler);
         app.use(catchAllErrorHandler);
@@ -50,7 +53,7 @@ function catchAllErrorHandler(error, req, res, next) {
         message: error.message
     });
 }
-process.on('unhandledRejection', function (error) {
+process.on('unhandledRejection', (error) => {
     raygunClient.send(error);
 });
 //# sourceMappingURL=app.js.map

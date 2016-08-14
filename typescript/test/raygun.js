@@ -1,8 +1,6 @@
-/// <reference path="../../typings/index.d.ts" />
 "use strict";
 const raygun_1 = require('./../raygun');
-let sinon = require('sinon');
-let expect = require('code').expect;
+const expect = require('code').expect;
 describe('raygun', function () {
     it('should set raygunClient to offline in development', function (done) {
         let called = false;

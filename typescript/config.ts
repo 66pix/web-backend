@@ -1,4 +1,4 @@
-import {convict} from 'convict';
+import convict = require('convict');
 
 const config = convict({
   NODE_ENV: {

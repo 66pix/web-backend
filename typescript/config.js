@@ -1,6 +1,6 @@
 "use strict";
-const convict_1 = require('convict');
-const config = convict_1.convict({
+const convict = require('convict');
+const config = convict({
     NODE_ENV: {
         doc: 'The applicaton environment.',
         format: [

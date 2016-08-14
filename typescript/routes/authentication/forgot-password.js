@@ -3,9 +3,10 @@ const config_1 = require('../../config');
 const debug = require('debug')('authentication/forgot-password');
 const jwt = require('jsonwebtoken');
 const path = require('path');
+const Bluebird = require('bluebird');
 const nunjucks = require('nunjucks');
 const models_1 = require('@66pix/models');
-module.exports = function (app) {
+function forgotPassword(app) {
     function responseSuccess(res) {
         res.status(200)
             .json({
@@ -13,8 +14,8 @@ module.exports = function (app) {
         });
     }
     models_1.initialiseModels
-        .then(function (models) {
-        app.post('/authentication/forgot-password', function (req, res) {
+        .then((models) => {
+        app.post('/authentication/forgot-password', (req, res) => {
             if (!req.body.email) {
                 debug('Login attempt without an email address');
                 return res.status(400)
@@ -28,15 +29,15 @@ module.exports = function (app) {
                     email: req.body.email
                 }
             })
-                .then(function (user) {
+                .then((user) => {
                 if (!user) {
                     responseSuccess(res);
-                    return Promise.reject(new Error('User not found'));
+                    return Bluebird.reject(new Error('User not found'));
                 }
                 return [
                     user,
                     models.Token.build({
-                        userId: user.id,
+                        userAccountId: user.id,
                         userAgent: req.headers['user-agent'],
                         type: 'Reset Password',
                         isRevoked: false,
@@ -46,8 +47,8 @@ module.exports = function (app) {
                         .save()
                 ];
             })
-                .spread(function (user, token) {
-                var jwtToken = jwt.sign({
+                .spread((user, token) => {
+                let jwtToken = jwt.sign({
                     id: user.id,
                     tokenId: token.id
                 }, config_1.config.get('RESET_PASSWORD_TOKEN_SECRET'), {
@@ -55,7 +56,7 @@ module.exports = function (app) {
                     issuer: '66pix Website',
                     audience: '66pix Website User'
                 });
-                var expiresOn = new Date();
+                let expiresOn = new Date();
                 token.expiresOn = expiresOn.getTime() + 1 * 60 * 60 * 1000;
                 token.updatedWithToken = token.id;
                 token.payload = jwtToken;
@@ -65,10 +66,10 @@ module.exports = function (app) {
                     token.save()
                 ];
             })
-                .spread(function (user, jwtToken) {
+                .spread((user, jwtToken) => {
                 debug('Emailing reset password link to %s', user.email);
-                var subject = '66pix Password Reset';
-                var nunjucksContent = {
+                let subject = '66pix Password Reset';
+                let nunjucksContent = {
                     subject: subject,
                     token: jwtToken,
                     baseUrl: config_1.config.get('BASE_URL')
@@ -85,11 +86,11 @@ module.exports = function (app) {
                         }
                     }
                 })
-                    .then(function () {
+                    .then(() => {
                     responseSuccess(res);
                     return null;
                 })
-                    .catch(function (error) {
+                    .catch((error) => {
                     debug(error);
                     res.status(500)
                         .json({
@@ -98,7 +99,7 @@ module.exports = function (app) {
                 });
                 return null;
             })
-                .catch(function (error) {
+                .catch((error) => {
                 if (error.message === 'User not found') {
                     return debug('User not found with email: ' + req.body.email);
                 }
@@ -106,5 +107,7 @@ module.exports = function (app) {
             });
         });
     });
-};
+}
+exports.forgotPassword = forgotPassword;
+;
 //# sourceMappingURL=forgot-password.js.map

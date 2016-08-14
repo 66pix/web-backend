@@ -1,5 +1,3 @@
-/// <reference path="../../typings/index.d.ts" />
-
 import request = require('supertest');
 
 describe('API', function() {

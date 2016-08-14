@@ -1,10 +1,7 @@
-/// <reference path="../../../../typings/index.d.ts" />
-
-let config = require('../../../config');
-let expect = require('code').expect;
+import {config} from '../../../config';
+const expect = require('code').expect;
 import request = require('supertest');
 import jwt = require('jsonwebtoken');
-
 
 describe('Routes authentication reset-password', function() {
   let app;

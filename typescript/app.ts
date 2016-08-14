@@ -1,12 +1,15 @@
-/// <reference path="../typings/index.d.ts" />
-
-let config = require('./config.js');
+import {config} from './config.js';
 import express = require('express');
 let expressJwt = require('express-jwt');
-let bodyparser = require('body-parser');
-let debug = require('debug')('backend');
-let Promise = require('bluebird');
-let isRevoked = require('./isRevoked.js');
+import bodyparser = require('body-parser');
+const debug = require('debug')('backend');
+import Bluebird = require('bluebird');
+import {isRevoked} from './isRevoked';
+
+import {login} from './routes/authentication/login';
+import {logout} from './routes/authentication/logout';
+import {forgotPassword} from './routes/authentication/forgot-password';
+import {resetPassword} from './routes/authentication/reset-password';
 
 import {raygunClientFactory} from './raygun';
 let raygun = require('raygun');
@@ -21,15 +24,14 @@ app.use(['/api'], expressJwt({
   isRevoked: isRevoked
 }));
 
-require('./routes/authentication/login.js')(app);
-require('./routes/authentication/logout.js')(app);
-require('./routes/authentication/forgot-password.js')(app);
-require('./routes/authentication/reset-password.js')(app);
+login(app);
+logout(app);
+forgotPassword(app);
+resetPassword(app);
 
-
-module.exports = new Promise(function(resolve) {
+module.exports = new Bluebird((resolve) => {
   require('@66pix/api')(app)
-  .then(function() {
+  .then(() => {
     app.use(unauthorisedErrorHandler);
     app.use(raygunClient.expressHandler);
     app.use(catchAllErrorHandler);
@@ -62,6 +64,6 @@ function catchAllErrorHandler(error, req, res, next) {
   });
 }
 
-process.on('unhandledRejection', function(error) {
+process.on('unhandledRejection', (error) => {
   raygunClient.send(error);
 });

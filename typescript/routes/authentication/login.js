@@ -1,11 +1,13 @@
-/// <reference path="../../../typings/index.d.ts" />
-let jwt = require('jsonwebtoken');
-let debug = require('debug')('authentication/login');
-let config = require('../../config.js');
-let Promise = require('bluebird');
-module.exports = function (app) {
-    require('@66pix/models').then(function (models) {
-        app.post('/authentication/login', function (req, res) {
+"use strict";
+const jwt = require('jsonwebtoken');
+const debug = require('debug')('authentication/login');
+const config_js_1 = require('../../config.js');
+const Bluebird = require('bluebird');
+const models_1 = require('@66pix/models');
+function login(app) {
+    models_1.initialiseModels
+        .then((models) => {
+        app.post('/authentication/login', (req, res) => {
             if (bodyIsValid(req.body)) {
                 return res.status(401)
                     .json({
@@ -23,7 +25,7 @@ module.exports = function (app) {
                     status: 'Pending'
                 }
             })
-                .then(function (pendingUser) {
+                .then((pendingUser) => {
                 if (pendingUser) {
                     pendingUser.password = req.body.password;
                     pendingUser.status = 'Active';
@@ -31,14 +33,14 @@ module.exports = function (app) {
                 }
                 return null;
             })
-                .then(function () {
+                .then(() => {
                 return UserAccount.login(req.body.email, req.body.password);
             })
-                .then(function (user) {
-                return Promise.props({
+                .then((user) => {
+                return Bluebird.props({
                     user: user,
                     token: Token.build({
-                        userId: user.id,
+                        userAccountId: user.id,
                         userAgent: req.headers['user-agent'],
                         type: 'Login',
                         isRevoked: false,
@@ -48,12 +50,12 @@ module.exports = function (app) {
                         .save()
                 });
             })
-                .then(function (result) {
+                .then((result) => {
                 let EXPIRES_IN_HOURS = 5;
                 let jwtToken = jwt.sign({
                     id: result.user.id,
                     tokenId: result.token.id
-                }, config.get('TOKEN_SECRET'), {
+                }, config_js_1.config.get('TOKEN_SECRET'), {
                     expiresIn: EXPIRES_IN_HOURS + 'h',
                     issuer: '66pix Website',
                     audience: '66pix Website User'
@@ -62,17 +64,17 @@ module.exports = function (app) {
                 result.token.expiresOn = expiresOn.getTime() + EXPIRES_IN_HOURS * 60 * 60 * 1000;
                 result.token.updatedWithToken = result.token.id;
                 result.token.payload = jwtToken;
-                return Promise.props({
+                return Bluebird.props({
                     jwtToken: jwtToken,
                     tokenSave: result.token.save()
                 });
             })
-                .then(function (result) {
+                .then((result) => {
                 res.json({
                     token: result.jwtToken
                 });
             })
-                .catch(function (error) {
+                .catch((error) => {
                 debug(error);
                 res.status(error.code)
                     .json({
@@ -82,7 +84,9 @@ module.exports = function (app) {
             });
         });
     });
-};
+}
+exports.login = login;
+;
 function bodyIsValid(body) {
     return !body.email || !body.password;
 }

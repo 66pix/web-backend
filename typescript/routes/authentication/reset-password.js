@@ -2,8 +2,9 @@
 const config_1 = require('../../config');
 const debug = require('debug')('authentication/reset-password');
 const jwt = require('jsonwebtoken');
-module.exports = function (app) {
-    require('@66pix/models')
+const models_1 = require('@66pix/models');
+function resetPassword(app) {
+    models_1.initialiseModels
         .then(function (models) {
         app.post('/authentication/reset-password/:token', function (req, res) {
             function sendError(message) {
@@ -43,5 +44,7 @@ module.exports = function (app) {
         });
         return null;
     });
-};
+}
+exports.resetPassword = resetPassword;
+;
 //# sourceMappingURL=reset-password.js.map

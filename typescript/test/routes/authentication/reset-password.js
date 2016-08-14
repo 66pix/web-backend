@@ -1,7 +1,6 @@
-/// <reference path="../../../../typings/index.d.ts" />
 "use strict";
-let config = require('../../../config');
-let expect = require('code').expect;
+const config_1 = require('../../../config');
+const expect = require('code').expect;
 const request = require('supertest');
 const jwt = require('jsonwebtoken');
 describe('Routes authentication reset-password', function () {
@@ -45,7 +44,7 @@ describe('Routes authentication reset-password', function () {
     it('should reject requests with a valid token but missing password pair', function (done) {
         let token = jwt.sign({
             id: 1
-        }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
+        }, config_1.config.get('RESET_PASSWORD_TOKEN_SECRET'), {
             expiresIn: '1h'
         });
         request(app)
@@ -59,7 +58,7 @@ describe('Routes authentication reset-password', function () {
     it('should reject requests with a password pair that does not match', function (done) {
         let token = jwt.sign({
             id: 1
-        }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
+        }, config_1.config.get('RESET_PASSWORD_TOKEN_SECRET'), {
             expiresIn: '1h'
         });
         request(app)
@@ -95,7 +94,7 @@ describe('Routes authentication reset-password', function () {
             }).then(function (user) {
                 let token = jwt.sign({
                     id: user.id
-                }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
+                }, config_1.config.get('RESET_PASSWORD_TOKEN_SECRET'), {
                     expiresIn: 60 * 60
                 });
                 let password = 'authentication/reset-password/reset';
@@ -136,7 +135,7 @@ describe('Routes authentication reset-password', function () {
             }).then(function (user) {
                 let token = jwt.sign({
                     id: user.id
-                }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
+                }, config_1.config.get('RESET_PASSWORD_TOKEN_SECRET'), {
                     expiresIn: 60 * 60
                 });
                 let password = 'authentication/reset-password/reset';

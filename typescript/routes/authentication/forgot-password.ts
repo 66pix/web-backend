@@ -6,7 +6,7 @@ import Bluebird = require('bluebird');
 import nunjucks = require('nunjucks');
 import {initialiseModels} from '@66pix/models';
 
-module.exports = function(app) {
+export function forgotPassword(app) {
 
   function responseSuccess(res) {
     res.status(200)
@@ -16,8 +16,8 @@ module.exports = function(app) {
   }
 
   initialiseModels
-  .then(function(models) {
-    app.post('/authentication/forgot-password', function(req, res) {
+  .then((models) => {
+    app.post('/authentication/forgot-password', (req, res) => {
       if (!req.body.email) {
         debug('Login attempt without an email address');
         return res.status(400)
@@ -31,7 +31,7 @@ module.exports = function(app) {
           email: req.body.email
         }
       })
-      .then(function(user) {
+      .then((user) => {
         if (!user) {
           responseSuccess(res);
           return Bluebird.reject(new Error('User not found'));
@@ -39,7 +39,7 @@ module.exports = function(app) {
         return [
           user,
           models.Token.build({
-            userId: user.id,
+            userAccountId: user.id,
             userAgent: req.headers['user-agent'],
             type: 'Reset Password',
             isRevoked: false,
@@ -49,8 +49,8 @@ module.exports = function(app) {
           .save()
         ];
       })
-      .spread(function(user, token) {
-        var jwtToken = jwt.sign({
+      .spread((user, token) => {
+        let jwtToken = jwt.sign({
           id: user.id,
           tokenId: token.id
         }, config.get('RESET_PASSWORD_TOKEN_SECRET'), {
@@ -59,7 +59,7 @@ module.exports = function(app) {
           audience: '66pix Website User'
         });
 
-        var expiresOn = new Date();
+        let expiresOn = new Date();
         token.expiresOn = expiresOn.getTime() + 1 * 60 * 60 * 1000;
         token.updatedWithToken = token.id;
 
@@ -70,10 +70,10 @@ module.exports = function(app) {
           token.save()
         ];
       })
-      .spread(function(user, jwtToken) {
+      .spread((user, jwtToken) => {
         debug('Emailing reset password link to %s', user.email);
-        var subject = '66pix Password Reset';
-        var nunjucksContent = {
+        let subject = '66pix Password Reset';
+        let nunjucksContent = {
           subject: subject,
           token: jwtToken,
           baseUrl: config.get('BASE_URL')
@@ -91,11 +91,11 @@ module.exports = function(app) {
             }
           }
         })
-        .then(function() {
+        .then(() => {
           responseSuccess(res);
           return null;
         })
-        .catch(function(error) {
+        .catch((error) => {
           debug(error);
           res.status(500)
           .json({
@@ -104,7 +104,7 @@ module.exports = function(app) {
         });
         return null;
       })
-      .catch(function(error) {
+      .catch((error) => {
         if (error.message === 'User not found') {
           return debug('User not found with email: ' + req.body.email);
         }

@@ -1,8 +1,6 @@
-/// <reference path="../../typings/index.d.ts" />
-
 import {raygunClientFactory} from './../raygun';
-let sinon = require('sinon');
-let expect = require('code').expect;
+import sinon = require('sinon');
+const expect = require('code').expect;
 
 describe('raygun', function() {
 
