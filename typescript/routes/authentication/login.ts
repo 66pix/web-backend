@@ -37,9 +37,7 @@ export function login(app) {
 
         return null;
       })
-      .then(() => {
-        return UserAccount.login(req.body.email, req.body.password);
-      })
+      .then(() => UserAccount.login(req.body.email, req.body.password))
       .then((user) => {
         return Bluebird.props({
           user: user,
