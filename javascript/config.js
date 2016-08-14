@@ -1,6 +1,6 @@
-'use strict';
-var convict = require('convict');
-var config = convict({
+"use strict";
+const convict_1 = require('convict');
+const config = convict_1.convict({
     NODE_ENV: {
         doc: 'The applicaton environment.',
         format: [
@@ -43,8 +43,6 @@ var config = convict({
         env: 'BASE_URL'
     }
 });
-config.validate({
-    strict: true
-});
+config.validate();
 module.exports = config;
 //# sourceMappingURL=config.js.map

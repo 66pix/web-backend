@@ -1,9 +1,7 @@
-/// <reference path="../typings/index.d.ts" />
-
 import http = require('http');
 import debugModule = require('debug');
-let debug = debugModule('66pix-backend:index');
-let config = require('./config');
+const debug = debugModule('66pix-backend:index');
+import {config} from './config';
 
 import {raygunClientFactory} from './raygun';
 let raygun = require('raygun');
