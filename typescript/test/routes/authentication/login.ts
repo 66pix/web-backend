@@ -1,35 +1,39 @@
 import request = require('supertest');
 const expect = require('code').expect;
 const Plan = require('test-plan');
-let app;
-let UserAccount;
+import {initialiseModels} from '@66pix/models';
 
 describe('Routes authentication login', function() {
+  let app;
+  let UserAccount;
 
   beforeEach(function(done) {
-    require('../../loginHelper')()
+    require('../../loginHelper').loginHelper()
     .then(function(result) {
       app = result.app;
-      return require('@66pix/models');
+      return initialiseModels;
     })
     .then(function(models) {
       UserAccount = models.UserAccount;
       done();
+    })
+    .catch(function(error) {
+      console.log(JSON.stringify(error, null, 2));
+      done(error);
     });
   });
 
   afterEach(function(done) {
-    return UserAccount.destroy({
-      force: true,
+    UserAccount.destroy({
       truncate: true,
       cascade: true
     })
     .then(function() {
       done();
-      return null;
     })
     .catch(function(error) {
-      throw error;
+      console.log(JSON.stringify(error, null, 2));
+      done(error);
     });
   });
 

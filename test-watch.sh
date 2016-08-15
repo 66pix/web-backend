@@ -71,7 +71,7 @@ export RDS_DB_NAME=$RDS_DB_NAME
 
 export TOKEN_SECRET=$TOKEN_SECRET
 export RESET_PASSWORD_TOKEN_SECRET=$RESET_PASSWORD_TOKEN_SECRET
-export PRODUCT_CODE_SALT="PRODUCT_CODE_SALT"
+export CONTAINER_CODE_SALT="CONTAINER_CODE_SALT"
 export BASE_URL="BASE_URL"
 export DEBUG=$DEBUG
 
@@ -102,7 +102,31 @@ echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE $RD
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
 
-mkdir -p coverage
+COVERAGE_DIR=coverage/raw
+REMAP_DIR=coverage/typescript
 
-nodemon -e js,ts --watch typescript \
-  -x 'npm run build && node_modules/.bin/istanbul cover --report html node_modules/.bin/_mocha -- --timeout 10000 --recursive --reporter spec javascript/test/configure.js javascript/test/ && node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt && node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95'
+mkdir -p $COVERAGE_DIR
+mkdir -p $REMAP_DIR
+
+echo "Running tests"
+nodemon -e ts -i d.ts --watch typescript \
+  -x "npm run build && node_modules/.bin/istanbul cover --dir $COVERAGE_DIR node_modules/.bin/_mocha -- --timeout 15000 --recursive --reporter spec typescript/test/configure.js typescript/test/"
+
+echo ""
+echo "Remapping coverage reports for typescript"
+node_modules/.bin/remap-istanbul -i $COVERAGE_DIR/coverage.json -o $REMAP_DIR -t html
+node_modules/.bin/remap-istanbul -i $COVERAGE_DIR/coverage.json -o $REMAP_DIR/coverage.json -t json
+
+echo ""
+echo "Coverage report located at $REMAP_DIR/index.html"
+
+COVERAGE_AVERAGE=80
+echo ""
+echo "Enforcing coverage average of $COVERAGE_AVERAGE for $REMAP_DIR/coverage.json"
+echo ""
+node_modules/.bin/istanbul check-coverage \
+  --statements $COVERAGE_AVERAGE \
+  --functions $COVERAGE_AVERAGE \
+  --branches $COVERAGE_AVERAGE \
+  --lines $COVERAGE_AVERAGE \
+  $REMAP_DIR/coverage.json

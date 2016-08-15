@@ -4,7 +4,6 @@ import jwt = require('jsonwebtoken');
 import {initialiseModels} from '@66pix/models';
 
 export function resetPassword(app) {
-
   initialiseModels
   .then(function(models) {
     app.post('/authentication/reset-password/:token', function(req, res) {
@@ -48,6 +47,5 @@ export function resetPassword(app) {
         });
       });
     });
-    return null;
   });
 };

@@ -1,12 +1,10 @@
-'use strict';
-
-var expect = require('code').expect;
-var fs = require('fs');
-var path = require('path');
+const expect = require('code').expect;
+import fs = require('fs');
+import path = require('path');
 
 describe('Package.json', function() {
 
-  var packageJson;
+  let packageJson;
   beforeEach(function(done) {
     fs.readFile(path.join(__dirname, '../../package.json'), 'utf8', function(error, file) {
       if (error) {

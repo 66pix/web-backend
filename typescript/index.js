@@ -3,6 +3,7 @@ const http = require('http');
 const debugModule = require('debug');
 const debug = debugModule('66pix-backend:index');
 const config_1 = require('./config');
+const app_1 = require('./app');
 const raygun_1 = require('./raygun');
 let raygun = require('raygun');
 const raygunClient = raygun_1.raygunClientFactory(raygun);
@@ -15,8 +16,7 @@ d.on('error', (error) => {
         process.exit();
     });
 });
-module.exports = require('./app')
-    .then((app) => {
+exports.getServer = app_1.getApp.then((app) => {
     return http.createServer(app)
         .listen(config_1.config.get('PORT'));
 });

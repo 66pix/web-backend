@@ -3,36 +3,44 @@ const config_1 = require('../../../config');
 const expect = require('code').expect;
 const request = require('supertest');
 const jwt = require('jsonwebtoken');
-describe('Routes authentication reset-password', function () {
+const app_1 = require('../../../app');
+const models_1 = require('@66pix/models');
+describe('Routes authentication reset-password', () => {
     let app;
-    beforeEach(function (done) {
-        require('../../../app')
-            .then(function (_app_) {
+    beforeEach((done) => {
+        app_1.getApp
+            .then((_app_) => {
             app = _app_;
             done();
-            return null;
+        })
+            .catch((error) => {
+            console.log(JSON.stringify(error, null, 2));
+            done(error);
         });
     });
-    afterEach(function (done) {
-        require('@66pix/models')
-            .then(function (models) {
+    afterEach((done) => {
+        models_1.initialiseModels
+            .then((models) => {
             return models.UserAccount.destroy({
                 force: true,
                 truncate: true,
                 cascade: true
             });
         })
-            .then(function () {
+            .then(() => {
             done();
-            return null;
+        })
+            .catch((error) => {
+            console.log(JSON.stringify(error, null, 2));
+            done(error);
         });
     });
-    it('should reject requests missing a token', function (done) {
+    it('should reject requests missing a token', (done) => {
         request(app)
             .post('/authentication/reset-password')
             .expect(404, done);
     });
-    it('should reject requests with an invalid token', function (done) {
+    it('should reject requests with an invalid token', (done) => {
         request(app)
             .post('/authentication/reset-password/invalid')
             .expect(400)
@@ -41,7 +49,7 @@ describe('Routes authentication reset-password', function () {
             message: 'Password reset token is invalid or expired, please perform the "forgot password" process again'
         }, done);
     });
-    it('should reject requests with a valid token but missing password pair', function (done) {
+    it('should reject requests with a valid token but missing password pair', (done) => {
         let token = jwt.sign({
             id: 1
         }, config_1.config.get('RESET_PASSWORD_TOKEN_SECRET'), {
@@ -55,7 +63,7 @@ describe('Routes authentication reset-password', function () {
             message: 'Please provide a new password'
         }, done);
     });
-    it('should reject requests with a password pair that does not match', function (done) {
+    it('should reject requests with a password pair that does not match', (done) => {
         let token = jwt.sign({
             id: 1
         }, config_1.config.get('RESET_PASSWORD_TOKEN_SECRET'), {
@@ -73,10 +81,10 @@ describe('Routes authentication reset-password', function () {
             message: 'You must verify your new password by typing it twice'
         }, done);
     });
-    it('should reject requests for users that are not active', function (done) {
+    it('should reject requests for users that are not active', (done) => {
         let models;
-        require('@66pix/models')
-            .then(function (_models_) {
+        models_1.initialiseModels
+            .then((_models_) => {
             models = _models_;
             return models.UserAccount.build({
                 email: 'inactive@66pix.com',
@@ -86,12 +94,12 @@ describe('Routes authentication reset-password', function () {
             })
                 .save();
         })
-            .then(function () {
+            .then(() => {
             models.UserAccount.findOne({
                 where: {
                     email: 'inactive@66pix.com'
                 }
-            }).then(function (user) {
+            }).then((user) => {
                 let token = jwt.sign({
                     id: user.id
                 }, config_1.config.get('RESET_PASSWORD_TOKEN_SECRET'), {
@@ -104,7 +112,7 @@ describe('Routes authentication reset-password', function () {
                     newPassword: password,
                     newPasswordRepeat: password
                 })
-                    .expect(400, function (error, response) {
+                    .expect(400, (error, response) => {
                     expect(response.body).to.equal({
                         code: 400,
                         message: 'User does not exist or has been deactivated'
@@ -115,9 +123,10 @@ describe('Routes authentication reset-password', function () {
             return null;
         });
     });
-    it('should reset the correct user\'s password if all token is valid and password pairs match', function (done) {
+    it('should reset the correct user\'s password if all token is valid and password pairs match', (done) => {
         let models;
-        require('@66pix/models').then(function (_models_) {
+        models_1.initialiseModels
+            .then((_models_) => {
             models = _models_;
             return models.UserAccount.build({
                 email: 'resetpassword@66pix.com',
@@ -127,12 +136,12 @@ describe('Routes authentication reset-password', function () {
             })
                 .save();
         })
-            .then(function () {
+            .then(() => {
             models.UserAccount.findOne({
                 where: {
                     email: 'resetpassword@66pix.com'
                 }
-            }).then(function (user) {
+            }).then((user) => {
                 let token = jwt.sign({
                     id: user.id
                 }, config_1.config.get('RESET_PASSWORD_TOKEN_SECRET'), {
@@ -145,13 +154,12 @@ describe('Routes authentication reset-password', function () {
                     newPassword: password,
                     newPasswordRepeat: password
                 })
-                    .expect(201, function () {
+                    .expect(201, () => {
                     models.UserAccount.login('resetpassword@66pix.com', password)
-                        .then(function () {
+                        .then(() => {
                         done();
-                        return null;
                     })
-                        .catch(function (error) {
+                        .catch((error) => {
                         throw error;
                     });
                 });

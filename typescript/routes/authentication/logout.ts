@@ -1,4 +1,4 @@
-import {config} from '../../config.js';
+import {config} from '../../config';
 import jwt = require('jsonwebtoken');
 const debug = require('debug')('authentication/logout');
 import {initialiseModels} from '@66pix/models';

@@ -1,19 +1,24 @@
-'use strict';
-var expect = require('code').expect;
-var request = require('supertest');
+"use strict";
+const expect = require('code').expect;
+const request = require('supertest');
+const models_1 = require('@66pix/models');
 describe('Routes Users GET', function () {
-    var app;
-    var token;
+    let app;
+    let token;
     beforeEach(function (done) {
-        require('../../loginHelper')()
+        require('../../loginHelper').loginHelper()
             .then(function (result) {
             app = result.app;
             token = result.token;
             done();
+        })
+            .catch((error) => {
+            console.log(JSON.stringify(error, null, 2));
+            done(error);
         });
     });
     afterEach(function (done) {
-        require('@66pix/models')
+        models_1.initialiseModels
             .then(function (models) {
             return models.UserAccount.destroy({
                 truncate: true,
@@ -22,7 +27,10 @@ describe('Routes Users GET', function () {
         })
             .then(function () {
             done();
-            return null;
+        })
+            .catch((error) => {
+            console.log(JSON.stringify(error, null, 2));
+            done(error);
         });
     });
     it('should respond with an array', function (done) {

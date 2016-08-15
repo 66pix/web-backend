@@ -1,12 +1,17 @@
 import request = require('supertest');
+import {getApp} from '../app';
 
 describe('API', function() {
 
   let app;
   beforeEach(function(done) {
-    require('../app').then(function(_app_) {
+    getApp.then(function(_app_) {
       app = _app_;
       done();
+    })
+    .catch((error) => {
+      console.log(JSON.stringify(error, null, 2));
+      done(error);
     });
   });
 

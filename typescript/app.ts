@@ -1,10 +1,10 @@
 import {config} from './config.js';
-import express = require('express');
-let expressJwt = require('express-jwt');
+import * as express from 'express';
+import expressJwt = require('express-jwt');
 import bodyparser = require('body-parser');
 const debug = require('debug')('backend');
-import Bluebird = require('bluebird');
 import {isRevoked} from './isRevoked';
+import {api} from '@66pix/api';
 
 import {login} from './routes/authentication/login';
 import {logout} from './routes/authentication/logout';
@@ -29,14 +29,15 @@ logout(app);
 forgotPassword(app);
 resetPassword(app);
 
-module.exports = new Bluebird((resolve) => {
-  require('@66pix/api')(app)
+export const getApp = new Promise((resolve, reject) => {
+  api(app)
   .then(() => {
     app.use(unauthorisedErrorHandler);
     app.use(raygunClient.expressHandler);
     app.use(catchAllErrorHandler);
     resolve(app);
-  });
+  })
+  .catch(reject);
 });
 
 function unauthorisedErrorHandler(error, req, res, next) {

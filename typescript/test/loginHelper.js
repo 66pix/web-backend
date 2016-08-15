@@ -1,36 +1,34 @@
 "use strict";
-const Bluebird = require('bluebird');
 const request = require('supertest');
 const R = require('ramda');
 const models_1 = require('@66pix/models');
-module.exports = function () {
-    return new Bluebird(function (resolve) {
+const app_1 = require('../app');
+exports.loginHelper = () => {
+    return new Promise((resolve, reject) => {
         let result = {};
         models_1.initialiseModels
-            .then(function (models) {
+            .then((models) => {
             result.models = models;
-            return result.models.UserAccount.findOrCreate({
-                where: {
-                    email: 'active@66pix.com',
-                    name: 'this is a name',
-                    updatedWithToken: -1,
-                    password: '12345',
-                    status: 'Active'
-                },
-                defaults: {
-                    email: 'active@66pix.com',
-                    name: 'this is a name',
-                    updatedWithToken: -1,
-                    password: '12345',
-                    status: 'Active'
-                }
+            return models.UserAccount.destroy({
+                truncate: true,
+                cascade: true
             });
         })
-            .then(function (user) {
-            result.user = R.head(user);
-            return require('../app');
+            .then(() => {
+            return result.models.UserAccount.build({
+                email: 'active@66pix.com',
+                name: 'this is a name',
+                status: 'Active',
+                password: '12345',
+                updatedWithToken: -1
+            })
+                .save();
         })
-            .then(function (app) {
+            .then((user) => {
+            result.user = user;
+            return app_1.getApp;
+        })
+            .then((app) => {
             result.app = app;
             request(app)
                 .post('/authentication/login')
@@ -38,17 +36,14 @@ module.exports = function () {
                 email: 'active@66pix.com',
                 password: '12345'
             })
-                .expect(function (response) {
+                .expect((response) => {
                 result.token = 'Bearer ' + response.body.token;
             })
-                .expect(200, function () {
+                .expect(200, () => {
                 resolve(result);
             });
-            return null;
         })
-            .catch(function (error) {
-            throw error;
-        });
+            .catch(reject);
     });
 };
 //# sourceMappingURL=loginHelper.js.map

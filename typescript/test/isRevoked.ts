@@ -1,24 +1,23 @@
-'use strict';
+const expect = require('code').expect;
+import {isRevoked} from '../isRevoked';
+import sinon = require('sinon');
+import {initialiseModels} from '@66pix/models';
 
-var expect = require('code').expect;
-var isRevoked = require('../isRevoked');
-var sinon = require('sinon');
-var spy;
+describe('isRevoked', () => {
 
-describe('isRevoked', function() {
-
-  beforeEach(function(done) {
+  let spy;
+  beforeEach((done) => {
     spy = sinon.spy();
     done();
   });
 
-  it('should call done with true if the argument is null', function(done) {
+  it('should call done with true if the argument is null', (done) => {
     isRevoked(null, null, spy);
     expect(spy.calledWith(null, true)).to.equal(true);
     done();
   });
 
-  it('should call done with true if the iss is not correct', function(done) {
+  it('should call done with true if the iss is not correct', (done) => {
     isRevoked(null, {
       iss: 'not correct'
     }, spy);
@@ -26,7 +25,7 @@ describe('isRevoked', function() {
     done();
   });
 
-  it('should call done with true if the aud is not correct', function(done) {
+  it('should call done with true if the aud is not correct', (done) => {
     isRevoked(null, {
       iss: '66pix Website',
       aud: 'not correct'
@@ -35,14 +34,14 @@ describe('isRevoked', function() {
     done();
   });
 
-  it('should call done with true if the token is not present in the database', function(done) {
-    var tokenId;
-    var models;
-    require('@66pix/models')
-    .then(function(_models_) {
+  it('should call done with true if the token is not present in the database', (done) => {
+    let tokenId;
+    let models;
+    initialiseModels
+    .then((_models_) => {
       models = _models_;
       return models.Token.build({
-        userId: 1,
+        userAccountId: 1,
         userAgent: 'user agent',
         type: 'Login',
         isRevoked: true,
@@ -50,19 +49,19 @@ describe('isRevoked', function() {
         updatedWithToken: -1
       }).save();
     })
-    .then(function(token) {
+    .then((token) => {
       tokenId = token.id;
       return models.Token.destroy({
         force: true,
         truncate: true
       });
     })
-    .then(function() {
+    .then(() => {
       isRevoked(null, {
         iss: '66pix Website',
         aud: '66pix Website User',
         tokenId: tokenId
-      }, function(error, revoked) {
+      }, (error, revoked) => {
         if (error) {
           throw error;
         }
@@ -73,11 +72,11 @@ describe('isRevoked', function() {
     });
   });
 
-  it('should call done with true if the matching token record isRevoked', function(done) {
-    require('@66pix/models')
-    .then(function(models) {
+  it('should call done with true if the matching token record isRevoked', (done) => {
+    initialiseModels
+    .then((models) => {
       return models.Token.build({
-        userId: 1,
+        userAccountId: 1,
         userAgent: 'user agent',
         type: 'Login',
         isRevoked: true,
@@ -85,12 +84,12 @@ describe('isRevoked', function() {
         updatedWithToken: -1
       }).save();
     })
-    .then(function(token) {
+    .then((token) => {
       isRevoked(null, {
         iss: '66pix Website',
         aud: '66pix Website User',
         tokenId: token.id
-      }, function(error, revoked) {
+      }, (error, revoked) => {
         if (error) {
           throw error;
         }
@@ -101,11 +100,11 @@ describe('isRevoked', function() {
     });
   });
 
-  it('should call done with false if the matching token record is not revoked', function(done) {
-    require('@66pix/models')
-    .then(function(models) {
+  it('should call done with false if the matching token record is not revoked', (done) => {
+    initialiseModels
+    .then((models) => {
       return models.Token.build({
-        userId: 1,
+        userAccountId: 1,
         userAgent: 'user agent',
         type: 'Login',
         isRevoked: false,
@@ -113,12 +112,12 @@ describe('isRevoked', function() {
         updatedWithToken: -1
       }).save();
     })
-    .then(function(token) {
+    .then((token) => {
       isRevoked(null, {
         iss: '66pix Website',
         aud: '66pix Website User',
         tokenId: token.id
-      }, function(error, revoked) {
+      }, (error, revoked) => {
         if (error) {
           throw error;
         }

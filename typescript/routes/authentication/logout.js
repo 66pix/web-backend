@@ -1,5 +1,5 @@
 "use strict";
-const config_js_1 = require('../../config.js');
+const config_1 = require('../../config');
 const jwt = require('jsonwebtoken');
 const debug = require('debug')('authentication/logout');
 const models_1 = require('@66pix/models');
@@ -7,7 +7,7 @@ function logout(app) {
     models_1.initialiseModels
         .then((models) => {
         app.post('/authentication/logout', (req, res, next) => {
-            jwt.verify(req.headers.authorization.replace('Bearer ', ''), config_js_1.config.get('TOKEN_SECRET'), (error, jwtToken) => {
+            jwt.verify(req.headers.authorization.replace('Bearer ', ''), config_1.config.get('TOKEN_SECRET'), (error, jwtToken) => {
                 if (error) {
                     return handleError(error, res, next);
                 }

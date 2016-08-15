@@ -42,7 +42,6 @@ function resetPassword(app) {
                 });
             });
         });
-        return null;
     });
 }
 exports.resetPassword = resetPassword;

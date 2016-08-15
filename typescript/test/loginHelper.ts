@@ -1,36 +1,34 @@
-import Bluebird = require('bluebird');
 import request = require('supertest');
 const R = require('ramda');
 import {initialiseModels} from '@66pix/models';
+import {getApp} from '../app';
 
-module.exports = function() {
-  return new Bluebird(function(resolve) {
+export const loginHelper = () => {
+  return new Promise((resolve, reject) => {
     let result: any = {};
     initialiseModels
-    .then(function(models) {
+    .then((models) => {
       result.models = models;
-      return result.models.UserAccount.findOrCreate({
-        where: {
-          email: 'active@66pix.com',
-          name: 'this is a name',
-          updatedWithToken: -1,
-          password: '12345',
-          status: 'Active'
-        },
-        defaults: {
-          email: 'active@66pix.com',
-          name: 'this is a name',
-          updatedWithToken: -1,
-          password: '12345',
-          status: 'Active'
-        }
+      return models.UserAccount.destroy({
+        truncate: true,
+        cascade: true
       });
     })
-    .then(function(user) {
-      result.user = R.head(user);
-      return require('../app');
+    .then(() => {
+      return result.models.UserAccount.build({
+        email: 'active@66pix.com',
+        name: 'this is a name',
+        status: 'Active',
+        password: '12345',
+        updatedWithToken: -1
+      })
+      .save();
     })
-    .then(function(app) {
+    .then((user) => {
+      result.user = user;
+      return getApp;
+    })
+    .then((app) => {
       result.app = app;
       request(app)
       .post('/authentication/login')
@@ -38,17 +36,13 @@ module.exports = function() {
         email: 'active@66pix.com',
         password: '12345'
       })
-      .expect(function(response) {
+      .expect((response) => {
         result.token = 'Bearer ' + response.body.token;
       })
-      .expect(200, function() {
+      .expect(200, () => {
         resolve(result);
       });
-
-      return null;
     })
-    .catch(function(error) {
-      throw error;
-    });
+    .catch(reject);
   });
 };

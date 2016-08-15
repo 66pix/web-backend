@@ -1,11 +1,16 @@
 "use strict";
 const request = require('supertest');
+const app_1 = require('../app');
 describe('API', function () {
     let app;
     beforeEach(function (done) {
-        require('../app').then(function (_app_) {
+        app_1.getApp.then(function (_app_) {
             app = _app_;
             done();
+        })
+            .catch((error) => {
+            console.log(JSON.stringify(error, null, 2));
+            done(error);
         });
     });
     it('should protect all /api routes', function (done) {

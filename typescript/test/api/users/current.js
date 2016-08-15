@@ -1,41 +1,46 @@
-'use strict';
-var expect = require('code').expect;
-var request = require('supertest');
-describe('Routes Users current', function () {
-    var app;
-    var token;
-    var user;
-    beforeEach(function (done) {
-        require('../../loginHelper')()
-            .then(function (result) {
+"use strict";
+const expect = require('code').expect;
+const request = require('supertest');
+const models_1 = require('@66pix/models');
+describe('Routes Users current', () => {
+    let app;
+    let token;
+    let user;
+    beforeEach((done) => {
+        require('../../loginHelper').loginHelper()
+            .then((result) => {
             user = result.user;
             app = result.app;
             token = result.token;
             done();
+        })
+            .catch((error) => {
+            console.log(JSON.stringify(error, null, 2));
+            done(error);
         });
     });
-    afterEach(function (done) {
-        require('@66pix/models')
-            .then(function (models) {
+    afterEach((done) => {
+        models_1.initialiseModels
+            .then((models) => {
             return models.UserAccount.destroy({
-                force: true,
                 truncate: true,
                 cascade: true
             });
         })
-            .then(function () {
+            .then(() => {
             done();
             return null;
         })
-            .catch(function (error) {
-            throw error;
+            .catch((error) => {
+            console.log(JSON.stringify(error, null, 2));
+            done(error);
         });
     });
-    it('should respond to current with the current user if authorised', function (done) {
+    it('should respond to current with the current user if authorised', (done) => {
         request(app)
             .get('/api/users/current')
             .set('authorization', token)
-            .expect(function (response) {
+            .expect((response) => {
             expect(response.body).to.contain({
                 email: 'active@66pix.com',
                 name: 'this is a name',

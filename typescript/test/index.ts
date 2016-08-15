@@ -1,11 +1,10 @@
-'use strict';
+const expect = require('code').expect;
+import {getServer} from '../index';
 
-var expect = require('code').expect;
+describe('index', () => {
 
-describe('index', function() {
-
-  it('should create a valid server', function(done) {
-    require('../index').then(function(server) {
+  it('should create a valid server', (done) => {
+    getServer.then((server) => {
       expect(server).to.not.be.undefined();
       expect(server.close).to.not.be.undefined();
       server.close();

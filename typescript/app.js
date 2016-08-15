@@ -1,11 +1,11 @@
 "use strict";
 const config_js_1 = require('./config.js');
 const express = require('express');
-let expressJwt = require('express-jwt');
+const expressJwt = require('express-jwt');
 const bodyparser = require('body-parser');
 const debug = require('debug')('backend');
-const Bluebird = require('bluebird');
 const isRevoked_1 = require('./isRevoked');
+const api_1 = require('@66pix/api');
 const login_1 = require('./routes/authentication/login');
 const logout_1 = require('./routes/authentication/logout');
 const forgot_password_1 = require('./routes/authentication/forgot-password');
@@ -23,14 +23,15 @@ login_1.login(app);
 logout_1.logout(app);
 forgot_password_1.forgotPassword(app);
 reset_password_1.resetPassword(app);
-module.exports = new Bluebird((resolve) => {
-    require('@66pix/api')(app)
+exports.getApp = new Promise((resolve, reject) => {
+    api_1.api(app)
         .then(() => {
         app.use(unauthorisedErrorHandler);
         app.use(raygunClient.expressHandler);
         app.use(catchAllErrorHandler);
         resolve(app);
-    });
+    })
+        .catch(reject);
 });
 function unauthorisedErrorHandler(error, req, res, next) {
     if (error.name !== 'UnauthorizedError') {

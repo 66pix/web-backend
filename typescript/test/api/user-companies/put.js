@@ -1,17 +1,17 @@
-'use strict';
-var expect = require('code').expect;
-var request = require('supertest');
-var Promise = require('bluebird');
-describe('Routes User Companies put', function () {
-    var app;
-    var token;
-    var user;
-    var secondUser;
-    var Company;
-    var UserAccount;
-    beforeEach(function (done) {
-        require('../../loginHelper')()
-            .then(function (result) {
+"use strict";
+const expect = require('code').expect;
+const request = require('supertest');
+const Bluebird = require('bluebird');
+describe('Routes User Companies put', () => {
+    let app;
+    let token;
+    let user;
+    let secondUser;
+    let Company;
+    let UserAccount;
+    beforeEach((done) => {
+        require('../../loginHelper').loginHelper()
+            .then((result) => {
             Company = result.models.Company;
             user = result.user;
             app = result.app;
@@ -25,29 +25,35 @@ describe('Routes User Companies put', function () {
             })
                 .save();
         })
-            .then(function (_secondUser_) {
+            .then((_secondUser_) => {
             secondUser = _secondUser_;
             done();
-            return null;
+        })
+            .catch((error) => {
+            console.log(JSON.stringify(error, null, 2));
+            done(error);
         });
     });
-    afterEach(function (done) {
-        Promise.all([
+    afterEach((done) => {
+        Bluebird.all([
             UserAccount,
             Company
-        ].map(function (model) {
+        ].map((model) => {
             return model.destroy({
                 truncate: true,
                 cascade: true
             });
         }))
-            .then(function () {
+            .then(() => {
             done();
-            return null;
+        })
+            .catch((error) => {
+            console.log(JSON.stringify(error, null, 2));
+            done(error);
         });
     });
-    it('should allow updating the responsibility of a userCompany', function (done) {
-        var company;
+    it('should allow updating the responsibility of a userCompany', (done) => {
+        let company;
         Company.build({
             name: 'company name',
             updatedWithToken: -1,
@@ -55,7 +61,7 @@ describe('Routes User Companies put', function () {
             status: 'Active'
         })
             .save()
-            .then(function (_company_) {
+            .then((_company_) => {
             company = _company_;
             return user.addCompany(company, {
                 responsibility: 'Owner',
@@ -63,23 +69,23 @@ describe('Routes User Companies put', function () {
                 isSelected: true
             });
         })
-            .then(function () {
+            .then(() => {
             return secondUser.addCompany(company, {
                 responsibility: 'Owner',
                 updatedWithToken: -1,
                 isSelected: true
             });
         })
-            .then(function () {
+            .then(() => {
             return user.reload({
                 include: {
                     all: true
                 }
             });
         })
-            .then(function (_user_) {
+            .then((_user_) => {
             user = _user_;
-            var userCompany = user.get('companies')[0].user_account_company;
+            let userCompany = user.get('companies')[0].user_account_company;
             request(app)
                 .put('/api/user-companies/' + userCompany.id)
                 .set('authorization', token)
@@ -88,8 +94,8 @@ describe('Routes User Companies put', function () {
                 companyId: userCompany.companyId,
                 responsibility: 'Editor'
             })
-                .expect(function (response) {
-                var updatedUserCompany = response.body;
+                .expect((response) => {
+                let updatedUserCompany = response.body;
                 expect(updatedUserCompany.responsibility).to.equal('Editor');
             })
                 .expect(200, done);

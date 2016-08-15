@@ -2,6 +2,7 @@ import http = require('http');
 import debugModule = require('debug');
 const debug = debugModule('66pix-backend:index');
 import {config} from './config';
+import {getApp} from './app';
 
 import {raygunClientFactory} from './raygun';
 let raygun = require('raygun');
@@ -17,8 +18,7 @@ d.on('error', (error) => {
   });
 });
 
-module.exports = require('./app')
-.then((app) => {
-  return http.createServer(app)
+export const getServer = getApp.then((app) => {
+  return http.createServer(app as any)
     .listen(config.get('PORT'));
 });
