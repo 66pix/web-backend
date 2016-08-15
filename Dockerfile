@@ -1,4 +1,4 @@
-FROM nodesource/jessie:5
+FROM nodesource/jessie:6
 
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
