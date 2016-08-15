@@ -10,8 +10,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "docker-compose run test /srv/www/test.sh",
-    "test-watch": "docker-compose run test /srv/www/test-watch.sh",
+    "test": "./test.sh",
+    "test-watch": "./test-watch.sh",
     "lint": " tslint -c tslint.json --exclude 'typings/**/*' --exclude 'node_modules/**/*' '**/*.ts'",
     "build": "tsc || true",
     "start": "pm2 start pm2.json; pm2 logs",
