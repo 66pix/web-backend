@@ -1,16 +1,15 @@
 {
   "apps" : [
     {
-      "name": "website",
-      "script": "javascript/index.js",
+      "name": "web-backend",
+      "script": "typescript/index.js",
       "watch": true,
       "watch": [
-        "javascript"
+        "typescript"
       ],
       "ignore_watch" : [
         "node_modules",
         "typescript",
-        "typings",
         "coverage",
         "aws"
       ],
