@@ -1,7 +1,6 @@
 # Created by https://www.gitignore.io
 
 *.DS_Store
-.npmrc
 
 ### Node ###
 # Logs
