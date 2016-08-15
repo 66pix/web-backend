@@ -13,7 +13,7 @@
     "test": "docker-compose run test /srv/www/test.sh",
     "test-watch": "docker-compose run test /srv/www/test-watch.sh",
     "lint": " tslint -c tslint.json --exclude 'typings/**/*' --exclude 'node_modules/**/*' '**/*.ts'",
-    "build": "tsc",
+    "build": "tsc || true",
     "start": "pm2 start pm2.json; pm2 logs",
     "development": "pm2 start pm2-dev.json; pm2 logs",
     "coverage-average": "coverage-average coverage/text-summary.txt  --limit 95",

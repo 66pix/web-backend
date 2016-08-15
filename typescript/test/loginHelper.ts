@@ -1,13 +1,12 @@
-'use strict';
-
-var Promise = require('bluebird');
-var request = require('supertest');
-var R = require('ramda');
+import Bluebird = require('bluebird');
+import request = require('supertest');
+const R = require('ramda');
+import {initialiseModels} from '@66pix/models';
 
 module.exports = function() {
-  return new Promise(function(resolve) {
-    var result = {};
-    require('@66pix/models')
+  return new Bluebird(function(resolve) {
+    let result: any = {};
+    initialiseModels
     .then(function(models) {
       result.models = models;
       return result.models.UserAccount.findOrCreate({
