@@ -5,6 +5,8 @@ set -e
 
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
+! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'select * from pg_extension;';
+! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'REINDEX TABLE pg_extension;';
 
 COVERAGE_DIR=coverage/raw
 REMAP_DIR=coverage/typescript
