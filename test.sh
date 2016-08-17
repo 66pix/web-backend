@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
-echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP EXTENSION IF EXISTS hstore';"
-echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE $RDS_DB_NAME;';"
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE '"$RDS_DB_NAME"';';
+sudo rm -rf /var/lib/pgsql/*
+sudo rm -rf /var/lib/pgsql/backups/*
+sudo rm -rf /var/lib/pgsql/data/*
+sudo -U pgsql initdb
+
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
 
