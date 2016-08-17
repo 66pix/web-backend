@@ -5,9 +5,9 @@ set -o errexit
 
 /sbin/postgres-start.sh
 
-npm run nsp
-npm run build
-npm run lint
+# npm run nsp
+# npm run build
+# npm run lint
 
 export NODE_ENV="development"
 export RDS_PORT="5432"
