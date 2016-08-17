@@ -3,10 +3,8 @@ set -e
 
 /sbin/postgres-start.sh
 
-echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
-echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP EXTENSION IF EXISTS hstore CASCADE;'"
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP EXTENSION IF EXISTS hstore CASCADE;'
+# echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
+# ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
 
 COVERAGE_DIR=coverage/raw
 REMAP_DIR=coverage/typescript
