@@ -12,7 +12,6 @@ describe('Routes Companies current', () => {
     beforeEach((done) => {
         loginHelper_1.loginHelper()
             .then((result) => {
-            console.log(result.models);
             Company = result.models.Company;
             UserAccount = result.models.UserAccount;
             user = result.user;
