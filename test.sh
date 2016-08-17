@@ -1,26 +1,23 @@
 #!/bin/bash
 set -e
 
+# export DEBUG="*"
+
 /sbin/postgres-start.sh
 
-echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'select * from pg_extension;';
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'REINDEX TABLE pg_extension;';
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP EXTENSION IF EXISTS hstore CASCADE';
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'REINDEX TABLE pg_extension;';
-echo 'PUBLIC'
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE EXTENSION IF NOT EXISTS hstore SCHEMA public';
-echo 'NO PUBLIC'
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE EXTENSION IF NOT EXISTS hstore SCHEMA public';
+echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE IF EXISTS $RDS_DB_NAME;'"
+! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE IF EXISTS '"$RDS_DB_NAME"';';
+
+echo "psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
+psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
 
 COVERAGE_DIR=coverage/raw
 REMAP_DIR=coverage/typescript
 
 mkdir -p $COVERAGE_DIR
 mkdir -p $REMAP_DIR
-
 echo "Running tests"
+
 npm run build && node_modules/.bin/istanbul cover --dir $COVERAGE_DIR node_modules/.bin/_mocha -- --timeout 20000 --recursive --reporter spec typescript/test/configure.js typescript/test/
 
 echo ""
