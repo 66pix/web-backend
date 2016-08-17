@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-/sbin/postgres-start.sh
+# /sbin/postgres-start.sh
 initialize_database
 
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"

@@ -3,8 +3,6 @@
 set -o nounset
 set -o errexit
 
-/sbin/postgres-start.sh
-
 # npm run nsp
 # npm run build
 # npm run lint
