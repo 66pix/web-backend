@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP EXTENSION IF EXISTS hstore';"
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE '"$RDS_DB_NAME"';';
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
