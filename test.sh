@@ -1,11 +1,8 @@
 #!/bin/bash
 set -e
 
-sudo rm -rf /var/lib/pgsql/*
-sudo rm -rf /var/lib/pgsql/backups/*
-sudo rm -rf /var/lib/pgsql/data/*
-
 /sbin/postgres-start.sh
+initialize_database
 
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
