@@ -4,7 +4,7 @@ set -e
 sudo rm -rf /var/lib/pgsql/*
 sudo rm -rf /var/lib/pgsql/backups/*
 sudo rm -rf /var/lib/pgsql/data/*
-pgsql initdb
+initialize_database
 
 /sbin/postgres-start.sh
 
