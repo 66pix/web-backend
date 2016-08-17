@@ -3,9 +3,9 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "2.0.7",
-      "from": "@66pix/api@2.0.7",
-      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.0.7.tgz",
+      "version": "2.0.9",
+      "from": "@66pix/api@2.0.9",
+      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.0.9.tgz",
       "dependencies": {
         "@66pix/email": {
           "version": "1.0.6",
@@ -13,9 +13,9 @@
           "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.6.tgz"
         },
         "@66pix/models": {
-          "version": "3.1.6",
-          "from": "@66pix/models@3.1.6",
-          "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.6.tgz",
+          "version": "3.1.13",
+          "from": "@66pix/models@3.1.13",
+          "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.13.tgz",
           "dependencies": {
             "ap": {
               "version": "0.2.0",
@@ -2993,9 +2993,9 @@
       }
     },
     "@66pix/models": {
-      "version": "3.1.12",
-      "from": "@66pix/models@3.1.12",
-      "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.12.tgz",
+      "version": "3.1.13",
+      "from": "@66pix/models@3.1.13",
+      "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.13.tgz",
       "dependencies": {
         "ap": {
           "version": "0.2.0",
