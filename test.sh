@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 
-source ${PG_APP_HOME}/postgres-env-defaults.sh
-source ${PG_APP_HOME}/postgres-functions.sh
-
-sudo initialize_database
+sudo source ${PG_APP_HOME}/postgres-env-defaults.sh \
+     && source ${PG_APP_HOME}/postgres-functions.sh \
+     && initialize_database
 
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
