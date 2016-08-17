@@ -3,9 +3,9 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "2.0.9",
-      "from": "@66pix/api@2.0.9",
-      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.0.9.tgz",
+      "version": "2.0.10",
+      "from": "@66pix/api@2.0.10",
+      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.0.10.tgz",
       "dependencies": {
         "@66pix/email": {
           "version": "1.0.6",
@@ -13,9 +13,9 @@
           "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.6.tgz"
         },
         "@66pix/models": {
-          "version": "3.1.13",
-          "from": "@66pix/models@3.1.13",
-          "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.13.tgz",
+          "version": "3.1.14",
+          "from": "@66pix/models@3.1.14",
+          "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.14.tgz",
           "dependencies": {
             "ap": {
               "version": "0.2.0",
@@ -1634,7 +1634,14 @@
             "request": {
               "version": "2.73.0",
               "from": "request@>=2.0.0 <3.0.0",
-              "resolved": "https://registry.npmjs.org/request/-/request-2.73.0.tgz"
+              "resolved": "https://registry.npmjs.org/request/-/request-2.73.0.tgz",
+              "dependencies": {
+                "tough-cookie": {
+                  "version": "2.3.1",
+                  "from": "tough-cookie@>=2.3.0 <2.4.0",
+                  "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.3.1.tgz"
+                }
+              }
             },
             "rimraf": {
               "version": "2.5.3",
@@ -1712,11 +1719,6 @@
               "version": "3.1.4",
               "from": "tar-pack@>=3.1.0 <3.2.0",
               "resolved": "https://registry.npmjs.org/tar-pack/-/tar-pack-3.1.4.tgz"
-            },
-            "tough-cookie": {
-              "version": "2.3.1",
-              "from": "tough-cookie@>=2.2.0 <3.0.0",
-              "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.3.1.tgz"
             },
             "tunnel-agent": {
               "version": "0.4.3",
@@ -2993,9 +2995,9 @@
       }
     },
     "@66pix/models": {
-      "version": "3.1.13",
-      "from": "@66pix/models@3.1.13",
-      "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.13.tgz",
+      "version": "3.1.14",
+      "from": "@66pix/models@3.1.14",
+      "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.14.tgz",
       "dependencies": {
         "ap": {
           "version": "0.2.0",
@@ -5090,7 +5092,7 @@
         },
         "tough-cookie": {
           "version": "2.3.1",
-          "from": "tough-cookie@>=2.2.0 <3.0.0",
+          "from": "tough-cookie@>=2.3.0 <2.4.0",
           "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.3.1.tgz"
         },
         "tunnel-agent": {
@@ -6754,7 +6756,7 @@
     },
     "tough-cookie": {
       "version": "2.3.1",
-      "from": "tough-cookie@>=2.2.0 <3.0.0",
+      "from": "tough-cookie@>=2.3.0 <2.4.0",
       "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.3.1.tgz"
     },
     "tr46": {
