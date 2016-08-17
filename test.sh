@@ -16,7 +16,7 @@ mkdir -p $COVERAGE_DIR
 mkdir -p $REMAP_DIR
 
 echo "Running tests"
-npm run build && node_modules/.bin/istanbul cover --dir $COVERAGE_DIR node_modules/.bin/_mocha -- --timeout 15000 --recursive --reporter spec typescript/test/configure.js typescript/test/
+npm run build && node_modules/.bin/istanbul cover --dir $COVERAGE_DIR node_modules/.bin/_mocha -- --timeout 20000 --recursive --reporter spec typescript/test/configure.js typescript/test/
 
 echo ""
 echo "Remapping coverage reports for typescript"
