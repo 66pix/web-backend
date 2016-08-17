@@ -6,6 +6,8 @@ sudo rm -rf /var/lib/pgsql/backups/*
 sudo rm -rf /var/lib/pgsql/data/*
 pgsql initdb
 
+/sbin/postgres-start.sh
+
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
 ! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
 
