@@ -3,9 +3,9 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "2.0.6",
-      "from": "@66pix/api@2.0.6",
-      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.0.6.tgz",
+      "version": "2.0.7",
+      "from": "@66pix/api@2.0.7",
+      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.0.7.tgz",
       "dependencies": {
         "@66pix/email": {
           "version": "1.0.6",
@@ -13,9 +13,9 @@
           "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.6.tgz"
         },
         "@66pix/models": {
-          "version": "3.1.5",
-          "from": "@66pix/models@3.1.5",
-          "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.5.tgz",
+          "version": "3.1.6",
+          "from": "@66pix/models@3.1.6",
+          "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.6.tgz",
           "dependencies": {
             "ap": {
               "version": "0.2.0",
@@ -1714,7 +1714,7 @@
               "resolved": "https://registry.npmjs.org/tar-pack/-/tar-pack-3.1.4.tgz"
             },
             "tough-cookie": {
-              "version": "2.3.1",
+              "version": "2.2.2",
               "from": "tough-cookie@>=2.2.0 <2.3.0",
               "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.2.2.tgz"
             },
@@ -2993,9 +2993,9 @@
       }
     },
     "@66pix/models": {
-      "version": "3.1.10",
-      "from": "@66pix/models@3.1.10",
-      "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.10.tgz",
+      "version": "3.1.11",
+      "from": "@66pix/models@3.1.11",
+      "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.11.tgz",
       "dependencies": {
         "ap": {
           "version": "0.2.0",
@@ -5089,7 +5089,7 @@
           "resolved": "https://registry.npmjs.org/tar-pack/-/tar-pack-3.1.3.tgz"
         },
         "tough-cookie": {
-          "version": "2.3.1",
+          "version": "2.2.2",
           "from": "tough-cookie@~2.2.0",
           "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.2.2.tgz"
         },
@@ -6753,7 +6753,7 @@
       "resolved": "https://registry.npmjs.org/topo/-/topo-1.1.0.tgz"
     },
     "tough-cookie": {
-      "version": "2.3.1",
+      "version": "2.2.2",
       "from": "tough-cookie@>=2.2.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.2.2.tgz"
     },
