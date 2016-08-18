@@ -1,25 +1,23 @@
 "use strict";
 const jwt = require('jsonwebtoken');
-const debug = require('debug')('authentication/login');
-const config_js_1 = require('../../config.js');
+const debug = require('debug')('66pix-backend:authentication/login');
+const config_1 = require('../../config');
 const Bluebird = require('bluebird');
+const Joi = require('joi');
+const Celebrate = require('celebrate');
 const models_1 = require('@66pix/models');
 function login(app) {
     models_1.initialiseModels
         .then((models) => {
-        app.post('/authentication/login', (req, res) => {
-            if (bodyIsValid(req.body)) {
-                return res.status(401)
-                    .json({
-                    code: 401,
-                    message: 'Invalid email or password'
-                });
+        app.post('/authentication/login', Celebrate({
+            body: {
+                email: Joi.string().email().required(),
+                password: Joi.string().required()
             }
-            let UserAccount = models.UserAccount;
-            let Token = models.Token;
+        }), (req, res) => {
             // Query for pending user, if found set password and continue
             // If not found, continue with normal login attempt
-            UserAccount.findOne({
+            models.UserAccount.findOne({
                 where: {
                     email: req.body.email,
                     status: 'Pending'
@@ -31,13 +29,13 @@ function login(app) {
                     pendingUser.status = 'Active';
                     return pendingUser.save();
                 }
-                return null;
+                return;
             })
-                .then(() => UserAccount.login(req.body.email, req.body.password))
+                .then(() => models.UserAccount.login(req.body.email, req.body.password))
                 .then((user) => {
                 return Bluebird.props({
                     user: user,
-                    token: Token.build({
+                    token: models.Token.build({
                         userAccountId: user.id,
                         userAgent: req.headers['user-agent'],
                         type: 'Login',
@@ -53,7 +51,7 @@ function login(app) {
                 let jwtToken = jwt.sign({
                     id: result.user.id,
                     tokenId: result.token.id
-                }, config_js_1.config.get('TOKEN_SECRET'), {
+                }, config_1.config.get('TOKEN_SECRET'), {
                     expiresIn: EXPIRES_IN_HOURS + 'h',
                     issuer: '66pix Website',
                     audience: '66pix Website User'
@@ -85,7 +83,4 @@ function login(app) {
 }
 exports.login = login;
 ;
-function bodyIsValid(body) {
-    return !body.email || !body.password;
-}
 //# sourceMappingURL=login.js.map

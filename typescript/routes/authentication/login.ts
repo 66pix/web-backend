@@ -1,28 +1,23 @@
 import jwt = require('jsonwebtoken');
-const debug = require('debug')('authentication/login');
-import {config} from '../../config.js';
+const debug = require('debug')('66pix-backend:authentication/login');
+import {config} from '../../config';
 import Bluebird = require('bluebird');
+import Joi = require('joi');
+const Celebrate = require('celebrate');
 import {initialiseModels} from '@66pix/models';
 
 export function login(app) {
   initialiseModels
   .then((models) => {
-    app.post('/authentication/login', (req, res) => {
-
-      if (bodyIsValid(req.body)) {
-        return res.status(401)
-        .json({
-          code: 401,
-          message: 'Invalid email or password'
-        });
+    app.post('/authentication/login', Celebrate({
+      body: {
+        email: Joi.string().email().required(),
+        password: Joi.string().required()
       }
-
-      let UserAccount = models.UserAccount;
-      let Token = models.Token;
-
+    }), (req, res) => {
       // Query for pending user, if found set password and continue
       // If not found, continue with normal login attempt
-      UserAccount.findOne({
+      models.UserAccount.findOne({
         where: {
           email: req.body.email,
           status: 'Pending'
@@ -34,14 +29,13 @@ export function login(app) {
           pendingUser.status = 'Active';
           return pendingUser.save();
         }
-
-        return null;
+        return;
       })
-      .then(() => UserAccount.login(req.body.email, req.body.password))
+      .then(() => models.UserAccount.login(req.body.email, req.body.password))
       .then((user) => {
         return Bluebird.props({
           user: user,
-          token: Token.build({
+          token: models.Token.build({
             userAccountId: user.id,
             userAgent: req.headers['user-agent'],
             type: 'Login',
@@ -88,7 +82,3 @@ export function login(app) {
     });
   });
 };
-
-function bodyIsValid(body) {
-  return !body.email || !body.password;
-}
