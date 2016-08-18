@@ -1,4 +1,4 @@
-FROM nodesource/jessie:6
+FROM nodesource/jessie:5
 
 ARG NPM_TOKEN
 
