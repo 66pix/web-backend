@@ -3,16 +3,14 @@
 set -o nounset
 set -o errexit
 
-# npm run nsp
-# npm run build
-# npm run lint
+npm run nsp
+npm run build
+npm run lint
 
 export NODE_ENV="development"
-export RDS_PORT="5432"
-export RDS_USERNAME="postgres"
-export RDS_PASSWORD=""
-export RDS_HOSTNAME="localhost"
-export RDS_DB_NAME="test"
+
+export PGPASSWORD=$RDS_PASSWORD
+export RDS_DB_NAME="web_backend_$LAMBCI_BUILD_NUM"
 export CONTAINER_CODE_SALT="CONTAINER_CODE_SALT"
 
 export PORT=3000

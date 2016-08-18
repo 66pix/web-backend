@@ -1,15 +1,7 @@
 #!/bin/bash
 set -e
 
-# export DEBUG="*"
-
-/sbin/postgres-start.sh
-
-echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE IF EXISTS $RDS_DB_NAME;'"
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE IF EXISTS '"$RDS_DB_NAME"';';
-
-echo "psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
-psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
+psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c "CREATE DATABASE $RDS_DB_NAME;";
 
 COVERAGE_DIR=coverage/raw
 REMAP_DIR=coverage/typescript
@@ -19,6 +11,8 @@ mkdir -p $REMAP_DIR
 echo "Running tests"
 
 npm run build && node_modules/.bin/istanbul cover --dir $COVERAGE_DIR node_modules/.bin/_mocha -- --timeout 20000 --recursive --reporter spec typescript/test/configure.js typescript/test/
+
+psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c "DROP DATABASE $RDS_DB_NAME;";
 
 echo ""
 echo "Remapping coverage reports for typescript"

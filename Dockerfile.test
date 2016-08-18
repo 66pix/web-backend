@@ -9,32 +9,9 @@ RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 581
 RUN echo "deb https://apt.dockerproject.org/repo debian-jessie main" >> /etc/apt/sources.list.d/docker.list
 
 RUN apt-get update --fix-missing
-ENV PG_APP_HOME="/etc/docker-postgresql"\
-    PG_VERSION=9.4 \
-    PG_USER=postgres \
-    PG_HOME=/var/lib/postgresql \
-    PG_RUNDIR=/run/postgresql \
-    PG_LOGDIR=/var/log/postgresql \
-    PG_CERTDIR=/etc/postgresql/certs
 
-ENV PG_BINDIR=/usr/lib/postgresql/${PG_VERSION}/bin \
-    PG_DATADIR=${PG_HOME}/${PG_VERSION}/main
-
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y acl python-pip docker apt-transport-https ca-certificates docker-engine zip wget tar sudo expect-dev \
-    postgresql-${PG_VERSION} postgresql-client-${PG_VERSION} postgresql-contrib-${PG_VERSION} \
-    && ln -sf ${PG_DATADIR}/postgresql.conf /etc/postgresql/${PG_VERSION}/main/postgresql.conf \
-    && ln -sf ${PG_DATADIR}/pg_hba.conf /etc/postgresql/${PG_VERSION}/main/pg_hba.conf \
-    && ln -sf ${PG_DATADIR}/pg_ident.conf /etc/postgresql/${PG_VERSION}/main/pg_ident.conf \
-    && rm -rf ${PG_HOME} \
-    && rm -rf /var/lib/apt/lists/*
-
-COPY test-helpers/ ${PG_APP_HOME}/
-COPY test-helpers/postgres-start.sh /sbin/postgres-start.sh
-RUN chmod 755 /sbin/postgres-start.sh
-
-RUN wget https://github.com/jwilder/docker-squash/releases/download/v0.2.0/docker-squash-linux-amd64-v0.2.0.tar.gz
-RUN tar -C /usr/local/bin -xzvf docker-squash-linux-amd64-v0.2.0.tar.gz
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python-pip docker apt-transport-https ca-certificates docker-engine postgresql
 
 ENV NODE_ENV="development"
 RUN npm install --silent -g eslint typings typescript tslint nsp
