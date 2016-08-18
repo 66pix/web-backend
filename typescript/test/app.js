@@ -1,7 +1,7 @@
 "use strict";
 const request = require('supertest');
 const app_1 = require('../app');
-describe('API', function () {
+describe('App', function () {
     let app;
     beforeEach(function (done) {
         app_1.getApp.then(function (_app_) {

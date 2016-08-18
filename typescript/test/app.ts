@@ -1,7 +1,7 @@
 import request = require('supertest');
 import {getApp} from '../app';
 
-describe('API', function() {
+describe('App', function() {
 
   let app;
   beforeEach(function(done) {
