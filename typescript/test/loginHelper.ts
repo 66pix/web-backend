@@ -39,11 +39,16 @@ export const loginHelper = () => {
         email: USER_EMAIL,
         password: USER_PASSWORD
       })
-      .expect((response) => {
+      .expect(200, (error, response) => {
+        console.log('SUCCESS');
+        console.log(JSON.stringify(response, null, 2));
         result.token = 'Bearer ' + response.body.token;
-      })
-      .expect(200, () => {
+        console.log('LOGGED IN');
         resolve(result);
+      })
+      .expect(401, (error, response) => {
+        console.log('FAIL');
+        console.log(JSON.stringify(response, null, 2));
       });
     })
     .catch(reject);
