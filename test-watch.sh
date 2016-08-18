@@ -60,7 +60,7 @@ do
      esac
 done
 
-export PORT=3021
+export PORT=3022
 export NODE_ENV="development"
 
 export RDS_USERNAME=$RDS_USERNAME
@@ -97,10 +97,10 @@ export BRAINTREE_MERCHANT_ID="123"
 export BRAINTREE_PRIVATE_KEY="456"
 export BRAINTREE_PUBLIC_KEY="456"
 
-echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE $RDS_DB_NAME;';"
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE '"$RDS_DB_NAME"';';
+echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'DROP DATABASE IF EXISTS $RDS_DB_NAME;';"
+psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'DROP DATABASE IF EXISTS '"$RDS_DB_NAME"';';
 echo "! psql --host=$RDS_HOSTNAME --username=$RDS_USERNAME -c 'CREATE DATABASE $RDS_DB_NAME;';"
-! psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
+psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c 'CREATE DATABASE '"$RDS_DB_NAME"';';
 
 COVERAGE_DIR=coverage/raw
 REMAP_DIR=coverage/typescript
