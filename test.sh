@@ -11,7 +11,7 @@ mkdir -p $COVERAGE_DIR
 mkdir -p $REMAP_DIR
 echo "Running tests"
 
-npm run build && node_modules/.bin/istanbul cover --dir $COVERAGE_DIR node_modules/.bin/_mocha -- --timeout 45000 --recursive --reporter spec typescript/test/configure.js typescript/test/
+npm run build && node_modules/.bin/istanbul cover --dir $COVERAGE_DIR node_modules/.bin/_mocha -- --timeout 450000 --recursive --reporter spec typescript/test/configure.js typescript/test/
 
 psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c "DROP DATABASE $RDS_DB_NAME;";
 
