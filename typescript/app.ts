@@ -29,15 +29,12 @@ logout(app);
 forgotPassword(app);
 resetPassword(app);
 
-export const getApp = new Promise((resolve, reject) => {
-  api(app)
-  .then(() => {
-    app.use(unauthorisedErrorHandler);
-    app.use(raygunClient.expressHandler);
-    app.use(catchAllErrorHandler);
-    resolve(app);
-  })
-  .catch(reject);
+export const getApp = api(app)
+.then((_app) => {
+  app.use(unauthorisedErrorHandler);
+  app.use(raygunClient.expressHandler);
+  app.use(catchAllErrorHandler);
+  return _app;
 });
 
 function unauthorisedErrorHandler(error, req, res, next) {

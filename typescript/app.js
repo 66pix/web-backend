@@ -23,15 +23,13 @@ login_1.login(app);
 logout_1.logout(app);
 forgot_password_1.forgotPassword(app);
 reset_password_1.resetPassword(app);
-exports.getApp = new Promise((resolve, reject) => {
-    api_1.api(app)
-        .then(() => {
-        app.use(unauthorisedErrorHandler);
-        app.use(raygunClient.expressHandler);
-        app.use(catchAllErrorHandler);
-        resolve(app);
-    })
-        .catch(reject);
+exports.getApp = api_1.api(app)
+    .then((_app) => {
+    console.log('GOT APP');
+    app.use(unauthorisedErrorHandler);
+    app.use(raygunClient.expressHandler);
+    app.use(catchAllErrorHandler);
+    return _app;
 });
 function unauthorisedErrorHandler(error, req, res, next) {
     if (error.name !== 'UnauthorizedError') {
