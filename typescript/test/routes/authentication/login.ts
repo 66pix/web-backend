@@ -6,11 +6,13 @@ import {initialiseModels} from '@66pix/models';
 describe('Routes authentication login', function() {
   let app;
   let UserAccount;
+  let user;
 
   beforeEach(function(done) {
     require('../../loginHelper').loginHelper()
     .then(function(result) {
       app = result.app;
+      user = result.user;
       return initialiseModels;
     })
     .then(function(models) {
@@ -68,8 +70,8 @@ describe('Routes authentication login', function() {
     request(app)
     .post('/authentication/login')
     .send({
-      email: 'active@66pix.com',
-      password: '12345'
+      email: user.email,
+      password: 'ASDF1234'
     })
     .expect(200)
     .end(function(error, response) {
