@@ -40,7 +40,6 @@ exports.loginHelper = () => {
                 password: USER_PASSWORD
             })
                 .expect(200, (error, response) => {
-                console.log(JSON.stringify(response, null, 2));
                 result.token = 'Bearer ' + response.body.token;
                 resolve(result);
             });
