@@ -40,7 +40,6 @@ export const loginHelper = () => {
         password: USER_PASSWORD
       })
       .expect(200, (error, response) => {
-        console.log('SUCCESS');
         console.log(JSON.stringify(response, null, 2));
         result.token = 'Bearer ' + response.body.token;
         console.log('LOGGED IN');
@@ -49,6 +48,7 @@ export const loginHelper = () => {
       .expect(401, (error, response) => {
         console.log('FAIL');
         console.log(JSON.stringify(response, null, 2));
+        reject(response);
       });
     })
     .catch(reject);
