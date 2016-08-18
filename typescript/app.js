@@ -25,7 +25,6 @@ forgot_password_1.forgotPassword(app);
 reset_password_1.resetPassword(app);
 exports.getApp = api_1.api(app)
     .then((_app) => {
-    console.log('GOT APP');
     app.use(unauthorisedErrorHandler);
     app.use(raygunClient.expressHandler);
     app.use(catchAllErrorHandler);
