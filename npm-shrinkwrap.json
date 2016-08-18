@@ -3,9 +3,9 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "2.0.10",
-      "from": "@66pix/api@2.0.10",
-      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.0.10.tgz",
+      "version": "2.0.13",
+      "from": "@66pix/api@2.0.13",
+      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.0.13.tgz",
       "dependencies": {
         "@66pix/email": {
           "version": "1.0.6",
@@ -13,9 +13,9 @@
           "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.6.tgz"
         },
         "@66pix/models": {
-          "version": "3.1.14",
-          "from": "@66pix/models@3.1.14",
-          "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.14.tgz",
+          "version": "3.1.18",
+          "from": "@66pix/models@3.1.18",
+          "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.18.tgz",
           "dependencies": {
             "ap": {
               "version": "0.2.0",
@@ -1637,9 +1637,9 @@
               "resolved": "https://registry.npmjs.org/request/-/request-2.73.0.tgz",
               "dependencies": {
                 "tough-cookie": {
-                  "version": "2.3.1",
-                  "from": "tough-cookie@>=2.3.0 <2.4.0",
-                  "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.3.1.tgz"
+                  "version": "2.2.2",
+                  "from": "tough-cookie@>=2.2.0 <2.3.0",
+                  "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.2.2.tgz"
                 }
               }
             },
@@ -2995,9 +2995,9 @@
       }
     },
     "@66pix/models": {
-      "version": "3.1.14",
-      "from": "@66pix/models@3.1.14",
-      "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.14.tgz",
+      "version": "3.1.18",
+      "from": "@66pix/models@3.1.18",
+      "resolved": "https://registry.npmjs.org/@66pix/models/-/models-3.1.18.tgz",
       "dependencies": {
         "ap": {
           "version": "0.2.0",
@@ -4966,7 +4966,14 @@
         "request": {
           "version": "2.69.0",
           "from": "request@2.x",
-          "resolved": "https://registry.npmjs.org/request/-/request-2.69.0.tgz"
+          "resolved": "https://registry.npmjs.org/request/-/request-2.69.0.tgz",
+          "dependencies": {
+            "tough-cookie": {
+              "version": "2.2.2",
+              "from": "tough-cookie@~2.2.0",
+              "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.2.2.tgz"
+            }
+          }
         },
         "rimraf": {
           "version": "2.5.2",
@@ -5089,11 +5096,6 @@
           "version": "3.1.3",
           "from": "tar-pack@~3.1.0",
           "resolved": "https://registry.npmjs.org/tar-pack/-/tar-pack-3.1.3.tgz"
-        },
-        "tough-cookie": {
-          "version": "2.3.1",
-          "from": "tough-cookie@>=2.3.0 <2.4.0",
-          "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.3.1.tgz"
         },
         "tunnel-agent": {
           "version": "0.4.2",
@@ -6139,7 +6141,8 @@
     },
     "optionator": {
       "version": "0.8.1",
-      "from": "optionator@>=0.8.1 <0.9.0"
+      "from": "optionator@0.8.1",
+      "resolved": "https://registry.npmjs.org/optionator/-/optionator-0.8.1.tgz"
     },
     "os-homedir": {
       "version": "1.0.1",
@@ -6419,7 +6422,14 @@
     "request": {
       "version": "2.72.0",
       "from": "request@>=2.55.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/request/-/request-2.72.0.tgz"
+      "resolved": "https://registry.npmjs.org/request/-/request-2.72.0.tgz",
+      "dependencies": {
+        "tough-cookie": {
+          "version": "2.2.2",
+          "from": "tough-cookie@>=2.2.0 <2.3.0",
+          "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.2.2.tgz"
+        }
+      }
     },
     "require-uncached": {
       "version": "1.0.2",
@@ -6644,7 +6654,8 @@
     },
     "strip-json-comments": {
       "version": "1.0.4",
-      "from": "strip-json-comments@>=1.0.1 <1.1.0"
+      "from": "strip-json-comments@1.0.4",
+      "resolved": "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-1.0.4.tgz"
     },
     "stylus": {
       "version": "0.54.5",
