@@ -3,6 +3,9 @@ const R = require('ramda');
 import {initialiseModels} from '@66pix/models';
 import {getApp} from '../app';
 
+const USER_EMAIL = 'active@66pix.com';
+const USER_PASSWORD = '1234567';
+
 export const loginHelper = () => {
   return new Promise((resolve, reject) => {
     let result: any = {};
@@ -16,10 +19,10 @@ export const loginHelper = () => {
     })
     .then(() => {
       return result.models.UserAccount.build({
-        email: 'active@66pix.com',
+        email: USER_EMAIL,
         name: 'this is a name',
         status: 'Active',
-        password: '12345',
+        password: USER_PASSWORD,
         updatedWithToken: -1
       })
       .save();
@@ -33,8 +36,8 @@ export const loginHelper = () => {
       request(app)
       .post('/authentication/login')
       .send({
-        email: 'active@66pix.com',
-        password: '12345'
+        email: USER_EMAIL,
+        password: USER_PASSWORD
       })
       .expect((response) => {
         result.token = 'Bearer ' + response.body.token;
