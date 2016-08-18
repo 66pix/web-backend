@@ -3733,6 +3733,11 @@
       "from": "caseless@>=0.11.0 <0.12.0",
       "resolved": "https://registry.npmjs.org/caseless/-/caseless-0.11.0.tgz"
     },
+    "celebrate": {
+      "version": "2.1.0",
+      "from": "celebrate@latest",
+      "resolved": "https://registry.npmjs.org/celebrate/-/celebrate-2.1.0.tgz"
+    },
     "center-align": {
       "version": "0.1.3",
       "from": "center-align@>=0.1.1 <0.2.0",
@@ -5374,6 +5379,11 @@
       "from": "inquirer@>=0.12.0 <0.13.0",
       "resolved": "https://registry.npmjs.org/inquirer/-/inquirer-0.12.0.tgz"
     },
+    "insync": {
+      "version": "2.1.1",
+      "from": "insync@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/insync/-/insync-2.1.1.tgz"
+    },
     "invert-kv": {
       "version": "1.0.0",
       "from": "invert-kv@>=1.0.0 <2.0.0",
@@ -5505,9 +5515,9 @@
       "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
     },
     "isemail": {
-      "version": "1.2.0",
-      "from": "isemail@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/isemail/-/isemail-1.2.0.tgz"
+      "version": "2.2.1",
+      "from": "isemail@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/isemail/-/isemail-2.2.1.tgz"
     },
     "isexe": {
       "version": "1.1.2",
@@ -5531,15 +5541,27 @@
       "from": "isstream@>=0.1.2 <0.2.0",
       "resolved": "https://registry.npmjs.org/isstream/-/isstream-0.1.2.tgz"
     },
+    "items": {
+      "version": "2.1.1",
+      "from": "items@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/items/-/items-2.1.1.tgz"
+    },
     "jodid25519": {
       "version": "1.0.2",
       "from": "jodid25519@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/jodid25519/-/jodid25519-1.0.2.tgz"
     },
     "joi": {
-      "version": "6.10.1",
-      "from": "joi@>=6.10.1 <7.0.0",
-      "resolved": "https://registry.npmjs.org/joi/-/joi-6.10.1.tgz"
+      "version": "9.0.4",
+      "from": "joi@latest",
+      "resolved": "https://registry.npmjs.org/joi/-/joi-9.0.4.tgz",
+      "dependencies": {
+        "hoek": {
+          "version": "4.0.2",
+          "from": "hoek@>=4.0.0 <5.0.0",
+          "resolved": "https://registry.npmjs.org/hoek/-/hoek-4.0.2.tgz"
+        }
+      }
     },
     "js-yaml": {
       "version": "3.6.1",
@@ -5596,7 +5618,24 @@
     "jsonwebtoken": {
       "version": "7.1.9",
       "from": "jsonwebtoken@>=7.1.9 <8.0.0",
-      "resolved": "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.1.9.tgz"
+      "resolved": "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.1.9.tgz",
+      "dependencies": {
+        "isemail": {
+          "version": "1.2.0",
+          "from": "isemail@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/isemail/-/isemail-1.2.0.tgz"
+        },
+        "joi": {
+          "version": "6.10.1",
+          "from": "joi@>=6.10.1 <7.0.0",
+          "resolved": "https://registry.npmjs.org/joi/-/joi-6.10.1.tgz"
+        },
+        "topo": {
+          "version": "1.1.0",
+          "from": "topo@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/topo/-/topo-1.1.0.tgz"
+        }
+      }
     },
     "jsprim": {
       "version": "1.3.0",
@@ -6718,9 +6757,16 @@
       "resolved": "https://registry.npmjs.org/timers-ext/-/timers-ext-0.1.0.tgz"
     },
     "topo": {
-      "version": "1.1.0",
-      "from": "topo@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/topo/-/topo-1.1.0.tgz"
+      "version": "2.0.2",
+      "from": "topo@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/topo/-/topo-2.0.2.tgz",
+      "dependencies": {
+        "hoek": {
+          "version": "4.0.2",
+          "from": "hoek@4.x.x",
+          "resolved": "https://registry.npmjs.org/hoek/-/hoek-4.0.2.tgz"
+        }
+      }
     },
     "tough-cookie": {
       "version": "2.3.1",
