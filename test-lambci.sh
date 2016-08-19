@@ -2,6 +2,7 @@
 
 set -o nounset
 set -o errexit
+set -x
 
 npm run nsp
 npm run build
