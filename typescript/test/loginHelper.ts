@@ -8,7 +8,11 @@ const USER_PASSWORD = 'ASDF1234';
 let result: any = {};
 
 export const loginHelper = () => {
-  return initialiseModels
+  return getApp
+  .then((app) => {
+    result.app = app;
+    return initialiseModels;
+  })
   .then((models) => {
     result.models = models;
     return models.UserAccount.destroy({
@@ -29,12 +33,8 @@ export const loginHelper = () => {
   })
   .then((user) => {
     result.user = user;
-    return getApp;
-  })
-  .then((app) => {
     return new Promise((resolve, reject) => {
-      result.app = app;
-      request(app)
+      request(result.app)
       .post('/authentication/login')
       .send({
         email: USER_EMAIL,

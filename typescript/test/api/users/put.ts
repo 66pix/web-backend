@@ -2,17 +2,17 @@ import Bluebird = require('bluebird');
 import request = require('supertest');
 const R = require('ramda');
 const expect = require('code').expect;
+import {loginHelper} from '../../loginHelper';
 
-describe('Routes Users PUT', function() {
-
+describe('Routes Users PUT', () => {
   let app;
   let user;
   let token;
   let UserAccount;
 
-  beforeEach(function(done) {
-    require('../../loginHelper').loginHelper()
-    .then(function(result: any) {
+  beforeEach((done) => {
+    loginHelper()
+    .then((result: any) => {
       UserAccount = result.models.UserAccount;
       user = result.user;
       app = result.app;
@@ -26,12 +26,12 @@ describe('Routes Users PUT', function() {
     });
   });
 
-  afterEach(function(done) {
+  afterEach((done) => {
     UserAccount.destroy({
       truncate: true,
       cascade: true
     })
-    .then(function() {
+    .then(() => {
       done();
     })
     .catch((error) => {
@@ -40,29 +40,27 @@ describe('Routes Users PUT', function() {
     });
   });
 
-  it('should respond with a 200 and the updated user', function(done) {
-
+  it('should respond with a 200 and the updated user', (done) => {
     request(app)
     .put('/api/users/' + user.id)
     .send({
       id: user.id,
       email: 'active@66pix.com',
-      password: '123456',
+      password: 'ASDF1234',
       name: 'Updated Name'
     })
     .set('authorization', token)
-    .expect(function(response) {
-      let _user_ = response.body;
-      expect(_user_).to.contain({
+    .expect(200, (error, response) => {
+      expect(response.body).to.contain({
         email: 'active@66pix.com',
         name: 'Updated Name',
         id: user.id
       });
-    })
-    .expect(200, done);
+      done();
+    });
   });
 
-  it('should not change the password even if a different password was sent', function(done) {
+  it('should not change the password even if a different password was sent', (done) => {
     request(app)
       .put('/api/users/' + user.id)
       .send({
@@ -72,13 +70,11 @@ describe('Routes Users PUT', function() {
         name: user.name
       })
       .set('authorization', token)
-      .expect(function() {
+      .expect(200, () => {
         UserAccount.findById(user.id)
-        .then(function() {
+        .then(() => {
           done();
-          return null;
         });
-      })
-      .expect(200, function() {});
+      });
   });
 });

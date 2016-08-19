@@ -5,6 +5,7 @@ import bodyparser = require('body-parser');
 const debug = require('debug')('backend');
 import {isRevoked} from './isRevoked';
 import {api} from '@66pix/api';
+import {initialiseModels} from '@66pix/models';
 
 import {login} from './routes/authentication/login';
 import {logout} from './routes/authentication/logout';
@@ -24,17 +25,19 @@ app.use(['/api'], expressJwt({
   isRevoked: isRevoked
 }));
 
-login(app);
-logout(app);
-forgotPassword(app);
-resetPassword(app);
-
-export const getApp = api(app)
-.then((_app) => {
+export const getApp = initialiseModels
+.then((models) => {
+  login(app, models);
+  logout(app, models);
+  forgotPassword(app, models);
+  resetPassword(app, models);
+  return api(app);
+})
+.then(() => {
   app.use(unauthorisedErrorHandler);
   app.use(raygunClient.expressHandler);
   app.use(catchAllErrorHandler);
-  return _app;
+  return app;
 });
 
 function unauthorisedErrorHandler(error, req, res, next) {

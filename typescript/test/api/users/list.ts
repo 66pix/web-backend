@@ -1,15 +1,15 @@
 const expect = require('code').expect;
 import request = require('supertest');
 import {initialiseModels} from '@66pix/models';
+import {loginHelper} from '../../loginHelper';
 
-describe('Routes Users GET', function() {
+describe('Routes Users GET', () => {
   let app;
   let token;
 
-  beforeEach(function(done) {
-    require('../../loginHelper').loginHelper()
-    .then(function(result) {
-
+  beforeEach((done) => {
+    loginHelper()
+    .then((result: any) => {
       app = result.app;
       token = result.token;
 
@@ -21,15 +21,15 @@ describe('Routes Users GET', function() {
     });
   });
 
-  afterEach(function(done) {
+  afterEach((done) => {
     initialiseModels
-    .then(function(models) {
+    .then((models) => {
       return models.UserAccount.destroy({
         truncate: true,
         cascade: true
       });
     })
-    .then(function() {
+    .then(() => {
       done();
     })
     .catch((error) => {
@@ -38,12 +38,12 @@ describe('Routes Users GET', function() {
     });
   });
 
-  it('should respond with an array', function(done) {
+  it('should respond with an array', (done) => {
     request(app)
       .get('/api/users')
       .set('authorization', token)
       .set('content-type', 'application/json')
-      .expect(function(response) {
+      .expect((response) => {
         expect(response.body).to.be.instanceof(Array);
       })
       .expect(200, done);
