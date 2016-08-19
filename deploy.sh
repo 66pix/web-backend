@@ -19,7 +19,7 @@ TAG_SQUASHED="$ENVIRONMENT-$BRANCH-l-$LAMBCI_BUILD_NUM"
 
 echo ""
 echo "Building image"
-docker build --build-arg BACKEND_HOST="backend.${ENVIRONMENT}.66pix.com:443" -t "${NAME}:${TAG_SQUASHED}" .
+docker build -t "${NAME}:${TAG_SQUASHED}" .
 
 echo ""
 echo "Pushing image"
