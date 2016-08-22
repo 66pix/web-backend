@@ -5,6 +5,7 @@ ARG NPM_TOKEN
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+COPY ./test-helpers/.npmrc /tmp/.npmrc
 ADD package.json /tmp/package.json
 # ADD npm-shrinkwrap.json /tmp/npm-shrinkwrap.json
 RUN cd /tmp && npm install
