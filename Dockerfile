@@ -1,23 +1,26 @@
 FROM nodesource/jessie:6
 
-ARG NPM_TOKEN
-
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY ./test-helpers/.npmrc /tmp/.npmrc
-ADD package.json /tmp/package.json
-# ADD npm-shrinkwrap.json /tmp/npm-shrinkwrap.json
-RUN cd /tmp && npm install
-RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
-RUN rm -f .npmrc
+RUN mkdir -p /srv/www
+WORKDIR /srv/www
+
+# Copy application files and dependencies
+# It is assumed that node_modules has been setup previously
+COPY package.json /srv/www/
+COPY . /srv/www/
+
+# Rebuild/install node dependencies
+RUN npm rebuild
 
 # Clean up
+RUN rm -rf /srv/www/node_modules/.git
 RUN apt-get -qq autoremove -y --purge
 RUN rm -rf ~/.node-gyp
 RUN rm -rf ~/.npm
 
 EXPOSE 3000
 
-CMD /opt/app/start.sh
+CMD /srv/www/start.sh
 
