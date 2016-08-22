@@ -2,6 +2,7 @@
 
 set -o nounset
 set -o errexit
+set -x
 
 ENVIRONMENT=$1
 
@@ -19,7 +20,7 @@ TAG_SQUASHED="$ENVIRONMENT-$BRANCH-l-$LAMBCI_BUILD_NUM"
 
 echo ""
 echo "Building image"
-docker build -t "${NAME}:${TAG_SQUASHED}" .
+docker build --build-arg NPM_TOKEN=${NPM_TOKEN} -t "${NAME}:${TAG_SQUASHED}" .
 
 echo ""
 echo "Pushing image"
