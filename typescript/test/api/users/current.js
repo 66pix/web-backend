@@ -2,12 +2,13 @@
 const expect = require('code').expect;
 const request = require('supertest');
 const models_1 = require('@66pix/models');
+const loginHelper_1 = require('../../loginHelper');
 describe('Routes Users current', () => {
     let app;
     let token;
     let user;
     beforeEach((done) => {
-        require('../../loginHelper').loginHelper()
+        loginHelper_1.loginHelper()
             .then((result) => {
             user = result.user;
             app = result.app;
@@ -29,7 +30,6 @@ describe('Routes Users current', () => {
         })
             .then(() => {
             done();
-            return null;
         })
             .catch((error) => {
             console.log(JSON.stringify(error, null, 2));
