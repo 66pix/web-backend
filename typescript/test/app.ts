@@ -25,7 +25,7 @@ describe.only('App', function() {
 
   it('should respond correctly to OPTIONS requests', (done) => {
     request(app)
-    .options('/public/api/pricing')
+    .options('/authentication/login')
     .set('Access-Control-Request-Method', 'POST')
     .expect(204, (error, response) => {
       expect(response.headers['access-control-allow-methods']).to.equal('GET,HEAD,PUT,PATCH,POST,DELETE');
@@ -36,16 +36,15 @@ describe.only('App', function() {
 
   it('should allow CORS requests from only the configured origin', (done) => {
     request(app)
-    .get('/public/api/pricing')
-    .set('Origin', config.get('CORS_URL'))
-    .expect(200, done);
-  });
-
-  it('should reject CORS requests from the wrong URL', (done) => {
-    request(app)
-    .get('/public/api/pricing')
-    .set('Origin', config.get('CORS_URL') + '.suffix.com')
-    .expect(400, done);
+    .post('/authentication/login')
+    .send({
+      email: 'test@66pix.com',
+      password: 'alskdfdsj'
+    })
+    .set({
+      'Origin': config.get('CORS_URL')
+    })
+    .expect(401, done);
   });
 
 });

@@ -27,7 +27,7 @@ app.use(cors(corsOptions));
 
 app.use(bodyparser.json());
 
-app.use(['/api'], expressJwt({
+app.use('/api', expressJwt({
   secret: config.get('TOKEN_SECRET'),
   isRevoked: isRevoked
 }));

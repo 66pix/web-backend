@@ -22,7 +22,7 @@ const corsOptions = {
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(bodyparser.json());
-app.use(['/api'], expressJwt({
+app.use('/api', expressJwt({
     secret: config_js_1.config.get('TOKEN_SECRET'),
     isRevoked: isRevoked_1.isRevoked
 }));
