@@ -36,7 +36,7 @@ describe('Routes Users GET', () => {
     });
     it('should respond with an array', (done) => {
         request(app)
-            .get('/api/users')
+            .get('/api/users?email=')
             .set('authorization', token)
             .set('content-type', 'application/json')
             .expect((response) => {
