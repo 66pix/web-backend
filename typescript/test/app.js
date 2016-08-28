@@ -3,7 +3,7 @@ const request = require('supertest');
 const app_1 = require('../app');
 const config_1 = require('../config');
 const expect = require('code').expect;
-describe.only('App', function () {
+describe('App', function () {
     let app;
     beforeEach(function (done) {
         app_1.getApp.then(function (_app_) {

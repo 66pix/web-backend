@@ -3,7 +3,7 @@ import {getApp} from '../app';
 import {config} from '../config';
 const expect = require('code').expect;
 
-describe.only('App', function() {
+describe('App', function() {
 
   let app;
   beforeEach(function(done) {
