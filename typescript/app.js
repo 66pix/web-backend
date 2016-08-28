@@ -1,6 +1,7 @@
 "use strict";
 const config_js_1 = require('./config.js');
 const express = require('express');
+const cors = require('cors');
 const expressJwt = require('express-jwt');
 const bodyparser = require('body-parser');
 const debug = require('debug')('backend');
@@ -15,6 +16,11 @@ const raygun_1 = require('./raygun');
 let raygun = require('raygun');
 const raygunClient = raygun_1.raygunClientFactory(raygun);
 let app = express();
+const corsOptions = {
+    origin: config_js_1.config.get('CORS_URL')
+};
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(bodyparser.json());
 app.use(['/api'], expressJwt({
     secret: config_js_1.config.get('TOKEN_SECRET'),

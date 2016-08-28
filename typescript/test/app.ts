@@ -1,7 +1,9 @@
 import request = require('supertest');
 import {getApp} from '../app';
+import {config} from '../config';
+const expect = require('code').expect;
 
-describe('App', function() {
+describe.only('App', function() {
 
   let app;
   beforeEach(function(done) {
@@ -20,4 +22,30 @@ describe('App', function() {
       .get('/api/users/current')
       .expect(401, done);
   });
+
+  it('should respond correctly to OPTIONS requests', (done) => {
+    request(app)
+    .options('/public/api/pricing')
+    .set('Access-Control-Request-Method', 'POST')
+    .expect(204, (error, response) => {
+      expect(response.headers['access-control-allow-methods']).to.equal('GET,HEAD,PUT,PATCH,POST,DELETE');
+      expect(response.headers['access-control-allow-origin']).to.equal(config.get('CORS_URL'));
+      done();
+    });
+  });
+
+  it('should allow CORS requests from only the configured origin', (done) => {
+    request(app)
+    .get('/public/api/pricing')
+    .set('Origin', config.get('CORS_URL'))
+    .expect(200, done);
+  });
+
+  it('should reject CORS requests from the wrong URL', (done) => {
+    request(app)
+    .get('/public/api/pricing')
+    .set('Origin', config.get('CORS_URL') + '.suffix.com')
+    .expect(400, done);
+  });
+
 });

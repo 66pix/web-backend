@@ -41,6 +41,12 @@ const config = convict({
     format: String,
     default: null,
     env: 'BASE_URL'
+  },
+  CORS_URL: {
+    doc: 'The origin URL to allow incoming requests for',
+    format: 'url',
+    default: 'http://localhost',
+    env: 'CORS_URL'
   }
 });
 

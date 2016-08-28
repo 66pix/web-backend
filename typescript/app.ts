@@ -1,5 +1,6 @@
 import {config} from './config.js';
 import * as express from 'express';
+import * as cors from 'cors';
 import expressJwt = require('express-jwt');
 import bodyparser = require('body-parser');
 const debug = require('debug')('backend');
@@ -17,6 +18,12 @@ let raygun = require('raygun');
 const raygunClient = raygunClientFactory(raygun);
 
 let app = express();
+
+const corsOptions = {
+  origin: config.get('CORS_URL')
+};
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.use(bodyparser.json());
 
