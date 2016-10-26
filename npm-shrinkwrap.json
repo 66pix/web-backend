@@ -3,9 +3,9 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "2.1.25",
-      "from": "@66pix/api@2.1.25",
-      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.1.25.tgz",
+      "version": "2.1.26",
+      "from": "@66pix/api@2.1.26",
+      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.1.26.tgz",
       "dependencies": {
         "@66pix/email": {
           "version": "1.0.6",
