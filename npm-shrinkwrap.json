@@ -3,9 +3,9 @@
   "version": "1.0.3",
   "dependencies": {
     "@66pix/api": {
-      "version": "2.1.26",
-      "from": "@66pix/api@2.1.26",
-      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.1.26.tgz",
+      "version": "2.1.27",
+      "from": "@66pix/api@2.1.27",
+      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.1.27.tgz",
       "dependencies": {
         "@66pix/email": {
           "version": "1.0.6",
@@ -3469,9 +3469,9 @@
       "resolved": "https://registry.npmjs.org/@types/mime/-/mime-0.0.29.tgz"
     },
     "@types/node": {
-      "version": "6.0.45",
-      "from": "@types/node@6.0.45",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-6.0.45.tgz"
+      "version": "6.0.46",
+      "from": "@types/node@6.0.46",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-6.0.46.tgz"
     },
     "@types/serve-static": {
       "version": "1.7.31",
