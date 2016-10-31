@@ -1,5 +1,4 @@
 import request = require('supertest');
-const R = require('ramda');
 import {initialiseModels} from '@66pix/models';
 import {getApp} from '../app';
 
