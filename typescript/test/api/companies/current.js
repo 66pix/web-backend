@@ -3,6 +3,7 @@ const expect = require('code').expect;
 const request = require('supertest');
 const Bluebird = require('bluebird');
 const loginHelper_1 = require('../../loginHelper');
+const R = require('ramda');
 describe('Routes Companies current', () => {
     let app;
     let token;
@@ -68,9 +69,7 @@ describe('Routes Companies current', () => {
                     name: company.name,
                     createdAt: company.createdAt
                 });
-                expect(company.users).to.contain({
-                    name: user.name
-                });
+                expect(R.prop('name', R.head(company.users))).to.equal(user.name);
             })
                 .expect(200, done);
             return null;

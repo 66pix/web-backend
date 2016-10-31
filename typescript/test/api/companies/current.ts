@@ -2,6 +2,7 @@ const expect = require('code').expect;
 import request = require('supertest');
 import Bluebird = require('bluebird');
 import {loginHelper} from '../../loginHelper';
+import * as R from 'ramda';
 
 describe('Routes Companies current', () => {
   let app;
@@ -72,9 +73,7 @@ describe('Routes Companies current', () => {
           name: company.name,
           createdAt: company.createdAt
         });
-        expect(company.users).to.contain({
-          name: user.name
-        });
+        expect(R.prop('name', R.head(company.users))).to.equal(user.name);
       })
       .expect(200, done);
       return null;
