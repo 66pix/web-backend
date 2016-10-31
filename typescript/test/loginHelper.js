@@ -1,6 +1,5 @@
 "use strict";
 const request = require('supertest');
-const R = require('ramda');
 const models_1 = require('@66pix/models');
 const app_1 = require('../app');
 const USER_EMAIL = 'active@66pix.com';
