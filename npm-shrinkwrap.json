@@ -1,6 +1,6 @@
 {
   "name": "@66pix/backend",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "dependencies": {
     "@66pix/api": {
       "version": "2.1.29",
