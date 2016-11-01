@@ -6,7 +6,10 @@ import Bluebird = require('bluebird');
 import nunjucks = require('nunjucks');
 import {IModels} from '@66pix/models';
 
-export function forgotPassword(app, models: IModels) {
+export function forgotPassword(
+  app,
+  models: IModels
+) {
 
   function responseSuccess(res) {
     res.status(200)
@@ -15,7 +18,10 @@ export function forgotPassword(app, models: IModels) {
     });
   }
 
-  app.post('/authentication/forgot-password', (req, res) => {
+  app.post('/authentication/forgot-password', (
+    req,
+    res
+  ) => {
     if (!req.body.email) {
       debug('Login attempt without an email address');
       return res.status(400)
@@ -24,6 +30,7 @@ export function forgotPassword(app, models: IModels) {
         message: 'Email is required'
       });
     }
+
     return models.UserAccount.findOne({
       where: {
         email: req.body.email
@@ -47,7 +54,10 @@ export function forgotPassword(app, models: IModels) {
         .save()
       ];
     })
-    .spread((user, token) => {
+    .spread((
+      user: IUserInstance,
+      token
+    ) => {
       let jwtToken = jwt.sign({
         id: user.id,
         tokenId: token.id
@@ -68,7 +78,10 @@ export function forgotPassword(app, models: IModels) {
         token.save()
       ];
     })
-    .spread((user, jwtToken) => {
+    .spread((
+      user,
+      jwtToken
+    ) => {
       debug('Emailing reset password link to %s', user.email);
       let subject = '66pix Password Reset';
       let nunjucksContent = {
