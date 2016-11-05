@@ -22,7 +22,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^2.2.2",
+    "@66pix/api": "^2.2.4",
     "@66pix/email": "1.0.6",
     "@66pix/models": "^3.2.1",
     "bluebird": "^3.4.6",
@@ -58,7 +58,8 @@
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.46",
     "@types/nunjucks": "0.0.32",
-    "@types/sequelize": "^4.0.38",
+    "@types/ramda": "0.0.2",
+    "@types/sequelize": "^4.0.39",
     "@types/sinon": "^1.16.31",
     "@types/supertest": "^1.1.31",
     "code": "^4.0.0",
@@ -73,7 +74,7 @@
     "supertest": "^2.0.1",
     "test-plan": "^0.1.1",
     "tslint": "^3.15.1",
-    "typescript": "^2.0.6"
+    "typescript": "^2.0.7"
   },
   "lambci": {
     "docker": {
