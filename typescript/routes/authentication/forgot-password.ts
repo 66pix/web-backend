@@ -4,8 +4,7 @@ import jwt = require('jsonwebtoken');
 import path = require('path');
 import Bluebird = require('bluebird');
 import nunjucks = require('nunjucks');
-import {IModels} from '@66pix/models';
-
+import {IModels, IUserAccountInstance} from '@66pix/models';
 export function forgotPassword(
   app,
   models: IModels
@@ -55,7 +54,7 @@ export function forgotPassword(
       ];
     })
     .spread((
-      user: IUserInstance,
+      user: IUserAccountInstance,
       token
     ) => {
       let jwtToken = jwt.sign({
@@ -79,7 +78,7 @@ export function forgotPassword(
       ];
     })
     .spread((
-      user,
+      user: IUserAccountInstance,
       jwtToken
     ) => {
       debug('Emailing reset password link to %s', user.email);
