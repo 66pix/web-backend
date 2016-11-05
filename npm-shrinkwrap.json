@@ -3,9 +3,9 @@
   "version": "1.1.0",
   "dependencies": {
     "@66pix/api": {
-      "version": "2.2.4",
-      "from": "@66pix/api@2.2.4",
-      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.2.4.tgz",
+      "version": "2.2.5",
+      "from": "@66pix/api@2.2.5",
+      "resolved": "https://registry.npmjs.org/@66pix/api/-/api-2.2.5.tgz",
       "dependencies": {
         "@66pix/email": {
           "version": "1.0.6",
@@ -3076,10 +3076,35 @@
       "from": "@66pix/email@1.0.6",
       "resolved": "https://registry.npmjs.org/@66pix/email/-/email-1.0.6.tgz",
       "dependencies": {
+        "camelcase": {
+          "version": "2.1.1",
+          "from": "camelcase@^2.0.1",
+          "resolved": "https://registry.npmjs.org/camelcase/-/camelcase-2.1.1.tgz"
+        },
         "cheerio": {
           "version": "0.20.0",
           "from": "cheerio@>=0.20.0 <0.21.0",
           "resolved": "https://registry.npmjs.org/cheerio/-/cheerio-0.20.0.tgz"
+        },
+        "cliui": {
+          "version": "3.2.0",
+          "from": "cliui@^3.0.3",
+          "resolved": "https://registry.npmjs.org/cliui/-/cliui-3.2.0.tgz"
+        },
+        "nunjucks": {
+          "version": "2.5.2",
+          "from": "nunjucks@>=2.4.2 <3.0.0",
+          "resolved": "https://registry.npmjs.org/nunjucks/-/nunjucks-2.5.2.tgz"
+        },
+        "window-size": {
+          "version": "0.1.4",
+          "from": "window-size@^0.1.4",
+          "resolved": "https://registry.npmjs.org/window-size/-/window-size-0.1.4.tgz"
+        },
+        "yargs": {
+          "version": "3.32.0",
+          "from": "yargs@^3.32.0",
+          "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.32.0.tgz"
         }
       }
     },
@@ -3557,6 +3582,11 @@
       "version": "5.7.34",
       "from": "@types/validator@*",
       "resolved": "https://registry.npmjs.org/@types/validator/-/validator-5.7.34.tgz"
+    },
+    "a-sync-waterfall": {
+      "version": "1.0.0",
+      "from": "a-sync-waterfall@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/a-sync-waterfall/-/a-sync-waterfall-1.0.0.tgz"
     },
     "abab": {
       "version": "1.0.3",
@@ -6252,9 +6282,9 @@
       "resolved": "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz"
     },
     "nunjucks": {
-      "version": "2.5.2",
-      "from": "nunjucks@>=2.5.2 <3.0.0",
-      "resolved": "https://registry.npmjs.org/nunjucks/-/nunjucks-2.5.2.tgz",
+      "version": "3.0.0",
+      "from": "nunjucks@3.0.0",
+      "resolved": "https://registry.npmjs.org/nunjucks/-/nunjucks-3.0.0.tgz",
       "dependencies": {
         "camelcase": {
           "version": "2.1.1",
