@@ -1,10 +1,4 @@
-FROM nodesource/trusty:4
-
-### TODO strip these portions out when building for release
-### DEVELOPMENT ###
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql gcc-4.8
-### DEVELOPMENT ###
+FROM nodesource/jessie:6
 
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -12,7 +6,19 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN mkdir -p /srv/www
 WORKDIR /srv/www
 
+# Copy application files and dependencies
+# It is assumed that node_modules has been setup previously
+COPY package.json /srv/www/
 COPY . /srv/www/
+
+# Rebuild/install node dependencies
+RUN npm rebuild
+
+# Clean up
+RUN rm -rf /srv/www/node_modules/.git
+RUN apt-get -qq autoremove -y --purge
+RUN rm -rf ~/.node-gyp
+RUN rm -rf ~/.npm
 
 EXPOSE 3000
 

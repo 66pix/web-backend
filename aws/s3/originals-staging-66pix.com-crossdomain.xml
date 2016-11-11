@@ -1,0 +1,6 @@
+<cross-domain-policy>
+  <site-control permitted-cross-domain-policies="all"/>
+  <allow-access-from domain="localhost"/>
+  <allow-access-from domain="staging.66pix.com"/>
+  <allow-http-request-headers-from domain="*" headers="*" secure="false"/>
+</cross-domain-policy>

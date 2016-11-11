@@ -1,7 +1,10 @@
 {
-  "apps" : [{
-      "name"        : "website",
-      "script"      : "src/index.js"
+  "apps" : [
+    {
+      "name"        : "web-backend",
+      "script"      : "typescript/index.js",
+      "error_file"      : "/var/logs/pm2-error.log",
+      "out_file"        : "/var/logs/pm2-out.log"
     }
   ]
 }

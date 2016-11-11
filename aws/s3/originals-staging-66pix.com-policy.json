@@ -1,0 +1,36 @@
+{
+	"Version": "2008-10-17",
+	"Id": "PolicyForCloudFrontPrivateContent",
+	"Statement": [
+		{
+			"Sid": "1",
+			"Effect": "Allow",
+			"Principal": {
+				"CanonicalUser": [
+					"3dfcc468b6642400531b8f78fbb16c1022b58139ca1a3a863d5cdacf0933b4f78fb8c85ac24321ec3862e5565ddc560d"
+				]
+			},
+			"Action": "s3:GetObject",
+			"Resource": "arn:aws:s3:::originals-staging-66pix-com/*"
+		},
+		{
+			"Sid": "UploadFile",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::482348613934:user/66pix-staging-s3"
+			},
+			"Action": [
+				"s3:GetObject",
+				"s3:PutObject"
+			],
+			"Resource": "arn:aws:s3:::originals-staging-66pix-com/*"
+		},
+		{
+			"Sid": "crossdomainAccess",
+			"Effect": "Allow",
+			"Principal": "*",
+			"Action": "s3:GetObject",
+			"Resource": "arn:aws:s3:::originals-staging-66pix-com/crossdomain.xml"
+		}
+	]
+}

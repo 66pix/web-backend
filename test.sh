@@ -1,21 +1,37 @@
 #!/bin/bash
+set -e
+set -x
 
-./npm-install.sh
+psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c "CREATE DATABASE $RDS_DB_NAME;";
+psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" $RDS_DB_NAME < ./test-helpers/db-structure.sql
+psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" $RDS_DB_NAME < ./test-helpers/sequelize-meta.sql
 
-npm install
+COVERAGE_DIR=coverage/raw
+REMAP_DIR=coverage/typescript
 
-# Ensure database exists
-! psql --host=postgres --username=postgres -c 'CREATE DATABASE test;';
+mkdir -p $COVERAGE_DIR
+mkdir -p $REMAP_DIR
+echo "Running tests"
 
-export TOKEN_SECRET="TOKEN_SECRET"
-export RESET_PASSWORD_TOKEN_SECRET="RESET_PASSWORD_TOKEN_SECRET"
+npm run build && node_modules/.bin/istanbul cover --dir $COVERAGE_DIR node_modules/.bin/_mocha -- --timeout 20000 --recursive --reporter spec typescript/test/configure.js typescript/test/
 
-mkdir -p coverage
-/srv/www/node_modules/.bin/istanbul cover --include-all-sources -x gulpfile.js /srv/www/node_modules/.bin/_mocha -- --recursive --reporter spec
-/srv/www/node_modules/.bin/istanbul report html
-/srv/www/node_modules/.bin/istanbul report text-summary > coverage/text-summary.txt
+psql --host="$RDS_HOSTNAME" --username="$RDS_USERNAME" -c "DROP DATABASE $RDS_DB_NAME;";
 
-echo "\n"
+echo ""
+echo "Remapping coverage reports for typescript"
+node_modules/.bin/remap-istanbul -i $COVERAGE_DIR/coverage.json -o $REMAP_DIR -t html
+node_modules/.bin/remap-istanbul -i $COVERAGE_DIR/coverage.json -o $REMAP_DIR/coverage.json -t json
 
-/srv/www/node_modules/.bin/coverage-average coverage/text-summary.txt --limit 95
+echo ""
+echo "Coverage report located at $REMAP_DIR/index.html"
 
+COVERAGE_AVERAGE=80
+echo ""
+echo "Enforcing coverage average of $COVERAGE_AVERAGE for $REMAP_DIR/coverage.json"
+echo ""
+node_modules/.bin/istanbul check-coverage \
+  --statements $COVERAGE_AVERAGE \
+  --functions $COVERAGE_AVERAGE \
+  --branches $COVERAGE_AVERAGE \
+  --lines $COVERAGE_AVERAGE \
+  $REMAP_DIR/coverage.json
