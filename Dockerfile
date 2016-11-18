@@ -16,6 +16,7 @@ RUN npm rebuild
 
 # Clean up
 RUN rm -rf /srv/www/node_modules/.git
+RUN apt-get -qq install -y apt-transport-https
 RUN apt-get -qq autoremove -y --purge
 RUN rm -rf ~/.node-gyp
 RUN rm -rf ~/.npm
