@@ -58,7 +58,7 @@ export function login(app, models: IModels) {
       let expiresOn = new Date();
       result.token.expiresOn = expiresOn.getTime() + EXPIRES_IN_HOURS * 60 * 60 * 1000;
       result.token.updatedWithToken = result.token.id;
-      result.token.payload = jwtToken;
+      // result.token.payload = jwtToken;  // This is a security vulnerability - secrets should never be stored
       return Bluebird.props({
         jwtToken: jwtToken,
         tokenSave: result.token.save()
