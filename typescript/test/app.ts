@@ -34,7 +34,7 @@ describe('App', function() {
     });
   });
 
-  it('should allow CORS requests from the configured origins', (done) => {
+  it('should allow CORS requests from the configured origin', (done) => {
     request(app)
     .post('/authentication/login')
     .send({
