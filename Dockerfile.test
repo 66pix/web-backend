@@ -18,13 +18,13 @@ RUN apt-get update --fix-missing
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python-pip docker docker-engine postgresql zip
 
 ENV NODE_ENV="development"
-RUN npm install --silent -g eslint typings typescript tslint nsp
+RUN npm install --silent -g eslint typings typescript tslint nsp yarn
 
 COPY ./test-helpers/.npmrc /tmp/.npmrc
 ADD package.json /tmp/package.json
-ADD npm-shrinkwrap.json /tmp/npm-shrinkwrap.json
-RUN npm i -g npm@4.0.0
-RUN cd /tmp && npm install
+#ADD npm-shrinkwrap.json /tmp/npm-shrinkwrap.json
+ADD yarn.lock /tmp/yarn.lock
+RUN cd /tmp && yarn
 RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
 RUN rm -f .npmrc
 
