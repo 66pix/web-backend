@@ -1,5 +1,5 @@
 "use strict";
-const raygun_1 = require('./../raygun');
+const raygun_1 = require("./../raygun");
 const expect = require('code').expect;
 describe('raygun', function () {
     it('should set raygunClient to offline in development', function (done) {

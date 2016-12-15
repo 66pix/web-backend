@@ -1,10 +1,10 @@
 "use strict";
-const config_1 = require('../../../config');
-const request = require('supertest');
+const config_1 = require("../../../config");
+const request = require("supertest");
 const expect = require('code').expect;
-const jwt = require('jsonwebtoken');
-const sinon = require('sinon');
-const models_1 = require('@66pix/models');
+const jwt = require("jsonwebtoken");
+const sinon = require("sinon");
+const models_1 = require("@66pix/models");
 describe('Routes authentication logout', () => {
     let app;
     let jwtToken;

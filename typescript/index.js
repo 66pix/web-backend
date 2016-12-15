@@ -1,10 +1,10 @@
 "use strict";
-const http = require('http');
-const debugModule = require('debug');
+const http = require("http");
+const debugModule = require("debug");
 const debug = debugModule('66pix-backend:index');
-const config_1 = require('./config');
-const app_1 = require('./app');
-const raygun_1 = require('./raygun');
+const config_1 = require("./config");
+const app_1 = require("./app");
+const raygun_1 = require("./raygun");
 let raygun = require('raygun');
 const raygunClient = raygun_1.raygunClientFactory(raygun);
 let d = require('domain').create();

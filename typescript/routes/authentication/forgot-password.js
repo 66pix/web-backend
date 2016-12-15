@@ -1,10 +1,10 @@
 "use strict";
-const config_1 = require('../../config');
+const config_1 = require("../../config");
 const debug = require('debug')('66pix-backend:authentication/forgot-password');
-const jwt = require('jsonwebtoken');
-const path = require('path');
-const Bluebird = require('bluebird');
-const nunjucks = require('nunjucks');
+const jwt = require("jsonwebtoken");
+const path = require("path");
+const Bluebird = require("bluebird");
+const nunjucks = require("nunjucks");
 function forgotPassword(app, models) {
     function responseSuccess(res) {
         res.status(200)

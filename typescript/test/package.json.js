@@ -1,7 +1,7 @@
 "use strict";
 const expect = require('code').expect;
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 describe('Package.json', function () {
     let packageJson;
     beforeEach(function (done) {

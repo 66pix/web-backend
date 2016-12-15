@@ -1,6 +1,6 @@
 "use strict";
 const expect = require('code').expect;
-const index_1 = require('../index');
+const index_1 = require("../index");
 describe('index', () => {
     it('should create a valid server', (done) => {
         index_1.getServer.then((server) => {

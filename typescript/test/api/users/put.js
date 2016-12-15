@@ -1,8 +1,8 @@
 "use strict";
-const request = require('supertest');
+const request = require("supertest");
 const R = require('ramda');
 const expect = require('code').expect;
-const loginHelper_1 = require('../../loginHelper');
+const loginHelper_1 = require("../../loginHelper");
 describe('Routes Users PUT', () => {
     let app;
     let user;

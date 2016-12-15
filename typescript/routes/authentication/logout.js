@@ -1,6 +1,6 @@
 "use strict";
-const config_1 = require('../../config');
-const jwt = require('jsonwebtoken');
+const config_1 = require("../../config");
+const jwt = require("jsonwebtoken");
 const debug = require('debug')('66pix-backend:authentication/logout');
 function logout(app, models) {
     app.post('/authentication/logout', (req, res, next) => {

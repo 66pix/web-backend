@@ -1,8 +1,8 @@
 "use strict";
-const request = require('supertest');
+const request = require("supertest");
 const expect = require('code').expect;
 const Plan = require('test-plan');
-const models_1 = require('@66pix/models');
+const models_1 = require("@66pix/models");
 describe('Routes authentication login', function () {
     let app;
     let UserAccount;
