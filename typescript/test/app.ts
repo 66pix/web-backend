@@ -30,12 +30,11 @@ describe('App', function() {
     .set('Access-Control-Request-Method', 'POST')
     .expect(204, (error, response) => {
       expect(response.headers['access-control-allow-methods']).to.equal('GET,HEAD,PUT,PATCH,POST,DELETE');
-      // expect(response.headers['access-control-allow-origin']).to.equal(config.get('CORS_URLS'));
       done();
     });
   });
 
-  it('should allow CORS requests from only the configured origin', (done) => {
+  it('should allow CORS requests from the configured origins', (done) => {
     request(app)
     .post('/authentication/login')
     .send({
