@@ -1,6 +1,7 @@
 import request = require('supertest');
 import {getApp} from '../app';
 import {config} from '../config';
+import * as R from 'ramda';
 const expect = require('code').expect;
 
 describe('App', function() {
@@ -42,7 +43,7 @@ describe('App', function() {
       password: 'alskdfdsj'
     })
     .set({
-      'Origin': config.get('CORS_URL')
+      'Origin': R.head(config.get('CORS_URLS').split(','))
     })
     .expect(401, done);
   });
