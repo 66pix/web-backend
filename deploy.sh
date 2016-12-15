@@ -10,7 +10,7 @@ echo ""
 echo "Installing awscli"
 pip install --upgrade awscli
 
-docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
+docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
 
 BRANCH=`echo ${LAMBCI_BRANCH//\//_}`
 MODULE="web-backend"
