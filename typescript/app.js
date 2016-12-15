@@ -1,23 +1,23 @@
 "use strict";
-const config_js_1 = require('./config.js');
-const express = require('express');
-const cors = require('cors');
-const expressJwt = require('express-jwt');
-const bodyparser = require('body-parser');
+const config_js_1 = require("./config.js");
+const express = require("express");
+const cors = require("cors");
+const expressJwt = require("express-jwt");
+const bodyparser = require("body-parser");
 const debug = require('debug')('backend');
-const isRevoked_1 = require('./isRevoked');
-const api_1 = require('@66pix/api');
-const models_1 = require('@66pix/models');
-const login_1 = require('./routes/authentication/login');
-const logout_1 = require('./routes/authentication/logout');
-const forgot_password_1 = require('./routes/authentication/forgot-password');
-const reset_password_1 = require('./routes/authentication/reset-password');
-const raygun_1 = require('./raygun');
+const isRevoked_1 = require("./isRevoked");
+const api_1 = require("@66pix/api");
+const models_1 = require("@66pix/models");
+const login_1 = require("./routes/authentication/login");
+const logout_1 = require("./routes/authentication/logout");
+const forgot_password_1 = require("./routes/authentication/forgot-password");
+const reset_password_1 = require("./routes/authentication/reset-password");
+const raygun_1 = require("./raygun");
 let raygun = require('raygun');
 const raygunClient = raygun_1.raygunClientFactory(raygun);
 let app = express();
 const corsOptions = {
-    origin: config_js_1.config.get('CORS_URL')
+    origin: config_js_1.config.get('CORS_URLS').split(',')
 };
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));

@@ -20,7 +20,7 @@ const raygunClient = raygunClientFactory(raygun);
 let app = express();
 
 const corsOptions = {
-  origin: config.get('CORS_URL')
+  origin: config.get('CORS_URLS').split(',')
 };
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
