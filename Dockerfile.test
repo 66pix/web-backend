@@ -16,7 +16,6 @@ RUN npm install --silent -g eslint typings typescript tslint nsp yarn
 
 COPY ./test-helpers/.npmrc /tmp/.npmrc
 ADD package.json /tmp/package.json
-#ADD npm-shrinkwrap.json /tmp/npm-shrinkwrap.json
 ADD yarn.lock /tmp/yarn.lock
 RUN cd /tmp && yarn
 RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
