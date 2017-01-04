@@ -22,6 +22,7 @@ const corsOptions = {
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(bodyparser.json());
+app.disable('x-powered-by');
 app.use((req, res, next) => {
     res.setHeader('Cache-Control', 'max-age=0');
     next();

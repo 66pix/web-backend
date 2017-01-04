@@ -27,6 +27,8 @@ app.use(cors(corsOptions));
 
 app.use(bodyparser.json());
 
+app.disable('x-powered-by');
+
 app.use((
   req,
   res,
