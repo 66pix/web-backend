@@ -1,10 +1,10 @@
 "use strict";
-const config_1 = require('../../../config');
+const config_1 = require("../../../config");
 const expect = require('code').expect;
-const request = require('supertest');
-const jwt = require('jsonwebtoken');
-const app_1 = require('../../../app');
-const models_1 = require('@66pix/models');
+const request = require("supertest");
+const jwt = require("jsonwebtoken");
+const app_1 = require("../../../app");
+const models_1 = require("@66pix/models");
 describe('Routes authentication reset-password', () => {
     let app;
     beforeEach((done) => {

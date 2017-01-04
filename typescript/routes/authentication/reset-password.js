@@ -1,7 +1,7 @@
 "use strict";
-const config_1 = require('../../config');
+const config_1 = require("../../config");
 const debug = require('debug')('66pix-backend:authentication/reset-password');
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 function resetPassword(app, models) {
     app.post('/authentication/reset-password/:token', (req, res) => {
         function sendError(message) {

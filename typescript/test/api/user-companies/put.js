@@ -1,7 +1,7 @@
 "use strict";
 const expect = require('code').expect;
-const request = require('supertest');
-const Bluebird = require('bluebird');
+const request = require("supertest");
+const Bluebird = require("bluebird");
 describe('Routes User Companies put', () => {
     let app;
     let token;

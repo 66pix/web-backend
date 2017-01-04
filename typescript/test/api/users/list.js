@@ -1,8 +1,8 @@
 "use strict";
 const expect = require('code').expect;
-const request = require('supertest');
-const models_1 = require('@66pix/models');
-const loginHelper_1 = require('../../loginHelper');
+const request = require("supertest");
+const models_1 = require("@66pix/models");
+const loginHelper_1 = require("../../loginHelper");
 describe('Routes Users GET', () => {
     let app;
     let token;

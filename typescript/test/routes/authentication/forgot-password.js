@@ -1,9 +1,9 @@
 "use strict";
-const request = require('supertest');
-const sinon = require('sinon');
+const request = require("supertest");
+const sinon = require("sinon");
 const expect = require('code').expect;
 const requireClean = require('require-clean');
-const models_1 = require('@66pix/models');
+const models_1 = require("@66pix/models");
 describe('Routes authentication forgot-password', () => {
     let app;
     let mailer;

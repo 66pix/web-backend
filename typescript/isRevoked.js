@@ -1,5 +1,5 @@
 "use strict";
-const models_1 = require('@66pix/models');
+const models_1 = require("@66pix/models");
 function isRevoked(request, payload, done) {
     if (!payload) {
         return done(null, true);

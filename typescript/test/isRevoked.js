@@ -1,8 +1,8 @@
 "use strict";
 const expect = require('code').expect;
-const isRevoked_1 = require('../isRevoked');
-const sinon = require('sinon');
-const models_1 = require('@66pix/models');
+const isRevoked_1 = require("../isRevoked");
+const sinon = require("sinon");
+const models_1 = require("@66pix/models");
 describe('isRevoked', () => {
     let spy;
     beforeEach((done) => {

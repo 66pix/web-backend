@@ -1,9 +1,9 @@
 "use strict";
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const debug = require('debug')('66pix-backend:authentication/login');
-const config_1 = require('../../config');
-const Bluebird = require('bluebird');
-const Joi = require('joi');
+const config_1 = require("../../config");
+const Bluebird = require("bluebird");
+const Joi = require("joi");
 const Celebrate = require('celebrate');
 function login(app, models) {
     app.post('/authentication/login', Celebrate({
@@ -56,7 +56,7 @@ function login(app, models) {
             let expiresOn = new Date();
             result.token.expiresOn = expiresOn.getTime() + EXPIRES_IN_HOURS * 60 * 60 * 1000;
             result.token.updatedWithToken = result.token.id;
-            result.token.payload = jwtToken;
+            // result.token.payload = jwtToken;  // This is a security vulnerability - secrets should never be stored
             return Bluebird.props({
                 jwtToken: jwtToken,
                 tokenSave: result.token.save()

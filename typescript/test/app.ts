@@ -1,6 +1,7 @@
 import request = require('supertest');
 import {getApp} from '../app';
 import {config} from '../config';
+import * as R from 'ramda';
 const expect = require('code').expect;
 
 describe('App', function() {
@@ -29,12 +30,11 @@ describe('App', function() {
     .set('Access-Control-Request-Method', 'POST')
     .expect(204, (error, response) => {
       expect(response.headers['access-control-allow-methods']).to.equal('GET,HEAD,PUT,PATCH,POST,DELETE');
-      expect(response.headers['access-control-allow-origin']).to.equal(config.get('CORS_URL'));
       done();
     });
   });
 
-  it('should allow CORS requests from only the configured origin', (done) => {
+  it('should allow CORS requests from the configured origin', (done) => {
     request(app)
     .post('/authentication/login')
     .send({
@@ -42,7 +42,7 @@ describe('App', function() {
       password: 'alskdfdsj'
     })
     .set({
-      'Origin': config.get('CORS_URL')
+      'Origin': R.head(config.get('CORS_URLS').split(','))
     })
     .expect(401, done);
   });

@@ -4,22 +4,20 @@ ARG NPM_TOKEN
 
 ENV TZ=Pacific/Auckland
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN apt-get update && apt-get -y install apt-transport-https curl
 
 RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-RUN echo "deb https://apt.dockerproject.org/repo debian-jessie main" >> /etc/apt/sources.list.d/docker.list
+RUN echo "deb http://apt.dockerproject.org/repo debian-jessie main" >> /etc/apt/sources.list.d/docker.list
 
 RUN apt-get update --fix-missing
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python-pip docker apt-transport-https ca-certificates docker-engine postgresql zip
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python-pip docker docker-engine postgresql zip python-dev
 
 ENV NODE_ENV="development"
-RUN npm install --silent -g eslint typings typescript tslint nsp
+RUN npm install --silent -g eslint typings typescript tslint nsp yarn
 
 COPY ./test-helpers/.npmrc /tmp/.npmrc
 ADD package.json /tmp/package.json
-ADD npm-shrinkwrap.json /tmp/npm-shrinkwrap.json
-RUN npm install -g npm 
-RUN cd /tmp && npm install
+ADD yarn.lock /tmp/yarn.lock
+RUN cd /tmp && yarn
 RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
 RUN rm -f .npmrc
 

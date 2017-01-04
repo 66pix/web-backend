@@ -1,9 +1,9 @@
 "use strict";
 const expect = require('code').expect;
-const request = require('supertest');
-const Bluebird = require('bluebird');
-const loginHelper_1 = require('../../loginHelper');
-const R = require('ramda');
+const request = require("supertest");
+const Bluebird = require("bluebird");
+const loginHelper_1 = require("../../loginHelper");
+const R = require("ramda");
 describe('Routes Companies current', () => {
     let app;
     let token;

@@ -20,12 +20,21 @@ const raygunClient = raygunClientFactory(raygun);
 let app = express();
 
 const corsOptions = {
-  origin: config.get('CORS_URL')
+  origin: config.get('CORS_URLS').split(',')
 };
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
 app.use(bodyparser.json());
+
+app.use((
+  req,
+  res,
+  next
+) => {
+  res.setHeader('Cache-Control', 'max-age=0');
+  next();
+});
 
 app.use('/api', expressJwt({
   secret: config.get('TOKEN_SECRET'),
@@ -47,7 +56,12 @@ export const getApp = initialiseModels
   return app;
 });
 
-function unauthorisedErrorHandler(error, req, res, next) {
+function unauthorisedErrorHandler(
+  error,
+  req,
+  res,
+  next
+) {
   if (error.name !== 'UnauthorizedError') {
     return next(error);
   }
@@ -59,7 +73,12 @@ function unauthorisedErrorHandler(error, req, res, next) {
   });
 }
 
-function catchAllErrorHandler(error, req, res, next) {
+function catchAllErrorHandler(
+  error,
+  req,
+  res,
+  next
+) {
   let code = 500;
   if (error.code) {
     code = error.code;

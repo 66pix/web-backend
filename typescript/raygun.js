@@ -1,5 +1,5 @@
 "use strict";
-const path = require('path');
+const path = require("path");
 function raygunClientFactory(raygun) {
     const raygunClient = new raygun.Client().init({
         apiKey: 'uRW3z1eB4DCaFppIv8vkvQ==',

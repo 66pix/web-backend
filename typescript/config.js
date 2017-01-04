@@ -1,5 +1,5 @@
 "use strict";
-const convict = require('convict');
+const convict = require("convict");
 const config = convict({
     NODE_ENV: {
         doc: 'The applicaton environment.',
@@ -42,11 +42,11 @@ const config = convict({
         default: null,
         env: 'BASE_URL'
     },
-    CORS_URL: {
+    CORS_URLS: {
         doc: 'The origin URL to allow incoming requests for',
-        format: 'url',
+        format: String,
         default: 'http://localhost:8080',
-        env: 'CORS_URL'
+        env: 'CORS_URLS'
     }
 });
 exports.config = config;
