@@ -3,7 +3,11 @@ import {config} from './config';
 
 let Raven;
 
-function initialiseRaven(_Raven_): any {
+export function clearRaven() {
+  Raven = null;
+}
+
+export function initialiseRaven(_Raven_): any {
   if (Raven) {
     return Raven;
   }
@@ -21,6 +25,6 @@ function initialiseRaven(_Raven_): any {
     environment: config.get('NODE_ENV')
   })
   .install();
-}
 
-export {initialiseRaven};
+  return Raven;
+}

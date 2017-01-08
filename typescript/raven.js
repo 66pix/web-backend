@@ -1,6 +1,10 @@
 "use strict";
 const config_1 = require("./config");
 let Raven;
+function clearRaven() {
+    Raven = null;
+}
+exports.clearRaven = clearRaven;
 function initialiseRaven(_Raven_) {
     if (Raven) {
         return Raven;
@@ -17,6 +21,7 @@ function initialiseRaven(_Raven_) {
         environment: config_1.config.get('NODE_ENV')
     })
         .install();
+    return Raven;
 }
 exports.initialiseRaven = initialiseRaven;
 //# sourceMappingURL=raven.js.map
