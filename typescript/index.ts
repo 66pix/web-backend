@@ -4,16 +4,24 @@ const debug = debugModule('66pix-backend:index');
 import {config} from './config';
 import {getApp} from './app';
 
-import {raygunClientFactory} from './raygun';
-let raygun = require('raygun');
-const raygunClient = raygunClientFactory(raygun);
+import {initialiseRaven} from './raven';
+const Raven = initialiseRaven(require('raven'));
+
+/* istanbul ignore next */
+process.on('unhandledRejection', function(reason, promise) {
+  debug(reason.message);
+  debug(reason.stack);
+  Raven.captureException(reason, () => {
+    process.exit();
+  });
+});
 
 let d = require('domain').create();
 /* istanbul ignore next */
 d.on('error', (error) => {
   debug(error.message);
   debug(error.stack);
-  raygunClient.send(error, {}, () => {
+  Raven.captureException(error, () => {
     process.exit();
   });
 });
