@@ -12,6 +12,12 @@ const config = convict({
         default: 'development',
         env: 'NODE_ENV'
     },
+    RAVEN_URL: {
+        doc: 'The URL to use with sentry.io',
+        format: String,
+        default: '',
+        env: 'RAVEN_URL'
+    },
     PORT: {
         doc: 'The port to bind.',
         format: Number,
@@ -47,7 +53,17 @@ const config = convict({
         format: String,
         default: 'http://localhost:8080',
         env: 'CORS_URLS'
-    }
+    },
+    ENVIRONMENT: {
+        doc: 'The application monitoring environment.',
+        format: [
+            'production',
+            'local',
+            'staging'
+        ],
+        default: 'local',
+        env: 'ENVIRONMENT'
+    },
 });
 exports.config = config;
 config.validate();
