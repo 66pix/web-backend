@@ -19,6 +19,11 @@ TAG="$ENVIRONMENT-$BRANCH-l-$LAMBCI_BUILD_NUM-layered"
 TAG_SQUASHED="$ENVIRONMENT-$BRANCH-l-$LAMBCI_BUILD_NUM"
 
 echo ""
+echo "Setting release version in ./typescript/raven.(j|t)s"
+sed -i -- "s/%RELEASE_VERSION/${RELEASE_VERSION}/g" typescript/raven.js
+sed -i -- "s/%RELEASE_VERSION/${RELEASE_VERSION}/g" typescript/raven.ts
+
+echo ""
 echo "Building image"
 docker build -t "${NAME}:${TAG_SQUASHED}" .
 
