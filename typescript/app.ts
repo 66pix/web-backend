@@ -13,9 +13,8 @@ import {logout} from './routes/authentication/logout';
 import {forgotPassword} from './routes/authentication/forgot-password';
 import {resetPassword} from './routes/authentication/reset-password';
 
-import {raygunClientFactory} from './raygun';
-let raygun = require('raygun');
-const raygunClient = raygunClientFactory(raygun);
+import {initialiseRaven} from './raven';
+const Raven = initialiseRaven(require('raven'));
 
 let app = express();
 
@@ -26,6 +25,8 @@ app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
 app.use(bodyparser.json());
+
+app.disable('x-powered-by');
 
 app.use((
   req,
@@ -51,7 +52,6 @@ export const getApp = initialiseModels
 })
 .then(() => {
   app.use(unauthorisedErrorHandler);
-  app.use(raygunClient.expressHandler);
   app.use(catchAllErrorHandler);
   return app;
 });
@@ -84,13 +84,11 @@ function catchAllErrorHandler(
     code = error.code;
   }
 
-  debug(error);
-  res.status(code);
-  res.json({
-    message: error.message
+
+  Raven.captureException(error, () => {
+    res.status(code);
+    res.json({
+      message: error.message
+    });
   });
 }
-
-process.on('unhandledRejection', (error) => {
-  raygunClient.send(error);
-});

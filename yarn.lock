@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^2.2.8":
-  version "2.2.8"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.2.8.tgz#e8e0ff60d26107ca946d340035b19946e9d5f152"
+"@66pix/api@^2.2.9":
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.2.9.tgz#b0d663d921f17c624a990fa3003fc035fd4b8957"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "3.2.2"
@@ -75,9 +75,9 @@
   version "0.6.33"
   resolved "https://registry.yarnpkg.com/@types/convict/-/convict-0.6.33.tgz#a5bdbb598cc2b1398a83d64270ec8c69b7e68aea"
 
-"@types/cors@0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@types/cors/-/cors-0.0.33.tgz#05dc50760b93201b81c54a94fb757f21144f5e61"
+"@types/cors@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.0.tgz#9e4d0308b862f5306ae8d83859f90abd379199c8"
   dependencies:
     "@types/express" "*"
 
@@ -135,13 +135,15 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-0.0.29.tgz#fbcfd330573b912ef59eeee14602bface630754b"
 
-"@types/mocha@^2.2.35":
-  version "2.2.35"
-  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.35.tgz#dd3150b62a6de73368109308515c3aa86f81f1ec"
+"@types/mocha@^2.2.36":
+  version "2.2.36"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.36.tgz#84e58982fc5f9ebe47d6fc0b1626dd1133db5c0d"
+  dependencies:
+    "@types/node" "*"
 
-"@types/node@*", "@types/node@^6.0.55":
-  version "6.0.55"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.55.tgz#e5cb679a43561f42afd1bd6d58d3992ec8f31720"
+"@types/node@*", "@types/node@^6.0.58":
+  version "6.0.58"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.58.tgz#7b3b7065f3cdf24e2349d35b68d2795cfa874553"
 
 "@types/nunjucks@0.0.32":
   version "0.0.32"
@@ -1344,9 +1346,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^3.12.2:
-  version "3.12.2"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.12.2.tgz#6be5a9aa29658252abd7f91e9132bab1f26f3c34"
+eslint@^3.13.0:
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.13.0.tgz#636925fd163c9babe2e8be7ae43caf518d469577"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -1378,7 +1380,7 @@ eslint@^3.12.2:
     require-uncached "^1.0.2"
     shelljs "^0.7.5"
     strip-bom "^3.0.0"
-    strip-json-comments "~1.0.1"
+    strip-json-comments "~2.0.1"
     table "^3.7.8"
     text-table "~0.2.0"
     user-home "^2.0.0"
@@ -1747,7 +1749,7 @@ glob-parent@^2.0.0:
   dependencies:
     is-glob "^2.0.0"
 
-glob@7.0.5, glob@7.0.x:
+glob@7.0.5, glob@7.0.x, glob@^7.0.3:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.0.5.tgz#b4202a69099bbb4d292a7c1b95b6682b67ebdc95"
   dependencies:
@@ -1778,7 +1780,7 @@ glob@^6.0.0:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1:
+glob@^7.0.0, glob@^7.0.5, glob@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
@@ -2377,7 +2379,7 @@ json-stable-stringify@^1.0.0, json-stable-stringify@^1.0.1:
   dependencies:
     jsonify "~0.0.0"
 
-json-stringify-safe@^5.0, json-stringify-safe@~5.0.1:
+json-stringify-safe@5.0.1, json-stringify-safe@^5.0, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
@@ -2692,6 +2694,10 @@ lru-queue@0.1:
   resolved "https://registry.yarnpkg.com/lru-queue/-/lru-queue-0.1.0.tgz#2738bd9f0d3cf4f84490c5736c48699ac632cda3"
   dependencies:
     es5-ext "~0.10.2"
+
+lsmod@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/lsmod/-/lsmod-1.0.0.tgz#9a00f76dca36eb23fa05350afe1b585d4299e64b"
 
 mailcomposer@4.0.0:
   version "4.0.0"
@@ -3045,10 +3051,6 @@ object-assign@4.1.0, object-assign@^4.0.1, object-assign@^4.1.0:
 object-assign@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-3.0.0.tgz#9bedd5ca0897949bca47e7ff408062d549f587f2"
-
-object-to-human-string@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/object-to-human-string/-/object-to-human-string-0.0.3.tgz#7feb121a79496248ef8daa160da23862c09e89f2"
 
 object.omit@^2.0.0:
   version "2.0.1"
@@ -3428,6 +3430,16 @@ range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
+raven@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/raven/-/raven-1.1.1.tgz#8837af64baa29ec32fc1cd8223255645ce3c9a42"
+  dependencies:
+    cookie "0.3.1"
+    json-stringify-safe "5.0.1"
+    lsmod "1.0.0"
+    stack-trace "0.0.9"
+    uuid "3.0.0"
+
 raw-body@~2.1.7:
   version "2.1.7"
   resolved "https://registry.yarnpkg.com/raw-body/-/raw-body-2.1.7.tgz#adfeace2e4fb3098058014d08c072dcc59758774"
@@ -3435,13 +3447,6 @@ raw-body@~2.1.7:
     bytes "2.4.0"
     iconv-lite "0.4.13"
     unpipe "1.0.0"
-
-raygun@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/raygun/-/raygun-0.9.0.tgz#4792e26fb5ce6f1b63c32f356cab1af82a8e1866"
-  dependencies:
-    object-to-human-string "0.0.3"
-    stack-trace "0.0.6"
 
 rc@^1.0.1, rc@^1.1.2, rc@^1.1.6, rc@~1.1.6:
   version "1.1.6"
@@ -3941,9 +3946,9 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
-stack-trace@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/stack-trace/-/stack-trace-0.0.6.tgz#1e719bd6a2629ff09c189e17a9ef902a94fc5db0"
+stack-trace@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/stack-trace/-/stack-trace-0.0.9.tgz#a8f6eaeca90674c333e7c43953f275b451510695"
 
 "statuses@>= 1.3.1 < 2", statuses@~1.3.0:
   version "1.3.1"
@@ -3994,9 +3999,13 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
-strip-json-comments@~1.0.1, strip-json-comments@~1.0.4:
+strip-json-comments@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
+
+strip-json-comments@~2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
 stylus@^0.54.5:
   version "0.54.5"
@@ -4186,9 +4195,9 @@ tryit@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tryit/-/tryit-1.0.3.tgz#393be730a9446fd1ead6da59a014308f36c289cb"
 
-tslint@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/tslint/-/tslint-4.2.0.tgz#b9f5c5b871b784ab2f4809e704ade42d62f523ad"
+tslint@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/tslint/-/tslint-4.3.1.tgz#28f679c53ca4b273688bcb6fcf0dde7ff1bb2169"
   dependencies:
     babel-code-frame "^6.20.0"
     colors "^1.1.2"
