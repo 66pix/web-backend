@@ -21,8 +21,8 @@ RELEASE_VERSION="${MODULE}-${TAG_SQUASHED}"
 
 echo ""
 echo "Setting release version in ./typescript/raven.(j|t)s"
-sed -i -- "s/%RELEASE_VERSION/${RELEASE_VERSION}/g" typescript/raven.js
-sed -i -- "s/%RELEASE_VERSION/${RELEASE_VERSION}/g" typescript/raven.ts
+sed -i -- "s/%RELEASE_VERSION%/${RELEASE_VERSION}/g" typescript/raven.js
+sed -i -- "s/%RELEASE_VERSION%/${RELEASE_VERSION}/g" typescript/raven.ts
 
 echo ""
 echo "Building image"
@@ -40,7 +40,7 @@ sed "s/<TAG>/${TAG_SQUASHED}/" < Dockerrun.aws.json.template > $DOCKERRUN_FILE
 DEPLOYMENT_ARTIFACT="${MODULE}-${TAG_SQUASHED}-bundle.zip"
 echo ""
 echo "Creating deployment artifact"
-zip -r $DEPLOYMENT_ARTIFACT $DOCKERRUN_FILE
+zip -r $DEPLOYMENT_ARTIFACT .ebextensions $DOCKERRUN_FILE
 
 export AWS_ACCESS_KEY_ID=$AWS_ELASTIC_BEANSTALK_DEPLOY_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_ELASTIC_BEANSTALK_DEPLOY_ACCESS_KEY_SECRET
