@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^2.2.9":
-  version "2.2.9"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.2.9.tgz#b0d663d921f17c624a990fa3003fc035fd4b8957"
+"@66pix/api@^2.2.10":
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.2.10.tgz#b04bf69eb086294c27cade93f03dc768f8d47b4c"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "3.2.2"
@@ -3395,11 +3395,11 @@ punycode@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.0.1.tgz#3f142fd8e6ef4e9ce24acbf7ba869ff9b00d2c2b"
 
-qs@6.2.0:
+qs@6.2.0, qs@^6.1.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
 
-qs@^6.1.0, qs@~6.3.0:
+qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
 
