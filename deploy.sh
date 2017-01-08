@@ -17,6 +17,7 @@ MODULE="web-backend"
 NAME="66pix/$MODULE"
 TAG="$ENVIRONMENT-$BRANCH-l-$LAMBCI_BUILD_NUM-layered"
 TAG_SQUASHED="$ENVIRONMENT-$BRANCH-l-$LAMBCI_BUILD_NUM"
+RELEASE_VERSION="${MODULE}-${TAG_SQUASHED}"
 
 echo ""
 echo "Setting release version in ./typescript/raven.(j|t)s"
@@ -68,3 +69,10 @@ aws elasticbeanstalk update-environment \
   --environment-name "${ENVIRONMENT}66pix-backend" \
   --version-label "${MODULE}-${TAG_SQUASHED}" \
   --region ap-southeast-2
+
+echo ""
+echo "Publishing new release to getsentry"
+curl https://sentry.io/api/hooks/release/builtin/127415/3ca3d452f29047deb7b1a443bcffa80c10c5dc8e5ff7ea92a0200ad18a7f655f/ \
+  -X POST \
+  -H 'Content-Type: application/json' \
+  -d "{\"version\": \"${RELEASE_VERSION}\"}"
