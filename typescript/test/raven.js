@@ -1,5 +1,5 @@
 "use strict";
-const raven_1 = require("./../raven");
+const raven_1 = require("../raven");
 const config_1 = require("../config");
 const expect = require('code').expect;
 describe('raven', function () {

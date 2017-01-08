@@ -1,5 +1,4 @@
-import {initialiseRaven, clearRaven} from './../raven';
-import sinon = require('sinon');
+import {initialiseRaven, clearRaven} from '../raven';
 import {config} from '../config';
 const expect = require('code').expect;
 
@@ -32,7 +31,7 @@ describe('raven', function() {
       config: () => {
         return {
           install: () => {}
-        }
+        };
       }
     });
 
@@ -50,7 +49,7 @@ describe('raven', function() {
       config: () => {
         return {
           install: () => {}
-        }
+        };
       }
     });
 
