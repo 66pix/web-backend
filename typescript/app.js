@@ -12,9 +12,8 @@ const login_1 = require("./routes/authentication/login");
 const logout_1 = require("./routes/authentication/logout");
 const forgot_password_1 = require("./routes/authentication/forgot-password");
 const reset_password_1 = require("./routes/authentication/reset-password");
-const raygun_1 = require("./raygun");
-let raygun = require('raygun');
-const raygunClient = raygun_1.raygunClientFactory(raygun);
+const raven_1 = require("./raven");
+const Raven = raven_1.initialiseRaven(require('raven'));
 let app = express();
 const corsOptions = {
     origin: config_js_1.config.get('CORS_URLS').split(',')
@@ -41,7 +40,6 @@ exports.getApp = models_1.initialiseModels
 })
     .then(() => {
     app.use(unauthorisedErrorHandler);
-    app.use(raygunClient.expressHandler);
     app.use(catchAllErrorHandler);
     return app;
 });
@@ -60,13 +58,11 @@ function catchAllErrorHandler(error, req, res, next) {
     if (error.code) {
         code = error.code;
     }
-    debug(error);
-    res.status(code);
-    res.json({
-        message: error.message
+    Raven.captureException(error, () => {
+        res.status(code);
+        res.json({
+            message: error.message
+        });
     });
 }
-process.on('unhandledRejection', (error) => {
-    raygunClient.send(error);
-});
 //# sourceMappingURL=app.js.map
