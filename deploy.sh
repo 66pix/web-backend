@@ -21,8 +21,8 @@ RELEASE_VERSION="${MODULE}-${TAG_SQUASHED}"
 
 echo ""
 echo "Setting release version in ./typescript/raven.(j|t)s"
-sed -i -- "s/%RELEASE_VERSION/${RELEASE_VERSION}/g" typescript/raven.js
-sed -i -- "s/%RELEASE_VERSION/${RELEASE_VERSION}/g" typescript/raven.ts
+sed -i -- "s/%RELEASE_VERSION%/${RELEASE_VERSION}/g" typescript/raven.js
+sed -i -- "s/%RELEASE_VERSION%/${RELEASE_VERSION}/g" typescript/raven.ts
 
 echo ""
 echo "Building image"
