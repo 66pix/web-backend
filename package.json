@@ -22,7 +22,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^2.4.1",
+    "@66pix/api": "^2.4.3",
     "@66pix/email": "1.0.6",
     "@66pix/models": "^3.3.0",
     "bluebird": "^3.4.7",
@@ -55,7 +55,7 @@
     "@types/hashids": "^1.0.28",
     "@types/joi": "^10.0.0",
     "@types/jsonwebtoken": "^7.2.0",
-    "@types/mocha": "^2.2.37",
+    "@types/mocha": "^2.2.38",
     "@types/node": "^7.0.0",
     "@types/nunjucks": "0.0.32",
     "@types/ramda": "^0.0.3",

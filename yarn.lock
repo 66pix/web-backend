@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.4.1.tgz#81c73532eeccf19ac4212d18df616ef48477782a"
+"@66pix/api@^2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.4.3.tgz#e899acf62d1ae5c4ac364639f098ad80c8a872be"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^3.3.0"
@@ -103,14 +103,7 @@
   dependencies:
     "@types/express" "*"
 
-"@types/express@*":
-  version "4.0.34"
-  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.0.34.tgz#cdc0afd69d70d2295b81b3aa47f26f672afcde1c"
-  dependencies:
-    "@types/express-serve-static-core" "*"
-    "@types/serve-static" "*"
-
-"@types/express@^4.0.35":
+"@types/express@*", "@types/express@^4.0.35":
   version "4.0.35"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.0.35.tgz#6267c7b60a51fac473467b3c4a02cd1e441805fe"
   dependencies:
@@ -141,9 +134,9 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-0.0.29.tgz#fbcfd330573b912ef59eeee14602bface630754b"
 
-"@types/mocha@^2.2.37":
-  version "2.2.37"
-  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.37.tgz#8e0d5327ffa0734999c1010967853de917f3a38e"
+"@types/mocha@^2.2.38":
+  version "2.2.38"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.38.tgz#8c188f6e34c2e7c3f1d0127d908d5a36e5a60dc9"
 
 "@types/node@*", "@types/node@^7.0.0":
   version "7.0.0"
@@ -3414,7 +3407,7 @@ punycode@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.0.1.tgz#3f142fd8e6ef4e9ce24acbf7ba869ff9b00d2c2b"
 
-qs@6.2.0, qs@^6.1.0:
+qs@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
 
@@ -3422,7 +3415,7 @@ qs@6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.1.tgz#ce03c5ff0935bc1d9d69a9f14cbd18e568d67625"
 
-qs@~6.3.0:
+qs@^6.1.0, qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
 
