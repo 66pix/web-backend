@@ -1,30 +1,30 @@
-import Bluebird = require('bluebird');
-import request = require('supertest');
-const R = require('ramda');
-const expect = require('code').expect;
-import {loginHelper} from '../../loginHelper';
+import Bluebird = require('bluebird')
+import request = require('supertest')
+const R = require('ramda')
+const expect = require('code').expect
+import {loginHelper} from '../../loginHelper'
 
 describe('Routes Users PUT', () => {
-  let app;
-  let user;
-  let token;
-  let UserAccount;
+  let app
+  let user
+  let token
+  let UserAccount
 
   beforeEach((done) => {
     loginHelper()
     .then((result: any) => {
-      UserAccount = result.models.UserAccount;
-      user = result.user;
-      app = result.app;
-      token = result.token;
+      UserAccount = result.models.UserAccount
+      user = result.user
+      app = result.app
+      token = result.token
 
-      done();
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   afterEach((done) => {
     UserAccount.destroy({
@@ -32,13 +32,13 @@ describe('Routes Users PUT', () => {
       cascade: true
     })
     .then(() => {
-      done();
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   it('should respond with a 200 and the updated user', (done) => {
     request(app)
@@ -55,10 +55,10 @@ describe('Routes Users PUT', () => {
         email: 'active@66pix.com',
         name: 'Updated Name',
         id: user.id
-      });
-      done();
-    });
-  });
+      })
+      done()
+    })
+  })
 
   it('should not change the password even if a different password was sent', (done) => {
     request(app)
@@ -73,8 +73,8 @@ describe('Routes Users PUT', () => {
       .expect(200, () => {
         UserAccount.findById(user.id)
         .then(() => {
-          done();
-        });
-      });
-  });
-});
+          done()
+        })
+      })
+  })
+})

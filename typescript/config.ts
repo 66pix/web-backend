@@ -1,4 +1,4 @@
-import convict = require('convict');
+import convict = require('convict')
 
 const config = convict({
   NODE_ENV: {
@@ -64,8 +64,8 @@ const config = convict({
     default: 'local',
     env: 'ENVIRONMENT'
   },
-});
+})
 
-config.validate();
+config.validate()
 
 export {config};

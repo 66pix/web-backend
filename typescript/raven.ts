@@ -1,30 +1,30 @@
-import path = require('path');
-import {config} from './config';
+import path = require('path')
+import {config} from './config'
 
-let Raven;
+let Raven
 
 export function clearRaven() {
-  Raven = null;
+  Raven = null
 }
 
 export function initialiseRaven(_Raven_): any {
   if (Raven) {
-    return Raven;
+    return Raven
   }
 
   if (config.get('ENVIRONMENT') === 'local') {
     Raven = {
       captureException: (error, callback) => callback()
-    };
-    return Raven;
+    }
+    return Raven
   }
 
-  Raven = _Raven_;
+  Raven = _Raven_
   Raven.config(config.get('RAVEN_URL'), {
     release: '%RELEASE_VERSION%',
     environment: config.get('NODE_ENV')
   })
-  .install();
+  .install()
 
-  return Raven;
+  return Raven
 }

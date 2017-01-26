@@ -1,26 +1,26 @@
-const expect = require('code').expect;
-import request = require('supertest');
-import {initialiseModels} from '@66pix/models';
-import {loginHelper} from '../../loginHelper';
+const expect = require('code').expect
+import request = require('supertest')
+import {initialiseModels} from '@66pix/models'
+import {loginHelper} from '../../loginHelper'
 
 describe('Routes Users current', () => {
-  let app;
-  let token;
-  let user;
+  let app
+  let token
+  let user
 
   beforeEach((done) => {
     loginHelper()
     .then((result: any) => {
-      user = result.user;
-      app = result.app;
-      token = result.token;
-      done();
+      user = result.user
+      app = result.app
+      token = result.token
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   afterEach((done) => {
     initialiseModels
@@ -28,16 +28,16 @@ describe('Routes Users current', () => {
       return models.UserAccount.destroy({
         truncate: true,
         cascade: true
-      });
+      })
     })
     .then(() => {
-      done();
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   it('should respond to current with the current user if authorised', (done) => {
     request(app)
@@ -48,8 +48,8 @@ describe('Routes Users current', () => {
           email: 'active@66pix.com',
           name: 'this is a name',
           id: user.id
-        });
+        })
       })
-      .expect(200, done);
-  });
-});
+      .expect(200, done)
+  })
+})

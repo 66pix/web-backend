@@ -1,10 +1,10 @@
-import jwt = require('jsonwebtoken');
-const debug = require('debug')('66pix-backend:authentication/login');
-import {config} from '../../config';
-import Bluebird = require('bluebird');
-import Joi = require('joi');
-const Celebrate = require('celebrate');
-import {IModels} from '@66pix/models';
+import jwt = require('jsonwebtoken')
+const debug = require('debug')('66pix-backend:authentication/login')
+import {config} from '../../config'
+import Bluebird = require('bluebird')
+import Joi = require('joi')
+const Celebrate = require('celebrate')
+import {IModels} from '@66pix/models'
 
 export function login(app, models: IModels) {
   app.post('/authentication/login', Celebrate({
@@ -23,11 +23,11 @@ export function login(app, models: IModels) {
     })
     .then((pendingUser) => {
       if (pendingUser) {
-        pendingUser.password = req.body.password;
-        pendingUser.status = 'Active';
-        return pendingUser.save();
+        pendingUser.password = req.body.password
+        pendingUser.status = 'Active'
+        return pendingUser.save()
       }
-      return;
+      return
     })
     .then(() => models.UserAccount.login(req.body.email, req.body.password))
     .then((user) => {
@@ -42,10 +42,10 @@ export function login(app, models: IModels) {
           updatedWithToken: -1
         })
         .save()
-      });
+      })
     })
     .then((result: any) => {
-      let EXPIRES_IN_HOURS = 5;
+      let EXPIRES_IN_HOURS = 5
       let jwtToken = jwt.sign({
         id: result.user.id,
         tokenId: result.token.id
@@ -53,29 +53,29 @@ export function login(app, models: IModels) {
         expiresIn: EXPIRES_IN_HOURS + 'h',
         issuer: '66pix Website',
         audience: '66pix Website User'
-      });
+      })
 
-      let expiresOn = new Date();
-      result.token.expiresOn = expiresOn.getTime() + EXPIRES_IN_HOURS * 60 * 60 * 1000;
-      result.token.updatedWithToken = result.token.id;
+      let expiresOn = new Date()
+      result.token.expiresOn = expiresOn.getTime() + EXPIRES_IN_HOURS * 60 * 60 * 1000
+      result.token.updatedWithToken = result.token.id
       // result.token.payload = jwtToken;  // This is a security vulnerability - secrets should never be stored
       return Bluebird.props({
         jwtToken: jwtToken,
         tokenSave: result.token.save()
-      });
+      })
     })
     .then((result: any) => {
       res.json({
         token: result.jwtToken
-      });
+      })
     })
     .catch((error) => {
-      debug(error);
+      debug(error)
       res.status(error.code)
       .json({
         code: error.code,
         message: error.message
-      });
-    });
-  });
+      })
+    })
+  })
 };

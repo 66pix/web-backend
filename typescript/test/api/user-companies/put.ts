@@ -1,24 +1,24 @@
-const expect = require('code').expect;
-import request = require('supertest');
-import Bluebird = require('bluebird');
+const expect = require('code').expect
+import request = require('supertest')
+import Bluebird = require('bluebird')
 
 describe('Routes User Companies put', () => {
-  let app;
-  let token;
+  let app
+  let token
 
-  let user;
-  let secondUser;
-  let Company;
-  let UserAccount;
+  let user
+  let secondUser
+  let Company
+  let UserAccount
 
   beforeEach((done) => {
     require('../../loginHelper').loginHelper()
     .then((result) => {
-      Company = result.models.Company;
-      user = result.user;
-      app = result.app;
-      token = result.token;
-      UserAccount = result.models.UserAccount;
+      Company = result.models.Company
+      user = result.user
+      app = result.app
+      token = result.token
+      UserAccount = result.models.UserAccount
 
       return UserAccount.build({
         name: 'second user',
@@ -26,17 +26,17 @@ describe('Routes User Companies put', () => {
         updatedWithToken: -1,
         status: 'Active'
       })
-      .save();
+      .save()
     })
     .then((_secondUser_) => {
-      secondUser = _secondUser_;
-      done();
+      secondUser = _secondUser_
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   afterEach((done) => {
     Bluebird.all([
@@ -46,19 +46,19 @@ describe('Routes User Companies put', () => {
       return model.destroy({
         truncate: true,
         cascade: true
-      });
+      })
     }))
     .then(() => {
-      done();
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   it('should allow updating the responsibility of a userCompany', (done) => {
-    let company;
+    let company
     Company.build({
       name: 'company name',
       updatedWithToken: -1,
@@ -67,30 +67,30 @@ describe('Routes User Companies put', () => {
     })
     .save()
     .then((_company_) => {
-      company = _company_;
+      company = _company_
       return user.addCompany(company, {
         responsibility: 'Owner',
         updatedWithToken: -1,
         isSelected: true
-      });
+      })
     })
     .then(() => {
       return secondUser.addCompany(company, {
         responsibility: 'Owner',
         updatedWithToken: -1,
         isSelected: true
-      });
+      })
     })
     .then(() => {
       return user.reload({
         include: {
           all: true
         }
-      });
+      })
     })
     .then((_user_) => {
-      user = _user_;
-      let userCompany = user.get('companies')[0].user_account_company;
+      user = _user_
+      let userCompany = user.get('companies')[0].user_account_company
       request(app)
       .put('/api/user-companies/' + userCompany.id)
       .set('authorization', token)
@@ -100,11 +100,11 @@ describe('Routes User Companies put', () => {
         responsibility: 'Editor'
       })
       .expect((response) => {
-        let updatedUserCompany = response.body;
-        expect(updatedUserCompany.responsibility).to.equal('Editor');
+        let updatedUserCompany = response.body
+        expect(updatedUserCompany.responsibility).to.equal('Editor')
       })
-      .expect(200, done);
-      return null;
-    });
-  });
-});
+      .expect(200, done)
+      return null
+    })
+  })
+})
