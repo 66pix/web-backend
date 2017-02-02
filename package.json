@@ -3,7 +3,7 @@
   "engines": {
     "node": ">=4"
   },
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "The backend service providing authentication for the underlying API",
   "repository": "https://github.com/66pix/backend",
   "license": "UNLICENSED",
