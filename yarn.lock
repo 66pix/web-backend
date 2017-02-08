@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^2.5.4":
-  version "2.5.4"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.5.4.tgz#e8f29d0daf749c964be8dd53a4b271ccae98b55a"
+"@66pix/api@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.6.0.tgz#b95f1fadb2c13660a450f8d1c6733fabc3a0f736"
   dependencies:
     "@66pix/email" "^1.0.6"
-    "@66pix/models" "^3.5.1"
-    aws-sdk "^2.9.0"
+    "@66pix/models" "^4.0.0"
+    aws-sdk "^2.10.0"
     bluebird "^3.4.6"
     braintree "^1.47.0"
     celebrate "^4.0.1"
@@ -19,7 +19,7 @@
     filename.js "^1.0.17"
     image-size "^0.5.0"
     image-type "^3.0.0"
-    joi "^10.2.0"
+    joi "^10.2.1"
     js-video-url-parser "^0.2.3"
     moment "^2.15.2"
     nunjucks "^3.0.0"
@@ -40,11 +40,11 @@
     nunjucks "^2.4.2"
     stylus "^0.54.5"
 
-"@66pix/models@^3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@66pix/models/-/models-3.5.1.tgz#611d11fe9f497141306c7ecb98dc6c792455e86a"
+"@66pix/models@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@66pix/models/-/models-4.0.0.tgz#a6e98ba7ed6fd590972a8c90a6f94c14df487ea3"
   dependencies:
-    bcryptjs "^2.3.0"
+    bcryptjs "^2.4.3"
     bluebird "^3.4.6"
     change-case "^3.0.1"
     convict "^2.0.0"
@@ -53,7 +53,7 @@
     pg "^6.1.0"
     pg-hstore "^2.3.2"
     ramda "^0.23.0"
-    sequelize "^3.30.0"
+    sequelize "^3.30.1"
     umzug "^1.11.0"
 
 "@types/bcryptjs@^2.4.0":
@@ -84,9 +84,9 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-0.0.29.tgz#a1e514adfbd92f03a224ba54d693111dbf1f3754"
 
-"@types/express-jwt@0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@types/express-jwt/-/express-jwt-0.0.33.tgz#ca60168ebe331ef3a32d81fd6f111b3200aa4f8d"
+"@types/express-jwt@^0.0.34":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@types/express-jwt/-/express-jwt-0.0.34.tgz#fdbee4c6af5c0a246ef2a933f5519973c7717f02"
   dependencies:
     "@types/express" "*"
     "@types/express-unless" "*"
@@ -134,13 +134,17 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-0.0.29.tgz#fbcfd330573b912ef59eeee14602bface630754b"
 
-"@types/mocha@^2.2.38":
-  version "2.2.38"
-  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.38.tgz#8c188f6e34c2e7c3f1d0127d908d5a36e5a60dc9"
+"@types/mocha@^2.2.39":
+  version "2.2.39"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.39.tgz#f68d63db8b69c38e9558b4073525cf96c4f7a829"
 
-"@types/node@*", "@types/node@^7.0.4":
+"@types/node@*":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.4.tgz#9aabc135979ded383325749f508894c662948c8b"
+
+"@types/node@^7.0.5":
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.5.tgz#96a0f0a618b7b606f1ec547403c00650210bfbb7"
 
 "@types/nunjucks@0.0.32":
   version "0.0.32"
@@ -216,6 +220,10 @@ acorn-jsx@^3.0.0:
   dependencies:
     acorn "^3.0.4"
 
+acorn@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.4.tgz#17a8d6a7a6c4ef538b814ec9abac2779293bf30a"
+
 acorn@^2.1.0, acorn@^2.4.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-2.7.0.tgz#ab6e7d9d886aaca8b085bc3312b79a198433f0e7"
@@ -223,10 +231,6 @@ acorn@^2.1.0, acorn@^2.4.0:
 acorn@^3.0.4:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
-
-acorn@^4.0.1:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.3.tgz#1a3e850b428e73ba6b09d1cc527f5aaad4d03ef1"
 
 addressparser@1.0.1:
   version "1.0.1"
@@ -400,9 +404,9 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-aws-sdk@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.9.0.tgz#f258dcc295b1e7eca49d3624abfbf5f7d644172c"
+aws-sdk@^2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.10.0.tgz#5acb2a213147c503915dbd3d0aa324a136fed25a"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -452,9 +456,9 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bcryptjs@^2.3.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.0.tgz#fb7f4a0b133854503fe1b2da3f25db834cf0e678"
+bcryptjs@^2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
 
 beeper@^1.0.0:
   version "1.1.1"
@@ -463,6 +467,10 @@ beeper@^1.0.0:
 binary-extensions@^1.0.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.8.0.tgz#48ec8d16df4377eae5fa5884682480af4d95c774"
+
+blessed@^0.1.81:
+  version "0.1.81"
+  resolved "https://registry.yarnpkg.com/blessed/-/blessed-0.1.81.tgz#f962d687ec2c369570ae71af843256e6d0ca1129"
 
 block-stream@*:
   version "0.0.9"
@@ -675,10 +683,6 @@ change-case@^3.0.1:
     title-case "^2.1.0"
     upper-case "^1.1.1"
     upper-case-first "^1.1.0"
-
-charm@~0.1.1:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/charm/-/charm-0.1.2.tgz#06c21eed1a1b06aeb67553cdc53e23274bac2296"
 
 cheerio@0.20.0, cheerio@^0.20.0:
   version "0.20.0"
@@ -1343,9 +1347,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^3.14.1:
-  version "3.14.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.14.1.tgz#8a62175f2255109494747a1b25128d97b8eb3d97"
+eslint@^3.15.0:
+  version "3.15.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.15.0.tgz#bdcc6a6c5ffe08160e7b93c066695362a91e30f2"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -1353,7 +1357,7 @@ eslint@^3.14.1:
     debug "^2.1.1"
     doctrine "^1.2.2"
     escope "^3.6.0"
-    espree "^3.3.1"
+    espree "^3.4.0"
     estraverse "^4.2.0"
     esutils "^2.0.2"
     file-entry-cache "^2.0.0"
@@ -1382,11 +1386,11 @@ eslint@^3.14.1:
     text-table "~0.2.0"
     user-home "^2.0.0"
 
-espree@^3.3.1:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/espree/-/espree-3.3.2.tgz#dbf3fadeb4ecb4d4778303e50103b3d36c88b89c"
+espree@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/espree/-/espree-3.4.0.tgz#41656fa5628e042878025ef467e78f125cb86e1d"
   dependencies:
-    acorn "^4.0.1"
+    acorn "4.0.4"
     acorn-jsx "^3.0.0"
 
 esprima@2.7.x, esprima@^2.6.0, esprima@^2.7.1:
@@ -1738,7 +1742,7 @@ glob-parent@^2.0.0:
   dependencies:
     is-glob "^2.0.0"
 
-glob@7.0.5, glob@7.0.x, glob@^7.0.3:
+glob@7.0.5, glob@7.0.x:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.0.5.tgz#b4202a69099bbb4d292a7c1b95b6682b67ebdc95"
   dependencies:
@@ -1769,7 +1773,7 @@ glob@^6.0.0:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.0, glob@^7.0.5, glob@^7.1.1:
+glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
@@ -2286,9 +2290,9 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-joi@^10.2.0:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-10.2.0.tgz#2c9dba08240d453e58145667f0d5006de527e328"
+joi@^10.2.1:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-10.2.1.tgz#f3a5f6a492d311735f17b109487646c2194aa92d"
   dependencies:
     hoek "4.x.x"
     isemail "2.x.x"
@@ -2927,10 +2931,6 @@ node-status-codes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
 
-node-uuid@~1.4.4:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/node-uuid/-/node-uuid-1.4.7.tgz#6da5a17668c4b3dd59623bda11cf7fa4c1f60a6f"
-
 nodemailer-direct-transport@3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/nodemailer-direct-transport/-/nodemailer-direct-transport-3.3.2.tgz#e96fafb90358560947e569017d97e60738a50a86"
@@ -3314,24 +3314,19 @@ pm2-axon@3.0.2:
     debug "~2.2.0"
     escape-regexp "0.0.1"
 
-pm2-deploy@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/pm2-deploy/-/pm2-deploy-0.3.3.tgz#2378b8d8c85f771d7421aa886816221e515c6631"
+pm2-deploy@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/pm2-deploy/-/pm2-deploy-0.3.5.tgz#d434bec7bcb1d3c8386a1234af5a3b6794016c1c"
   dependencies:
     async "^1.5"
     tv4 "^1.2"
 
-pm2-multimeter@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/pm2-multimeter/-/pm2-multimeter-0.1.2.tgz#1a1e55153d41a05534cea23cfe860abaa0eb4ace"
-  dependencies:
-    charm "~0.1.1"
-
-pm2@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/pm2/-/pm2-2.3.0.tgz#9b83090d0f97fb658e25b91563c8b04acdf468e7"
+pm2@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/pm2/-/pm2-2.4.0.tgz#d570f53118989828d0b8e0b1c0dc4f4be3e9f24a"
   dependencies:
     async "1.5"
+    blessed "^0.1.81"
     chalk "^1.1"
     chokidar "^1.6.1"
     cli-table "0.3.1"
@@ -3346,12 +3341,12 @@ pm2@^2.3.0:
     pidusage "^1.1.0"
     pm2-axon "3.0.2"
     pm2-axon-rpc "0.4.5"
-    pm2-deploy "^0.3.3"
-    pm2-multimeter "0.1.2"
+    pm2-deploy "^0.3.5"
     pmx "^1.0.1"
     semver "^5.2"
     shelljs "0.7.5"
     source-map-support "^0.4.6"
+    sprintf-js "~1.0.2"
     vizion "^0.2"
     yamljs "0.2.8"
   optionalDependencies:
@@ -3430,11 +3425,11 @@ qs@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
 
-qs@6.2.1:
+qs@6.2.1, qs@^6.1.0:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.1.tgz#ce03c5ff0935bc1d9d69a9f14cbd18e568d67625"
 
-qs@^6.1.0, qs@~6.3.0:
+qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
 
@@ -3519,7 +3514,7 @@ readable-stream@1.1, readable-stream@1.1.10, readable-stream@~1.1.9:
   optionalDependencies:
     debuglog "0.0.2"
 
-readable-stream@^2.0.0, "readable-stream@^2.0.0 || ^1.1.13", readable-stream@^2.0.5, readable-stream@~2.1.4:
+readable-stream@^2.0.0, "readable-stream@^2.0.0 || ^1.1.13", readable-stream@~2.1.4:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.1.5.tgz#66fa8b720e1438b364681f2ad1a63c618448c9d0"
   dependencies:
@@ -3531,7 +3526,7 @@ readable-stream@^2.0.0, "readable-stream@^2.0.0 || ^1.1.13", readable-stream@^2.
     string_decoder "~0.10.x"
     util-deprecate "~1.0.1"
 
-readable-stream@^2.0.2, readable-stream@~2.0.0:
+readable-stream@^2.0.2, readable-stream@^2.0.5, readable-stream@~2.0.0:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.0.6.tgz#8f90341e68a53ccc928788dacfcd11b36eb9b78e"
   dependencies:
@@ -3601,9 +3596,9 @@ registry-url@^3.0.3:
   dependencies:
     rc "^1.0.1"
 
-remap-istanbul@^0.8.4:
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/remap-istanbul/-/remap-istanbul-0.8.4.tgz#b4bfdfdbc90efa635e9a28b1f4a116e22c8c2697"
+remap-istanbul@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/remap-istanbul/-/remap-istanbul-0.9.0.tgz#d115406b8422bfe42cb8c51be056844000947695"
   dependencies:
     amdefine "^1.0.0"
     gulp-util "3.0.7"
@@ -3785,9 +3780,9 @@ sentence-case@^2.1.0:
     no-case "^2.2.0"
     upper-case-first "^1.1.2"
 
-sequelize@^3.30.0:
-  version "3.30.0"
-  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-3.30.0.tgz#84dfb6ed3e9a93ff6e4744deabdd3f8f878ff180"
+sequelize@^3.30.1:
+  version "3.30.1"
+  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-3.30.1.tgz#7ddd0157625c4d9becc9268de965983ba74bf9c1"
   dependencies:
     bluebird "^3.3.4"
     depd "^1.1.0"
@@ -3797,12 +3792,12 @@ sequelize@^3.30.0:
     lodash "4.12.0"
     moment "^2.13.0"
     moment-timezone "^0.5.4"
-    node-uuid "~1.4.4"
     retry-as-promised "^2.0.0"
     semver "^5.0.1"
     shimmer "1.1.0"
     terraformer-wkt-parser "^1.1.0"
     toposort-class "^1.0.1"
+    uuid "^3.0.0"
     validator "^5.2.0"
     wkx "0.2.0"
 
@@ -4303,11 +4298,11 @@ umzug@^1.11.0:
     redefine "^0.2.0"
     resolve "^1.0.0"
 
-underscore@1.8.3, underscore@^1.7.0:
+underscore@1.8.3:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
-underscore@~1.7.0:
+underscore@^1.7.0, underscore@~1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.7.0.tgz#6bbaf0877500d36be34ecaa584e0db9fef035209"
 
