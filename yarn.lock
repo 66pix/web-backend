@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.6.0.tgz#b95f1fadb2c13660a450f8d1c6733fabc3a0f736"
+"@66pix/api@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.7.0.tgz#a25ab09bbff935e9cae7d70c492de00caf31d16b"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.0.0"
@@ -138,11 +138,7 @@
   version "2.2.39"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.39.tgz#f68d63db8b69c38e9558b4073525cf96c4f7a829"
 
-"@types/node@*":
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.4.tgz#9aabc135979ded383325749f508894c662948c8b"
-
-"@types/node@^7.0.5":
+"@types/node@*", "@types/node@^7.0.5":
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.5.tgz#96a0f0a618b7b606f1ec547403c00650210bfbb7"
 
@@ -169,9 +165,9 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/sinon@^1.16.34":
-  version "1.16.34"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-1.16.34.tgz#a9761fff33d0f7b3fe61875b577778a2576a9a03"
+"@types/sinon@^1.16.35":
+  version "1.16.35"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-1.16.35.tgz#ee687cc42d1a79448256f1c012a33a0840e85c5c"
 
 "@types/superagent@*":
   version "2.0.36"
@@ -3456,9 +3452,9 @@ range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
-raven@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/raven/-/raven-1.1.1.tgz#8837af64baa29ec32fc1cd8223255645ce3c9a42"
+raven@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/raven/-/raven-1.1.2.tgz#a5eb3db71f2fc3015a20145bcaf28015e7ae0718"
   dependencies:
     cookie "0.3.1"
     json-stringify-safe "5.0.1"
@@ -4267,9 +4263,9 @@ typedarray@~0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.1.5.tgz#6fe9479e00e01855247cea216e7561bafcdbcd4a"
+typescript@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.1.6.tgz#40c7e6e9e5da7961b7718b55505f9cac9487a607"
 
 uglify-js@^2.4.1, uglify-js@^2.6:
   version "2.7.5"
