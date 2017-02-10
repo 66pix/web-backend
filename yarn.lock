@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.7.0.tgz#a25ab09bbff935e9cae7d70c492de00caf31d16b"
+"@66pix/api@^2.8.1":
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.8.1.tgz#d10ea25ad40dcedb97971b19bfb7d7cf6ad995a9"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.0.0"
-    aws-sdk "^2.10.0"
+    aws-sdk "^2.11.0"
     bluebird "^3.4.6"
-    braintree "^1.47.0"
+    braintree "^2.0.0"
     celebrate "^4.0.1"
     convict "^2.0.0"
     debug "^2.2.0"
@@ -19,7 +19,7 @@
     filename.js "^1.0.17"
     image-size "^0.5.0"
     image-type "^3.0.0"
-    joi "^10.2.1"
+    joi "^10.2.2"
     js-video-url-parser "^0.2.3"
     moment "^2.15.2"
     nunjucks "^3.0.0"
@@ -400,9 +400,9 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-aws-sdk@^2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.10.0.tgz#5acb2a213147c503915dbd3d0aa324a136fed25a"
+aws-sdk@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.11.0.tgz#4dfc8c9678e42d1574bb04ebf0408fc9c1f8f302"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -536,9 +536,9 @@ braces@^1.8.2:
     preserve "^0.2.0"
     repeat-element "^1.1.2"
 
-braintree@^1.47.0:
-  version "1.47.0"
-  resolved "https://registry.yarnpkg.com/braintree/-/braintree-1.47.0.tgz#45a46dd4ba649568809def37940f3eba4889d615"
+braintree@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/braintree/-/braintree-2.0.0.tgz#de79992bc1762332ada4b2105376b7c118466b4b"
   dependencies:
     dateformat "1.0.1-1.2.3"
     depd "~1.1.0"
@@ -2286,9 +2286,9 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-joi@^10.2.1:
-  version "10.2.1"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-10.2.1.tgz#f3a5f6a492d311735f17b109487646c2194aa92d"
+joi@^10.2.2:
+  version "10.2.2"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-10.2.2.tgz#dc5a792b7b4c6fffa562242a95b55d9d3f077e24"
   dependencies:
     hoek "4.x.x"
     isemail "2.x.x"
@@ -3592,9 +3592,9 @@ registry-url@^3.0.3:
   dependencies:
     rc "^1.0.1"
 
-remap-istanbul@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/remap-istanbul/-/remap-istanbul-0.9.0.tgz#d115406b8422bfe42cb8c51be056844000947695"
+remap-istanbul@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/remap-istanbul/-/remap-istanbul-0.9.1.tgz#db68ca092667dab31b3ce5b8297f3ebd3359e849"
   dependencies:
     amdefine "^1.0.0"
     gulp-util "3.0.7"
