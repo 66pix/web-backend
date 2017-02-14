@@ -23,7 +23,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^2.10.0",
+    "@66pix/api": "^2.11.0",
     "@66pix/email": "1.0.6",
     "@66pix/models": "^4.0.0",
     "bluebird": "^3.4.7",
@@ -36,7 +36,7 @@
     "express": "^4.14.1",
     "express-jwt": "^5.1.0",
     "joi": "^10.2.2",
-    "jsonwebtoken": "^7.2.1",
+    "jsonwebtoken": "^7.3.0",
     "node-constants": "0.0.2",
     "nunjucks": "^3.0.0",
     "pm2": "^2.4.0",

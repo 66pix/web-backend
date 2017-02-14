@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^2.10.0":
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.10.0.tgz#3f8a8ed25ff6da719e821506c80ad2848684c927"
+"@66pix/api@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.11.0.tgz#12ee343da1128aae2e9c0e0e18f849a0a9bc85ae"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.0.0"
@@ -2377,9 +2377,9 @@ jsonpointer@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.0.0.tgz#6661e161d2fc445f19f98430231343722e1fcbd5"
 
-jsonwebtoken@^7.2.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-7.2.1.tgz#0fc7217473fc02b4c9aa1e188aa70b51bba4fccb"
+jsonwebtoken@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-7.3.0.tgz#85118d6a70e3fccdf14389f4e7a1c3f9c8a9fbba"
   dependencies:
     joi "^6.10.1"
     jws "^3.1.4"
