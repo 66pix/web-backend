@@ -23,7 +23,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^2.11.0",
+    "@66pix/api": "^2.11.1",
     "@66pix/email": "1.0.6",
     "@66pix/models": "^4.0.0",
     "bluebird": "^3.4.7",
@@ -60,7 +60,7 @@
     "@types/node": "^7.0.5",
     "@types/nunjucks": "0.0.32",
     "@types/ramda": "^0.0.3",
-    "@types/sequelize": "^4.0.40",
+    "@types/sequelize": "^4.0.41",
     "@types/sinon": "^1.16.35",
     "@types/supertest": "^2.0.0",
     "code": "^4.0.0",

@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^2.11.0":
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.11.0.tgz#12ee343da1128aae2e9c0e0e18f849a0a9bc85ae"
+"@66pix/api@^2.11.1":
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.11.1.tgz#03201fc9609bdb3c0b5f5aa04a54155591850ccf"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.0.0"
@@ -150,9 +150,9 @@
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.0.3.tgz#683a3437d4446a4d21af473a9286e6950fa777c1"
 
-"@types/sequelize@^4.0.40":
-  version "4.0.40"
-  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.0.40.tgz#008d1289e1a24629e225cc199f338ee4b90d8896"
+"@types/sequelize@^4.0.41":
+  version "4.0.41"
+  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.0.41.tgz#8857c9c9f1c8ea0248e428cf93ab2cfe37e2e771"
   dependencies:
     "@types/bluebird" "*"
     "@types/lodash" "*"
