@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^2.11.1":
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.11.1.tgz#03201fc9609bdb3c0b5f5aa04a54155591850ccf"
+"@66pix/api@^2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-2.11.2.tgz#e2f6875909e0c4a574ff3909d4e40aa7297714fc"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.0.0"
-    aws-sdk "^2.12.0"
+    aws-sdk "^2.16.0"
     bluebird "^3.4.6"
-    braintree "^2.0.1"
+    braintree "^2.0.2"
     celebrate "^4.0.1"
     convict "^2.0.0"
     debug "^2.6.1"
@@ -64,9 +64,9 @@
   version "3.0.37"
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.0.37.tgz#2e76b394aa9bea40d04241a31c0887a260283388"
 
-"@types/body-parser@0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-0.0.33.tgz#33ca1498fc37e51c5df0c81cae34569e7041e025"
+"@types/body-parser@^0.0.34":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-0.0.34.tgz#2cb766935f67416bbec80fc770b79e6eeeda80b5"
   dependencies:
     "@types/express" "*"
 
@@ -400,9 +400,9 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-aws-sdk@^2.12.0:
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.12.0.tgz#f9ae9f11d458764604ccb4a80e34e3c07a6d7d1b"
+aws-sdk@^2.16.0:
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.16.0.tgz#c3bf4cac031b5af0db2a0f03e75f59a70ace8ff4"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -536,9 +536,9 @@ braces@^1.8.2:
     preserve "^0.2.0"
     repeat-element "^1.1.2"
 
-braintree@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/braintree/-/braintree-2.0.1.tgz#9669240d03da0389be0b673b987a994ddccd2d08"
+braintree@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/braintree/-/braintree-2.0.2.tgz#3c898c40404969f34d31e158fe0b17c09d7955f5"
   dependencies:
     dateformat "1.0.1-1.2.3"
     depd "~1.1.0"

@@ -23,7 +23,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^2.11.1",
+    "@66pix/api": "^2.11.2",
     "@66pix/email": "1.0.6",
     "@66pix/models": "^4.0.0",
     "bluebird": "^3.4.7",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.0",
     "@types/bluebird": "^3.0.37",
-    "@types/body-parser": "0.0.33",
+    "@types/body-parser": "^0.0.34",
     "@types/convict": "^0.6.33",
     "@types/cors": "^2.8.0",
     "@types/debug": "0.0.29",
