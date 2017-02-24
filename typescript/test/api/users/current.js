@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const expect = require('code').expect;
 const request = require("supertest");
 const models_1 = require("@66pix/models");

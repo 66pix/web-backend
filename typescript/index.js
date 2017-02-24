@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const http = require("http");
 const debugModule = require("debug");
 const debug = debugModule('66pix-backend:index');

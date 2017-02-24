@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const config_js_1 = require("./config.js");
 const express = require("express");
 const cors = require("cors");

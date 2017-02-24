@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const raven_1 = require("../raven");
 const config_1 = require("../config");
 const expect = require('code').expect;
