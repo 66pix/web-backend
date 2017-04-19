@@ -27,7 +27,6 @@ function logout(app, models) {
     });
 }
 exports.logout = logout;
-;
 function handleError(error, res, next) {
     if (error.name === 'JsonWebTokenError') {
         debug('Logout called with an invalid JWT token');

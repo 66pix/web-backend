@@ -42,5 +42,4 @@ function resetPassword(app, models) {
     });
 }
 exports.resetPassword = resetPassword;
-;
 //# sourceMappingURL=reset-password.js.map

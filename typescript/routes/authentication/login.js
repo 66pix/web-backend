@@ -79,5 +79,4 @@ function login(app, models) {
     });
 }
 exports.login = login;
-;
 //# sourceMappingURL=login.js.map

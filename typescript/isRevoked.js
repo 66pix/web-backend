@@ -24,5 +24,4 @@ function isRevoked(request, payload, done) {
     });
 }
 exports.isRevoked = isRevoked;
-;
 //# sourceMappingURL=isRevoked.js.map

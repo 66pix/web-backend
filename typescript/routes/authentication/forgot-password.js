@@ -106,5 +106,4 @@ function forgotPassword(app, models) {
     });
 }
 exports.forgotPassword = forgotPassword;
-;
 //# sourceMappingURL=forgot-password.js.map
