@@ -1,11 +1,12 @@
 {
-    "compilerOptions": {
-        "noImplicitAny": false,
-        "target": "es6",
-        "module": "commonjs",
-        "sourceMap": true
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

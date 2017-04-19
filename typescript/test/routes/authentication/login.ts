@@ -1,29 +1,29 @@
-import request = require('supertest');
-const expect = require('code').expect;
-const Plan = require('test-plan');
-import {initialiseModels} from '@66pix/models';
+import request = require('supertest')
+const expect = require('code').expect
+const Plan = require('test-plan')
+import {initialiseModels} from '@66pix/models'
 
 describe('Routes authentication login', function() {
-  let app;
-  let UserAccount;
-  let user;
+  let app
+  let UserAccount
+  let user
 
   beforeEach(function(done) {
     require('../../loginHelper').loginHelper()
     .then(function(result) {
-      app = result.app;
-      user = result.user;
-      return initialiseModels;
+      app = result.app
+      user = result.user
+      return initialiseModels
     })
     .then(function(models) {
-      UserAccount = models.UserAccount;
-      done();
+      UserAccount = models.UserAccount
+      done()
     })
     .catch(function(error) {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   afterEach(function(done) {
     UserAccount.destroy({
@@ -31,16 +31,16 @@ describe('Routes authentication login', function() {
       cascade: true
     })
     .then(function() {
-      done();
+      done()
     })
     .catch(function(error) {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   it('should reject invalid login attempts', function(done) {
-    let plan = new Plan(2, done);
+    let plan = new Plan(2, done)
     request(app)
     .post('/authentication/login')
     .expect(401)
@@ -48,8 +48,8 @@ describe('Routes authentication login', function() {
       code: 401,
       message: 'Invalid email or password'
     }, function() {
-      plan.ok(true);
-    });
+      plan.ok(true)
+    })
 
     request(app)
     .post('/authentication/login')
@@ -62,9 +62,9 @@ describe('Routes authentication login', function() {
       code: 401,
       message: 'Invalid email or password'
     }, function() {
-      plan.ok(true);
-    });
-  });
+      plan.ok(true)
+    })
+  })
 
   it('should return a JWT token', function(done) {
     request(app)
@@ -76,16 +76,16 @@ describe('Routes authentication login', function() {
     .expect(200)
     .end(function(error, response) {
       if (error) {
-        throw error;
+        throw error
       }
-      let jwtToken = JSON.parse(response.text);
-      expect(jwtToken.token).to.exist();
-      done();
-    });
-  });
+      let jwtToken = JSON.parse(response.text)
+      expect(jwtToken.token).to.exist()
+      done()
+    })
+  })
 
   it('should set the given password on a pending user then log them in', function(done) {
-    const pendingUserEmail = 'pending@66pix.com';
+    const pendingUserEmail = 'pending@66pix.com'
     UserAccount.build({
       name: 'Pending User',
       status: 'Pending',
@@ -103,10 +103,10 @@ describe('Routes authentication login', function() {
       .expect(200)
       .end(function(error, response) {
         if (error) {
-          throw error;
+          throw error
         }
-        let jwtToken = JSON.parse(response.text);
-        expect(jwtToken.token).to.exist();
+        let jwtToken = JSON.parse(response.text)
+        expect(jwtToken.token).to.exist()
         UserAccount.findOne({
           where: {
             email: pendingUserEmail,
@@ -114,11 +114,11 @@ describe('Routes authentication login', function() {
           }
         })
         .then(function(pendingUser) {
-          expect(pendingUser.status, 'Pending user status should now be Active').to.equal('Active');
-          done();
-        });
-      });
-    });
-  });
+          expect(pendingUser.status, 'Pending user status should now be Active').to.equal('Active')
+          done()
+        })
+      })
+    })
+  })
 
-});
+})

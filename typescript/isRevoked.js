@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const models_1 = require("@66pix/models");
 function isRevoked(request, payload, done) {
     if (!payload) {
@@ -23,5 +24,4 @@ function isRevoked(request, payload, done) {
     });
 }
 exports.isRevoked = isRevoked;
-;
 //# sourceMappingURL=isRevoked.js.map

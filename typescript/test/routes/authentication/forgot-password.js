@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const request = require("supertest");
 const sinon = require("sinon");
 const expect = require('code').expect;

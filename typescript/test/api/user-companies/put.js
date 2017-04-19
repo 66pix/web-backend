@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const expect = require('code').expect;
 const request = require("supertest");
 const Bluebird = require("bluebird");
@@ -90,9 +91,10 @@ describe('Routes User Companies put', () => {
                 .put('/api/user-companies/' + userCompany.id)
                 .set('authorization', token)
                 .send({
-                userId: userCompany.userId,
+                userId: userCompany.userAccountId,
                 companyId: userCompany.companyId,
-                responsibility: 'Editor'
+                responsibility: 'Editor',
+                isSelected: false
             })
                 .expect((response) => {
                 let updatedUserCompany = response.body;

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = require("../../config");
 const debug = require('debug')('66pix-backend:authentication/forgot-password');
 const jwt = require("jsonwebtoken");
@@ -105,5 +106,4 @@ function forgotPassword(app, models) {
     });
 }
 exports.forgotPassword = forgotPassword;
-;
 //# sourceMappingURL=forgot-password.js.map

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = require("../../config");
 const debug = require('debug')('66pix-backend:authentication/reset-password');
 const jwt = require("jsonwebtoken");
@@ -41,5 +42,4 @@ function resetPassword(app, models) {
     });
 }
 exports.resetPassword = resetPassword;
-;
 //# sourceMappingURL=reset-password.js.map

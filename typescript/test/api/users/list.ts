@@ -1,25 +1,25 @@
-const expect = require('code').expect;
-import request = require('supertest');
-import {initialiseModels} from '@66pix/models';
-import {loginHelper} from '../../loginHelper';
+const expect = require('code').expect
+import request = require('supertest')
+import {initialiseModels} from '@66pix/models'
+import {loginHelper} from '../../loginHelper'
 
 describe('Routes Users GET', () => {
-  let app;
-  let token;
+  let app
+  let token
 
   beforeEach((done) => {
     loginHelper()
     .then((result: any) => {
-      app = result.app;
-      token = result.token;
+      app = result.app
+      token = result.token
 
-      done();
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   afterEach((done) => {
     initialiseModels
@@ -27,16 +27,16 @@ describe('Routes Users GET', () => {
       return models.UserAccount.destroy({
         truncate: true,
         cascade: true
-      });
+      })
     })
     .then(() => {
-      done();
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   it('should respond with an array', (done) => {
     request(app)
@@ -44,8 +44,8 @@ describe('Routes Users GET', () => {
       .set('authorization', token)
       .set('content-type', 'application/json')
       .expect((response) => {
-        expect(response.body).to.be.instanceof(Array);
+        expect(response.body).to.be.instanceof(Array)
       })
-      .expect(200, done);
-  });
-});
+      .expect(200, done)
+  })
+})

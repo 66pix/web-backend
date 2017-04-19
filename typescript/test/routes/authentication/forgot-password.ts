@@ -1,25 +1,25 @@
-import request = require('supertest');
-import sinon = require('sinon');
-const expect = require('code').expect;
-const requireClean = require('require-clean');
-import {initialiseModels} from '@66pix/models';
+import request = require('supertest')
+import sinon = require('sinon')
+const expect = require('code').expect
+const requireClean = require('require-clean')
+import {initialiseModels} from '@66pix/models'
 
 describe('Routes authentication forgot-password', () => {
-  let app;
-  let mailer;
+  let app
+  let mailer
 
   beforeEach((done) => {
-    mailer = requireClean('@66pix/email');
+    mailer = requireClean('@66pix/email')
     require('../../loginHelper').loginHelper()
     .then((result) => {
-      app = result.app;
-      done();
+      app = result.app
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   afterEach((done) => {
     initialiseModels
@@ -27,16 +27,16 @@ describe('Routes authentication forgot-password', () => {
       return models.UserAccount.destroy({
         truncate: true,
         cascade: true
-      });
+      })
     })
     .then(() => {
-      done();
+      done()
     })
     .catch((error) => {
-      console.log(JSON.stringify(error, null, 2));
-      done(error);
-    });
-  });
+      console.log(JSON.stringify(error, null, 2))
+      done(error)
+    })
+  })
 
   it('should reject invalid forgot-password requests', (done) => {
     request(app)
@@ -45,8 +45,8 @@ describe('Routes authentication forgot-password', () => {
     .expect({
       code: 400,
       message: 'Email is required'
-    }, done);
-  });
+    }, done)
+  })
 
   it('should respond with 200 if the email does not exist', (done) => {
     request(app)
@@ -57,8 +57,8 @@ describe('Routes authentication forgot-password', () => {
     .expect(200)
     .expect({
       message: 'Please check your email'
-    }, done);
-  });
+    }, done)
+  })
 
   it('should respond with 200 if the email exists and a forgot password email was sent', (done) => {
     request(app)
@@ -70,15 +70,15 @@ describe('Routes authentication forgot-password', () => {
     .expect({
       message: 'Please check your email'
     }, () => {
-      done();
-    });
-  });
+      done()
+    })
+  })
 
   it('should respond with a 500 if something goes wrong with the mailing process', (done) => {
-    let Promise = require('bluebird');
+    let Promise = require('bluebird')
     sinon.stub(mailer, 'default', () => {
-      return Promise.reject(new Error('this is an error'));
-    });
+      return Promise.reject(new Error('this is an error'))
+    })
 
     request(app)
     .post('/authentication/forgot-password')
@@ -86,12 +86,12 @@ describe('Routes authentication forgot-password', () => {
       email: 'active@66pix.com'
     })
     .expect(500, (error, response) => {
-      mailer.default.reset();
+      mailer.default.reset()
       if (error) {
-        return done(error);
+        return done(error)
       }
-      expect(response.body.message).to.equal('this is an error');
-      return done();
-    });
-  });
-});
+      expect(response.body.message).to.equal('this is an error')
+      return done()
+    })
+  })
+})

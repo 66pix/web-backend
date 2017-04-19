@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const convict = require("convict");
 const config = convict({
     NODE_ENV: {

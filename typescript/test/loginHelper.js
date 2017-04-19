@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const request = require("supertest");
 const models_1 = require("@66pix/models");
 const app_1 = require("../app");

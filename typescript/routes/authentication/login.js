@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const jwt = require("jsonwebtoken");
 const debug = require('debug')('66pix-backend:authentication/login');
 const config_1 = require("../../config");
@@ -78,5 +79,4 @@ function login(app, models) {
     });
 }
 exports.login = login;
-;
 //# sourceMappingURL=login.js.map

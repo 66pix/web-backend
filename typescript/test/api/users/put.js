@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const request = require("supertest");
 const R = require('ramda');
 const expect = require('code').expect;
