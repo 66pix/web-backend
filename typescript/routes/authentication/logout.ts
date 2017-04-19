@@ -26,7 +26,7 @@ export function logout(app, models: IModels) {
       })
     })
   })
-};
+}
 
 function handleError(error, res, next) {
   if (error.name === 'JsonWebTokenError') {

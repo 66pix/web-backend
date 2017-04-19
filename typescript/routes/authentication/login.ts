@@ -78,4 +78,4 @@ export function login(app, models: IModels) {
       })
     })
   })
-};
+}

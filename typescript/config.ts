@@ -68,4 +68,4 @@ const config = convict({
 
 config.validate()
 
-export {config};
+export {config}

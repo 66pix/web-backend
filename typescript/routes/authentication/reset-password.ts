@@ -45,4 +45,4 @@ export function resetPassword(app, models: IModels) {
       })
     })
   })
-};
+}

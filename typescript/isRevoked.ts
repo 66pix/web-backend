@@ -24,4 +24,4 @@ export function isRevoked(request, payload, done) {
     done(null, token.isRevoked)
     return null
   })
-};
+}
