@@ -14,7 +14,7 @@
     "test-watch": "./test-watch.sh",
     "lint": " tslint -c tslint.json --exclude 'node_modules/**/*' '**/*.ts'",
     "lint:fix": "tslint --fix -c tslint.json --exclude 'node_modules/**/*' '**/*.ts' ",
-    "build": "tsc || true",
+    "build": "tsc",
     "start": "pm2 start pm2.json; pm2 logs",
     "development": "pm2 start pm2-dev.json; pm2 logs",
     "coverage-average": "coverage-average coverage/text-summary.txt  --limit 95",
