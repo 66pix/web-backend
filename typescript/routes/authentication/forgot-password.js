@@ -55,7 +55,7 @@ function forgotPassword(app, models) {
                 audience: '66pix Website User'
             });
             let expiresOn = new Date();
-            token.expiresOn = expiresOn.getTime() + 1 * 60 * 60 * 1000;
+            token.expiresOn = new Date(expiresOn.getTime() + 1 * 60 * 60 * 1000);
             token.updatedWithToken = token.id;
             token.payload = jwtToken;
             return [

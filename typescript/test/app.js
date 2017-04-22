@@ -27,7 +27,7 @@ describe('App', function () {
             .options('/authentication/login')
             .set('Access-Control-Request-Method', 'POST')
             .expect(204, (error, response) => {
-            expect(response.headers['access-control-allow-methods']).to.equal('GET,HEAD,PUT,PATCH,POST,DELETE');
+            expect(response.get('access-control-allow-methods')).to.equal('GET,HEAD,PUT,PATCH,POST,DELETE');
             done();
         });
     });

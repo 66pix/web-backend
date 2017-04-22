@@ -59,8 +59,10 @@ function catchAllErrorHandler(error, req, res, next) {
     if (error.code) {
         code = error.code;
     }
+    console.log('Reporting catchAllErrorHandler');
     Raven.captureException(error, () => {
         res.status(code);
+        console.log('Reported catchAllErrorHandler');
         res.json({
             message: error.message
         });

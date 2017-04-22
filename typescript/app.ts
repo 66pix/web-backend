@@ -56,7 +56,7 @@ export const getApp = initialiseModels
   return app
 })
 
-function unauthorisedErrorHandler(
+function unauthorisedErrorHandler (
   error,
   req,
   res,
@@ -73,7 +73,7 @@ function unauthorisedErrorHandler(
   })
 }
 
-function catchAllErrorHandler(
+function catchAllErrorHandler (
   error,
   req,
   res,
@@ -84,9 +84,10 @@ function catchAllErrorHandler(
     code = error.code
   }
 
-
+  console.log('Reporting catchAllErrorHandler')
   Raven.captureException(error, () => {
     res.status(code)
+    console.log('Reported catchAllErrorHandler')
     res.json({
       message: error.message
     })
