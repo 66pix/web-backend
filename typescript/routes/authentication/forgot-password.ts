@@ -116,7 +116,6 @@ export function forgotPassword(
           message: error.message
         })
       })
-      return null
     })
     .catch((error) => {
       if (error.message === 'User not found') {
