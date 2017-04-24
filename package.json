@@ -23,7 +23,7 @@
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^3.3.0",
+    "@66pix/api": "^3.4.0",
     "@66pix/email": "1.0.6",
     "@66pix/models": "^4.11.3",
     "bluebird": "^3.5.0",
@@ -66,7 +66,7 @@
     "code": "^4.0.0",
     "coverage-average": "^1.0.4",
     "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
+    "mocha": "^3.3.0",
     "nsp": "^2.6.3",
     "remap-istanbul": "^0.9.5",
     "require-clean": "^0.1.3",
