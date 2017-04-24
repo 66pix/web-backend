@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^3.4.1":
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.4.1.tgz#51662f35b9955a15d8d7b1f3ad6bc0cc27521318"
+"@66pix/api@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.4.2.tgz#a381f17f14b094f6d7f68963647da499890fb071"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.11.3"
