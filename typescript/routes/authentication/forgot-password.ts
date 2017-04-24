@@ -4,7 +4,11 @@ import jwt = require('jsonwebtoken')
 import path = require('path')
 import Bluebird = require('bluebird')
 import nunjucks = require('nunjucks')
-import {IModels, IUserAccountInstance} from '@66pix/models'
+import {
+  IModels,
+  ITokenInstance,
+  IUserAccountInstance
+} from '@66pix/models'
 export function forgotPassword(
   app,
   models: IModels
@@ -55,7 +59,7 @@ export function forgotPassword(
     })
     .spread((
       user: IUserAccountInstance,
-      token
+      token: ITokenInstance
     ) => {
       let jwtToken = jwt.sign({
         id: user.id,
@@ -67,7 +71,7 @@ export function forgotPassword(
       })
 
       let expiresOn = new Date()
-      token.expiresOn = expiresOn.getTime() + 1 * 60 * 60 * 1000
+      token.expiresOn = new Date(expiresOn.getTime() + 1 * 60 * 60 * 1000)
       token.updatedWithToken = token.id
 
       token.payload = jwtToken
@@ -112,7 +116,6 @@ export function forgotPassword(
           message: error.message
         })
       })
-      return null
     })
     .catch((error) => {
       if (error.message === 'User not found') {
