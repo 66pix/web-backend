@@ -1,5 +1,6 @@
 import path = require('path')
 import {config} from './config'
+import * as R from 'ramda'
 
 let Raven
 
@@ -14,7 +15,8 @@ export function initialiseRaven(_Raven_): any {
 
   if (config.get('ENVIRONMENT') === 'local') {
     Raven = {
-      captureException: (error, callback) => callback()
+      captureException: (error, callback) => callback(),
+      errorHandler: R.identity
     }
     return Raven
   }

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = require("./config");
+const R = require("ramda");
 let Raven;
 function clearRaven() {
     Raven = null;
@@ -12,7 +13,8 @@ function initialiseRaven(_Raven_) {
     }
     if (config_1.config.get('ENVIRONMENT') === 'local') {
         Raven = {
-            captureException: (error, callback) => callback()
+            captureException: (error, callback) => callback(),
+            errorHandler: R.identity
         };
         return Raven;
     }

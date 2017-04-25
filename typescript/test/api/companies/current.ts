@@ -12,20 +12,13 @@ describe('Routes Companies current', () => {
   let Company
   let UserAccount
 
-  beforeEach((done) => {
-    loginHelper()
-    .then((result: any) => {
-      Company = result.models.Company
-      UserAccount = result.models.UserAccount
-      user = result.user
-      app = result.app
-      token = result.token
-      done()
-    })
-    .catch((error) => {
-      console.log(JSON.stringify(error, null, 2))
-      done(error)
-    })
+  beforeEach(async () => {
+    const result: any = await loginHelper()
+    Company = result.models.Company
+    UserAccount = result.models.UserAccount
+    user = result.user
+    app = result.app
+    token = result.token
   })
 
   afterEach((done) => {
@@ -76,7 +69,6 @@ describe('Routes Companies current', () => {
         expect(R.prop('name', R.head(company.users))).to.equal(user.name)
       })
       .expect(200, done)
-      return null
     })
   })
 })

@@ -13,7 +13,7 @@ import {logout} from './routes/authentication/logout'
 import {resetPassword} from './routes/authentication/reset-password'
 import expressJwt = require('express-jwt')
 import bodyparser = require('body-parser')
-const debug = require('debug')('backend')
+const debug = require('debug')('66pix-backend:app')
 const Raven = initialiseRaven(require('raven'))
 
 let app = express()
@@ -52,7 +52,7 @@ export const getApp = initialiseModels
 })
 .then(() => {
   app.use(unauthorisedErrorHandler)
-  app.use(Raven.requestHandler())
+  app.use(Raven.errorHandler())
   app.use(catchAllErrorHandler)
   return app
 })

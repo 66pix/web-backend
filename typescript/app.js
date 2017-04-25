@@ -13,7 +13,7 @@ const logout_1 = require("./routes/authentication/logout");
 const reset_password_1 = require("./routes/authentication/reset-password");
 const expressJwt = require("express-jwt");
 const bodyparser = require("body-parser");
-const debug = require('debug')('backend');
+const debug = require('debug')('66pix-backend');
 const Raven = raven_1.initialiseRaven(require('raven'));
 let app = express();
 const corsOptions = {
@@ -41,7 +41,7 @@ exports.getApp = models_1.initialiseModels
 })
     .then(() => {
     app.use(unauthorisedErrorHandler);
-    app.use(Raven.requestHandler());
+    app.use(Raven.errorHandler());
     app.use(catchAllErrorHandler);
     return app;
 });
