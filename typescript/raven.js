@@ -21,7 +21,7 @@ function initialiseRaven(_Raven_) {
     Raven = _Raven_;
     Raven.config(config_1.config.get('RAVEN_URL'), {
         release: '%RELEASE_VERSION%',
-        environment: config_1.config.get('NODE_ENV')
+        environment: config_1.config.get('ENVIRONMENT')
     })
         .install();
     return Raven;
