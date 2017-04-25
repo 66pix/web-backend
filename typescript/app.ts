@@ -1,19 +1,19 @@
-import {config} from './config.js'
-import * as express from 'express'
-import * as cors from 'cors'
-import expressJwt = require('express-jwt')
-import bodyparser = require('body-parser')
-const debug = require('debug')('backend')
-import {isRevoked} from './isRevoked'
 import {api} from '@66pix/api'
 import {initialiseModels} from '@66pix/models'
+import * as cors from 'cors'
+import * as express from 'express'
+import {config} from './config.js'
+import {isRevoked} from './isRevoked'
+
+import {initialiseRaven} from './raven'
+import {forgotPassword} from './routes/authentication/forgot-password'
 
 import {login} from './routes/authentication/login'
 import {logout} from './routes/authentication/logout'
-import {forgotPassword} from './routes/authentication/forgot-password'
 import {resetPassword} from './routes/authentication/reset-password'
-
-import {initialiseRaven} from './raven'
+import expressJwt = require('express-jwt')
+import bodyparser = require('body-parser')
+const debug = require('debug')('backend')
 const Raven = initialiseRaven(require('raven'))
 
 let app = express()
@@ -52,6 +52,7 @@ export const getApp = initialiseModels
 })
 .then(() => {
   app.use(unauthorisedErrorHandler)
+  app.use(Raven.requestHandler())
   app.use(catchAllErrorHandler)
   return app
 })
@@ -80,16 +81,14 @@ function catchAllErrorHandler (
   next
 ) {
   let code = 500
-  if (error.code) {
-    code = error.code
-  }
 
-  console.log('Reporting catchAllErrorHandler')
+  debug(error)
+  debug('Reporting catchAllErrorHandler')
   Raven.captureException(error, () => {
     res.status(code)
-    console.log('Reported catchAllErrorHandler')
+    debug('Reported catchAllErrorHandler')
     res.json({
-      message: error.message
+      message: res.sentry
     })
   })
 }

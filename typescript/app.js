@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const config_js_1 = require("./config.js");
-const express = require("express");
+const api_1 = require("@66pix/api");
+const models_1 = require("@66pix/models");
 const cors = require("cors");
+const express = require("express");
+const config_js_1 = require("./config.js");
+const isRevoked_1 = require("./isRevoked");
+const raven_1 = require("./raven");
+const forgot_password_1 = require("./routes/authentication/forgot-password");
+const login_1 = require("./routes/authentication/login");
+const logout_1 = require("./routes/authentication/logout");
+const reset_password_1 = require("./routes/authentication/reset-password");
 const expressJwt = require("express-jwt");
 const bodyparser = require("body-parser");
 const debug = require('debug')('backend');
-const isRevoked_1 = require("./isRevoked");
-const api_1 = require("@66pix/api");
-const models_1 = require("@66pix/models");
-const login_1 = require("./routes/authentication/login");
-const logout_1 = require("./routes/authentication/logout");
-const forgot_password_1 = require("./routes/authentication/forgot-password");
-const reset_password_1 = require("./routes/authentication/reset-password");
-const raven_1 = require("./raven");
 const Raven = raven_1.initialiseRaven(require('raven'));
 let app = express();
 const corsOptions = {
@@ -41,6 +41,7 @@ exports.getApp = models_1.initialiseModels
 })
     .then(() => {
     app.use(unauthorisedErrorHandler);
+    app.use(Raven.requestHandler());
     app.use(catchAllErrorHandler);
     return app;
 });
@@ -56,15 +57,13 @@ function unauthorisedErrorHandler(error, req, res, next) {
 }
 function catchAllErrorHandler(error, req, res, next) {
     let code = 500;
-    if (error.code) {
-        code = error.code;
-    }
-    console.log('Reporting catchAllErrorHandler');
+    debug(error);
+    debug('Reporting catchAllErrorHandler');
     Raven.captureException(error, () => {
         res.status(code);
-        console.log('Reported catchAllErrorHandler');
+        debug('Reported catchAllErrorHandler');
         res.json({
-            message: error.message
+            message: res.sentry
         });
     });
 }
