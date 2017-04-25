@@ -95,7 +95,6 @@ function forgotPassword(app, models) {
                     message: error.message
                 });
             });
-            return null;
         })
             .catch((error) => {
             if (error.message === 'User not found') {
