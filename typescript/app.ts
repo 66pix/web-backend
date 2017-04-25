@@ -82,14 +82,26 @@ function catchAllErrorHandler (
 ) {
   let code = 500
 
-  debug(error)
   debug('Reporting catchAllErrorHandler')
-  Raven.captureException(error, () => {
+  debug(error)
+  debug(Raven)
+  Raven.captureException(error, (
+    ravenError,
+    eventId
+  ) => {
+    if (ravenError) {
+      debug('Failed to report error')
+      debug(ravenError)
+    } else {
+      debug('Reported catchAllErrorHandler')
+    }
+
+    debug(eventId)
+
     res.status(code)
-    debug('Reported catchAllErrorHandler')
     res.json({
       message: error.message,
-      trackingId: res.sentry
+      trackingId: eventId
     })
   })
 }
