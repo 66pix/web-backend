@@ -88,7 +88,8 @@ function catchAllErrorHandler (
     res.status(code)
     debug('Reported catchAllErrorHandler')
     res.json({
-      message: res.sentry
+      message: error.message,
+      trackingId: res.sentry
     })
   })
 }

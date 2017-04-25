@@ -11,35 +11,25 @@ describe('Routes User Companies put', () => {
   let Company
   let UserAccount
 
-  beforeEach((done) => {
-    require('../../loginHelper').loginHelper()
-    .then((result) => {
-      Company = result.models.Company
-      user = result.user
-      app = result.app
-      token = result.token
-      UserAccount = result.models.UserAccount
+  beforeEach(async () => {
+    const result: any = await require('../../loginHelper').loginHelper()
+    Company = result.models.Company
+    user = result.user
+    app = result.app
+    token = result.token
+    UserAccount = result.models.UserAccount
 
-      return UserAccount.build({
-        name: 'second user',
-        email: 'second_user@66pix.com',
-        updatedWithToken: -1,
-        status: 'Active'
-      })
-      .save()
+    secondUser = await UserAccount.build({
+      name: 'second user',
+      email: 'second_user@66pix.com',
+      updatedWithToken: -1,
+      status: 'Active'
     })
-    .then((_secondUser_) => {
-      secondUser = _secondUser_
-      done()
-    })
-    .catch((error) => {
-      console.log(JSON.stringify(error, null, 2))
-      done(error)
-    })
+    .save()
   })
 
-  afterEach((done) => {
-    Bluebird.all([
+  afterEach(async () => {
+    await Bluebird.all([
       UserAccount,
       Company
     ].map((model) => {
@@ -48,13 +38,6 @@ describe('Routes User Companies put', () => {
         cascade: true
       })
     }))
-    .then(() => {
-      done()
-    })
-    .catch((error) => {
-      console.log(JSON.stringify(error, null, 2))
-      done(error)
-    })
   })
 
   it('should allow updating the responsibility of a userCompany', (done) => {

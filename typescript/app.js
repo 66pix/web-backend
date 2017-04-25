@@ -13,7 +13,7 @@ const logout_1 = require("./routes/authentication/logout");
 const reset_password_1 = require("./routes/authentication/reset-password");
 const expressJwt = require("express-jwt");
 const bodyparser = require("body-parser");
-const debug = require('debug')('66pix-backend');
+const debug = require('debug')('66pix-backend:app');
 const Raven = raven_1.initialiseRaven(require('raven'));
 let app = express();
 const corsOptions = {
@@ -63,7 +63,8 @@ function catchAllErrorHandler(error, req, res, next) {
         res.status(code);
         debug('Reported catchAllErrorHandler');
         res.json({
-            message: res.sentry
+            message: error.message,
+            trackingId: res.sentry
         });
     });
 }

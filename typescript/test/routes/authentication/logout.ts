@@ -47,7 +47,7 @@ describe('Routes authentication logout', () => {
   })
 
   it('should send a non JsonWebTokenError down the middleware chain', (done) => {
-    sinon.stub(jwt, 'verify', (token, secret, callback) => {
+    sinon.stub(jwt, 'verify').callsFake((token, secret, callback) => {
       callback(new Error('This is another error'))
     })
     request(app)
