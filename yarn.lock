@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^3.4.6":
-  version "3.4.6"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.4.6.tgz#64a06170535df3bc9b2c31e02aa14271ca72687e"
+"@66pix/api@^3.4.7":
+  version "3.4.7"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.4.7.tgz#1e984db80c09a3dbfbfe42552433007ae0d6d396"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.11.3"
@@ -63,9 +63,13 @@
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/bcryptjs/-/bcryptjs-2.4.0.tgz#6b78a7c4fdbc1e2f1b5b53d9ed00b9d88c377604"
 
-"@types/bluebird@*", "@types/bluebird@^3.5.2":
+"@types/bluebird@*":
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.2.tgz#ecf1104217495e50fe0b588d538146cd6f733b89"
+
+"@types/bluebird@^3.5.3":
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.3.tgz#a2c28be02c0855f526e43785fa326f282402e290"
 
 "@types/body-parser@^1.16.3":
   version "1.16.3"
@@ -114,9 +118,9 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
-"@types/hashids@^1.0.28":
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/@types/hashids/-/hashids-1.0.28.tgz#53c76b7bbb3e2d391aa1183a41a6f7f06368231d"
+"@types/hashids@^1.0.29":
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/@types/hashids/-/hashids-1.0.29.tgz#bd7ef8e1e39be61ab7508459e188f86216a07239"
   dependencies:
     "@types/node" "*"
 
@@ -142,9 +146,13 @@
   version "2.2.41"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.41.tgz#e27cf0817153eb9f2713b2d3f6c68f1e1c3ca608"
 
-"@types/node@*", "@types/node@^7.0.13":
+"@types/node@*":
   version "7.0.13"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.13.tgz#1b0a53fe9ef9c3a5d061b126cc9b915bca43a3f5"
+
+"@types/node@^7.0.14":
+  version "7.0.14"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.14.tgz#1470fa002a113316ac9d9ad163fc738c7a0de2a4"
 
 "@types/nunjucks@0.0.32":
   version "0.0.32"
@@ -1488,6 +1496,10 @@ getpass@^0.1.1:
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.6.tgz#283ffd9fc1256840875311c1b60e8c40187110e6"
   dependencies:
     assert-plus "^1.0.0"
+
+"gkt@https://tgz.pm2.io/gkt-1.0.0.tgz":
+  version "1.0.0"
+  resolved "https://tgz.pm2.io/gkt-1.0.0.tgz#405502b007f319c3f47175c4474527300f2ab5ad"
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -2922,9 +2934,9 @@ pm2-multimeter@^0.1.2:
   dependencies:
     charm "~0.1.1"
 
-pm2@^2.4.5:
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/pm2/-/pm2-2.4.5.tgz#14c7722eb854f7f409b2ebef83f03470ecd03fc9"
+pm2@^2.4.6:
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/pm2/-/pm2-2.4.6.tgz#8157a7c88a537ce9d2193063aeb3aee44c5129bf"
   dependencies:
     async "1.5"
     blessed "^0.1.81"
@@ -2951,6 +2963,8 @@ pm2@^2.4.5:
     sprintf-js "~1.0.2"
     vizion "^0.2"
     yamljs "0.2.8"
+  optionalDependencies:
+    gkt "https://tgz.pm2.io/gkt-1.0.0.tgz"
 
 pmx@^1.1.0:
   version "1.1.0"
