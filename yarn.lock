@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^3.4.8":
-  version "3.4.8"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.4.8.tgz#91a6c5c596c797d5f33fd245cb2e3f299a1ac693"
+"@66pix/api@^3.4.9":
+  version "3.4.9"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.4.9.tgz#c78290fb6e4dabe6c388cec19feaaee2d8fa9f1e"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.11.4"
@@ -2489,11 +2489,11 @@ moment@2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.12.0.tgz#dc2560d19838d6c0731b1a6afa04675264d360d6"
 
-moment@2.17.1:
+moment@2.17.1, moment@2.x.x, "moment@>= 2.6.0", moment@^2.13.0, moment@^2.15, moment@^2.16.0:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
-moment@2.x.x, "moment@>= 2.6.0", moment@^2.13.0, moment@^2.15, moment@^2.16.0, moment@^2.18.1:
+moment@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
@@ -3883,11 +3883,11 @@ utils-merge@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.0.tgz#0294fb922bb9375153541c4f7096231f287c8af8"
 
-uuid@3.0.0:
+uuid@3.0.0, uuid@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.0.tgz#6728fc0459c450d796a99c31837569bdf672d728"
 
-uuid@3.0.1, uuid@^3.0.0, uuid@^3.0.1:
+uuid@3.0.1, uuid@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 
