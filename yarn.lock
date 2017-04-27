@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.4.7.tgz#1e984db80c09a3dbfbfe42552433007ae0d6d396"
+"@66pix/api@^3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.4.8.tgz#91a6c5c596c797d5f33fd245cb2e3f299a1ac693"
   dependencies:
     "@66pix/email" "^1.0.6"
-    "@66pix/models" "^4.11.3"
-    aws-sdk "^2.45.0"
+    "@66pix/models" "^4.11.4"
+    aws-sdk "^2.46.0"
     bluebird "^3.5.0"
     braintree "^2.0.2"
     celebrate "^4.0.1"
@@ -42,32 +42,28 @@
     nunjucks "^2.4.2"
     stylus "^0.54.5"
 
-"@66pix/models@^4.11.3":
-  version "4.11.3"
-  resolved "https://registry.yarnpkg.com/@66pix/models/-/models-4.11.3.tgz#e7408d555e6021272a9fccd9eed95cf831dea2b4"
+"@66pix/models@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@66pix/models/-/models-4.11.4.tgz#d3055077de32e9e50ec593d4c85f2d9e495e7c94"
   dependencies:
     bcryptjs "^2.4.3"
     bluebird "^3.5.0"
     change-case "^3.0.1"
     convict "^3.0.0"
-    debug "^2.6.3"
+    debug "^2.6.4"
     es6-promise "^4.1.0"
     hashids "^1.1.1"
     pg "^6.1.5"
     pg-hstore "^2.3.2"
     ramda "^0.23.0"
     sequelize "^3.30.4"
-    umzug "^1.11.0"
+    umzug "^1.12.0"
 
 "@types/bcryptjs@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/bcryptjs/-/bcryptjs-2.4.0.tgz#6b78a7c4fdbc1e2f1b5b53d9ed00b9d88c377604"
 
-"@types/bluebird@*":
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.2.tgz#ecf1104217495e50fe0b588d538146cd6f733b89"
-
-"@types/bluebird@^3.5.3":
+"@types/bluebird@*", "@types/bluebird@^3.5.3":
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.3.tgz#a2c28be02c0855f526e43785fa326f282402e290"
 
@@ -146,11 +142,7 @@
   version "2.2.41"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.41.tgz#e27cf0817153eb9f2713b2d3f6c68f1e1c3ca608"
 
-"@types/node@*":
-  version "7.0.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.13.tgz#1b0a53fe9ef9c3a5d061b126cc9b915bca43a3f5"
-
-"@types/node@^7.0.14":
+"@types/node@*", "@types/node@^7.0.14":
   version "7.0.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.14.tgz#1470fa002a113316ac9d9ad163fc738c7a0de2a4"
 
@@ -378,9 +370,9 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-aws-sdk@^2.45.0:
-  version "2.45.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.45.0.tgz#045dbd323630170968306dc849d793dbb1e4444d"
+aws-sdk@^2.46.0:
+  version "2.46.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.46.0.tgz#6856d5669d8b00a4cd42091beebf12be7d8ef48e"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -456,7 +448,7 @@ bluebird@^2.9.34:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
 
-bluebird@^3.0.0, bluebird@^3.0.1, bluebird@^3.1.1, bluebird@^3.3.4, bluebird@^3.3.5, bluebird@^3.4.6, bluebird@^3.5.0:
+bluebird@^3.0.0, bluebird@^3.1.1, bluebird@^3.3.4, bluebird@^3.3.5, bluebird@^3.4.1, bluebird@^3.4.6, bluebird@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
@@ -2315,9 +2307,13 @@ lodash@4.12.0:
   version "4.12.0"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.12.0.tgz#2bd6dc46a040f59e686c972ed21d93dc59053258"
 
-lodash@4.16.2, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.0, lodash@^4.3.0:
+lodash@4.16.2, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.0:
   version "4.16.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.2.tgz#3e626db827048a699281a8a125226326cfc0e652"
+
+lodash@^4.17.0:
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
 lolex@^1.6.0:
   version "1.6.0"
@@ -2493,11 +2489,11 @@ moment@2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.12.0.tgz#dc2560d19838d6c0731b1a6afa04675264d360d6"
 
-moment@2.17.1, moment@2.x.x, "moment@>= 2.6.0", moment@^2.13.0, moment@^2.15, moment@^2.8.3:
+moment@2.17.1, moment@2.x.x, "moment@>= 2.6.0", moment@^2.15:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
-moment@^2.18.1:
+moment@^2.13.0, moment@^2.16.0, moment@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
@@ -3840,13 +3836,13 @@ uid-number@~0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
 
-umzug@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/umzug/-/umzug-1.11.0.tgz#6531ad4b5b650957d1791f98189f435235d07cce"
+umzug@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/umzug/-/umzug-1.12.0.tgz#a79c91f2862eee3130c6c347f2b90ad68a66e8b8"
   dependencies:
-    bluebird "^3.0.1"
-    lodash "^4.3.0"
-    moment "^2.8.3"
+    bluebird "^3.4.1"
+    lodash "^4.17.0"
+    moment "^2.16.0"
     redefine "^0.2.0"
     resolve "^1.0.0"
 
@@ -3887,11 +3883,11 @@ utils-merge@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.0.tgz#0294fb922bb9375153541c4f7096231f287c8af8"
 
-uuid@3.0.0, uuid@^3.0.0:
+uuid@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.0.tgz#6728fc0459c450d796a99c31837569bdf672d728"
 
-uuid@3.0.1, uuid@^3.0.1:
+uuid@3.0.1, uuid@^3.0.0, uuid@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 
