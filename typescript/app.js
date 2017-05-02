@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const config_js_1 = require("./config.js");
-const express = require("express");
-const cors = require("cors");
-const expressJwt = require("express-jwt");
-const bodyparser = require("body-parser");
-const debug = require('debug')('backend');
-const isRevoked_1 = require("./isRevoked");
 const api_1 = require("@66pix/api");
 const models_1 = require("@66pix/models");
+const cors = require("cors");
+const express = require("express");
+const config_js_1 = require("./config.js");
+const isRevoked_1 = require("./isRevoked");
+const raven_1 = require("./raven");
+const forgot_password_1 = require("./routes/authentication/forgot-password");
 const login_1 = require("./routes/authentication/login");
 const logout_1 = require("./routes/authentication/logout");
-const forgot_password_1 = require("./routes/authentication/forgot-password");
 const reset_password_1 = require("./routes/authentication/reset-password");
-const raven_1 = require("./raven");
+const expressJwt = require("express-jwt");
+const bodyparser = require("body-parser");
+const debug = require('debug')('66pix-backend:app');
 const Raven = raven_1.initialiseRaven(require('raven'));
 let app = express();
 const corsOptions = {
@@ -41,6 +41,7 @@ exports.getApp = models_1.initialiseModels
 })
     .then(() => {
     app.use(unauthorisedErrorHandler);
+    app.use(Raven.errorHandler());
     app.use(catchAllErrorHandler);
     return app;
 });
@@ -56,15 +57,22 @@ function unauthorisedErrorHandler(error, req, res, next) {
 }
 function catchAllErrorHandler(error, req, res, next) {
     let code = 500;
-    if (error.code) {
-        code = error.code;
-    }
-    console.log('Reporting catchAllErrorHandler');
-    Raven.captureException(error, () => {
+    debug('Reporting catchAllErrorHandler');
+    debug(error);
+    debug(Raven);
+    Raven.captureException(error, (ravenError, eventId) => {
+        if (ravenError) {
+            debug('Failed to report error');
+            debug(ravenError);
+        }
+        else {
+            debug('Reported catchAllErrorHandler');
+        }
+        debug(eventId);
         res.status(code);
-        console.log('Reported catchAllErrorHandler');
         res.json({
-            message: error.message
+            message: error.message,
+            trackingId: eventId
         });
     });
 }

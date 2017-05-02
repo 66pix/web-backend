@@ -8,40 +8,17 @@ import {initialiseModels} from '@66pix/models'
 describe('Routes authentication reset-password', () => {
   let app
 
-  beforeEach((done) => {
-    getApp
-    .then((_app_) => {
-      app = _app_
-      done()
-    })
-    .catch((error) => {
-      console.log(JSON.stringify(error, null, 2))
-      done(error)
-    })
+  beforeEach(async () => {
+    app = await getApp
   })
 
-  afterEach((done) => {
-    initialiseModels
-    .then((models) => {
-      return models.UserAccount.destroy({
-        force: true,
-        truncate: true,
-        cascade: true
-      })
+  afterEach(async () => {
+    const models = await initialiseModels
+    await models.UserAccount.destroy({
+      force: true,
+      truncate: true,
+      cascade: true
     })
-    .then(() => {
-      done()
-    })
-    .catch((error) => {
-      console.log(JSON.stringify(error, null, 2))
-      done(error)
-    })
-  })
-
-  it('should reject requests missing a token', (done) => {
-    request(app)
-    .post('/authentication/reset-password')
-    .expect(404, done)
   })
 
   it('should reject requests with an invalid token', (done) => {
@@ -123,7 +100,10 @@ describe('Routes authentication reset-password', () => {
           newPassword: password,
           newPasswordRepeat: password
         })
-        .expect(400, (error, response) => {
+        .expect(400, (
+          error,
+          response
+        ) => {
           expect(response.body).to.equal({
             code: 400,
             message: 'User does not exist or has been deactivated'

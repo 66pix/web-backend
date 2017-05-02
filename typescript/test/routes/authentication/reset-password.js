@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = require("../../../config");
 const expect = require('code').expect;
@@ -8,39 +16,17 @@ const app_1 = require("../../../app");
 const models_1 = require("@66pix/models");
 describe('Routes authentication reset-password', () => {
     let app;
-    beforeEach((done) => {
-        app_1.getApp
-            .then((_app_) => {
-            app = _app_;
-            done();
-        })
-            .catch((error) => {
-            console.log(JSON.stringify(error, null, 2));
-            done(error);
+    beforeEach(() => __awaiter(this, void 0, void 0, function* () {
+        app = yield app_1.getApp;
+    }));
+    afterEach(() => __awaiter(this, void 0, void 0, function* () {
+        const models = yield models_1.initialiseModels;
+        yield models.UserAccount.destroy({
+            force: true,
+            truncate: true,
+            cascade: true
         });
-    });
-    afterEach((done) => {
-        models_1.initialiseModels
-            .then((models) => {
-            return models.UserAccount.destroy({
-                force: true,
-                truncate: true,
-                cascade: true
-            });
-        })
-            .then(() => {
-            done();
-        })
-            .catch((error) => {
-            console.log(JSON.stringify(error, null, 2));
-            done(error);
-        });
-    });
-    it('should reject requests missing a token', (done) => {
-        request(app)
-            .post('/authentication/reset-password')
-            .expect(404, done);
-    });
+    }));
     it('should reject requests with an invalid token', (done) => {
         request(app)
             .post('/authentication/reset-password/invalid')

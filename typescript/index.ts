@@ -10,10 +10,21 @@ const Raven = initialiseRaven(require('raven'))
 const handleError = (error) => {
   debug(error.message)
   debug(error.stack)
-  console.log('Reporting error')
-  console.log(Raven)
-  Raven.captureException(error, () => {
-    console.log('Reported error')
+
+  debug('Reporting handleError')
+
+  Raven.captureException(error, (
+    ravenError,
+    eventId
+  ) => {
+    if (ravenError) {
+      debug('Failed to report error')
+      debug(ravenError)
+    } else {
+      debug('Reported handleError')
+    }
+
+    debug(eventId)
     process.exit()
   })
 }
