@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^3.5.0":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.5.0.tgz#6d2257df0fa853aaaa58d0e99feeb26ad5a6deda"
+"@66pix/api@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-3.6.0.tgz#e89d887cee8c4f7687933a0d4a4ea25bddc0ef41"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.11.5"
@@ -142,11 +142,7 @@
   version "2.2.41"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.41.tgz#e27cf0817153eb9f2713b2d3f6c68f1e1c3ca608"
 
-"@types/node@*":
-  version "7.0.14"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.14.tgz#1470fa002a113316ac9d9ad163fc738c7a0de2a4"
-
-"@types/node@^7.0.15":
+"@types/node@*", "@types/node@^7.0.15":
   version "7.0.15"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.15.tgz#628429289604c5f7e56c13f3a0422f3e59df1a17"
 
@@ -976,9 +972,9 @@ dateformat@^1.0.11:
     get-stdin "^4.0.1"
     meow "^3.3.0"
 
-debug@*, debug@2, debug@^2.1.3, debug@^2.2.0, debug@^2.3.2, debug@^2.6, debug@^2.6.3:
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.4.tgz#7586a9b3c39741c0282ae33445c4e8ac74734fe0"
+debug@*, debug@2, debug@^2.1.3, debug@^2.2.0, debug@^2.3.2, debug@^2.6, debug@^2.6.3, debug@^2.6.4, debug@^2.6.6:
+  version "2.6.6"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.6.tgz#a9fa6fbe9ca43cf1e79f73b75c0189cbb7d6db5a"
   dependencies:
     ms "0.7.3"
 
@@ -993,12 +989,6 @@ debug@2.6.1:
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
   dependencies:
     ms "0.7.2"
-
-debug@^2.6.4, debug@^2.6.6:
-  version "2.6.6"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.6.tgz#a9fa6fbe9ca43cf1e79f73b75c0189cbb7d6db5a"
-  dependencies:
-    ms "0.7.3"
 
 debug@~2.2.0:
   version "2.2.0"
@@ -3893,11 +3883,11 @@ utils-merge@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.0.tgz#0294fb922bb9375153541c4f7096231f287c8af8"
 
-uuid@3.0.0:
+uuid@3.0.0, uuid@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.0.tgz#6728fc0459c450d796a99c31837569bdf672d728"
 
-uuid@3.0.1, uuid@^3.0.0, uuid@^3.0.1:
+uuid@3.0.1, uuid@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 
