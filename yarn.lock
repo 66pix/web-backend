@@ -2,29 +2,29 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^4.1.2":
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-4.1.2.tgz#f5f1ce310f700fbcb5fa7621391d98c435264fcc"
+"@66pix/api@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-4.2.0.tgz#20536a3899102c2745fcc30739aed9e3d96413bf"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.12.1"
-    aws-sdk "^2.53.0"
+    aws-sdk "^2.58.0"
     bluebird "^3.5.0"
     braintree "^2.1.1"
     celebrate "^4.0.1"
     convict "^3.0.0"
-    debug "^2.6.7"
+    debug "^2.6.8"
     exif-parser "^0.1.9"
     express "^4.15.3"
     express-promise-wrap "^0.2.2"
     filename.js "^1.0.17"
     image-size "^0.5.4"
     image-type "^3.0.0"
-    joi "^10.4.2"
+    joi "^10.5.0"
     js-video-url-parser "^0.2.3"
     moment "^2.18.1"
-    nunjucks "^3.0.0"
-    ramda "^0.23.0"
+    nunjucks "^3.0.1"
+    ramda "^0.24.0"
     request "^2.81.0"
     sanctuary "^0.12.2"
 
@@ -74,9 +74,9 @@
     "@types/express" "*"
     "@types/node" "*"
 
-"@types/convict@^0.6.33":
-  version "0.6.33"
-  resolved "https://registry.yarnpkg.com/@types/convict/-/convict-0.6.33.tgz#a5bdbb598cc2b1398a83d64270ec8c69b7e68aea"
+"@types/convict@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/convict/-/convict-3.0.0.tgz#53b7c112ad62b1276718f3a5a9314f9732fb114d"
 
 "@types/cors@^2.8.1":
   version "2.8.1"
@@ -370,9 +370,9 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-aws-sdk@^2.53.0:
-  version "2.55.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.55.0.tgz#7528f3729ecbc8e5aea42ac89e1ff2537086f7c2"
+aws-sdk@^2.58.0:
+  version "2.58.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.58.0.tgz#7ea8c3aa59e97a87c570dbe12d0042082ac1debf"
   dependencies:
     buffer "5.0.6"
     crypto-browserify "1.0.9"
@@ -1944,9 +1944,9 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-joi@^10.4.2, joi@^10.5.0:
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-10.5.0.tgz#4e3172a199c993b36aabe5a987b00b1b541c3059"
+joi@^10.5.0, joi@^10.5.1:
+  version "10.5.1"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-10.5.1.tgz#22c608d106c1f7fe18c6f1bf38a228fdf2daab7f"
   dependencies:
     hoek "4.x.x"
     isemail "2.x.x"
@@ -2466,9 +2466,9 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mocha@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/mocha/-/mocha-3.4.1.tgz#a3802b4aa381934cacb38de70cf771621da8f9af"
+mocha@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/mocha/-/mocha-3.4.2.tgz#d0ef4d332126dbf18d0d640c9b382dd48be97594"
   dependencies:
     browser-stdout "1.3.0"
     commander "2.9.0"
@@ -2492,11 +2492,11 @@ moment@2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.12.0.tgz#dc2560d19838d6c0731b1a6afa04675264d360d6"
 
-moment@2.17.1, moment@^2.15:
+moment@2.17.1, moment@2.x.x, "moment@>= 2.6.0", moment@^2.13.0, moment@^2.15:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
-moment@2.x.x, "moment@>= 2.6.0", moment@^2.13.0, moment@^2.18.1:
+moment@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
@@ -2684,9 +2684,9 @@ nunjucks@^2.4.2:
     chokidar "^1.6.0"
     yargs "^3.32.0"
 
-nunjucks@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/nunjucks/-/nunjucks-3.0.0.tgz#0a2a8fd2942a3ba04f5ba6684e4f7f7ceaca8305"
+nunjucks@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/nunjucks/-/nunjucks-3.0.1.tgz#4de74a3e550baf6fa3370323f3d1c7c2a86bdc4d"
   dependencies:
     a-sync-waterfall "^1.0.0"
     asap "^2.0.3"
@@ -3042,6 +3042,10 @@ ramda@^0.23.0:
   version "0.23.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
 
+ramda@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.24.0.tgz#fb91232d64d239319f78f5a9ba5486e003b91af7"
+
 randomatic@^1.1.3:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-1.1.6.tgz#110dcabff397e9dcff7c0789ccc0a49adf1ec5bb"
@@ -3053,9 +3057,9 @@ range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
-raven@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/raven/-/raven-2.0.1.tgz#d4e0eda0fc84c11277495b217f6c1ff7c489826e"
+raven@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/raven/-/raven-2.0.2.tgz#a43d3b8702ae6db2e91987628be8f289500810ae"
   dependencies:
     cookie "0.3.1"
     json-stringify-safe "5.0.1"
@@ -3425,9 +3429,9 @@ signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
-sinon@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/sinon/-/sinon-2.3.0.tgz#b3433beea9514a904763bfebf48acd21d39e8a87"
+sinon@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/sinon/-/sinon-2.3.2.tgz#c43a9c570f32baac1159505cfeed19108855df89"
   dependencies:
     diff "^3.1.0"
     formatio "1.2.0"
