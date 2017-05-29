@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@66pix/api@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-4.2.0.tgz#20536a3899102c2745fcc30739aed9e3d96413bf"
+"@66pix/api@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@66pix/api/-/api-4.2.1.tgz#c28aad0e3d24eea6d61d27889a009ae36aa54688"
   dependencies:
     "@66pix/email" "^1.0.6"
     "@66pix/models" "^4.12.1"
@@ -2492,11 +2492,11 @@ moment@2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.12.0.tgz#dc2560d19838d6c0731b1a6afa04675264d360d6"
 
-moment@2.17.1, moment@2.x.x, "moment@>= 2.6.0", moment@^2.13.0, moment@^2.15:
+moment@2.17.1, moment@^2.15:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
-moment@^2.18.1:
+moment@2.x.x, "moment@>= 2.6.0", moment@^2.13.0, moment@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
