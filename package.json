@@ -16,14 +16,14 @@
     "lint:fix": "tslint --fix -c tslint.json --exclude 'node_modules/**/*' '**/*.ts' ",
     "build": "tsc",
     "start": "pm2 start pm2.json; pm2 logs",
-    "development": "pm2 start pm2-dev.json; pm2 logs",
+    "development": "rundev typescript/index.ts",
     "coverage-average": "coverage-average coverage/text-summary.txt  --limit 95",
     "nsp": "nsp check npm-shrinkwrap.json"
   },
   "keywords": [],
   "author": "Michael Robinson",
   "dependencies": {
-    "@66pix/api": "^4.2.1",
+    "@66pix/api": "^4.3.0",
     "@66pix/email": "1.0.6",
     "@66pix/models": "^4.12.1",
     "bluebird": "^3.5.0",
